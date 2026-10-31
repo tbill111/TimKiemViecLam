@@ -235,3 +235,39 @@ def extract_education_level(text: str, sections: Optional[dict[str, str]] = None
         if pat.search(scope):
             return level
     return 0
+
+
+# ---------------------------------------------------------------------------
+# 6. Ghép các bước
+# ---------------------------------------------------------------------------
+
+
+def parse_cv(data: bytes, filename: str, index=None, embedder=None, today: Optional[date] = None) -> dict:
+    """Đọc CV và trả về kết quả phân tích (lưu vào `resumes.parsed_json`).
+
+    Trả về: {text, skills:[{name,source,confidence}], years_exp, education_level, sections, embedding(bytes)}.
+    """
+    from .embedder import get_embedder, to_bytes
+    from .extract import extract_skills
+
+    raw = extract_text(data, filename)
+    text = normalize_text(raw)
+    sections = split_sections(text)
+    hits = extract_skills(text, index=index, embedder=embedder, skills_section=sections.get("skills", ""))
+    emb = (embedder or get_embedder()).encode([text[:3000]])[0]
+    return {
+        "text": text,
+        "skills": [h.to_dict() for h in hits],
+        "years_exp": extract_years_exp(text, sections, today),
+        "education_level": extract_education_level(text, sections),
+        "sections": sections,
+        "embedding": to_bytes(emb),
+    }
+
+
+def suggest_skills(text: str, index=None) -> list[dict]:
+    """Gợi ý kỹ năng từ mô tả công việc (JD) cho nhà tuyển dụng; dùng tầng 1-2."""
+    from .extract import extract_skills
+
+    normalized = normalize_text(text)
+    return [h.to_dict() for h in extract_skills(normalized, index=index, tiers=(1, 2))]
