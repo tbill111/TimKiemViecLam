@@ -56,6 +56,23 @@ def tokenize(text: str) -> list[str]:
     return _TOKEN.findall(unicodedata.normalize("NFC", text).lower())
 
 
+SEGMENT_BREAK = "\x00"  # token đệm: n-gram không được vượt qua ranh giới này
+_SEGMENT_SPLIT = re.compile(r"[,;|\n•●▪]+")
+
+
+def tokenize_segments(text: str) -> list[str]:
+    """Như `tokenize` nhưng chèn SEGMENT_BREAK giữa các đoạn ngăn bởi dấu phẩy, chấm phẩy, '|', xuống dòng,
+    để "HTML, CSS" không bị ghép thành cụm "html css"."""
+    out: list[str] = []
+    for part in _SEGMENT_SPLIT.split(text):
+        toks = tokenize(part)
+        if toks:
+            if out:
+                out.append(SEGMENT_BREAK)
+            out += toks
+    return out
+
+
 @dataclass
 class SkillIndex:
     """Từ điển kỹ năng + alias để dò trong văn bản.

@@ -14,7 +14,7 @@ import numpy as np
 from rapidfuzz import fuzz, process
 
 from .embedder import Embedder, get_embedder
-from .skills import SkillIndex, tokenize
+from .skills import SEGMENT_BREAK, SkillIndex, tokenize, tokenize_segments
 from .types import SkillHit
 
 FUZZY_CUTOFF = 90
@@ -69,7 +69,7 @@ def _tier2(tokens: list[str], index: SkillIndex, consumed: list[bool]) -> list[t
             if any(consumed[i : i + n]):
                 continue
             gram = " ".join(tokens[i : i + n])
-            if len(gram) < 5 or gram.isdigit():
+            if SEGMENT_BREAK in gram or len(gram) < 5 or gram.isdigit():
                 continue
             best = process.extractOne(gram, keys, scorer=fuzz.ratio, score_cutoff=FUZZY_CUTOFF)
             if best and best[0][0] == gram[0]:  # lỗi gõ hiếm khi sai chữ cái đầu → giảm khớp nhầm
@@ -128,7 +128,7 @@ def extract_skills(
     """Danh sách kỹ năng chuẩn tìm thấy, theo thứ tự xuất hiện; mỗi kỹ năng một lần."""
     index = index or get_default_index()
     tiers = set(tiers)
-    tokens = tokenize(text)
+    tokens = tokenize_segments(text)
     consumed = [False] * len(tokens)
     positioned: list[tuple[int, SkillHit]] = []
     if 1 in tiers:
