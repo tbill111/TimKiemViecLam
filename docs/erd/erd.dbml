@@ -110,10 +110,10 @@ Table jobs {
   embedding bytea
 
   Note: '''
-  CHECK ck_jobs_salary: salary_min IS NULL OR salary_max IS NULL OR salary_min <= salary_max
   CHECK ck_jobs_job_type: job_type IN ('full_time', 'part_time', 'internship')
-  CHECK ck_jobs_status: status IN ('open', 'closed')
   CHECK ck_jobs_level: level IN ('intern', 'fresher', 'junior', 'middle', 'senior')
+  CHECK ck_jobs_salary: salary_min IS NULL OR salary_max IS NULL OR salary_min <= salary_max
+  CHECK ck_jobs_status: status IN ('open', 'closed')
   CHECK ck_jobs_work_mode: work_mode IN ('onsite', 'hybrid', 'remote')
   '''
 }

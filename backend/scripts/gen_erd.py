@@ -44,8 +44,8 @@ def build() -> str:
             lines.append(f"  {col.name} {type_name}" + (f" [{', '.join(attrs)}]" if attrs else ""))
             for fk in col.foreign_keys:
                 refs.append(f"Ref: {table.name}.{col.name} > {fk.column.table.name}.{fk.column.name}")
-        constraints = [c for c in table.constraints if c.__class__.__name__ == "CheckConstraint" and c.name]
-        uniques = [c for c in table.constraints if c.__class__.__name__ == "UniqueConstraint" and len(c.columns) > 1]
+        constraints = sorted((c for c in table.constraints if c.__class__.__name__ == "CheckConstraint" and c.name), key=lambda c: c.name)
+        uniques = sorted((c for c in table.constraints if c.__class__.__name__ == "UniqueConstraint" and len(c.columns) > 1), key=lambda c: c.name or "")
         if constraints or uniques:
             lines.append("")
             lines.append("  Note: '''")
