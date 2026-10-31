@@ -36,3 +36,6 @@ backend/models_store/*.pt
 mẫu/
 baocao/
 Kế hoạch TH3*.pdf
+
+*.db
+*.sqlite3
