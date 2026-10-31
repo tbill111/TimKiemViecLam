@@ -44,7 +44,7 @@ TkiemViecLam/                    # = gốc git repo, cũng là frontend
 │  ├─ app/{main.py, config.py, db.py, deps.py, models/, schemas/, routers/, services/}
 │  ├─ app/ai/{types.py, skills.py, parser.py, embedder.py, features.py, scorers.py, explain.py}
 │  ├─ alembic/versions/
-│  ├─ seed/{data/*.csv, labels/*.csv, load_seed.py, gen_candidates.py, gen_applications.py, gen_cv_files.py}
+│  ├─ seed/{data/*.csv, labels/*.csv, load_seed.py, gen_candidates.py, gen_applications.py}
 │  ├─ models_store/              # m4.joblib, m3_weights.json
 │  └─ tests/{ai/, api/, golden/}
 ├─ bi/
@@ -69,6 +69,7 @@ Thêm `.gitattributes` với `* text=auto eol=lf` (script `.sh` trong container 
 - Giữ nguyên 15 bảng và tên cột trong plan, **cộng**: `jobs.category`, `jobs.responsibilities`, `candidates.profile_json`, `resumes.embedding BYTEA`, `jobs.embedding BYTEA`.
 - `jobs.status ∈ {open, closed}`, `jobs.level ∈ {intern, fresher, junior, middle, senior}`, `jobs.job_type ∈ {full_time, part_time, internship}`, `jobs.work_mode ∈ {onsite, hybrid, remote}`.
 - `applications.status ∈ {applied, screening, interview, offer, hired, rejected}`.
+- Thêm `skills.learning_steps JSONB` (lộ trình học cho Skill Gap, nạp từ `skill_learning_steps.csv`; thiếu thì API dùng lộ trình mặc định 3 bước).
 - `skills.name` là tên chuẩn đúng chính tả đang dùng ở frontend (ví dụ `Thống kê cơ bản`, `REST API`, `Power BI`).
 - Mọi bảng dùng khóa `INTEGER`/`BIGINT` tự tăng; **frontend dùng `String(id)`** (type `Job.id: string` không đổi).
 
