@@ -1,0 +1,219 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+@import "tailwindcss";
+
+
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+
+  html {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-slate-50 text-slate-800 antialiased;
+    min-height: 100vh;
+  }
+
+  #root {
+    min-height: 100vh;
+  }
+}
+
+@layer components {
+  /* ── Card styles ──────────────────────────────────────────── */
+  .card {
+    @apply bg-white rounded-xl border border-slate-200 shadow-sm;
+  }
+
+  .card-hover {
+    @apply bg-white rounded-xl border border-slate-200 shadow-sm
+           transition-all duration-200 hover:shadow-md hover:border-blue-200;
+  }
+
+  /* ── Button styles ────────────────────────────────────────── */
+  .btn-primary {
+    @apply inline-flex items-center gap-2 px-4 py-2 bg-blue-600 text-white text-sm font-medium rounded-lg
+           hover:bg-blue-700 active:bg-blue-800 transition-colors duration-150
+           disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center gap-2 px-4 py-2 bg-white text-slate-700 text-sm font-medium rounded-lg
+           border border-slate-200 hover:bg-slate-50 hover:border-slate-300
+           active:bg-slate-100 transition-colors duration-150;
+  }
+
+  .btn-ghost {
+    @apply inline-flex items-center gap-2 px-3 py-2 text-slate-600 text-sm font-medium rounded-lg
+           hover:bg-slate-100 active:bg-slate-200 transition-colors duration-150;
+  }
+
+  .btn-danger {
+    @apply inline-flex items-center gap-2 px-4 py-2 bg-red-50 text-red-600 text-sm font-medium rounded-lg
+           border border-red-200 hover:bg-red-100 transition-colors duration-150;
+  }
+
+  /* ── Input styles ─────────────────────────────────────────── */
+  .input-field {
+    @apply w-full px-3 py-2 text-sm text-slate-800 bg-white border border-slate-200 rounded-lg
+           placeholder:text-slate-400 focus:outline-none focus:border-blue-500
+           focus:ring-2 focus:ring-blue-500/10 transition-colors duration-150;
+  }
+
+  .select-field {
+    @apply w-full px-3 py-2 text-sm text-slate-800 bg-white border border-slate-200 rounded-lg
+           focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/10
+           transition-colors duration-150 cursor-pointer appearance-none;
+  }
+
+  /* ── Badge styles (fully expanded, no @apply badge) ──────── */
+  .badge {
+    @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium;
+  }
+
+  .badge-blue {
+    @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium
+           bg-blue-50 text-blue-700 border border-blue-100;
+  }
+
+  .badge-green {
+    @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium
+           bg-emerald-50 text-emerald-700 border border-emerald-100;
+  }
+
+  .badge-yellow {
+    @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium
+           bg-amber-50 text-amber-700 border border-amber-100;
+  }
+
+  .badge-red {
+    @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium
+           bg-red-50 text-red-700 border border-red-100;
+  }
+
+  .badge-purple {
+    @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium
+           bg-purple-50 text-purple-700 border border-purple-100;
+  }
+
+  .badge-gray {
+    @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium
+           bg-slate-100 text-slate-600 border border-slate-200;
+  }
+
+  /* ── Skill tag ────────────────────────────────────────────── */
+  .skill-tag {
+    @apply inline-flex items-center gap-1 px-2.5 py-1 bg-blue-50 text-blue-700
+           text-xs font-medium rounded-lg border border-blue-100;
+  }
+
+  .skill-tag-matched {
+    @apply inline-flex items-center gap-1 px-2.5 py-1 bg-emerald-50 text-emerald-700
+           text-xs font-medium rounded-lg border border-emerald-100;
+  }
+
+  .skill-tag-missing {
+    @apply inline-flex items-center gap-1 px-2.5 py-1 bg-red-50 text-red-700
+           text-xs font-medium rounded-lg border border-red-100;
+  }
+
+  /* ── Progress bar ─────────────────────────────────────────── */
+  .progress-bar {
+    @apply h-2 bg-slate-100 rounded-full overflow-hidden;
+  }
+
+  .progress-fill {
+    @apply h-full rounded-full transition-all duration-500;
+  }
+
+  /* ── Section header ───────────────────────────────────────── */
+  .section-title {
+    @apply text-lg font-semibold text-slate-800;
+  }
+
+  .section-subtitle {
+    @apply text-sm text-slate-500 mt-0.5;
+  }
+
+  /* ── Stats card (expanded, no @apply card) ────────────────── */
+  .stat-card {
+    @apply bg-white rounded-xl border border-slate-200 shadow-sm p-5 flex flex-col gap-2;
+  }
+
+  /* ── Tab styles (expanded, no @apply tab-item) ────────────── */
+  .tab-item {
+    @apply px-4 py-2.5 text-sm font-medium rounded-lg transition-colors duration-150 cursor-pointer;
+  }
+
+  .tab-active {
+    @apply px-4 py-2.5 text-sm font-medium rounded-lg transition-colors duration-150 cursor-pointer
+           bg-blue-600 text-white;
+  }
+
+  .tab-inactive {
+    @apply px-4 py-2.5 text-sm font-medium rounded-lg transition-colors duration-150 cursor-pointer
+           text-slate-600 hover:bg-slate-100;
+  }
+
+  /* ── Sidebar nav item (expanded, no @apply nav-item) ─────── */
+  .nav-item {
+    @apply flex items-center gap-3 px-3 py-2.5 text-sm font-medium rounded-lg
+           transition-colors duration-150 cursor-pointer;
+  }
+
+  .nav-active {
+    @apply flex items-center gap-3 px-3 py-2.5 text-sm font-medium rounded-lg
+           transition-colors duration-150 cursor-pointer
+           bg-blue-50 text-blue-700 border border-blue-100;
+  }
+
+  .nav-inactive {
+    @apply flex items-center gap-3 px-3 py-2.5 text-sm font-medium rounded-lg
+           transition-colors duration-150 cursor-pointer
+           text-slate-600 hover:bg-slate-100 hover:text-slate-900;
+  }
+
+  /* ── Match score badge ────────────────────────────────────── */
+  .match-excellent {
+    @apply bg-emerald-500 text-white;
+  }
+
+  .match-good {
+    @apply bg-blue-500 text-white;
+  }
+
+  .match-fair {
+    @apply bg-amber-500 text-white;
+  }
+
+  .match-poor {
+    @apply bg-slate-400 text-white;
+  }
+}
+
+@layer utilities {
+  .scrollbar-thin {
+    scrollbar-width: thin;
+    scrollbar-color: #cbd5e1 transparent;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar-thumb {
+    background-color: #cbd5e1;
+    border-radius: 999px;
+  }
+
+  .text-balance {
+    text-wrap: balance;
+  }
+}
