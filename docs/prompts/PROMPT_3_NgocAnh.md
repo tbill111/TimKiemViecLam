@@ -7,8 +7,9 @@
 Bạn là kỹ sư frontend của nhóm 3, đề bài **TH3 – Xây dựng Hệ thống Tìm việc Thông minh tích hợp AI và BI**. Tôi là **Ngọc Anh**, phụ trách mục checklist **04 (giao diện + tích hợp API AI/BI)**. Hạn chốt code 16:00 05/11/2026. Hôm nay là chiều 31/10 nên mọi việc tính từ bây giờ.
 
 ## Đọc trước khi làm (bắt buộc)
-1. `docs/00_KE_HOACH_KY_THUAT_TH3.md` – mục 1 (sửa so với repo), 3 (hợp đồng, bảng adapter 3.2, trạng thái 3.3, API 3.4), 4 (Mục 04), 5.
-2. Code frontend: `src/App.tsx`, `src/types/index.ts`, `src/hooks/useAppState.ts`, `src/utils/index.ts`, các trang trong `src/pages/`, `src/components/` (`layout/Sidebar.tsx`, `profile/CvImport.tsx`, `jobs/*`), `vite.config.ts`, `tsconfig.app.json`.
+1. **`docs/prompts/CHUNG.md`** – đề, checklist, "đúng chuẩn" từng mục, quy tắc cứng, hợp đồng, lịch bàn giao, các bẫy đã gặp, cổng kiểm tra cuối. Khi khác `00_` thì CHUNG thắng.
+2. `docs/00_KE_HOACH_KY_THUAT_TH3.md` – mục 1 (sửa so với repo), 3 (hợp đồng, bảng adapter 3.2, trạng thái 3.3, API 3.4), 4 (Mục 04), 5.
+3. Code frontend: `src/App.tsx`, `src/types/index.ts`, `src/hooks/useAppState.ts`, `src/utils/index.ts`, các trang trong `src/pages/`, `src/components/` (`layout/Sidebar.tsx`, `profile/CvImport.tsx`, `jobs/*`), `vite.config.ts`, `tsconfig.app.json`.
 
 ## Quy tắc cứng (đặc thù repo)
 - React 19 + Vite + **TypeScript** + Tailwind 4 + react-router-dom 7 + lucide-react + recharts. Giữ phong cách code, class CSS (`badge-*`, `card`…) và tiếng Việt hiện có trong giao diện.
@@ -17,9 +18,10 @@ Bạn là kỹ sư frontend của nhóm 3, đề bài **TH3 – Xây dựng Hệ
 - `useAppState` giữ nguyên **chữ ký trả về** (`UseAppState`) để các trang gọi `applyToJob`, `saveJob`, `updateProfile`… không phải đổi.
 - `VITE_OFFLINE_DEMO=true` phải chạy được **toàn bộ** như bản hiện tại (không cần backend); đây là phương án cứu khi demo. Chế độ mặc định là online.
 - Không động tới `backend/**`, `bi/**`. Cần đổi API → báo Tùng/Thái Anh.
+- Không thêm `Co-Authored-By` hay dòng attribution AI vào commit/PR (nhóm trưởng yêu cầu). Mỗi người một nhánh `feat/<tên>-<việc>`, PR vào `main`.
 - Trong khi API chưa sẵn sàng, dùng fixture JSON của Tùng (MatchDTO mẫu từ Tùng lúc 20:00 31/10) và mock bằng `msw` hoặc một lớp `mock` đơn giản trong `src/api/mock/` – không để mock lọt vào chế độ mặc định khi API đã chạy.
 
-## Ghi chú từ API AI đã viết sẵn (nhánh `feat/tung-ai-ml`: `backend/app/routers/ai.py`, `resumes.py`)
+## API AI đã có trên `main` (`backend/app/routers/ai.py`, `resumes.py`)
 
 Hình dạng response thật (đã có test), dùng để làm mock chính xác:
 - `POST /ai/match` → MatchDTO: `{model, model_version, total_score, components{skill_req,skill_pref,semantic,exp,edu,pref}, matched_required, missing_required, matched_preferred, missing_preferred, location_match, work_type_match, explanation}`. Với `m0`, `components.semantic/exp/edu` là `null`; điểm 0–100 là số nguyên.
@@ -30,7 +32,14 @@ Hình dạng response thật (đã có test), dùng để làm mock chính xác:
 - `POST /ai/extract-skills {text}` → `{skills:[{name, source, confidence}]}`.
 - Model `m4` có thể trả **503 `model_not_trained`** cho tới khi huấn luyện xong: ô chọn model cần xử lý lỗi này (hiện thông báo, không vỡ trang) và mặc định là `m3`.
 - `status` trong ranked-candidates là chuỗi tiếng Anh (`applied`…`rejected`), cần adapter sang nhãn tiếng Việt ở mục 3.3 của `00_`.
-- Mọi lỗi theo FastAPI: `{"detail": "..."}` hoặc `{"detail": {...}}`.
+- Mọi lỗi theo FastAPI: `{"detail": "..."}` hoặc `{"detail": {...}}`. Đổi trạng thái sai luật: 409 `{"detail":{"detail":"invalid_transition","from":..,"to":..}}` – hiển thị câu tiếng Việt, không im lặng.
+
+## Lỗi giao diện đã gặp khi chạy thật – đừng lặp lại (CHUNG mục 6, bẫy 11–12)
+- Modal ứng tuyển/xem chi tiết: `role="dialog"`, nút đóng có `aria-label="Đóng"`, đóng bằng Esc; **chế độ online không được ghi "Demo/không gửi dữ liệu thật"** (chỉ ghi ở `VITE_OFFLINE_DEMO=true`).
+- Chọn M4 khi chưa huấn luyện (503): giữ **state lỗi cục bộ** trong khung chọn model, trang vẫn dùng được; không để lỗi thay cả trang.
+- Ứng viên online chỉ **xem** trạng thái đơn (không có select đổi trạng thái); Kanban nhà tuyển dụng mới đổi được và chỉ hiện bước hợp lệ.
+- Giờ API không có múi giờ (UTC) → thêm `Z` trước khi hiển thị (`asUtc`). Lưu hồ sơ thất bại → tải lại dữ liệu thật, không giữ giá trị chưa lưu. Chữ cái avatar viết hoa.
+- `VITE_OFFLINE_DEMO=true` phải chạy trọn mọi trang và **không gọi API nào** (kiểm bằng DevTools/Playwright đếm request).
 
 ## Việc cần làm (theo thứ tự)
 
@@ -53,14 +62,20 @@ Hình dạng response thật (đã có test), dùng để làm mock chính xác:
 12. **Ứng viên xếp hạng** `/employer/candidates`: chọn tin → `GET /jobs/{id}/ranked-candidates`; **Kanban 6 cột** theo 3.3 (kéo/thả hoặc nút chuyển) gọi `PATCH /applications/{id}/status`; hiện điểm + lý do khớp/thiếu kỹ năng. `/employer` cũ redirect sang trang này. Cập nhật mục trong `Sidebar.tsx`.
 13. **Dashboard** `/employer/dashboard`: `GET /bi/guest-token` → `@superset-ui/embedded-sdk` (`embedDashboard({id, supersetDomain, mountPoint, fetchGuestToken})`); nếu lỗi/timeout → fallback Recharts với `/bi/skills|salary|funnel`. Tách thành chunk riêng trong `vite.config.ts` (`manualChunks`).
 14. `DashboardPage` (Tổng quan) lấy KPI từ `/bi/summary` và "Việc làm phù hợp nhất" từ `/candidates/me/recommendations`.
+15. **Quản trị kỹ năng (F10 – bắt buộc có giao diện, không chỉ Swagger)**: trang `/admin/skills` (chỉ role admin): bảng kỹ năng + nhóm, thêm/sửa kỹ năng và lộ trình học, thêm/xoá alias; dùng `GET/POST /admin/skills`, `PUT /admin/skills/{id}`, `GET/POST /admin/skill-aliases`, `DELETE /admin/skill-aliases/{alias}`. Kiểm: thêm alias → "Gợi ý kỹ năng" ở form đăng tin nhận alias đó. Thêm mục `Sidebar` cho admin.
 
 ### D. Chốt (4–5/11, chốt code 16:00 5/11)
-15. Chế độ offline demo kiểm tra lại toàn bộ trang với `VITE_OFFLINE_DEMO=true`.
-16. Dọn: không còn import `sampleJobs` ở trang chạy online (trừ ETL/DFD/About); không còn `console.log`; `npm run build` + `npm run lint` sạch.
-17. Chụp ảnh màn hình các trang chính (`docs/report/figures/ui_*.png`) và viết chương "giao diện" của báo cáo (nộp markdown 12:00 6/11 cho Hoàng Anh).
+16. Chế độ offline demo kiểm tra lại toàn bộ trang với `VITE_OFFLINE_DEMO=true`.
+17. Dọn: không còn import `sampleJobs` ở trang chạy online (trừ ETL/DFD/About); không còn `console.log`; `npm run build` + `npm run lint` sạch.
+18. Chụp ảnh màn hình các trang chính (`docs/report/figures/ui_*.png`) và viết chương "giao diện" của báo cáo (nộp markdown 12:00 6/11 cho Hoàng Anh).
+
+## Tự kiểm tra trước khi báo xong
+- `npm run build` và `npm run lint` không lỗi (cả `VITE_OFFLINE_DEMO=true`).
+- Chạy trọn **kịch bản 10 bước ở CHUNG mục 7** trên stack Docker thật (ứng viên, nhà tuyển dụng, quản trị); nên viết `scripts/e2e_smoke.py` bằng Playwright để chạy lại được.
+- Mọi trang có 3 trạng thái tải/lỗi/rỗng; route bị chặn đúng vai trò.
 
 ## Đầu ra phải có
-`src/api/*`, `src/context/*`, các trang mới (Login, Register, EmployerJobs, PostJob, EmployerCandidates, EmployerDashboard), trạng thái 6 giá trị, 3 trạng thái tải/lỗi/rỗng, chế độ offline demo, ảnh giao diện.
+`src/api/*`, `src/context/*`, các trang mới (Login, Register, EmployerJobs, PostJob, EmployerCandidates, EmployerDashboard, AdminSkills), trạng thái 6 giá trị, 3 trạng thái tải/lỗi/rỗng, chế độ offline demo, ảnh giao diện.
 
 ## Cách làm việc với tôi
 - Sau mỗi cụm việc chạy `npm run build` và `npm run lint`; báo kết quả thật.
