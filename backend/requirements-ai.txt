@@ -1,0 +1,24 @@
+# Phụ thuộc của tầng AI (backend/app/ai). Thái Anh gộp vào requirements.txt của backend.
+# Chạy trong Docker python:3.11-slim; máy dev Python 3.13 có thể thiếu wheel cho torch/underthesea.
+
+numpy>=1.26
+scipy>=1.11
+pandas>=2.1
+scikit-learn>=1.4
+joblib>=1.3
+
+# Đọc CV
+pdfplumber>=0.11
+python-docx>=1.1
+rapidfuzz>=3.6
+
+# NLP tiếng Việt và embedding (nặng; tuỳ chọn khi chạy test – thiếu thì dùng HashingEmbedder)
+underthesea>=6.8
+sentence-transformers>=3.0
+# torch bản CPU: pip install torch --index-url https://download.pytorch.org/whl/cpu
+
+# Notebook đánh giá và test
+nbformat>=5.9
+pytest>=8.0
+httpx>=0.27
+python-multipart>=0.0.9

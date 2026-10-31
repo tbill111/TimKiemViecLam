@@ -19,6 +19,18 @@ Bạn là kỹ sư backend/DevOps của nhóm 3, đề bài **TH3 – Xây dựn
 - Mật khẩu băm `bcrypt` (dùng gói `bcrypt` trực tiếp, không dùng `passlib`); JWT HS256; CORS cho `http://localhost:5173` và `http://localhost:8080`.
 - Tên người trong dữ liệu seed là hư cấu; không đặt mật khẩu thật.
 
+## Ghi chú từ phần AI của Tùng (đã có trên nhánh `feat/tung-ai-ml`, đọc `backend/README_AI.md` trước)
+
+- **Hợp đồng dữ liệu cho AI:** `backend/app/ai/types.py` (`CandidateInput`, `JobInput`) và `backend/app/ai/repository.py` (`AIRepository`, mỗi phương thức có docstring). Bạn hiện thực bản SQLAlchemy (ví dụ `app/services/ai_repo.py`) rồi gắn: `app.dependency_overrides[get_ai_repo] = lambda db=Depends(get_db): SqlAIRepository(db)`; include `app.routers.ai.router` và `app.routers.resumes.router` với prefix `/api`.
+- `app/deps.py` của bạn cần: `get_current_user()` trả đối tượng có `.id`, `.role`, `.company_id`; `require_role(*roles)` trả dependency kiểm tra vai trò (403) và trả lại user. Router AI đã import đúng hai tên này.
+- `app/__init__.py`, `app/routers/__init__.py` đã có (file rỗng) – đừng tạo lại cho khỏi xung đột.
+- Dữ liệu cho AI: `CandidateInput.skills` chỉ lấy kỹ năng `confirmed = true`; `CandidateInput.text` và `resumes.embedding` lấy từ `parsed["model_text"]` / `parsed["embedding"]` do `parse_cv` trả về (không dùng `parsed["text"]`, vì còn tên và liên hệ). `JobInput.embedding` tính khi lưu tin bằng `app.ai.embedder.embed_text(...)` rồi `to_bytes(...)`. Sau khi nạp tin gọi `app.ai.scorers.fit_tfidf([...])` một lần cho M1.
+- `repo.save_resume` nhận `parsed` gồm `text, model_text, skills, years_exp, education_level, sections, embedding(bytes)`; lưu `skills` vào `candidate_skills` với `source='cv'`, `confirmed=false`.
+- **Việc thêm vào phần của bạn:** cột `skills.learning_steps JSONB` (nạp từ `backend/seed/data/skill_learning_steps.csv`, cột `skill_name,steps` ngăn bằng `|`); `repo.learning_steps(skill)` trả mảng đó, thiếu thì trả `[]` (router tự dùng lộ trình mặc định).
+- **Định dạng `candidates_generated.csv` bạn phải xuất** (Tùng dùng cho chọn cặp nhãn và notebook): `candidate_id,occupation,skills,years_exp,education_level,locations,work_types,expected_salary_min,expected_salary_max,text` (xem `backend/seed/README.md`; `education_level` là số 0–4; `work_types` dùng nhãn tiếng Việt như frontend). Chạy với seed 42 và giữ `candidate_id` ổn định giữa các lần chạy.
+- Dockerfile backend: cài `requirements-ai.txt` (torch bản CPU), tải trước model: `python -c "from sentence_transformers import SentenceTransformer; SentenceTransformer('paraphrase-multilingual-MiniLM-L12-v2')"`, đặt `HF_HUB_OFFLINE=1`; chạy `pytest backend/tests` trong image.
+- `min_education` trong `jobs.csv` là số 0–4; ánh xạ vào `jobs.min_education` (INT).
+
 ## Việc cần làm (theo thứ tự)
 
 ### A. Khung dự án (hạn 22:00 31/10)

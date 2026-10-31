@@ -17,6 +17,14 @@ Bạn là trợ lý phân tích hệ thống và tài liệu cho nhóm 3, đề 
 - Báo cáo phải trung thực: dữ liệu ứng tuyển là **mô phỏng**; hiệu quả mô hình chỉ kết luận từ 300 cặp gán nhãn tay.
 - Không dán thông tin cá nhân thật. Không sửa code; phát hiện lỗi → ghi vào bảng test case và báo trong nhóm chat.
 
+## Ghi chú định dạng đã chốt (xem `backend/seed/README.md`, `docs/report/huong_dan_gan_nhan.md`)
+
+- `labels_cv_skills.csv` đặt trong `backend/seed/labels/`, cột `cv_file,skills` (+ cột tuỳ chọn `years_exp` để đo MAE số năm kinh nghiệm). `cv_file` là tên file trong `backend/seed/cv_files/` (ví dụ `cv_001.pdf`); `skills` ngăn bằng `|`, đúng tên chuẩn trong `skills.csv` và chỉ gồm kỹ năng **thật sự có trong CV**.
+- `labels_pairs_hoanganh.csv` đặt trong `backend/seed/labels/`, cột `candidate_id,job_id,label`; giữ nguyên thứ tự dòng của file mẫu. Hướng dẫn thang 0–3 và ví dụ nằm ở `docs/report/huong_dan_gan_nhan.md`.
+- Chỉ số mục tiêu: kappa trọng số bình phương ≥ 0,6 (Tùng tính sau khi nhận hai file); hai nhãn lệch ≥ 2 bậc sẽ được hai người thảo luận lại.
+- Để viết báo cáo: cách đo hiệu quả mô hình ở `backend/README_AI.md` mục "Quy trình đánh giá"; bảng kết quả sẽ nằm trong `docs/report/tables/` (Tùng tạo sau khi chạy notebook). Không điền số liệu AI khi chưa có file đó.
+- Test case nên thêm: upload CV khi không đồng ý (400), gọi `m4` khi chưa huấn luyện (503), nộp đơn rồi đổi trạng thái nhảy cóc (409).
+
 ## Việc cần làm
 
 ### A. Phân tích yêu cầu (31/10 chiều–tối)

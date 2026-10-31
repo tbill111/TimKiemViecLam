@@ -19,6 +19,19 @@ Bạn là kỹ sư frontend của nhóm 3, đề bài **TH3 – Xây dựng Hệ
 - Không động tới `backend/**`, `bi/**`. Cần đổi API → báo Tùng/Thái Anh.
 - Trong khi API chưa sẵn sàng, dùng fixture JSON của Tùng (MatchDTO mẫu từ Tùng lúc 20:00 31/10) và mock bằng `msw` hoặc một lớp `mock` đơn giản trong `src/api/mock/` – không để mock lọt vào chế độ mặc định khi API đã chạy.
 
+## Ghi chú từ API AI đã viết sẵn (nhánh `feat/tung-ai-ml`: `backend/app/routers/ai.py`, `resumes.py`)
+
+Hình dạng response thật (đã có test), dùng để làm mock chính xác:
+- `POST /ai/match` → MatchDTO: `{model, model_version, total_score, components{skill_req,skill_pref,semantic,exp,edu,pref}, matched_required, missing_required, matched_preferred, missing_preferred, location_match, work_type_match, explanation}`. Với `m0`, `components.semantic/exp/edu` là `null`; điểm 0–100 là số nguyên.
+- `GET /candidates/me/matches?model=` → `{items:[{job_id, match}]}`; `GET /candidates/me/recommendations?top=&model=` cùng dạng, đã xếp giảm dần.
+- `GET /candidates/me/skill-gap?job_id=` → `{job_id, match_score, missing:[{skill, required, jobs_demanding, learning_steps[]}]}`; kỹ năng bắt buộc đứng trước.
+- `GET /jobs/{id}/ranked-candidates?top=&model=` → `{job_id, items:[{candidate_id, full_name, application_id, status, applied_at, match}]}`; chỉ ứng viên đã nộp; không phải chủ tin → 403.
+- `POST /resumes/upload` (multipart `file`, `consent`) → `{resume_id, skills:[{name, source, confidence}], years_exp, education_level, sections_found[]}` với `source` ∈ `dict | fuzzy | embedding`. Nguồn `embedding` là đề xuất độ tin cậy thấp: hiển thị khác biệt (ví dụ nhãn "gợi ý") và không tự tick. Lỗi: 400 `consent_required`, 413, 415, 422 (`no_text` hoặc `corrupt`).
+- `POST /ai/extract-skills {text}` → `{skills:[{name, source, confidence}]}`.
+- Model `m4` có thể trả **503 `model_not_trained`** cho tới khi huấn luyện xong: ô chọn model cần xử lý lỗi này (hiện thông báo, không vỡ trang) và mặc định là `m3`.
+- `status` trong ranked-candidates là chuỗi tiếng Anh (`applied`…`rejected`), cần adapter sang nhãn tiếng Việt ở mục 3.3 của `00_`.
+- Mọi lỗi theo FastAPI: `{"detail": "..."}` hoặc `{"detail": {...}}`.
+
 ## Việc cần làm (theo thứ tự)
 
 ### A. Hạ tầng API (31/10 chiều–tối, dùng mock)

@@ -31,7 +31,6 @@ __pycache__/
 .pytest_cache/
 .ipynb_checkpoints/
 backend/models_store/*.pt
-backend/seed/cv_files/
 
 # Tài liệu đề bài và bài cá nhân (không đưa lên repo)
 mẫu/

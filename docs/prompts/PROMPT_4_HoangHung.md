@@ -19,6 +19,15 @@ Bạn là trợ lý dữ liệu và tài liệu cho nhóm 3, đề bài **TH3 �
 - Dữ liệu **hư cấu hoàn toàn**: tên công ty, người, email; không copy từ TopCV/LinkedIn (điều khoản không cho phép). Nếu dùng dữ liệu Kaggle phải ghi nguồn + giấy phép trong `docs/report/nguon_du_lieu.md`.
 - Lương có xu hướng tăng nhẹ theo thời gian và theo cấp bậc (để biểu đồ lương có ý nghĩa).
 
+## Ghi chú định dạng đã chốt (xem `backend/seed/README.md` và các file mẫu trong `backend/seed/data/`)
+
+- File mẫu 3 dòng đã có sẵn cho `skills.csv`, `skill_aliases.csv`, `occupation_templates.csv`, `companies.csv`, `jobs.csv`: **giữ nguyên tên cột và thứ tự cột**, thay bằng dữ liệu đầy đủ.
+- `min_education` trong `jobs.csv` là **số 0–4** (0 không yêu cầu, 1 Trung cấp, 2 Cao đẳng, 3 Đại học, 4 Thạc sĩ+).
+- Thêm file **`skill_learning_steps.csv`** (`skill_name,steps`, 3 bước ngăn bằng `|`) cho các kỹ năng hay thiếu nhất (khoảng 20–30 kỹ năng; có thể lấy từ `src/data/skillGap.ts`). Kỹ năng chưa có dòng sẽ dùng lộ trình mặc định.
+- Danh sách trong một ô (ví dụ `required_skills`) ngăn bằng `|`, tên kỹ năng phải trùng `skills.csv`.
+- File nhãn đặt trong `backend/seed/labels/`, tên `labels_pairs_hung.csv`, cột `candidate_id,job_id,label`. `candidate_id` lấy từ `candidates_generated.csv`, `job_id` là `external_id` của `jobs.csv` (ví dụ `job-001`). Nhãn 0–3, đủ 300 dòng, giữ nguyên thứ tự của file mẫu.
+- 50 file CV đặt trong `backend/seed/cv_files/` và **được commit** (dữ liệu hư cấu). Để parser đọc tốt: PDF phải có lớp chữ (xuất từ Word/Google Docs, không chụp ảnh); có tiêu đề mục như "Kỹ năng", "Kinh nghiệm", "Học vấn", "Dự án"; thời gian viết dạng `06/2023 - 09/2024` hoặc `2023 - nay`; phần đầu CV (tên, liên hệ) nằm riêng phía trên các mục; kỹ năng liệt kê cách nhau dấu phẩy hoặc xuống dòng.
+
 ## Việc cần làm
 
 ### A. Danh mục kỹ năng (hạn 22:00 31/10)
