@@ -76,7 +76,16 @@ def generate(n: int = N, seed: int = SEED) -> list[dict[str, Any]]:
             work_types[0] = "Thực tập"
         base = BASE_SALARY[level_for(years)]
         sal = (round(base * 0.8, 1), round(base * 1.2, 1)) if rng.random() < 0.55 else ("", "")
-        name = fake.name()
+        # Họ + đệm + tên cùng giới (Faker.name() có thể sinh tiền tố xưng hô như "Bác", "Ông", "Chị")
+        female = rng.random() < 0.5
+        middle = "Thị" if female else "Văn"
+        if rng.random() < 0.45:  # đệm khác; tránh "Thị" cho nam và "Văn" cho nữ
+            while (m := fake.middle_name()) in ("Thị", "Văn"):
+                pass
+            middle = m
+        first = fake.first_name_female() if female else fake.first_name_male()
+        last = fake.last_name_female() if female else fake.last_name_male()
+        name = f"{last} {middle} {first}"
         title = rng.choice(occ["titles"])
         goal = f"Mong muốn trở thành {title} và phát triển chuyên môn trong lĩnh vực {cat}."
         rows.append({

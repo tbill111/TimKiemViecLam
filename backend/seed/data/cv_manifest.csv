@@ -1,51 +1,51 @@
 cv_file,candidate_id,occupation,true_skills,true_years_exp,true_education_level,layout
 cv_001.pdf,cand-0001,Frontend Development,CSS|JavaScript|React|Git|Tailwind CSS|Giao tiếp|Tư duy logic,3.0,3,1
-cv_002.docx,cand-0002,Backend Development,Node.js|SQL|REST API|Git|OOP|PostgreSQL|MongoDB|Express.js|GraphQL,1.0,3,2
-cv_003.pdf,cand-0003,Data Science & Analytics,SQL|Python|Excel|Thống kê cơ bản|Matplotlib|Git,0.0,3,3
-cv_004.pdf,cand-0004,Business Analysis,Viết tài liệu|Tư duy phân tích|Giao tiếp|BPMN|Agile/Scrum|Git,1.0,3,4
-cv_005.docx,cand-0005,QA & Testing,Kiểm thử phần mềm|Viết test case|Git|SQL|Jira|Tư duy logic,0.0,3,0
-cv_006.pdf,cand-0006,UI/UX Design,Figma|Nguyên lý UX|Tư duy sáng tạo|Git,0.0,3,1
-cv_007.docx,cand-0007,IT Support,Kỹ thuật máy tính|Mạng cơ bản|Xử lý sự cố|Giao tiếp|ITIL cơ bản|Làm việc nhóm|Tư duy logic,0.0,3,2
-cv_008.pdf,cand-0008,Digital Marketing,Mạng xã hội|Google Analytics|Facebook Ads|Canva|Photoshop|Giao tiếp|Tư duy logic,3.0,3,3
-cv_009.pdf,cand-0009,Software Engineering,JavaScript|OOP|Node.js|Docker|C#|Agile/Scrum,0.0,3,4
-cv_010.docx,cand-0010,Business Operations,Excel|Tư duy phân tích|Làm việc nhóm,0.0,3,0
-cv_011.pdf,cand-0011,Frontend Development,React|Tailwind CSS|Responsive Design|Vue.js|Jest,1.0,3,1
-cv_012.docx,cand-0012,Backend Development,Node.js|REST API|Java,0.0,2,2
-cv_013.pdf,cand-0013,Data Science & Analytics,SQL|Python|NumPy|Scikit-learn|Looker Studio|Tiếng Anh giao tiếp|Tư duy logic,0.5,3,3
-cv_014.pdf,cand-0014,Business Analysis,Phân tích nghiệp vụ|Viết tài liệu|Tư duy phân tích|Giao tiếp|Excel|Git|Làm việc nhóm|Tiếng Anh giao tiếp,0.0,3,4
-cv_015.docx,cand-0015,QA & Testing,Kiểm thử phần mềm|Git|Jest,1.0,4,0
-cv_016.pdf,cand-0016,UI/UX Design,Figma|Nguyên lý UX|Thiết kế UI|Tư duy sáng tạo|Design System|HTML/CSS cơ bản|Thuyết trình,0.0,3,1
-cv_017.docx,cand-0017,IT Support,Mạng cơ bản|ITIL cơ bản|Virtualization|Git|Tư duy logic,0.0,3,2
-cv_018.pdf,cand-0018,Digital Marketing,Google Analytics|Excel|Git|Thuyết trình,0.5,3,3
-cv_019.pdf,cand-0019,Software Engineering,SQL|Git|CI/CD|Java|AWS cơ bản,0.0,3,4
-cv_020.docx,cand-0020,Business Operations,Excel|Giao tiếp|Viết tài liệu|Thuyết trình,0.0,3,0
-cv_021.pdf,cand-0021,Frontend Development,CSS|JavaScript|Git,2.0,3,1
-cv_022.docx,cand-0022,Backend Development,Git|OOP|Làm việc nhóm,1.0,3,2
-cv_023.pdf,cand-0023,Data Science & Analytics,SQL|Python|Excel|Thống kê cơ bản|Power BI|Tableau|Matplotlib|NumPy|Scikit-learn|Looker Studio,1.0,2,3
-cv_024.pdf,cand-0024,Business Analysis,Phân tích nghiệp vụ|Giao tiếp|Confluence,1.0,3,4
-cv_025.docx,cand-0025,QA & Testing,Kiểm thử phần mềm|Viết test case|Playwright|Agile/Scrum,0.0,3,0
-cv_026.pdf,cand-0026,UI/UX Design,Figma|Nguyên lý UX|Thiết kế UI|Adobe XD|Prototyping,0.5,2,1
-cv_027.docx,cand-0027,IT Support,Kỹ thuật máy tính|Mạng cơ bản|ITIL cơ bản,0.0,3,2
-cv_028.pdf,cand-0028,Digital Marketing,Giao tiếp|Photoshop|Git|Tiếng Anh giao tiếp,0.5,3,3
-cv_029.pdf,cand-0029,Software Engineering,SQL|OOP|REST API|.NET,0.0,3,4
-cv_030.docx,cand-0030,Business Operations,Excel|Tư duy phân tích|Giao tiếp|Làm việc nhóm|Tiếng Anh giao tiếp,0.0,3,0
-cv_031.pdf,cand-0031,Frontend Development,HTML|CSS|React|Git|Làm việc nhóm,0.5,3,1
-cv_032.docx,cand-0032,Backend Development,SQL|OOP|Express.js|Giao tiếp,0.5,3,2
-cv_033.pdf,cand-0033,Data Science & Analytics,Excel|ETL|Looker Studio|Git|Tư duy logic,0.0,3,3
-cv_034.pdf,cand-0034,Business Analysis,Tư duy phân tích|Giao tiếp|BPMN,1.0,3,4
-cv_035.docx,cand-0035,QA & Testing,Kiểm thử phần mềm|Viết test case|Tư duy logic|Postman|Jest,0.0,3,0
-cv_036.pdf,cand-0036,UI/UX Design,Figma|Nguyên lý UX|Thiết kế UI|Tư duy sáng tạo|Adobe XD|Photoshop|Illustrator|Làm việc nhóm|Tư duy logic,1.0,3,1
-cv_037.docx,cand-0037,IT Support,Kỹ thuật máy tính|Mạng cơ bản|Xử lý sự cố|Giao tiếp|Làm việc nhóm,1.0,3,2
-cv_038.pdf,cand-0038,Digital Marketing,Viết nội dung|Google Analytics|Giao tiếp|Excel|Tiếng Anh giao tiếp|Tư duy logic,3.0,3,3
-cv_039.pdf,cand-0039,Software Engineering,SQL|Git|REST API|Node.js|AWS cơ bản,0.0,3,4
-cv_040.docx,cand-0040,Business Operations,Excel|Giao tiếp|Tư duy phân tích|Viết tài liệu|Quản lý thời gian|Làm việc nhóm|Git,0.5,3,0
-cv_041.pdf,cand-0041,Frontend Development,HTML|CSS|JavaScript|React|Git|Responsive Design|Redux|Tiếng Anh giao tiếp,0.0,3,1
-cv_042.docx,cand-0042,Backend Development,Node.js|SQL|REST API|OOP|Redis|GraphQL,0.5,3,2
-cv_043.pdf,cand-0043,Data Science & Analytics,SQL|Python|Excel|Thống kê cơ bản|Power BI|Giao tiếp,0.0,3,3
-cv_044.pdf,cand-0044,Business Analysis,Phân tích nghiệp vụ|Viết tài liệu|Giao tiếp|Jira|Tư duy logic,0.0,3,4
-cv_045.docx,cand-0045,QA & Testing,Kiểm thử phần mềm|Selenium|Giao tiếp|Tư duy logic,1.0,3,0
-cv_046.pdf,cand-0046,UI/UX Design,Figma|HTML/CSS cơ bản|Adobe XD,0.0,3,1
-cv_047.docx,cand-0047,IT Support,Giao tiếp|Active Directory|ITIL cơ bản,0.0,4,2
-cv_048.pdf,cand-0048,Digital Marketing,Viết nội dung|Google Analytics|Giao tiếp|Git,0.5,3,3
-cv_049.pdf,cand-0049,Software Engineering,JavaScript|SQL|Git|REST API|React|Node.js|CI/CD|C#|.NET|Agile/Scrum,0.0,3,4
-cv_050.docx,cand-0050,Business Operations,Tư duy phân tích|Git|Làm việc nhóm|Tư duy logic,3.0,3,0
+cv_002.docx,cand-0002,Backend Development,Node.js|SQL|REST API|Git|OOP|MongoDB|Java|Redis|GraphQL|Giao tiếp|Tư duy logic,2.0,3,2
+cv_003.pdf,cand-0003,Data Science & Analytics,SQL|Python|Excel|Thống kê cơ bản|Pandas|NumPy|Làm việc nhóm|Tiếng Anh giao tiếp,3.0,3,3
+cv_004.pdf,cand-0004,Business Analysis,Phân tích nghiệp vụ|Viết tài liệu|Tư duy phân tích|Giao tiếp|Jira|SQL|Agile/Scrum,0.5,3,4
+cv_005.docx,cand-0005,QA & Testing,Tư duy logic|Git|Jest,0.0,3,0
+cv_006.pdf,cand-0006,UI/UX Design,User Research|HTML/CSS cơ bản|Illustrator|Tiếng Anh giao tiếp,0.0,3,1
+cv_007.docx,cand-0007,IT Support,Kỹ thuật máy tính|Mạng cơ bản|Xử lý sự cố|Giao tiếp|Windows Server|Linux|Active Directory|Office 365|ITIL cơ bản|Virtualization,1.0,3,2
+cv_008.pdf,cand-0008,Digital Marketing,Giao tiếp|Facebook Ads|Git|Làm việc nhóm,2.0,2,3
+cv_009.pdf,cand-0009,Software Engineering,JavaScript|SQL|OOP|C#|Làm việc nhóm,3.0,3,4
+cv_010.docx,cand-0010,Business Operations,Excel|Giao tiếp|Tư duy phân tích|Viết tài liệu|Power BI|Thuyết trình,0.0,3,0
+cv_011.pdf,cand-0011,Frontend Development,HTML|CSS|JavaScript|React|Tailwind CSS|Responsive Design|Vue.js|Jest,3.0,2,1
+cv_012.docx,cand-0012,Backend Development,Node.js|SQL|REST API|Git|OOP|MongoDB|Giao tiếp,0.0,3,2
+cv_013.pdf,cand-0013,Data Science & Analytics,SQL|Python|Excel|Matplotlib|Machine Learning cơ bản|NumPy,0.0,3,3
+cv_014.pdf,cand-0014,Business Analysis,Giao tiếp|Làm việc nhóm|Excel,0.0,3,4
+cv_015.docx,cand-0015,QA & Testing,Kiểm thử phần mềm|Tư duy logic|Git|Selenium|Playwright|Jira|Làm việc nhóm,0.0,3,0
+cv_016.pdf,cand-0016,UI/UX Design,Figma|Nguyên lý UX|Thiết kế UI|Tư duy sáng tạo|Adobe XD|User Research|Illustrator,0.0,3,1
+cv_017.docx,cand-0017,IT Support,Kỹ thuật máy tính|Mạng cơ bản|Xử lý sự cố|Windows Server|Office 365|ITIL cơ bản|Virtualization|Giao tiếp|Tư duy logic,0.0,3,2
+cv_018.pdf,cand-0018,Digital Marketing,Viết nội dung|Mạng xã hội|Google Analytics|Email Marketing|Canva|Giao tiếp,0.0,3,3
+cv_019.pdf,cand-0019,Software Engineering,SQL|Git|OOP|REST API|CI/CD|AWS cơ bản|Tiếng Anh giao tiếp,0.0,4,4
+cv_020.docx,cand-0020,Business Operations,Giao tiếp|Tư duy phân tích|Viết tài liệu|SQL|Tiếng Anh giao tiếp|Thuyết trình,1.0,3,0
+cv_021.pdf,cand-0021,Frontend Development,HTML|Git|Redux|Next.js|Thuyết trình,2.0,3,1
+cv_022.docx,cand-0022,Backend Development,SQL|REST API|Git,0.0,3,2
+cv_023.pdf,cand-0023,Data Science & Analytics,Python|Scikit-learn|Looker Studio,0.0,3,3
+cv_024.pdf,cand-0024,Business Analysis,Phân tích nghiệp vụ|Viết tài liệu|Tư duy phân tích|BPMN|UML,3.0,3,4
+cv_025.docx,cand-0025,QA & Testing,Git|Làm việc nhóm|Thuyết trình,1.0,3,0
+cv_026.pdf,cand-0026,UI/UX Design,Nguyên lý UX|Thiết kế UI|Tư duy sáng tạo|Làm việc nhóm,2.0,3,1
+cv_027.docx,cand-0027,IT Support,Kỹ thuật máy tính|Mạng cơ bản|Tiếng Anh giao tiếp,1.0,3,2
+cv_028.pdf,cand-0028,Digital Marketing,Viết nội dung|Mạng xã hội|Google Analytics|Giao tiếp|Canva|Excel|Photoshop,0.0,3,3
+cv_029.pdf,cand-0029,Software Engineering,SQL|OOP|REST API|.NET|Agile/Scrum|Tiếng Anh giao tiếp,0.5,3,4
+cv_030.docx,cand-0030,Business Operations,Excel|Giao tiếp|Tư duy phân tích|Viết tài liệu|Tiếng Anh giao tiếp,1.0,3,0
+cv_031.pdf,cand-0031,Frontend Development,CSS|React|Git,0.0,2,1
+cv_032.docx,cand-0032,Backend Development,Node.js|REST API|OOP|PostgreSQL|Giao tiếp,1.0,3,2
+cv_033.pdf,cand-0033,Data Science & Analytics,Python|Thống kê cơ bản|Pandas|Machine Learning cơ bản|ETL|Looker Studio|Thuyết trình,2.0,3,3
+cv_034.pdf,cand-0034,Business Analysis,Phân tích nghiệp vụ|SQL|Jira,2.0,3,4
+cv_035.docx,cand-0035,QA & Testing,Kiểm thử phần mềm|Viết test case|Tư duy logic|Git|Selenium|Agile/Scrum,0.0,3,0
+cv_036.pdf,cand-0036,UI/UX Design,Figma|Thiết kế UI|Tư duy sáng tạo|Illustrator|Tư duy logic,0.5,3,1
+cv_037.docx,cand-0037,IT Support,Kỹ thuật máy tính|Mạng cơ bản|Xử lý sự cố|Giao tiếp|Windows Server|Office 365|Git,0.0,3,2
+cv_038.pdf,cand-0038,Digital Marketing,Viết nội dung|Mạng xã hội|Google Analytics|Giao tiếp|Facebook Ads|SEO cơ bản|Email Marketing|Photoshop|Tư duy logic,0.5,2,3
+cv_039.pdf,cand-0039,Software Engineering,Git|REST API|React,0.0,3,4
+cv_040.docx,cand-0040,Business Operations,Excel|Giao tiếp|Tư duy phân tích|SQL|Power BI|Làm việc nhóm|Tư duy logic,3.0,3,0
+cv_041.pdf,cand-0041,Frontend Development,HTML|CSS|React|Tailwind CSS|Tiếng Anh giao tiếp|Thuyết trình,0.0,3,1
+cv_042.docx,cand-0042,Backend Development,Node.js|SQL|Java|GraphQL|Git|Làm việc nhóm|Tiếng Anh giao tiếp|Tư duy logic,1.0,3,2
+cv_043.pdf,cand-0043,Data Science & Analytics,SQL|Python|Looker Studio|Git|Làm việc nhóm,0.0,3,3
+cv_044.pdf,cand-0044,Business Analysis,Phân tích nghiệp vụ|Viết tài liệu|Tư duy phân tích|SQL|Giao tiếp,2.0,3,4
+cv_045.docx,cand-0045,QA & Testing,Kiểm thử phần mềm|Git|SQL|Giao tiếp,0.5,3,0
+cv_046.pdf,cand-0046,UI/UX Design,Giao tiếp|Thiết kế UI|Prototyping,2.0,3,1
+cv_047.docx,cand-0047,IT Support,Mạng cơ bản|Giao tiếp|ITIL cơ bản,0.0,2,2
+cv_048.pdf,cand-0048,Digital Marketing,Viết nội dung|Email Marketing|Làm việc nhóm,1.0,3,3
+cv_049.pdf,cand-0049,Software Engineering,JavaScript|SQL|Git|OOP|REST API|React|Docker|CI/CD|C#|Agile/Scrum|Tư duy logic,0.0,3,4
+cv_050.docx,cand-0050,Business Operations,Excel|Giao tiếp|Tư duy phân tích|Viết tài liệu|SQL|Tư duy logic,2.0,3,0
