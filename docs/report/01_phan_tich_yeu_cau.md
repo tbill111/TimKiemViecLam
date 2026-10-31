@@ -37,9 +37,9 @@
 | Công bằng | Không dùng tên, giới tính, tuổi, ảnh làm đặc trưng; phần đầu CV bị loại khỏi văn bản dùng chấm điểm | `parse_cv` trả `model_text` | TC18 |
 | Khả dụng | Chạy được không cần backend ở chế độ demo | `VITE_OFFLINE_DEMO=true` | TC32 |
 | Triển khai | Một lệnh `docker compose up` chạy db, api, superset, web | `docker-compose.yml` | TC33, TC36 |
-| Trung thực dữ liệu | Dữ liệu seed và đơn ứng tuyển là mô phỏng; hiệu quả mô hình chỉ kết luận từ nhãn tay | `seed/README.md`, `gen_applications.py` | — |
+| Trung thực dữ liệu | Dữ liệu seed và đơn ứng tuyển là mô phỏng; hiệu quả mô hình kết luận từ nhãn do agent AI gán, kèm hạn chế về nguồn nhãn | `seed/README.md`, `gen_applications.py` | — |
 
 ## 4. Phạm vi và giới hạn
 
 Ngoài phạm vi: thanh toán, chat hai bên, gửi email thật, thu thập dữ liệu từ LinkedIn/TopCV (điều khoản sử dụng không cho phép).
-Giới hạn đã biết: CV dạng ảnh scan không đọc được (báo lỗi `no_text`); từ điển kỹ năng có 108 kỹ năng; dữ liệu mô phỏng nên xu hướng lương và tỷ lệ tuyển chỉ minh hoạ cách tính; trên bộ CV tổng hợp, so khớp mờ và embedding (tầng 2–3) chưa cải thiện F1 so với từ điển (tầng 1) — cần nhãn tay để kết luận.
+Giới hạn đã biết: CV dạng ảnh scan không đọc được (báo lỗi `no_text`); từ điển kỹ năng có 108 kỹ năng; dữ liệu mô phỏng nên xu hướng lương và tỷ lệ tuyển chỉ minh hoạ cách tính; trên bộ CV tổng hợp, so khớp mờ và embedding (tầng 2–3) chưa cải thiện F1 so với từ điển (tầng 1) (nhãn do agent AI gán; cần đối chiếu với con người để kết luận chắc chắn).

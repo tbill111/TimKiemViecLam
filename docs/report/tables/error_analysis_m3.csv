@@ -1,0 +1,6 @@
+candidate_id,job_id,label,score,error,missing_required,matched_required
+cand-0082,job-022,3,49,-0.51,SQL|REST API,Node.js
+cand-0068,job-070,0,50,0.5,Excel|Tư duy phân tích,Giao tiếp
+cand-0082,job-092,3,50,-0.5,SQL|REST API|OOP,Node.js|Git
+cand-0068,job-140,0,49,0.49,Excel|Tư duy phân tích|Viết tài liệu,Giao tiếp
+cand-0285,job-103,0,48,0.48,Python|Excel|Thống kê cơ bản,SQL

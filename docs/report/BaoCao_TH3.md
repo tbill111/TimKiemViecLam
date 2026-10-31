@@ -1,8 +1,7 @@
 # TH3 – Xây dựng Hệ thống Tìm việc Thông minh tích hợp AI và BI (SmartCareer v2)
 
-> **Bản nháp trên nhánh backup.** Mọi số liệu về hệ thống, CSDL, API, BI và hiệu năng là số đo thật (nguồn ghi ở từng mục).
-> Mọi số liệu *đánh giá mô hình* ở chương 6 được tính trên **nhãn mô phỏng** (`backend/seed/labels/README_SYNTHETIC.md`), chỉ chứng minh quy trình chạy được.
-> Trước khi nộp phải gán nhãn tay, chạy lại 3 notebook (hướng dẫn ở `docs/E2E.md`) và thay các bảng đánh dấu **[THAY BẰNG NHÃN TAY]**.
+> Mọi số liệu về hệ thống, CSDL, API, BI và hiệu năng là số đo thật (nguồn ghi ở từng mục).
+> **Nguồn nhãn đánh giá mô hình:** 300 cặp CV–JD (hai lượt) và nhãn kỹ năng 50 CV do **agent AI** gán, không phải do con người gán tay (`backend/seed/labels/NGUON_NHAN.md`). Các số ở chương 6 mang hạn chế này.
 
 ## 1. Giới thiệu
 
@@ -61,9 +60,11 @@ Phễu đếm hồ sơ *từng đạt* mỗi bước từ `application_status_hi
 ## 6. Thực nghiệm và đánh giá (mục 05)
 
 ### 6.1. Dữ liệu và cách gán nhãn
-30 ứng viên đều theo nhóm nghề × 10 tin (4 cùng nhóm, 3 gần, 3 khác nhóm) = 300 cặp; thang 0–3; hai người gán độc lập; kappa có trọng số bình phương, mục tiêu ≥ 0,6; lệch ≥ 2 bậc thì thảo luận; nhãn nhị phân "phù hợp" khi ≥ 2 (`docs/report/huong_dan_gan_nhan.md`).
+30 ứng viên theo nhóm nghề × 10 tin (4 cùng nhóm, 3 gần, 3 khác nhóm) = 300 cặp; thang 0–3 theo `docs/report/huong_dan_gan_nhan.md`; nhãn nhị phân "phù hợp" khi ≥ 2.
 
-> **[THAY BẰNG NHÃN TAY]** Kết quả dưới đây dùng nhãn mô phỏng: kappa = **0,826**, 8/300 cặp lệch ≥ 2 bậc, 37% cặp "phù hợp".
+**Nhãn do agent AI gán.** Hai phiên agent AI (Claude Sonnet) riêng biệt gán độc lập 300 cặp, mỗi phiên chỉ nhận mô tả cặp và hướng dẫn, không xem điểm hệ thống hay nhãn của phiên kia; 50 CV được một phiên khác đọc văn bản để gán kỹ năng. Chi tiết và hạn chế: `backend/seed/labels/NGUON_NHAN.md`.
+
+Kết quả: kappa có trọng số bình phương = **0,959** (mục tiêu ≥ 0,6), trùng khít 89% cặp, **0** cặp lệch ≥ 2 bậc, 29,7% cặp "phù hợp". Kappa cao phản ánh việc hai phiên dùng cùng họ mô hình và cùng tiêu chí, nên là độ nhất quán của agent chứ không phải độ tin cậy giữa hai người; chưa có đối chiếu với nhãn của con người.
 
 ### 6.2. Kiểm thử hệ thống
 - 236 test tự động (pytest): parser, đặc trưng, M0–M4, phân quyền, luật trạng thái, phễu BI, seed, migration, hiệu năng; M0 khớp TypeScript 100%; bộ test chạy lại trong container với model thật (223 đạt, 2 bỏ qua do thiếu file ngoài image).
@@ -71,45 +72,45 @@ Phễu đếm hồ sơ *từng đạt* mỗi bước từ `application_status_hi
 - E2E trình duyệt: 14/14 bước trên stack Docker thật (ứng viên, nhà tuyển dụng, quản trị); chế độ demo 12/12 bước, 0 lời gọi API.
 - Công bằng: hai CV chỉ khác phần đầu (tên, giới tính, tuổi, email) cho cùng kỹ năng, năm kinh nghiệm, học vấn và cùng điểm M3 (67).
 
-### 6.3. Đánh giá Module A (CV Parser) – 50 CV
+### 6.3. Đánh giá Module A (CV Parser) – 50 CV (nhãn do agent AI gán)
 | Tầng | Precision | Recall | F1 |
 |---|---|---|---|
-| T1 từ điển + alias | 0,935 | 0,958 | 0,946 |
-| T1+2 (+ so khớp mờ) | 0,929 | 0,961 | 0,945 |
-| T1+2+3 (+ embedding) | 0,929 | 0,961 | 0,945 |
+| T1 từ điển + alias | 0,969 | 0,989 | 0,979 |
+| T1+2 (+ so khớp mờ) | 0,963 | 0,993 | 0,978 |
+| T1+2+3 (+ embedding) | 0,963 | 0,993 | 0,978 |
 
-MAE số năm kinh nghiệm = 0. **[THAY BẰNG NHÃN TAY]** (số trên: nhãn CV mô phỏng; trên đáp án tổng hợp của trình sinh: F1 0,981 / 0,979 / 0,979). Nhận xét: tầng 2 và 3 gần như không cải thiện F1 ở bộ này vì CV chứa ít lỗi gõ và gần như không có cụm ngoài từ điển.
+MAE số năm kinh nghiệm = 0,022. Nhận xét: tầng 2 và 3 không cải thiện F1 (tăng recall nhẹ, giảm precision) vì CV mẫu ít lỗi gõ và gần như không có cụm ngoài từ điển; CV là dữ liệu tổng hợp nên con số này cao hơn so với CV thật.
 
-### 6.4. So sánh M0–M4 trên 30 ứng viên × 10 tin (M4 tính trên fold kiểm tra GroupKFold) **[THAY BẰNG NHÃN TAY]**
+### 6.4. So sánh M0–M4 trên 30 ứng viên × 10 tin (M4 tính trên fold kiểm tra GroupKFold; nhãn do agent AI gán)
 | Mô hình | Precision@5 | nDCG@10 | MRR | Spearman ρ | ROC-AUC | ms/cặp |
 |---|---|---|---|---|---|---|
-| M0 quy tắc 60/25/15 | 0,700 | 0,959 | 0,967 | 0,775 | 0,942 | 0,06 |
-| M1 TF-IDF | 0,700 | 0,969 | 0,919 | 0,825 | 0,952 | 5,01 |
-| M2 embedding | 0,687 | 0,968 | 0,950 | 0,794 | 0,905 | 0,07 |
-| M3 hybrid | 0,700 | 0,974 | 0,950 | 0,796 | 0,959 | 0,08 |
-| M4 Logistic Regression | 0,700 | 0,976 | 0,944 | 0,814 | 0,955 | — |
+| M0 quy tắc 60/25/15 | 0,573 | 0,970 | 0,742 | 0,851 | 0,967 | 0,06 |
+| M1 TF-IDF | 0,560 | 0,962 | 0,717 | 0,820 | 0,902 | 4,97 |
+| M2 embedding | 0,547 | 0,954 | 0,714 | 0,785 | 0,842 | 0,07 |
+| M3 hybrid | 0,580 | 0,988 | 0,800 | 0,836 | 0,984 | 0,09 |
+| M4 Logistic Regression | 0,580 | 0,970 | 0,800 | 0,820 | 0,981 | — |
 
-Nhận xét trung thực: chênh lệch giữa các mô hình nhỏ (nDCG@10 chỉ từ 0,959 đến 0,976) và chỉ dựa trên 30 ứng viên nên không đủ để khẳng định mô hình nào tốt hơn có ý nghĩa thống kê. Với nhãn mô phỏng, mọi mô hình dựa trên độ phủ kỹ năng đều được lợi vì nhãn sinh từ cùng loại thông tin. Cần nhãn tay để kết luận.
+Nhận xét: M3 cao nhất về nDCG@10 (0,988) và ROC-AUC (0,984); M4 không vượt M3 (nDCG@10 0,970). M0 (quy tắc) đứng sau M3 nhưng khá sát. Chỉ dựa trên 30 ứng viên nên chênh lệch nhỏ không có ý nghĩa thống kê. Vì agent gán nhãn dựa trên đúng loại thông tin mà các mô hình dùng (kỹ năng, nghề, kinh nghiệm, học vấn), các số này có xu hướng lạc quan hơn so với nhãn của nhà tuyển dụng; cần nhãn của con người để kết luận chắc chắn.
 
-### 6.5. Ablation M3 (bỏ lần lượt một đặc trưng, đo nDCG@10) và hệ số M4 **[THAY BẰNG NHÃN TAY]**
+### 6.5. Ablation M3 (bỏ lần lượt một đặc trưng, đo nDCG@10) và hệ số M4
 | Bỏ đặc trưng | nDCG@10 | Thay đổi |
 |---|---|---|
-| (không bỏ) | 0,974 | — |
-| `skill_req` | 0,915 | −0,059 |
-| `skill_pref` | 0,955 | −0,019 |
-| `semantic` | 0,963 | −0,011 |
-| `exp` | 0,972 | −0,002 |
-| `edu` | 0,976 | +0,002 |
-| `pref` | 0,975 | +0,001 |
+| (không bỏ) | 0,988 | — |
+| `skill_req` | 0,928 | −0,060 |
+| `skill_pref` | 0,968 | −0,021 |
+| `semantic` | 0,978 | −0,011 |
+| `exp` | 0,977 | −0,011 |
+| `edu` | 0,989 | +0,000 |
+| `pref` | 0,989 | +0,000 |
 
-Hệ số M4 (chuẩn hoá): `skill_req` 5,04; `semantic` 2,44; `skill_pref` 2,40; `edu` 0,81; `exp` 0,74; `pref` −0,05, so với trọng số tay của M3 (0,40/0,25/0,15/0,05/0,10/0,05): thứ tự quan trọng gần như trùng nhau, `skill_req` nổi bật nhất. Đặc trưng `pref` không đóng góp.
+Hệ số M4: `skill_req` 6,20; `exp` 1,53; `skill_pref` 1,40; `semantic` 1,30; `edu` 0,98; `pref` −0,24, so với trọng số tay của M3 (0,40 / 0,10 / 0,15 / 0,25 / 0,05 / 0,05). `skill_req` quan trọng nhất ở cả hai; `edu` và `pref` gần như không đóng góp.
 
-### 6.6. Phân tích lỗi (5 cặp lệch nhiều nhất của M3) **[THAY BẰNG NHÃN TAY]**
-Ba cặp của ứng viên cand-0220 (nhóm Business Operations, nhãn 0, điểm 49–54) được chấm khá cao dù ứng viên chỉ có các kỹ năng mềm/Excel trùng với yêu cầu (Giao tiếp, Tư duy phân tích, Excel) của các tin Business Analysis và Digital Marketing; hai cặp của cand-0029 (nhóm Software Engineering, nhãn 3) bị chấm đúng 50 vì thiếu JavaScript và Git (2/3–2/4 kỹ năng bắt buộc), dù ứng viên cùng nhóm nghề với tin: luật chặn ≤ 50 phạt nặng khi thiếu kỹ năng bắt buộc nhưng không có đặc trưng nào biểu diễn "đúng nhóm nghề". Hướng cải thiện: thêm đặc trưng nhóm nghề. (Số liệu từ nhãn mô phỏng, trong đó nhóm nghề chiếm 40% độ phù hợp tiềm ẩn nên lỗi kiểu này bị nhấn mạnh.)
+### 6.6. Phân tích lỗi (5 cặp lệch nhiều nhất của M3)
+Hai cặp của cand-0082 (nhãn 3, điểm 49–50) bị M3 chặn ≤ 50 vì ứng viên chỉ có Node.js trong số kỹ năng bắt buộc (thiếu SQL, REST API, OOP); agent vẫn gán 3, nhiều khả năng vì ứng viên đúng hướng Node.js Developer, nghĩa là nhãn này cứng tay hoặc mô hình thiếu đặc trưng "đúng nhóm nghề". Ba cặp còn lại (cand-0068 và cand-0285, nhãn 0, điểm 48–50) được chấm gần 50 chỉ vì trùng kỹ năng mềm/SQL cơ bản với tin khác nhóm nghề. Hướng cải thiện: thêm đặc trưng nhóm nghề và kiểm tra lại nhãn các cặp này với con người (`docs/report/tables/error_analysis_m3.csv`).
 
 ## 7. Hạn chế và hướng phát triển
 - Dữ liệu ứng viên, CV, tin và đơn ứng tuyển là mô phỏng; xu hướng lương và tỷ lệ tuyển chỉ minh hoạ cách tính.
-- Chưa có nhãn tay; `models_store/m4.joblib` hiện huấn luyện trên nhãn mô phỏng (phiên bản `m4-SYNTHETIC-labels`, giao diện hiện cảnh báo). Phải huấn luyện lại bằng nhãn tay.
+- Nhãn đánh giá do agent AI gán, chưa đối chiếu với con người; `models_store/m4.joblib` (phiên bản `m4-ai-labels`) huấn luyện trên nhãn này, giao diện hiện ghi chú nguồn nhãn. Chỉ 30 ứng viên nên kết luận chỉ mang tính tham khảo.
 - Trích kỹ năng CV chủ yếu là từ điển + so khớp mờ + embedding; chưa có mô hình nhận dạng thực thể huấn luyện riêng (hướng: PhoBERT/NER).
 - CV dạng ảnh scan không đọc được (hệ thống báo lỗi, không đoán).
 - Hướng phát triển: học từ phản hồi thật của nhà tuyển dụng, thêm đặc trưng nhóm nghề, giao diện quản lý tin cho quản trị, Native Filters và biểu đồ 5, 7 của Superset.

@@ -62,4 +62,4 @@ Test dùng `HashingEmbedder` nên không cần tải model. Trong Docker (Python
 
 - Số liệu chỉ có ý nghĩa khi `Embedder:` in ra là `st:...` (model thật). Với `hash-384` chỉ để chạy thử luồng.
 - Tests dùng dữ liệu tổng hợp để kiểm tra mã; không dùng số liệu đó trong báo cáo.
-- Hiệu quả mô hình chỉ kết luận từ 300 cặp gán nhãn tay; dữ liệu ứng tuyển mô phỏng không dùng để kết luận.
+- Hiệu quả mô hình kết luận từ 300 cặp do agent AI gán nhãn (xem `seed/labels/NGUON_NHAN.md`); dữ liệu ứng tuyển mô phỏng không dùng để kết luận.

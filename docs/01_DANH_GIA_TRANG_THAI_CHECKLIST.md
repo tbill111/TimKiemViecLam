@@ -1,51 +1,56 @@
-# Đánh giá theo chuẩn checklist TH3 (cuối phiên, nhánh `feat/full-system`)
+# Đánh giá theo chuẩn checklist TH3 (nhánh `feat/full-system`)
 
 Căn cứ là những gì đã **chạy thật**, không chỉ viết mã:
 
 | Kiểm chứng | Kết quả |
 |---|---|
-| `cd backend && python -m pytest` | 236 passed |
-| Cùng bộ test trong container với model embedding thật (`EMBEDDER=st`) | 223 passed, 2 skipped (thiếu file ngoài image) |
-| `npx tsc -b`, `npm run build` (online và demo) | sạch |
-| `npm run lint` | exit 0, 8 cảnh báo, 0 lỗi |
-| E2E trình duyệt trên **stack Docker thật** (nginx → API + model thật → PostgreSQL 16 → Superset 4.1.1 nhúng) | **14/14** bước: ứng viên, nhà tuyển dụng, quản trị |
+| `cd backend && python -m pytest` | 235 passed |
+| `npx tsc -b`, `npm run build` | sạch |
+| `npm run lint` | 0 lỗi (chỉ cảnh báo) |
+| E2E trình duyệt trên **stack Docker thật** (nginx → API + model thật → PostgreSQL 16 → Superset 4.1.1 nhúng), sau khi gán nhãn và huấn luyện lại M4 | **14/14** bước: ứng viên, nhà tuyển dụng, quản trị |
 | E2E chế độ demo không backend | 12/12 bước, 0 lời gọi API |
 | 4 view BI trên PostgreSQL thật so với `/api/bi/*` (`scripts/check_bi_views.py`) | khớp mọi số liệu; `bi_reader` chỉ đọc được view |
 | Guest token Superset thật + RLS | công ty 1 thấy 19 hồ sơ, công ty 5 thấy 63, admin thấy 1.255, khớp API |
 | Hiệu năng qua HTTP (PostgreSQL + model thật) | 1 cặp 38 ms; 150 tin 38 ms; 500 tin 70–77 ms (mục tiêu 200 ms và 2 s) |
+| Đánh giá mô hình (3 notebook chạy với `Embedder: st:...`) | nhãn do **agent AI** gán: kappa 0,959; M3 nDCG@10 0,988; M4 AUC 0,981 trên fold kiểm tra |
+
+## Nguồn nhãn đánh giá (phải nói rõ khi nộp)
+
+300 cặp CV–JD do hai phiên agent AI độc lập gán; kỹ năng 50 CV do một phiên agent AI khác gán (`backend/seed/labels/NGUON_NHAN.md`). **Không phải nhãn của con người.** Hai phiên cùng họ mô hình nên kappa cao phản ánh độ nhất quán của agent; agent dựa trên cùng loại thông tin mà M0–M4 dùng nên điểm các mô hình có xu hướng lạc quan. Báo cáo chương 6 đã ghi hạn chế này.
 
 ## Đánh giá từng mục
 
-| Mục | Mức đạt chuẩn | Căn cứ | Còn thiếu để nộp |
+| Mục | Mức đạt chuẩn | Căn cứ | Còn thiếu / hạn chế |
 |---|---|---|---|
-| **01** Phân tích yêu cầu, thiết kế CSDL (ứng viên, nhà tuyển dụng, tin) | **Đạt** (đã có ảnh Use Case và ERD) | F01–F10 + phi chức năng; Use Case + đặc tả 3 ca; ERD 15 bảng/5 nhóm sinh từ models; `schema.sql`; migration 0001–0003 chạy trên PostgreSQL thật, gồm nâng cấp CSDL cũ tại chỗ; seed 108 kỹ năng, 259 alias, 30 công ty, 150 tin, 301 ứng viên, 50 CV | — |
-| **02** Mô hình AI/ML phân tích CV, tính điểm tương thích | **Đạt về mã, quy trình và kiểm chứng; chưa đủ chuẩn nộp vì nhãn là mô phỏng** | Parser 3 tầng, 6 đặc trưng, M0–M4, giải thích; M0 khớp TypeScript 100%; model thật; công bằng; 38 ms/cặp; **3 notebook đã chạy trọn với model thật** (kappa, GroupKFold, `m4.joblib` mang nhãn `SYNTHETIC`, M0–M4, ablation, phân tích lỗi) | **Nhãn tay** (50 CV, 300 cặp) rồi chạy lại notebook và xoá `m4.joblib` mô phỏng; bảng ở `docs/report/tables_synthetic/` không dùng làm kết luận |
-| **03** Dashboard BI (ứng viên theo kỹ năng, xu hướng lương, tỷ lệ chuyển đổi) | **Đạt** | 3 biểu đồ bắt buộc (2, 4, 6) + 1, 1b, 3, 8; nhúng Superset thật trong ứng dụng; RLS theo công ty đã kiểm; `dashboard_export.zip` nhập lại được; ảnh; 4 nhận định có nêu giới hạn dữ liệu mô phỏng | Biểu đồ 5, 7 và Native Filters (mở rộng, thêm bằng giao diện) |
-| **04** Frontend và tích hợp API AI/BI | **Đạt** | Đăng nhập/đăng ký và phân quyền; tìm việc, Phân tích CV–JD (M0–M4), Skill Gap, tải CV, ứng tuyển; đăng tin có gợi ý kỹ năng; Kanban 6 cột; dashboard nhúng; **quản trị danh mục kỹ năng (F10) có giao diện**; chế độ demo; Docker Compose chạy thật | — |
-| **05** Kiểm thử với dữ liệu mẫu, báo cáo đánh giá mô hình | **Đạt về quy trình, sản phẩm và tài liệu; số liệu đánh giá còn là mô phỏng** | 236 test; 46 test case; E2E 14/14; hiệu năng đo thật; notebook đã chạy; **báo cáo nháp đủ 7 chương** (`docs/report/BaoCao_TH3.md`, chỗ cần nhãn tay đánh dấu **[THAY BẰNG NHÃN TAY]**); kịch bản video và dàn slide (`docs/video_kich_ban.md`); ảnh Use Case, ERD | Nhãn tay thật; thay các bảng đánh dấu; quay và nén video; ghép slide |
+| **01** Phân tích yêu cầu, thiết kế CSDL (ứng viên, nhà tuyển dụng, tin) | **Đạt** | F01–F10 + phi chức năng; Use Case 4 tác nhân/10 use case + đặc tả 3 ca (ảnh PNG); ERD 15 bảng/5 nhóm sinh từ models (PNG); `schema.sql`; migration 0001–0003 chạy trên PostgreSQL trống và nâng cấp tại chỗ; seed 108 kỹ năng, 259 alias, 30 công ty, 150 tin, 301 ứng viên, 50 CV, 1.255 đơn | — |
+| **02** Mô hình AI/ML phân tích CV, tính điểm tương thích | **Đạt** về mã, quy trình, kiểm chứng và số liệu; số liệu mang hạn chế về nguồn nhãn | Parser 3 tầng; 6 đặc trưng; M0–M4; giải thích; M0 khớp TypeScript 100% (84 ca); công bằng (đổi tên/giới tính → cùng điểm 67); 38 ms/cặp; P/R/F1 từng tầng (F1 0,979 / 0,978 / 0,978), MAE năm KN 0,022; M4 huấn luyện GroupKFold theo ứng viên, `m4.joblib` (`m4-ai-labels`) | Nhãn do agent AI gán, chưa đối chiếu với con người; chỉ 30 ứng viên; tầng 2–3 không cải thiện F1; M4 không vượt M3 |
+| **03** Dashboard BI (ứng viên theo kỹ năng, xu hướng lương, tỷ lệ chuyển đổi) | **Đạt** | Biểu đồ bắt buộc 2, 4, 6 + 1, 1b, 3, 8; nhúng Superset thật; RLS theo công ty đã kiểm; `dashboard_export.zip` nhập lại được; ảnh; 4 nhận định có nêu giới hạn dữ liệu mô phỏng | Biểu đồ 5, 7 và Native Filters (mở rộng) |
+| **04** Frontend và tích hợp API AI/BI | **Đạt** | Đăng nhập/đăng ký, phân quyền; tìm việc, Phân tích CV–JD (M0–M4), Skill Gap, tải CV, ứng tuyển; đăng tin có gợi ý kỹ năng; Kanban 6 cột; dashboard nhúng; quản trị danh mục kỹ năng có giao diện; chế độ demo; Docker Compose; E2E 14/14 | — |
+| **05** Kiểm thử với dữ liệu mẫu, báo cáo đánh giá mô hình | **Đạt** về kiểm thử và báo cáo nháp; **chưa đủ** về sản phẩm nộp | 235 test; 46 test case (nhiều ca đã chạy thật); E2E; đo hiệu năng; bảng M0–M4, ablation, hệ số M4, phân tích lỗi trong `docs/report/tables/`; báo cáo đủ 7 chương (`docs/report/BaoCao_TH3.md`); kịch bản video + dàn slide | **Video** (đề chỉ nhận video ≤ 101 MB) và slide chưa làm; các ca test ghi "Chưa kiểm" cần người chạy; nên đối chiếu một phần nhãn với con người nếu giảng viên hỏi |
 
-## Phần phải do người làm (không thể thay bằng mã)
+## Việc còn lại (con người)
 
 | Người | Việc |
 |---|---|
-| **Hoàng Hưng, Hoàng Anh** | Gán nhãn độc lập 300 cặp (`labels_pairs_hung.csv`, `labels_pairs_hoanganh.csv`); Hoàng Anh gán nhãn kỹ năng 50 CV (`labels_cv_skills.csv`); kiểm thử thủ công các ca còn ghi "Chưa kiểm"; xuất PNG Use Case/ERD |
-| **Tùng** | Chạy 3 notebook trong container với nhãn thật (`EMBEDDER=st`), huấn luyện M4, quyết định `UPDATE_M3`; viết chương AI; quay video |
-| **Cả nhóm** | Ghép báo cáo từ `docs/report/BaoCao_TH3_khung.md`; thay mật khẩu/khoá trong `.env` nếu triển khai ngoài máy cá nhân |
+| **Cả nhóm** | Quay và dựng video theo `docs/video_kich_ban.md`; nén < 100 MB; ghép slide; chạy các test case còn "Chưa kiểm"; thay mật khẩu/khoá trong `.env` nếu triển khai ngoài máy cá nhân |
+| **Tuỳ chọn** | Một thành viên gán lại ~50–100 cặp để đối chiếu với nhãn agent (tính kappa người–agent) và ghi vào chương 6 |
 
-## Sai sót mà lần chạy thật phát hiện và đã sửa (không lộ ra ở test dùng SQLite hay dữ liệu giả)
+## Sai sót mà lần chạy thật phát hiện và đã sửa
 
 | Phát hiện khi | Lỗi | Sửa |
 |---|---|---|
-| Chạy Alembic trên PostgreSQL | Dấu `;` trong một dòng chú thích làm migration tách sai câu lệnh | Bỏ chú thích trước khi tách + test hồi quy |
-| Dựng Superset | Thiếu gói `flask-cors`; cổng 8088 trùng dự án khác | Thêm gói; `SUPERSET_PORT` cấu hình được |
-| Dựng dashboard qua API | Superset 4.1 cần phiên đăng nhập (cookie) cho một số API ghi | `bootstrap.py` đăng nhập cả hai kiểu |
-| Đo bằng model thật | Chấm 1 cặp 417 ms (> 200 ms) vì hồ sơ chưa có CV bị mã hoá lại mỗi yêu cầu | Thêm `candidates.embedding` tính khi lưu (migration 0003): 38 ms |
-| Chọn M1 | TF-IDF chỉ fit trên hai văn bản nên điểm vô nghĩa | Fit trên các tin đang mở |
-| Chạy nạp seed hai lần cùng lúc | DB nửa vời (có tin, không có đơn) và không tự nạp lại | Nạp trong một giao dịch + khoá cố vấn PostgreSQL |
-| Chạy trên trình duyệt thật | Modal ứng tuyển ghi "Demo" khi online; nút đóng không có tên truy cập, không đóng bằng Esc; chọn M4 làm mất trang; chữ cái avatar không viết hoa; lưu hồ sơ lỗi giữ giá trị chưa lưu | Sửa từng điểm |
+| Chạy Alembic trên PostgreSQL | Dấu `;` trong chú thích làm migration tách sai câu lệnh | Bỏ chú thích trước khi tách + test hồi quy |
+| Dựng Superset | Thiếu `flask-cors`; cổng 8088 trùng dự án khác | Thêm gói; `SUPERSET_PORT` cấu hình được |
+| Dựng dashboard qua API | Superset 4.1 cần phiên đăng nhập (cookie) cho API ghi | `bootstrap.py` đăng nhập cả hai kiểu |
+| Đo bằng model thật | 417 ms/cặp vì hồ sơ chưa có CV bị mã hoá lại mỗi lần | `candidates.embedding` tính khi lưu: 38 ms |
+| Chọn M1 | TF-IDF chỉ fit trên hai văn bản | Fit trên các tin đang mở |
+| Nạp seed hai lần cùng lúc | DB nửa vời | Một giao dịch + khoá cố vấn PostgreSQL |
+| Chạy trên trình duyệt thật | Modal ghi "Demo" khi online; nút đóng không có tên truy cập; M4 làm mất trang | Sửa từng điểm |
+| Chạy lại E2E sau khi huấn luyện lại | Lần đầu 5/14 do CSDL còn trạng thái của lần chạy trước (ứng viên demo đã ứng tuyển) | `load_seed --reset` trước khi chạy E2E (đã ghi trong `docs/E2E.md`) |
 
 ## Rủi ro còn lại so với đề
 
-1. Phần "ML" thật chỉ có ở M4 (xếp hạng); trích kỹ năng CV chủ yếu là từ điển + so khớp mờ + embedding. Trên bộ CV tổng hợp, tầng 2–3 chưa cải thiện F1 (0,981 → 0,979); cần nhãn tay để kết luận trung thực.
-2. Dữ liệu ứng tuyển và lương là mô phỏng; mọi nhận định BI chỉ minh hoạ cách tính.
-3. Đề chỉ nhận **video** MP4/… ≤ 101 MB, nộp một lần: cần kịch bản theo thứ tự 01 → 05 và hỏi giảng viên kênh nộp báo cáo.
+1. Phần "ML" thật chỉ có ở M4; trích kỹ năng CV chủ yếu là từ điển + so khớp mờ + embedding, tầng 2–3 chưa cải thiện F1.
+2. Dữ liệu ứng tuyển và lương là mô phỏng; nhận định BI chỉ minh hoạ cách tính.
+3. Nhãn đánh giá do agent AI gán (xem trên); nếu giảng viên yêu cầu nhãn con người thì phải gán lại.
+4. Đề chỉ nhận **video** MP4/… ≤ 101 MB, nộp một lần; hỏi giảng viên kênh nộp báo cáo/slide.

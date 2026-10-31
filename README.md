@@ -87,7 +87,7 @@ scripts/                export dữ liệu chuẩn M0 từ TypeScript, E2E
 ## Điều cần biết (trung thực về trạng thái)
 
 - **Dữ liệu là mô phỏng.** Ứng viên, CV, tin và đơn ứng tuyển đều hư cấu; xác suất đi tiếp mỗi bước phễu không phụ thuộc điểm khớp. Biểu đồ lương và tỷ lệ tuyển chỉ minh hoạ cách tính.
-- **Hiệu quả mô hình chỉ kết luận từ nhãn tay** (30 ứng viên × 10 tin, hai người gán độc lập) bằng `notebooks/`. Các file nhãn và model M4 **chưa có**: `m4` trả 503 cho đến khi huấn luyện; số liệu trong notebook chạy trên dữ liệu tổng hợp chỉ để kiểm tra luồng.
+- **Hiệu quả mô hình kết luận từ 300 cặp CV–JD do agent AI gán nhãn** (30 ứng viên × 10 tin, hai phiên agent độc lập; xem `backend/seed/labels/NGUON_NHAN.md`) bằng `notebooks/`; kappa 0,959, M3 nDCG@10 0,988. Nhãn chưa đối chiếu với con người nên chỉ mang tính tham khảo; `models_store/m4.joblib` (`m4-ai-labels`) huấn luyện trên nhãn này.
 - **Đã chạy thật trên Docker:** `docker compose up` (4 dịch vụ), migration và 4 view trên PostgreSQL 16 (khớp API từng số liệu), Superset 4.1.1 nhúng + RLS theo công ty, model embedding thật, E2E 14/14 và đo hiệu năng (xem [docs/E2E.md](docs/E2E.md)).
-- **Chưa có:** nhãn tay và kết quả đánh giá trên nhãn tay (hiện chỉ có **nhãn mô phỏng** để chạy trọn quy trình: `backend/seed/labels/README_SYNTHETIC.md`; `models_store/m4.joblib` mang nhãn `SYNTHETIC` và giao diện cảnh báo); biểu đồ 5, 7 và Native Filters của Superset.
+- **Chưa có:** đối chiếu nhãn với con người, video và slide; biểu đồ 5, 7 và Native Filters của Superset.
 - CV dạng ảnh scan không đọc được; hệ thống báo lỗi thay vì đoán.

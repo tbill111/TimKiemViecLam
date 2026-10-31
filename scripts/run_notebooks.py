@@ -1,15 +1,10 @@
 """Chạy lần lượt 3 notebook đánh giá và lưu kết quả vào chính file .ipynb (cần nbclient, ipykernel).
 
-Nên chạy trong container `api` để có model embedding thật, ví dụ (nhãn mô phỏng, xem backend/seed/labels/README_SYNTHETIC.md):
+Nên chạy trong container `api` để có model embedding thật, ví dụ (nhãn do agent AI gán, xem backend/seed/labels/NGUON_NHAN.md):
 
-    docker run --rm -v "$PWD:/work" -w /work/notebooks -e EMBEDDER=st \
-      -e TH3_LABELS_A=labels_pairs_SYNTH_hung.csv -e TH3_LABELS_B=labels_pairs_SYNTH_hoanganh.csv \
-      -e TH3_CV_LABELS=labels_cv_skills_SYNTH.csv -e TH3_OUT_DIR=/work/docs/report/tables_synthetic \
-      -e TH3_M4_VERSION=m4-SYNTHETIC-labels \
-      -e TH3_FAIR_A=/work/backend/seed/fairness/cv_fair_a.txt -e TH3_FAIR_B=/work/backend/seed/fairness/cv_fair_b.txt \
-      tkiemvieclam-api sh -c "pip install -q nbclient ipykernel && python -m ipykernel install --user --name python3 && python /work/scripts/run_notebooks.py"
+    docker run --rm -v "$PWD:/work" -w /work/notebooks -e EMBEDDER=st -e TH3_M4_VERSION=m4-ai-labels       -e TH3_FAIR_A=/work/backend/seed/fairness/cv_fair_a.txt -e TH3_FAIR_B=/work/backend/seed/fairness/cv_fair_b.txt       tkiemvieclam-api sh -c "pip install -q nbclient ipykernel && python -m ipykernel install --user --name python3 && python /work/scripts/run_notebooks.py"
 
-Với nhãn tay thật: bỏ các biến TH3_LABELS_A/B, TH3_CV_LABELS, TH3_OUT_DIR, TH3_M4_VERSION.
+Muốn dùng nhãn khác: đặt TH3_LABELS_A/B, TH3_CV_LABELS, TH3_OUT_DIR.
 """
 from __future__ import annotations
 

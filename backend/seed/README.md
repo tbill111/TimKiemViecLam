@@ -12,7 +12,7 @@ Các file trong `data/` là **dữ liệu hư cấu đầy đủ** do các scrip
 | `data/skill_learning_steps.csv` | Hoàng Hưng | `skill_name,steps` (các bước ngăn bằng `\|`; kỹ năng không có dòng dùng lộ trình mặc định) |
 | `data/jobs.csv` | Hoàng Hưng | `external_id,company_name,title,category,level,job_type,work_mode,location,salary_min,salary_max,min_years_exp,min_education,posted_at,deadline,description,responsibilities,required_skills,preferred_skills` |
 | `data/candidates_generated.csv` | `gen_candidates.py` | `candidate_id,occupation,skills,years_exp,education_level,locations,work_types,expected_salary_min,expected_salary_max,text` + cột phụ `full_name,university,year,major,phone,career_goal` |
-| `data/cv_manifest.csv` | `gen_cv_files.py` | `cv_file,candidate_id,occupation,true_skills,true_years_exp,true_education_level,layout` – đáp án **tổng hợp** của trình sinh, KHÔNG phải nhãn tay |
+| `data/cv_manifest.csv` | `gen_cv_files.py` | `cv_file,candidate_id,occupation,true_skills,true_years_exp,true_education_level,layout` – đáp án **tổng hợp** của trình sinh, KHÔNG phải nhãn đánh giá |
 | `data/legacy_jobs.json` | `scripts/export-legacy-jobs.ts` | 12 tin mẫu của frontend, hồ sơ demo |
 | `labels/labels_pairs_<tên>.csv` | Hoàng Hưng, Hoàng Anh | `candidate_id,job_id,label` |
 | `labels/labels_cv_skills.csv` | Hoàng Anh | `cv_file,skills` (+ cột tuỳ chọn `years_exp`) |
@@ -46,5 +46,5 @@ Tài khoản demo, mật khẩu chung `Demo@12345`: `admin@smartcareer.vn`, `hr0
 ## Lưu ý trung thực
 
 - Đơn ứng tuyển và lịch sử trạng thái là **mô phỏng**; xác suất đi tiếp mỗi bước không phụ thuộc điểm khớp, nên biểu đồ "tỷ lệ tuyển theo nhóm điểm"
-  chỉ minh hoạ cách tính. Hiệu quả mô hình chỉ kết luận từ nhãn tay.
-- CV và `cv_manifest.csv` là dữ liệu tổng hợp; kết quả parser trên bộ này chỉ là kiểm tra luồng, không thay cho bảng P/R/F1 trên nhãn tay.
+  chỉ minh hoạ cách tính. Hiệu quả mô hình kết luận từ nhãn do agent AI gán (xem `labels/NGUON_NHAN.md`).
+- CV và `cv_manifest.csv` là dữ liệu tổng hợp; kết quả parser trên bộ này chỉ là kiểm tra luồng, không thay cho bảng P/R/F1 trên `labels_cv_skills.csv`.

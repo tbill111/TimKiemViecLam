@@ -1,4 +1,4 @@
-"""Sinh nhãn MÔ PHỎNG để chạy trọn pipeline đánh giá khi chưa có nhãn tay. KHÔNG PHẢI đánh giá của con người.
+"""Công cụ phục vụ TEST: sinh nhãn MÔ PHỎNG bằng công thức. KHÔNG dùng làm nhãn nộp (nhãn thật xem backend/seed/labels/NGUON_NHAN.md).
 
     cd backend && python -m seed.make_pair_list && python -m seed.simulate_labels
 

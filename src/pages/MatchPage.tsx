@@ -109,10 +109,10 @@ export default function MatchPage({ appState }: MatchPageProps) {
         </span>
       </div>
 
-      {!OFFLINE && matchResult.modelVersion?.toUpperCase().includes('SYNTHETIC') && (
-        <div role="note" className="flex items-start gap-3 p-3 bg-red-50 border border-red-100 rounded-xl text-sm text-red-700">
+      {!OFFLINE && matchResult.modelVersion?.includes('ai-labels') && (
+        <div role="note" className="flex items-start gap-3 p-3 bg-amber-50 border border-amber-100 rounded-xl text-sm text-amber-800">
           <Info size={16} className="shrink-0 mt-0.5" />
-          <span>Mô hình <strong>{matchResult.modelVersion}</strong> được huấn luyện trên nhãn <strong>mô phỏng</strong>, chỉ để chạy thử quy trình. Không dùng điểm này làm đánh giá thật; hãy huấn luyện lại bằng nhãn tay.</span>
+          <span>Mô hình <strong>{matchResult.modelVersion}</strong> được huấn luyện trên nhãn do <strong>agent AI</strong> gán (300 cặp, 30 ứng viên), không phải nhãn của nhà tuyển dụng. Điểm chỉ để tham khảo.</span>
         </div>
       )}
 

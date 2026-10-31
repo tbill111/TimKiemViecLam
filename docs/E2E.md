@@ -33,6 +33,7 @@ docker compose up -d api                   # nạp UUID dashboard và id dataset
 python scripts/check_bi_views.py           # đối chiếu 4 view PostgreSQL với /api/bi/* (phải "TẤT CẢ ĐẠT")
 docker compose exec api python -m seed.load_seed --reset    # nạp dữ liệu sạch trước mỗi lần chạy E2E
 python scripts/e2e_smoke.py --web http://localhost:8080 --shots out/   # 14 bước: ứng viên, nhà tuyển dụng, quản trị
+# Chạy `docker compose exec api python -m seed.load_seed --reset` trước mỗi lần E2E (ứng viên demo chỉ ứng tuyển được một lần).
 ```
 
 Kết quả đo được (PostgreSQL 16 + model `paraphrase-multilingual-MiniLM-L12-v2`, qua HTTP): chấm 1 cặp 38 ms, 150 tin 38 ms, 500 tin 70–77 ms.
@@ -43,7 +44,7 @@ Chạy bộ test trong container với model thật: `docker compose exec api pi
 
 ## 2b. Chạy 3 notebook đánh giá trong container (model thật)
 
-`scripts/run_notebooks.py` có sẵn lệnh `docker run` ở đầu file. Với nhãn mô phỏng, kết quả vào `docs/report/tables_synthetic/` và `models_store/m4.joblib` (phiên bản `m4-SYNTHETIC-labels`). Với nhãn tay thật, bỏ các biến `TH3_*` (kết quả vào `docs/report/tables/`), đồng thời xoá `m4.joblib` mô phỏng trước khi huấn luyện lại.
+`scripts/run_notebooks.py` có sẵn lệnh `docker run` ở đầu file. Kết quả vào `docs/report/tables/` và `models_store/m4.joblib` (phiên bản `m4-ai-labels`); nhãn đọc từ `backend/seed/labels/` (nguồn: `NGUON_NHAN.md`).
 Lưu ý: `docker compose up --build web` cũng build lại `api`; để `WITH_ST=1` trong `.env` kẻo image mất model thật.
 
 ## 3. Việc còn lại (cần dữ liệu hoặc người)

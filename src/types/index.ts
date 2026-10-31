@@ -147,7 +147,7 @@ export interface SkillMatchResult {
   eduScore?: number | null;
   explanation?: string;
   model?: string;
-  /** Phiên bản model của backend, ví dụ `m4-SYNTHETIC-labels` khi M4 được huấn luyện trên nhãn mô phỏng. */
+  /** Phiên bản model của backend, ví dụ `m4-ai-labels` khi M4 được huấn luyện trên nhãn do agent AI gán. */
   modelVersion?: string;
 }
 

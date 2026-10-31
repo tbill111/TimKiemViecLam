@@ -2,7 +2,7 @@
 
 Quan trọng về trung thực: xác suất đi tiếp mỗi bước KHÔNG phụ thuộc vào `match_score`. Vì vậy biểu đồ "tỷ lệ tuyển theo
 nhóm điểm khớp" trên dữ liệu seed chỉ minh hoạ cách tính, không chứng minh mô hình AI tốt. Hiệu quả mô hình chỉ được kết luận
-từ tập 300 cặp gán nhãn tay (notebooks/03_ranking_eval.ipynb).
+từ tập 300 cặp gán nhãn (notebooks/03_ranking_eval.ipynb).
 """
 from __future__ import annotations
 

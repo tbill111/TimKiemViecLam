@@ -83,8 +83,8 @@ def candidate_flow(page: Page, web: str, shots: Path | None) -> None:
         expect(page.get_by_text("Ngữ nghĩa CV–JD")).to_be_visible(timeout=20000)
         expect(page.get_by_text(re.compile(r"^Khớp \d+/100")).first).to_be_visible()
         page.get_by_label("Mô hình chấm điểm").select_option("m4")
-        # M4 chưa huấn luyện: báo lỗi dễ hiểu; đã huấn luyện trên nhãn mô phỏng: phải hiện cảnh báo "mô phỏng". Không được vỡ trang.
-        expect(page.get_by_text(re.compile("M4 chưa được huấn luyện|huấn luyện trên nhãn mô phỏng")).first).to_be_visible(timeout=20000)
+        # M4 chưa huấn luyện: báo lỗi dễ hiểu; đã huấn luyện trên nhãn do agent AI gán: phải hiện ghi chú nguồn nhãn. Không được vỡ trang.
+        expect(page.get_by_text(re.compile("M4 chưa được huấn luyện|do agent AI gán")).first).to_be_visible(timeout=20000)
         shot(page, shots, "04_match_m4_error")
         page.get_by_label("Mô hình chấm điểm").select_option("m0")
         expect(page.get_by_text("Ngữ nghĩa CV–JD")).to_be_visible(timeout=20000)

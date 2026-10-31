@@ -174,7 +174,7 @@ Router `ai.py`, `resumes.py` (phần xử lý) do Tùng viết; Thái Anh viết
 
 ### Mục 02 – Mô hình AI/ML
 **Người:** Tùng.
-- **Module A (CV Parser)** `ai/parser.py`, `ai/skills.py`: pdfplumber/python-docx/TXT → chuẩn hoá NFC → tách mục → trích kỹ năng 3 tầng (n-gram tra `skills`+`skill_aliases`; rapidfuzz ≥ 90; embedding cosine ≥ 0,8 chỉ **đề xuất**) → số năm kinh nghiệm (gộp khoảng thời gian không chồng) → học vấn thang 1–4. Đánh giá P/R/F1 từng tầng trên 50 CV nhãn tay.
+- **Module A (CV Parser)** `ai/parser.py`, `ai/skills.py`: pdfplumber/python-docx/TXT → chuẩn hoá NFC → tách mục → trích kỹ năng 3 tầng (n-gram tra `skills`+`skill_aliases`; rapidfuzz ≥ 90; embedding cosine ≥ 0,8 chỉ **đề xuất**) → số năm kinh nghiệm (gộp khoảng thời gian không chồng) → học vấn thang 1–4. Đánh giá P/R/F1 từng tầng trên 50 CV nhãn đã gán (agent AI).
 - **Module B** `ai/features.py`, `ai/scorers.py`: 6 đặc trưng (`skill_req, skill_pref, semantic, exp, edu, pref`), M0–M4 cùng giao diện `score_pair`; M3 có luật chặn ≤ 50 khi thiếu > 1/2 kỹ năng bắt buộc; M4 = LogisticRegression trên 6 đặc trưng, GroupKFold 5 theo `candidate_id`, lưu `joblib` + `model_version`.
 - **Điều kiện đúng với repo:** M0 Python phải cho **cùng điểm** với `calculateSkillMatch` của `src/utils/index.ts` trên 12 tin × 6 ứng viên mẫu (`candidates.ts`) + hồ sơ `defaultStudentProfile`. Làm bằng `scripts/export-golden.ts` (chạy `npx tsx`) → `backend/tests/golden/m0_golden.json` → `tests/golden/test_m0_parity.py`.
 **Xong khi:** bảng P/R/F1; bảng M0–M4; `m4.joblib`; `POST /ai/match` trả MatchDTO cho cả 5 model; `pytest backend/tests/ai backend/tests/golden` xanh.
@@ -207,7 +207,7 @@ Router `ai.py`, `resumes.py` (phần xử lý) do Tùng viết; Thái Anh viết
 - Nhãn: 30 ứng viên × 10 tin = 300 cặp → `labels_pairs_<tên>.csv` (cột `candidate_id,job_id,label`); hai người gán độc lập, kappa quadratic ≥ 0,6; 50 CV → `labels_cv_skills.csv` (`cv_file,skills` ngăn bởi `|`).
 - Đánh giá: Precision@5, nDCG@10, MRR, Spearman, ROC-AUC, thời gian/cặp; ablation M3; hệ số M4; 5 cặp sai nhiều nhất; công bằng (đổi tên/giới tính CV → điểm không đổi).
 - Kiểm thử: pytest AI + API (đủ 403/409/415/401); ≥ 25 test case thủ công theo F01–F10; hiệu năng `/candidates/me/matches` với 150 và 500 tin (< 2 s); đối chiếu SQL cho 3 chỉ số BI.
-- Báo cáo theo dàn ý PDF 6.5. Lưu ý trung thực: dữ liệu ứng tuyển là mô phỏng → biểu đồ 8 không chứng minh mô hình tốt; chỉ kết luận từ 300 cặp nhãn tay.
+- Báo cáo theo dàn ý PDF 6.5. Lưu ý trung thực: dữ liệu ứng tuyển là mô phỏng → biểu đồ 8 không chứng minh mô hình tốt; chỉ kết luận từ 300 cặp nhãn đã gán (agent AI).
 **Xong khi:** đủ sản phẩm ở PDF 6.6.
 
 ---

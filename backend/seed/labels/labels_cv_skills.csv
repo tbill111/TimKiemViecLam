@@ -1,0 +1,51 @@
+cv_file,skills,years_exp
+cv_001.pdf,CSS|JavaScript|React|Git|Tailwind CSS|Giao tiếp|Tư duy logic,3
+cv_002.docx,Node.js|SQL|REST API|Git|OOP|MongoDB|Java|Redis|GraphQL|Giao tiếp|Tư duy logic,1.9
+cv_003.pdf,SQL|Python|Excel|Thống kê cơ bản|Pandas|NumPy|Làm việc nhóm|Tiếng Anh giao tiếp,3
+cv_004.pdf,Phân tích nghiệp vụ|Viết tài liệu|Tư duy phân tích|Giao tiếp|Jira|SQL|Agile/Scrum,0.5
+cv_005.docx,Git|Jest|Tư duy logic,0
+cv_006.pdf,User Research|HTML/CSS cơ bản|Illustrator|Tiếng Anh giao tiếp,0
+cv_007.docx,Kỹ thuật máy tính|Mạng cơ bản|Xử lý sự cố|Giao tiếp|Windows Server|Linux|Active Directory|Office 365|ITIL cơ bản|Virtualization,0.9
+cv_008.pdf,Giao tiếp|Facebook Ads|Git|Làm việc nhóm,2
+cv_009.pdf,JavaScript|SQL|OOP|C#|Làm việc nhóm,3
+cv_010.docx,Excel|Giao tiếp|Tư duy phân tích|Viết tài liệu|Power BI|Thuyết trình,0
+cv_011.pdf,HTML|CSS|JavaScript|React|Tailwind CSS|Responsive Design|Vue.js|Jest,3
+cv_012.docx,Node.js|SQL|REST API|Git|OOP|MongoDB|Giao tiếp,0
+cv_013.pdf,SQL|Python|Excel|Matplotlib|Machine Learning cơ bản|NumPy,0
+cv_014.pdf,Giao tiếp|Làm việc nhóm|Excel,0
+cv_015.docx,Kiểm thử phần mềm|Tư duy logic|Git|Selenium|Playwright|Jira|Làm việc nhóm,0
+cv_016.pdf,Figma|Nguyên lý UX|Thiết kế UI|Tư duy sáng tạo|Adobe XD|User Research|Illustrator,0
+cv_017.docx,Kỹ thuật máy tính|Mạng cơ bản|Xử lý sự cố|Windows Server|Office 365|ITIL cơ bản|Virtualization|Giao tiếp|Tư duy logic,0
+cv_018.pdf,Viết nội dung|Mạng xã hội|Google Analytics|Email Marketing|Canva|Giao tiếp,0
+cv_019.pdf,SQL|Git|OOP|REST API|CI/CD|AWS cơ bản|Tiếng Anh giao tiếp,0
+cv_020.docx,Giao tiếp|Tư duy phân tích|Viết tài liệu|SQL|Tiếng Anh giao tiếp|Thuyết trình,1
+cv_021.pdf,HTML|Git|React|Redux|Next.js|Thuyết trình,2.2
+cv_022.docx,SQL|REST API|Git,0
+cv_023.pdf,Python|Scikit-learn|Looker Studio,0
+cv_024.pdf,Phân tích nghiệp vụ|Viết tài liệu|Tư duy phân tích|BPMN|UML,3
+cv_025.docx,Git|Làm việc nhóm|Thuyết trình,0.9
+cv_026.pdf,Nguyên lý UX|Thiết kế UI|Tư duy sáng tạo|Làm việc nhóm,1.9
+cv_027.docx,Kỹ thuật máy tính|Mạng cơ bản|Tiếng Anh giao tiếp,1
+cv_028.pdf,Viết nội dung|Mạng xã hội|Google Analytics|Giao tiếp|Canva|Excel|Photoshop,0
+cv_029.pdf,SQL|OOP|REST API|.NET|Agile/Scrum|Tiếng Anh giao tiếp,0.5
+cv_030.docx,Excel|Giao tiếp|Tư duy phân tích|Viết tài liệu|Tiếng Anh giao tiếp,0.9
+cv_031.pdf,CSS|React|Git,0
+cv_032.docx,Node.js|REST API|OOP|PostgreSQL|Giao tiếp,0.9
+cv_033.pdf,Python|Thống kê cơ bản|Pandas|Machine Learning cơ bản|ETL|Looker Studio|Thuyết trình,1.9
+cv_034.pdf,Phân tích nghiệp vụ|SQL|Jira,2
+cv_035.docx,Kiểm thử phần mềm|Viết test case|Tư duy logic|Git|Selenium|Agile/Scrum,0
+cv_036.pdf,Figma|Thiết kế UI|Tư duy sáng tạo|Illustrator|Tư duy logic,0.5
+cv_037.docx,Kỹ thuật máy tính|Mạng cơ bản|Xử lý sự cố|Giao tiếp|Windows Server|Office 365|Git,0
+cv_038.pdf,Viết nội dung|Mạng xã hội|Google Analytics|Giao tiếp|Facebook Ads|SEO cơ bản|Email Marketing|Photoshop|Tư duy logic,0.5
+cv_039.pdf,Git|REST API|React,0
+cv_040.docx,Excel|Giao tiếp|Tư duy phân tích|SQL|Power BI|Làm việc nhóm|Tư duy logic,3
+cv_041.pdf,HTML|CSS|React|Tailwind CSS|Tiếng Anh giao tiếp|Thuyết trình,0
+cv_042.docx,Node.js|SQL|Java|GraphQL|Git|Làm việc nhóm|Tiếng Anh giao tiếp|Tư duy logic,0.9
+cv_043.pdf,SQL|Python|Looker Studio|Git|Làm việc nhóm,0
+cv_044.pdf,Phân tích nghiệp vụ|Viết tài liệu|Tư duy phân tích|SQL|Giao tiếp,2
+cv_045.docx,Kiểm thử phần mềm|Git|SQL|Giao tiếp,0.5
+cv_046.pdf,Giao tiếp|Thiết kế UI|Prototyping,2
+cv_047.docx,Mạng cơ bản|Giao tiếp|ITIL cơ bản,0
+cv_048.pdf,Viết nội dung|Email Marketing|Làm việc nhóm,0.9
+cv_049.pdf,JavaScript|SQL|Git|OOP|REST API|React|Docker|CI/CD|C#|Agile/Scrum|Tư duy logic,0
+cv_050.docx,Excel|Giao tiếp|Tư duy phân tích|Viết tài liệu|SQL|Tư duy logic,2

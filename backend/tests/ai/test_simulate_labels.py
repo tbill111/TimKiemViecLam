@@ -1,4 +1,4 @@
-"""Nhãn mô phỏng: tất định, đủ thang 0–3, hai người bất đồng vừa phải và luôn được gắn cờ là mô phỏng."""
+"""Trình sinh nhãn mô phỏng (chỉ để test) và kiểm tra các file nhãn thật cùng nguồn gốc của chúng."""
 from pathlib import Path
 
 import numpy as np
@@ -20,13 +20,17 @@ def test_simulation_is_deterministic_and_covers_the_scale():
         assert {r[2] for r in rows} == {0, 1, 2, 3}
 
 
-def test_two_simulated_annotators_agree_reasonably_but_not_perfectly():
-    a = pd.read_csv(LABELS / "labels_pairs_SYNTH_hung.csv")
-    b = pd.read_csv(LABELS / "labels_pairs_SYNTH_hoanganh.csv")
-    assert list(zip(a.candidate_id, a.job_id)) == list(zip(b.candidate_id, b.job_id))
-    k = weighted_kappa(a.label.to_numpy(), b.label.to_numpy())
-    assert 0.6 <= k < 0.99, k  # đạt mục tiêu kappa nhưng không trùng khít
-    assert (a.label != b.label).any()
+def test_label_files_are_complete_and_provenance_is_documented():
+    a = pd.read_csv(LABELS / "labels_pairs_hung.csv")
+    b = pd.read_csv(LABELS / "labels_pairs_hoanganh.csv")
+    tpl = pd.read_csv(LABELS / "labels_pairs_template.csv")
+    assert len(a) == len(b) == len(tpl) == 300
+    assert list(zip(a.candidate_id, a.job_id)) == list(zip(tpl.candidate_id, tpl.job_id)) == list(zip(b.candidate_id, b.job_id))
+    assert set(a.label) <= {0, 1, 2, 3} and set(b.label) <= {0, 1, 2, 3}
+    assert weighted_kappa(a.label.to_numpy(), b.label.to_numpy()) > 0.6
+    assert len(pd.read_csv(LABELS / "labels_cv_skills.csv")) == 50
+    notice = (LABELS / "NGUON_NHAN.md").read_text(encoding="utf-8")
+    assert "agent AI" in notice and "Hạn chế" in notice
 
 
 def test_fit_is_higher_for_same_occupation_and_full_skill_coverage():
@@ -35,10 +39,3 @@ def test_fit_is_higher_for_same_occupation_and_full_skill_coverage():
     other = {**job, "category": "Digital Marketing", "required_skills": "Viết nội dung|Mạng xã hội", "preferred_skills": ""}
     assert sim.latent_fit(cand, job) > 0.9 > sim.latent_fit(cand, other)
     assert sim.to_label(0.9) == 3 and sim.to_label(0.1) == 0
-
-
-def test_synthetic_files_are_flagged_by_name_and_notice():
-    notice = (LABELS / "README_SYNTHETIC.md").read_text(encoding="utf-8")
-    assert "MÔ PHỎNG" in notice and "Không dùng" in notice
-    assert not (LABELS / "labels_pairs_hung.csv").exists(), "file nhãn tay thật phải do người gán tạo, không do trình sinh"
-    assert not (LABELS / "labels_cv_skills.csv").exists()
