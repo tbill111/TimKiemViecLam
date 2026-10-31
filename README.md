@@ -1,61 +1,89 @@
-# SmartCareer – Hệ thống Tìm việc Thông minh cho Sinh viên
+# SmartCareer v2 – Hệ thống Tìm việc Thông minh tích hợp AI và BI (TH3)
 
-Prototype frontend phục vụ bài tập học phần *“Thiết kế Ý tưởng Hệ thống Tìm kiếm Việc làm Thông minh và Chiến lược Thu thập Dữ liệu”*.
+Nền tảng kết nối ứng viên và nhà tuyển dụng: AI trích kỹ năng từ CV, tính **Matching Score có giải thích** giữa hồ sơ và tin tuyển dụng,
+và dashboard **BI** cho nhà tuyển dụng (ứng viên theo kỹ năng, xu hướng lương, tỷ lệ chuyển đổi tuyển dụng).
 
-Đây là **prototype chạy trên trình duyệt**, không có backend, không có cơ sở dữ liệu và không gọi API AI hay API tuyển dụng bên ngoài. Toàn bộ dữ liệu là dữ liệu mẫu trong thư mục `src/data/`. Trạng thái (hồ sơ đã sửa, việc đã lưu, ứng tuyển demo) được lưu trong `localStorage` của trình duyệt.
+| Thành phần | Công nghệ |
+|---|---|
+| Frontend | React 19 + Vite + TypeScript + Tailwind 4 + Recharts |
+| Backend | FastAPI, SQLAlchemy 2, Alembic, JWT + bcrypt |
+| CSDL | PostgreSQL 16 (SQLite khi chạy test) |
+| AI | pdfplumber, python-docx, rapidfuzz, scikit-learn, sentence-transformers (`paraphrase-multilingual-MiniLM-L12-v2`) |
+| BI | Apache Superset (nhúng bằng guest token) + phương án dự phòng Recharts |
+| Triển khai | Docker Compose: `db`, `api`, `superset`, `web` |
 
-## Yêu cầu
+## Chạy nhanh
 
-- Node.js 20 trở lên (đã kiểm tra với Node 22)
-- npm
+### A. Toàn bộ hệ thống (Docker)
 
-## Cài đặt và chạy
+```bash
+cp .env.example .env
+docker compose up --build        # lần đầu tải model embedding nên lâu; WITH_ST=0 trong .env để bỏ qua (dùng embedder thay thế)
+```
+
+| Dịch vụ | Địa chỉ |
+|---|---|
+| Ứng dụng | http://localhost:8080 |
+| Swagger | http://localhost:8000/docs |
+| Superset | http://localhost:8088 (xem `bi/README.md` để dựng và nhúng dashboard) |
+
+API tự migrate (`alembic upgrade head`) và nạp dữ liệu demo khi khởi động (`SEED_ON_START=1`).
+
+### B. Chỉ frontend với dữ liệu mẫu (không cần backend)
 
 ```bash
 npm install
-npm run dev
+VITE_OFFLINE_DEMO=true npm run dev     # hoặc đặt trong .env.local
 ```
 
-Sau đó mở địa chỉ hiển thị trong terminal (thường là `http://localhost:5173`).
+### C. Phát triển
 
-## Các lệnh khác
+```bash
+# backend
+cd backend && python -m venv .venv && . .venv/bin/activate   # Windows: .venv\Scripts\activate
+pip install -r requirements-dev.txt
+DATABASE_URL=sqlite:///./dev.db python -m seed.load_seed --reset
+DATABASE_URL=sqlite:///./dev.db uvicorn app.main:app --reload --port 8000
+# frontend (terminal khác): cần proxy /api → 8000 hoặc đặt VITE_API_URL=http://localhost:8000/api
+VITE_API_URL=http://localhost:8000/api npm run dev
+```
 
-| Lệnh | Mô tả |
-| --- | --- |
-| `npm run build` | Kiểm tra kiểu TypeScript (`tsc -b`) và build bản production vào `dist/` |
-| `npm run preview` | Chạy thử bản đã build tại `http://localhost:4173` |
-| `npm run lint` | Kiểm tra mã nguồn bằng oxlint |
+## Tài khoản demo (mật khẩu chung `Demo@12345`)
 
-## Các màn hình
+| Vai trò | Email |
+|---|---|
+| Ứng viên (hồ sơ Giang Thanh Tùng) | `tung.demo@smartcareer.vn` |
+| Nhà tuyển dụng (Sao Mai Software) | `hr01@smartcareer.vn` … `hr30@smartcareer.vn` |
+| Quản trị | `admin@smartcareer.vn` |
+| 300 ứng viên sinh tự động | `cand0001@example.edu.vn` … `cand0300@example.edu.vn` |
 
-| Đường dẫn | Màn hình |
-| --- | --- |
-| `/` | Tổng quan: số liệu, việc phù hợp nhất, kỹ năng, gợi ý |
-| `/jobs` | Tìm việc làm: tìm kiếm, lọc, sắp xếp, lưu việc, ứng tuyển demo |
-| `/match` | Phân tích CV–JD: điểm phù hợp, kỹ năng đạt và còn thiếu |
-| `/skill-gap` | Skill Gap Analysis: chọn công việc mục tiêu, đánh dấu kỹ năng đã học |
-| `/applications` | Việc đã lưu & ứng tuyển: theo dõi trạng thái |
-| `/profile` | Hồ sơ của tôi: chỉnh sửa thông tin, mong muốn công việc, kỹ năng, dự án, kinh nghiệm, chứng chỉ |
-| `/employer` | Cổng nhà tuyển dụng: xếp hạng ứng viên theo tin tuyển dụng, cập nhật trạng thái hồ sơ |
-| `/etl` | Trung tâm Dữ liệu & ETL: nguồn dữ liệu, Extract, Transform, Load, chỉ số chất lượng |
-| `/dfd` | Sơ đồ luồng dữ liệu (DFD mức 1) |
-| `/about` | Về SmartCareer: vấn đề, giải pháp, công nghệ đang dùng và dự kiến |
+## Kiểm thử
 
-Ở sidebar có nút **Đặt lại dữ liệu demo** để khôi phục hồ sơ và trạng thái ban đầu.
+```bash
+cd backend && python -m pytest                 # 225 test: AI, API, phân quyền, luật trạng thái, phễu BI, seed, hiệu năng, migration
+npm run build && npm run lint                  # kiểu TypeScript + oxlint
+python scripts/e2e_smoke.py  --web http://localhost:4173     # E2E trình duyệt, 2 luồng online (xem docs/E2E.md)
+python scripts/e2e_offline.py --web http://localhost:4174    # E2E chế độ demo, kiểm tra không gọi API
+```
 
-## Giới hạn của prototype
+Bảng 38 test case: [docs/testcases.md](docs/testcases.md).
 
-- Điểm phù hợp là **mô phỏng ghép nối đa tiêu chí theo quy tắc**: 60% tỷ lệ kỹ năng bắt buộc đáp ứng + 25% tỷ lệ kỹ năng ưu tiên đáp ứng + 15% mức khớp mong muốn (địa điểm, hình thức). Đây không phải mô hình AI thật.
-- Ứng viên ở cổng nhà tuyển dụng là dữ liệu minh họa; chỉ hồ sơ sinh viên hiện tại là hồ sơ người dùng nhập.
-- Tin tuyển dụng, tên công ty và mức lương đều là dữ liệu minh họa.
-- Tải CV chỉ ghi nhận tên tệp, không đọc nội dung CV.
-- Số liệu ở trang ETL được tính từ dataset mẫu, không phải dữ liệu thu thập thật.
-- Công nghệ backend (FastAPI/Node.js), PostgreSQL và pipeline ETL chỉ là kiến trúc dự kiến, chưa được triển khai.
+## Cấu trúc
 
-## Công nghệ
+```
+src/                    frontend (api/, context/, hooks/, pages/, components/, data/ = dữ liệu mẫu chế độ demo)
+backend/app/            FastAPI: routers/, models.py, services/, ai/ (parser, scorers M0–M4, metrics, evaluate)
+backend/seed/           sinh và nạp dữ liệu hư cấu (108 kỹ năng, 259 alias, 30 công ty, 150 tin, 300 ứng viên, 50 CV, ~1.200 đơn)
+backend/alembic/        migration; backend/schema.sql = DDL PostgreSQL sinh từ models
+bi/                     views.sql, cấu hình Superset, hướng dẫn dựng dashboard
+notebooks/              đánh giá parser, huấn luyện M4, so sánh M0–M4
+docs/                   kế hoạch, yêu cầu, Use Case, ERD, test case, hướng dẫn gán nhãn, prompt từng thành viên
+scripts/                export dữ liệu chuẩn M0 từ TypeScript, E2E
+```
 
-- React 19, TypeScript, Vite
-- Tailwind CSS 4
-- React Router 7
-- Recharts (biểu đồ radar)
-- Lucide React (icon)
+## Điều cần biết (trung thực về trạng thái)
+
+- **Dữ liệu là mô phỏng.** Ứng viên, CV, tin và đơn ứng tuyển đều hư cấu; xác suất đi tiếp mỗi bước phễu không phụ thuộc điểm khớp. Biểu đồ lương và tỷ lệ tuyển chỉ minh hoạ cách tính.
+- **Hiệu quả mô hình chỉ kết luận từ nhãn tay** (30 ứng viên × 10 tin, hai người gán độc lập) bằng `notebooks/`. Các file nhãn và model M4 **chưa có**: `m4` trả 503 cho đến khi huấn luyện; số liệu trong notebook chạy trên dữ liệu tổng hợp chỉ để kiểm tra luồng.
+- **Chưa kiểm chứng trong môi trường dựng dự án** (không có Docker): `docker compose up`, SQL view trên PostgreSQL thật, nhúng Superset thật, model embedding thật. Phần này có test cú pháp/giả lập, cần chạy thử trên máy có Docker (xem [docs/E2E.md](docs/E2E.md)).
+- CV dạng ảnh scan không đọc được; hệ thống báo lỗi thay vì đoán.
