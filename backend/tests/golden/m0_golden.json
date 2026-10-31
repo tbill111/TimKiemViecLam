@@ -1,0 +1,5612 @@
+{
+ "count": 84,
+ "cases": [
+  {
+   "profile": {
+    "id": "student-default",
+    "skills": [
+     "HTML",
+     "CSS",
+     "JavaScript",
+     "React",
+     "Git",
+     "SQL",
+     "Python cơ bản",
+     "Figma",
+     "Responsive Design"
+    ],
+    "preferredLocations": [
+     "Hà Nội",
+     "Remote"
+    ],
+    "preferredWorkTypes": [
+     "Thực tập",
+     "Remote"
+    ]
+   },
+   "job": {
+    "id": "job-001",
+    "requiredSkills": [
+     "HTML",
+     "CSS",
+     "JavaScript",
+     "React",
+     "Git"
+    ],
+    "preferredSkills": [
+     "TypeScript",
+     "Tailwind CSS",
+     "REST API"
+    ],
+    "location": "Hà Nội",
+    "workType": "Thực tập"
+   },
+   "expected": {
+    "jobId": "job-001",
+    "matchScore": 75,
+    "matchedSkills": [
+     "HTML",
+     "CSS",
+     "JavaScript",
+     "React",
+     "Git"
+    ],
+    "missingSkills": [],
+    "totalRequired": 5,
+    "matchedPreferred": [],
+    "missingPreferred": [
+     "TypeScript",
+     "Tailwind CSS",
+     "REST API"
+    ],
+    "requiredScore": 100,
+    "preferredScore": 0,
+    "preferenceScore": 100,
+    "locationMatch": true,
+    "workTypeMatch": true
+   }
+  },
+  {
+   "profile": {
+    "id": "student-default",
+    "skills": [
+     "HTML",
+     "CSS",
+     "JavaScript",
+     "React",
+     "Git",
+     "SQL",
+     "Python cơ bản",
+     "Figma",
+     "Responsive Design"
+    ],
+    "preferredLocations": [
+     "Hà Nội",
+     "Remote"
+    ],
+    "preferredWorkTypes": [
+     "Thực tập",
+     "Remote"
+    ]
+   },
+   "job": {
+    "id": "job-002",
+    "requiredSkills": [
+     "Node.js",
+     "JavaScript",
+     "SQL",
+     "REST API",
+     "Git"
+    ],
+    "preferredSkills": [
+     "TypeScript",
+     "Docker",
+     "PostgreSQL",
+     "MongoDB"
+    ],
+    "location": "Hồ Chí Minh",
+    "workType": "Thực tập"
+   },
+   "expected": {
+    "jobId": "job-002",
+    "matchScore": 44,
+    "matchedSkills": [
+     "JavaScript",
+     "SQL",
+     "Git"
+    ],
+    "missingSkills": [
+     "Node.js",
+     "REST API"
+    ],
+    "totalRequired": 5,
+    "matchedPreferred": [],
+    "missingPreferred": [
+     "TypeScript",
+     "Docker",
+     "PostgreSQL",
+     "MongoDB"
+    ],
+    "requiredScore": 60,
+    "preferredScore": 0,
+    "preferenceScore": 50,
+    "locationMatch": false,
+    "workTypeMatch": true
+   }
+  },
+  {
+   "profile": {
+    "id": "student-default",
+    "skills": [
+     "HTML",
+     "CSS",
+     "JavaScript",
+     "React",
+     "Git",
+     "SQL",
+     "Python cơ bản",
+     "Figma",
+     "Responsive Design"
+    ],
+    "preferredLocations": [
+     "Hà Nội",
+     "Remote"
+    ],
+    "preferredWorkTypes": [
+     "Thực tập",
+     "Remote"
+    ]
+   },
+   "job": {
+    "id": "job-003",
+    "requiredSkills": [
+     "SQL",
+     "Python",
+     "Excel",
+     "Thống kê cơ bản",
+     "Git"
+    ],
+    "preferredSkills": [
+     "Power BI",
+     "Tableau",
+     "Pandas",
+     "Matplotlib",
+     "Machine Learning cơ bản"
+    ],
+    "location": "Hà Nội",
+    "workType": "Thực tập"
+   },
+   "expected": {
+    "jobId": "job-003",
+    "matchScore": 51,
+    "matchedSkills": [
+     "SQL",
+     "Python",
+     "Git"
+    ],
+    "missingSkills": [
+     "Excel",
+     "Thống kê cơ bản"
+    ],
+    "totalRequired": 5,
+    "matchedPreferred": [],
+    "missingPreferred": [
+     "Power BI",
+     "Tableau",
+     "Pandas",
+     "Matplotlib",
+     "Machine Learning cơ bản"
+    ],
+    "requiredScore": 60,
+    "preferredScore": 0,
+    "preferenceScore": 100,
+    "locationMatch": true,
+    "workTypeMatch": true
+   }
+  },
+  {
+   "profile": {
+    "id": "student-default",
+    "skills": [
+     "HTML",
+     "CSS",
+     "JavaScript",
+     "React",
+     "Git",
+     "SQL",
+     "Python cơ bản",
+     "Figma",
+     "Responsive Design"
+    ],
+    "preferredLocations": [
+     "Hà Nội",
+     "Remote"
+    ],
+    "preferredWorkTypes": [
+     "Thực tập",
+     "Remote"
+    ]
+   },
+   "job": {
+    "id": "job-004",
+    "requiredSkills": [
+     "Phân tích nghiệp vụ",
+     "Excel",
+     "Tư duy logic",
+     "Giao tiếp",
+     "Viết tài liệu"
+    ],
+    "preferredSkills": [
+     "SQL",
+     "BPMN",
+     "Jira",
+     "Confluence",
+     "UML"
+    ],
+    "location": "Hồ Chí Minh",
+    "workType": "Thực tập"
+   },
+   "expected": {
+    "jobId": "job-004",
+    "matchScore": 13,
+    "matchedSkills": [],
+    "missingSkills": [
+     "Phân tích nghiệp vụ",
+     "Excel",
+     "Tư duy logic",
+     "Giao tiếp",
+     "Viết tài liệu"
+    ],
+    "totalRequired": 5,
+    "matchedPreferred": [
+     "SQL"
+    ],
+    "missingPreferred": [
+     "BPMN",
+     "Jira",
+     "Confluence",
+     "UML"
+    ],
+    "requiredScore": 0,
+    "preferredScore": 20,
+    "preferenceScore": 50,
+    "locationMatch": false,
+    "workTypeMatch": true
+   }
+  },
+  {
+   "profile": {
+    "id": "student-default",
+    "skills": [
+     "HTML",
+     "CSS",
+     "JavaScript",
+     "React",
+     "Git",
+     "SQL",
+     "Python cơ bản",
+     "Figma",
+     "Responsive Design"
+    ],
+    "preferredLocations": [
+     "Hà Nội",
+     "Remote"
+    ],
+    "preferredWorkTypes": [
+     "Thực tập",
+     "Remote"
+    ]
+   },
+   "job": {
+    "id": "job-005",
+    "requiredSkills": [
+     "Kiểm thử phần mềm",
+     "Viết test case",
+     "Tư duy phân tích",
+     "Excel",
+     "Git"
+    ],
+    "preferredSkills": [
+     "Selenium",
+     "Playwright",
+     "Postman",
+     "Jira",
+     "SQL"
+    ],
+    "location": "Đà Nẵng",
+    "workType": "Thực tập"
+   },
+   "expected": {
+    "jobId": "job-005",
+    "matchScore": 25,
+    "matchedSkills": [
+     "Git"
+    ],
+    "missingSkills": [
+     "Kiểm thử phần mềm",
+     "Viết test case",
+     "Tư duy phân tích",
+     "Excel"
+    ],
+    "totalRequired": 5,
+    "matchedPreferred": [
+     "SQL"
+    ],
+    "missingPreferred": [
+     "Selenium",
+     "Playwright",
+     "Postman",
+     "Jira"
+    ],
+    "requiredScore": 20,
+    "preferredScore": 20,
+    "preferenceScore": 50,
+    "locationMatch": false,
+    "workTypeMatch": true
+   }
+  },
+  {
+   "profile": {
+    "id": "student-default",
+    "skills": [
+     "HTML",
+     "CSS",
+     "JavaScript",
+     "React",
+     "Git",
+     "SQL",
+     "Python cơ bản",
+     "Figma",
+     "Responsive Design"
+    ],
+    "preferredLocations": [
+     "Hà Nội",
+     "Remote"
+    ],
+    "preferredWorkTypes": [
+     "Thực tập",
+     "Remote"
+    ]
+   },
+   "job": {
+    "id": "job-006",
+    "requiredSkills": [
+     "Figma",
+     "Nguyên lý UX",
+     "Thiết kế UI",
+     "Tư duy sáng tạo",
+     "Giao tiếp"
+    ],
+    "preferredSkills": [
+     "Adobe XD",
+     "Prototyping",
+     "User Research",
+     "Design System",
+     "HTML/CSS cơ bản"
+    ],
+    "location": "Hồ Chí Minh",
+    "workType": "Thực tập"
+   },
+   "expected": {
+    "jobId": "job-006",
+    "matchScore": 25,
+    "matchedSkills": [
+     "Figma"
+    ],
+    "missingSkills": [
+     "Nguyên lý UX",
+     "Thiết kế UI",
+     "Tư duy sáng tạo",
+     "Giao tiếp"
+    ],
+    "totalRequired": 5,
+    "matchedPreferred": [
+     "HTML/CSS cơ bản"
+    ],
+    "missingPreferred": [
+     "Adobe XD",
+     "Prototyping",
+     "User Research",
+     "Design System"
+    ],
+    "requiredScore": 20,
+    "preferredScore": 20,
+    "preferenceScore": 50,
+    "locationMatch": false,
+    "workTypeMatch": true
+   }
+  },
+  {
+   "profile": {
+    "id": "student-default",
+    "skills": [
+     "HTML",
+     "CSS",
+     "JavaScript",
+     "React",
+     "Git",
+     "SQL",
+     "Python cơ bản",
+     "Figma",
+     "Responsive Design"
+    ],
+    "preferredLocations": [
+     "Hà Nội",
+     "Remote"
+    ],
+    "preferredWorkTypes": [
+     "Thực tập",
+     "Remote"
+    ]
+   },
+   "job": {
+    "id": "job-007",
+    "requiredSkills": [
+     "Kỹ thuật máy tính",
+     "Windows Server",
+     "Mạng cơ bản",
+     "Xử lý sự cố",
+     "Giao tiếp"
+    ],
+    "preferredSkills": [
+     "Linux",
+     "Active Directory",
+     "Office 365",
+     "ITIL cơ bản",
+     "Virtualization"
+    ],
+    "location": "Hà Nội",
+    "workType": "Thực tập"
+   },
+   "expected": {
+    "jobId": "job-007",
+    "matchScore": 15,
+    "matchedSkills": [],
+    "missingSkills": [
+     "Kỹ thuật máy tính",
+     "Windows Server",
+     "Mạng cơ bản",
+     "Xử lý sự cố",
+     "Giao tiếp"
+    ],
+    "totalRequired": 5,
+    "matchedPreferred": [],
+    "missingPreferred": [
+     "Linux",
+     "Active Directory",
+     "Office 365",
+     "ITIL cơ bản",
+     "Virtualization"
+    ],
+    "requiredScore": 0,
+    "preferredScore": 0,
+    "preferenceScore": 100,
+    "locationMatch": true,
+    "workTypeMatch": true
+   }
+  },
+  {
+   "profile": {
+    "id": "student-default",
+    "skills": [
+     "HTML",
+     "CSS",
+     "JavaScript",
+     "React",
+     "Git",
+     "SQL",
+     "Python cơ bản",
+     "Figma",
+     "Responsive Design"
+    ],
+    "preferredLocations": [
+     "Hà Nội",
+     "Remote"
+    ],
+    "preferredWorkTypes": [
+     "Thực tập",
+     "Remote"
+    ]
+   },
+   "job": {
+    "id": "job-008",
+    "requiredSkills": [
+     "Viết nội dung",
+     "Mạng xã hội",
+     "Tư duy sáng tạo",
+     "Excel",
+     "Giao tiếp"
+    ],
+    "preferredSkills": [
+     "Google Analytics",
+     "Facebook Ads",
+     "Canva",
+     "SEO cơ bản",
+     "Email Marketing"
+    ],
+    "location": "Hồ Chí Minh",
+    "workType": "Bán thời gian"
+   },
+   "expected": {
+    "jobId": "job-008",
+    "matchScore": 0,
+    "matchedSkills": [],
+    "missingSkills": [
+     "Viết nội dung",
+     "Mạng xã hội",
+     "Tư duy sáng tạo",
+     "Excel",
+     "Giao tiếp"
+    ],
+    "totalRequired": 5,
+    "matchedPreferred": [],
+    "missingPreferred": [
+     "Google Analytics",
+     "Facebook Ads",
+     "Canva",
+     "SEO cơ bản",
+     "Email Marketing"
+    ],
+    "requiredScore": 0,
+    "preferredScore": 0,
+    "preferenceScore": 0,
+    "locationMatch": false,
+    "workTypeMatch": false
+   }
+  },
+  {
+   "profile": {
+    "id": "student-default",
+    "skills": [
+     "HTML",
+     "CSS",
+     "JavaScript",
+     "React",
+     "Git",
+     "SQL",
+     "Python cơ bản",
+     "Figma",
+     "Responsive Design"
+    ],
+    "preferredLocations": [
+     "Hà Nội",
+     "Remote"
+    ],
+    "preferredWorkTypes": [
+     "Thực tập",
+     "Remote"
+    ]
+   },
+   "job": {
+    "id": "job-009",
+    "requiredSkills": [
+     "JavaScript",
+     "React hoặc Node.js",
+     "SQL",
+     "Git",
+     "REST API",
+     "OOP"
+    ],
+    "preferredSkills": [
+     "TypeScript",
+     "Docker",
+     "CI/CD",
+     "AWS cơ bản",
+     "Agile/Scrum"
+    ],
+    "location": "Hà Nội",
+    "workType": "Toàn thời gian"
+   },
+   "expected": {
+    "jobId": "job-009",
+    "matchScore": 48,
+    "matchedSkills": [
+     "JavaScript",
+     "React hoặc Node.js",
+     "SQL",
+     "Git"
+    ],
+    "missingSkills": [
+     "REST API",
+     "OOP"
+    ],
+    "totalRequired": 6,
+    "matchedPreferred": [],
+    "missingPreferred": [
+     "TypeScript",
+     "Docker",
+     "CI/CD",
+     "AWS cơ bản",
+     "Agile/Scrum"
+    ],
+    "requiredScore": 67,
+    "preferredScore": 0,
+    "preferenceScore": 50,
+    "locationMatch": true,
+    "workTypeMatch": false
+   }
+  },
+  {
+   "profile": {
+    "id": "student-default",
+    "skills": [
+     "HTML",
+     "CSS",
+     "JavaScript",
+     "React",
+     "Git",
+     "SQL",
+     "Python cơ bản",
+     "Figma",
+     "Responsive Design"
+    ],
+    "preferredLocations": [
+     "Hà Nội",
+     "Remote"
+    ],
+    "preferredWorkTypes": [
+     "Thực tập",
+     "Remote"
+    ]
+   },
+   "job": {
+    "id": "job-010",
+    "requiredSkills": [
+     "Phân tích nghiệp vụ",
+     "SQL",
+     "Giao tiếp",
+     "Viết tài liệu",
+     "UML",
+     "Excel"
+    ],
+    "preferredSkills": [
+     "Nghiệp vụ ngân hàng",
+     "BPMN",
+     "Jira",
+     "Agile/Scrum",
+     "Power BI"
+    ],
+    "location": "Hà Nội",
+    "workType": "Toàn thời gian"
+   },
+   "expected": {
+    "jobId": "job-010",
+    "matchScore": 18,
+    "matchedSkills": [
+     "SQL"
+    ],
+    "missingSkills": [
+     "Phân tích nghiệp vụ",
+     "Giao tiếp",
+     "Viết tài liệu",
+     "UML",
+     "Excel"
+    ],
+    "totalRequired": 6,
+    "matchedPreferred": [],
+    "missingPreferred": [
+     "Nghiệp vụ ngân hàng",
+     "BPMN",
+     "Jira",
+     "Agile/Scrum",
+     "Power BI"
+    ],
+    "requiredScore": 17,
+    "preferredScore": 0,
+    "preferenceScore": 50,
+    "locationMatch": true,
+    "workTypeMatch": false
+   }
+  },
+  {
+   "profile": {
+    "id": "student-default",
+    "skills": [
+     "HTML",
+     "CSS",
+     "JavaScript",
+     "React",
+     "Git",
+     "SQL",
+     "Python cơ bản",
+     "Figma",
+     "Responsive Design"
+    ],
+    "preferredLocations": [
+     "Hà Nội",
+     "Remote"
+    ],
+    "preferredWorkTypes": [
+     "Thực tập",
+     "Remote"
+    ]
+   },
+   "job": {
+    "id": "job-011",
+    "requiredSkills": [
+     "React",
+     "TypeScript",
+     "HTML",
+     "CSS",
+     "Git",
+     "REST API"
+    ],
+    "preferredSkills": [
+     "React Query",
+     "Zustand",
+     "Jest",
+     "Storybook",
+     "Figma"
+    ],
+    "location": "Remote",
+    "workType": "Remote"
+   },
+   "expected": {
+    "jobId": "job-011",
+    "matchScore": 60,
+    "matchedSkills": [
+     "React",
+     "HTML",
+     "CSS",
+     "Git"
+    ],
+    "missingSkills": [
+     "TypeScript",
+     "REST API"
+    ],
+    "totalRequired": 6,
+    "matchedPreferred": [
+     "Figma"
+    ],
+    "missingPreferred": [
+     "React Query",
+     "Zustand",
+     "Jest",
+     "Storybook"
+    ],
+    "requiredScore": 67,
+    "preferredScore": 20,
+    "preferenceScore": 100,
+    "locationMatch": true,
+    "workTypeMatch": true
+   }
+  },
+  {
+   "profile": {
+    "id": "student-default",
+    "skills": [
+     "HTML",
+     "CSS",
+     "JavaScript",
+     "React",
+     "Git",
+     "SQL",
+     "Python cơ bản",
+     "Figma",
+     "Responsive Design"
+    ],
+    "preferredLocations": [
+     "Hà Nội",
+     "Remote"
+    ],
+    "preferredWorkTypes": [
+     "Thực tập",
+     "Remote"
+    ]
+   },
+   "job": {
+    "id": "job-012",
+    "requiredSkills": [
+     "Python",
+     "SQL",
+     "ETL",
+     "Git",
+     "Linux cơ bản"
+    ],
+    "preferredSkills": [
+     "Apache Spark",
+     "Airflow",
+     "Kafka",
+     "Docker",
+     "Cloud (AWS/GCP)"
+    ],
+    "location": "Hồ Chí Minh",
+    "workType": "Thực tập"
+   },
+   "expected": {
+    "jobId": "job-012",
+    "matchScore": 44,
+    "matchedSkills": [
+     "Python",
+     "SQL",
+     "Git"
+    ],
+    "missingSkills": [
+     "ETL",
+     "Linux cơ bản"
+    ],
+    "totalRequired": 5,
+    "matchedPreferred": [],
+    "missingPreferred": [
+     "Apache Spark",
+     "Airflow",
+     "Kafka",
+     "Docker",
+     "Cloud (AWS/GCP)"
+    ],
+    "requiredScore": 60,
+    "preferredScore": 0,
+    "preferenceScore": 50,
+    "locationMatch": false,
+    "workTypeMatch": true
+   }
+  },
+  {
+   "profile": {
+    "id": "cand-001",
+    "skills": [
+     "Node.js",
+     "JavaScript",
+     "SQL",
+     "REST API",
+     "Git",
+     "Docker",
+     "PostgreSQL"
+    ],
+    "preferredLocations": [
+     "Hồ Chí Minh"
+    ],
+    "preferredWorkTypes": [
+     "Thực tập"
+    ]
+   },
+   "job": {
+    "id": "job-001",
+    "requiredSkills": [
+     "HTML",
+     "CSS",
+     "JavaScript",
+     "React",
+     "Git"
+    ],
+    "preferredSkills": [
+     "TypeScript",
+     "Tailwind CSS",
+     "REST API"
+    ],
+    "location": "Hà Nội",
+    "workType": "Thực tập"
+   },
+   "expected": {
+    "jobId": "job-001",
+    "matchScore": 40,
+    "matchedSkills": [
+     "JavaScript",
+     "Git"
+    ],
+    "missingSkills": [
+     "HTML",
+     "CSS",
+     "React"
+    ],
+    "totalRequired": 5,
+    "matchedPreferred": [
+     "REST API"
+    ],
+    "missingPreferred": [
+     "TypeScript",
+     "Tailwind CSS"
+    ],
+    "requiredScore": 40,
+    "preferredScore": 33,
+    "preferenceScore": 50,
+    "locationMatch": false,
+    "workTypeMatch": true
+   }
+  },
+  {
+   "profile": {
+    "id": "cand-001",
+    "skills": [
+     "Node.js",
+     "JavaScript",
+     "SQL",
+     "REST API",
+     "Git",
+     "Docker",
+     "PostgreSQL"
+    ],
+    "preferredLocations": [
+     "Hồ Chí Minh"
+    ],
+    "preferredWorkTypes": [
+     "Thực tập"
+    ]
+   },
+   "job": {
+    "id": "job-002",
+    "requiredSkills": [
+     "Node.js",
+     "JavaScript",
+     "SQL",
+     "REST API",
+     "Git"
+    ],
+    "preferredSkills": [
+     "TypeScript",
+     "Docker",
+     "PostgreSQL",
+     "MongoDB"
+    ],
+    "location": "Hồ Chí Minh",
+    "workType": "Thực tập"
+   },
+   "expected": {
+    "jobId": "job-002",
+    "matchScore": 88,
+    "matchedSkills": [
+     "Node.js",
+     "JavaScript",
+     "SQL",
+     "REST API",
+     "Git"
+    ],
+    "missingSkills": [],
+    "totalRequired": 5,
+    "matchedPreferred": [
+     "Docker",
+     "PostgreSQL"
+    ],
+    "missingPreferred": [
+     "TypeScript",
+     "MongoDB"
+    ],
+    "requiredScore": 100,
+    "preferredScore": 50,
+    "preferenceScore": 100,
+    "locationMatch": true,
+    "workTypeMatch": true
+   }
+  },
+  {
+   "profile": {
+    "id": "cand-001",
+    "skills": [
+     "Node.js",
+     "JavaScript",
+     "SQL",
+     "REST API",
+     "Git",
+     "Docker",
+     "PostgreSQL"
+    ],
+    "preferredLocations": [
+     "Hồ Chí Minh"
+    ],
+    "preferredWorkTypes": [
+     "Thực tập"
+    ]
+   },
+   "job": {
+    "id": "job-003",
+    "requiredSkills": [
+     "SQL",
+     "Python",
+     "Excel",
+     "Thống kê cơ bản",
+     "Git"
+    ],
+    "preferredSkills": [
+     "Power BI",
+     "Tableau",
+     "Pandas",
+     "Matplotlib",
+     "Machine Learning cơ bản"
+    ],
+    "location": "Hà Nội",
+    "workType": "Thực tập"
+   },
+   "expected": {
+    "jobId": "job-003",
+    "matchScore": 32,
+    "matchedSkills": [
+     "SQL",
+     "Git"
+    ],
+    "missingSkills": [
+     "Python",
+     "Excel",
+     "Thống kê cơ bản"
+    ],
+    "totalRequired": 5,
+    "matchedPreferred": [],
+    "missingPreferred": [
+     "Power BI",
+     "Tableau",
+     "Pandas",
+     "Matplotlib",
+     "Machine Learning cơ bản"
+    ],
+    "requiredScore": 40,
+    "preferredScore": 0,
+    "preferenceScore": 50,
+    "locationMatch": false,
+    "workTypeMatch": true
+   }
+  },
+  {
+   "profile": {
+    "id": "cand-001",
+    "skills": [
+     "Node.js",
+     "JavaScript",
+     "SQL",
+     "REST API",
+     "Git",
+     "Docker",
+     "PostgreSQL"
+    ],
+    "preferredLocations": [
+     "Hồ Chí Minh"
+    ],
+    "preferredWorkTypes": [
+     "Thực tập"
+    ]
+   },
+   "job": {
+    "id": "job-004",
+    "requiredSkills": [
+     "Phân tích nghiệp vụ",
+     "Excel",
+     "Tư duy logic",
+     "Giao tiếp",
+     "Viết tài liệu"
+    ],
+    "preferredSkills": [
+     "SQL",
+     "BPMN",
+     "Jira",
+     "Confluence",
+     "UML"
+    ],
+    "location": "Hồ Chí Minh",
+    "workType": "Thực tập"
+   },
+   "expected": {
+    "jobId": "job-004",
+    "matchScore": 20,
+    "matchedSkills": [],
+    "missingSkills": [
+     "Phân tích nghiệp vụ",
+     "Excel",
+     "Tư duy logic",
+     "Giao tiếp",
+     "Viết tài liệu"
+    ],
+    "totalRequired": 5,
+    "matchedPreferred": [
+     "SQL"
+    ],
+    "missingPreferred": [
+     "BPMN",
+     "Jira",
+     "Confluence",
+     "UML"
+    ],
+    "requiredScore": 0,
+    "preferredScore": 20,
+    "preferenceScore": 100,
+    "locationMatch": true,
+    "workTypeMatch": true
+   }
+  },
+  {
+   "profile": {
+    "id": "cand-001",
+    "skills": [
+     "Node.js",
+     "JavaScript",
+     "SQL",
+     "REST API",
+     "Git",
+     "Docker",
+     "PostgreSQL"
+    ],
+    "preferredLocations": [
+     "Hồ Chí Minh"
+    ],
+    "preferredWorkTypes": [
+     "Thực tập"
+    ]
+   },
+   "job": {
+    "id": "job-005",
+    "requiredSkills": [
+     "Kiểm thử phần mềm",
+     "Viết test case",
+     "Tư duy phân tích",
+     "Excel",
+     "Git"
+    ],
+    "preferredSkills": [
+     "Selenium",
+     "Playwright",
+     "Postman",
+     "Jira",
+     "SQL"
+    ],
+    "location": "Đà Nẵng",
+    "workType": "Thực tập"
+   },
+   "expected": {
+    "jobId": "job-005",
+    "matchScore": 25,
+    "matchedSkills": [
+     "Git"
+    ],
+    "missingSkills": [
+     "Kiểm thử phần mềm",
+     "Viết test case",
+     "Tư duy phân tích",
+     "Excel"
+    ],
+    "totalRequired": 5,
+    "matchedPreferred": [
+     "SQL"
+    ],
+    "missingPreferred": [
+     "Selenium",
+     "Playwright",
+     "Postman",
+     "Jira"
+    ],
+    "requiredScore": 20,
+    "preferredScore": 20,
+    "preferenceScore": 50,
+    "locationMatch": false,
+    "workTypeMatch": true
+   }
+  },
+  {
+   "profile": {
+    "id": "cand-001",
+    "skills": [
+     "Node.js",
+     "JavaScript",
+     "SQL",
+     "REST API",
+     "Git",
+     "Docker",
+     "PostgreSQL"
+    ],
+    "preferredLocations": [
+     "Hồ Chí Minh"
+    ],
+    "preferredWorkTypes": [
+     "Thực tập"
+    ]
+   },
+   "job": {
+    "id": "job-006",
+    "requiredSkills": [
+     "Figma",
+     "Nguyên lý UX",
+     "Thiết kế UI",
+     "Tư duy sáng tạo",
+     "Giao tiếp"
+    ],
+    "preferredSkills": [
+     "Adobe XD",
+     "Prototyping",
+     "User Research",
+     "Design System",
+     "HTML/CSS cơ bản"
+    ],
+    "location": "Hồ Chí Minh",
+    "workType": "Thực tập"
+   },
+   "expected": {
+    "jobId": "job-006",
+    "matchScore": 15,
+    "matchedSkills": [],
+    "missingSkills": [
+     "Figma",
+     "Nguyên lý UX",
+     "Thiết kế UI",
+     "Tư duy sáng tạo",
+     "Giao tiếp"
+    ],
+    "totalRequired": 5,
+    "matchedPreferred": [],
+    "missingPreferred": [
+     "Adobe XD",
+     "Prototyping",
+     "User Research",
+     "Design System",
+     "HTML/CSS cơ bản"
+    ],
+    "requiredScore": 0,
+    "preferredScore": 0,
+    "preferenceScore": 100,
+    "locationMatch": true,
+    "workTypeMatch": true
+   }
+  },
+  {
+   "profile": {
+    "id": "cand-001",
+    "skills": [
+     "Node.js",
+     "JavaScript",
+     "SQL",
+     "REST API",
+     "Git",
+     "Docker",
+     "PostgreSQL"
+    ],
+    "preferredLocations": [
+     "Hồ Chí Minh"
+    ],
+    "preferredWorkTypes": [
+     "Thực tập"
+    ]
+   },
+   "job": {
+    "id": "job-007",
+    "requiredSkills": [
+     "Kỹ thuật máy tính",
+     "Windows Server",
+     "Mạng cơ bản",
+     "Xử lý sự cố",
+     "Giao tiếp"
+    ],
+    "preferredSkills": [
+     "Linux",
+     "Active Directory",
+     "Office 365",
+     "ITIL cơ bản",
+     "Virtualization"
+    ],
+    "location": "Hà Nội",
+    "workType": "Thực tập"
+   },
+   "expected": {
+    "jobId": "job-007",
+    "matchScore": 8,
+    "matchedSkills": [],
+    "missingSkills": [
+     "Kỹ thuật máy tính",
+     "Windows Server",
+     "Mạng cơ bản",
+     "Xử lý sự cố",
+     "Giao tiếp"
+    ],
+    "totalRequired": 5,
+    "matchedPreferred": [],
+    "missingPreferred": [
+     "Linux",
+     "Active Directory",
+     "Office 365",
+     "ITIL cơ bản",
+     "Virtualization"
+    ],
+    "requiredScore": 0,
+    "preferredScore": 0,
+    "preferenceScore": 50,
+    "locationMatch": false,
+    "workTypeMatch": true
+   }
+  },
+  {
+   "profile": {
+    "id": "cand-001",
+    "skills": [
+     "Node.js",
+     "JavaScript",
+     "SQL",
+     "REST API",
+     "Git",
+     "Docker",
+     "PostgreSQL"
+    ],
+    "preferredLocations": [
+     "Hồ Chí Minh"
+    ],
+    "preferredWorkTypes": [
+     "Thực tập"
+    ]
+   },
+   "job": {
+    "id": "job-008",
+    "requiredSkills": [
+     "Viết nội dung",
+     "Mạng xã hội",
+     "Tư duy sáng tạo",
+     "Excel",
+     "Giao tiếp"
+    ],
+    "preferredSkills": [
+     "Google Analytics",
+     "Facebook Ads",
+     "Canva",
+     "SEO cơ bản",
+     "Email Marketing"
+    ],
+    "location": "Hồ Chí Minh",
+    "workType": "Bán thời gian"
+   },
+   "expected": {
+    "jobId": "job-008",
+    "matchScore": 8,
+    "matchedSkills": [],
+    "missingSkills": [
+     "Viết nội dung",
+     "Mạng xã hội",
+     "Tư duy sáng tạo",
+     "Excel",
+     "Giao tiếp"
+    ],
+    "totalRequired": 5,
+    "matchedPreferred": [],
+    "missingPreferred": [
+     "Google Analytics",
+     "Facebook Ads",
+     "Canva",
+     "SEO cơ bản",
+     "Email Marketing"
+    ],
+    "requiredScore": 0,
+    "preferredScore": 0,
+    "preferenceScore": 50,
+    "locationMatch": true,
+    "workTypeMatch": false
+   }
+  },
+  {
+   "profile": {
+    "id": "cand-001",
+    "skills": [
+     "Node.js",
+     "JavaScript",
+     "SQL",
+     "REST API",
+     "Git",
+     "Docker",
+     "PostgreSQL"
+    ],
+    "preferredLocations": [
+     "Hồ Chí Minh"
+    ],
+    "preferredWorkTypes": [
+     "Thực tập"
+    ]
+   },
+   "job": {
+    "id": "job-009",
+    "requiredSkills": [
+     "JavaScript",
+     "React hoặc Node.js",
+     "SQL",
+     "Git",
+     "REST API",
+     "OOP"
+    ],
+    "preferredSkills": [
+     "TypeScript",
+     "Docker",
+     "CI/CD",
+     "AWS cơ bản",
+     "Agile/Scrum"
+    ],
+    "location": "Hà Nội",
+    "workType": "Toàn thời gian"
+   },
+   "expected": {
+    "jobId": "job-009",
+    "matchScore": 55,
+    "matchedSkills": [
+     "JavaScript",
+     "React hoặc Node.js",
+     "SQL",
+     "Git",
+     "REST API"
+    ],
+    "missingSkills": [
+     "OOP"
+    ],
+    "totalRequired": 6,
+    "matchedPreferred": [
+     "Docker"
+    ],
+    "missingPreferred": [
+     "TypeScript",
+     "CI/CD",
+     "AWS cơ bản",
+     "Agile/Scrum"
+    ],
+    "requiredScore": 83,
+    "preferredScore": 20,
+    "preferenceScore": 0,
+    "locationMatch": false,
+    "workTypeMatch": false
+   }
+  },
+  {
+   "profile": {
+    "id": "cand-001",
+    "skills": [
+     "Node.js",
+     "JavaScript",
+     "SQL",
+     "REST API",
+     "Git",
+     "Docker",
+     "PostgreSQL"
+    ],
+    "preferredLocations": [
+     "Hồ Chí Minh"
+    ],
+    "preferredWorkTypes": [
+     "Thực tập"
+    ]
+   },
+   "job": {
+    "id": "job-010",
+    "requiredSkills": [
+     "Phân tích nghiệp vụ",
+     "SQL",
+     "Giao tiếp",
+     "Viết tài liệu",
+     "UML",
+     "Excel"
+    ],
+    "preferredSkills": [
+     "Nghiệp vụ ngân hàng",
+     "BPMN",
+     "Jira",
+     "Agile/Scrum",
+     "Power BI"
+    ],
+    "location": "Hà Nội",
+    "workType": "Toàn thời gian"
+   },
+   "expected": {
+    "jobId": "job-010",
+    "matchScore": 10,
+    "matchedSkills": [
+     "SQL"
+    ],
+    "missingSkills": [
+     "Phân tích nghiệp vụ",
+     "Giao tiếp",
+     "Viết tài liệu",
+     "UML",
+     "Excel"
+    ],
+    "totalRequired": 6,
+    "matchedPreferred": [],
+    "missingPreferred": [
+     "Nghiệp vụ ngân hàng",
+     "BPMN",
+     "Jira",
+     "Agile/Scrum",
+     "Power BI"
+    ],
+    "requiredScore": 17,
+    "preferredScore": 0,
+    "preferenceScore": 0,
+    "locationMatch": false,
+    "workTypeMatch": false
+   }
+  },
+  {
+   "profile": {
+    "id": "cand-001",
+    "skills": [
+     "Node.js",
+     "JavaScript",
+     "SQL",
+     "REST API",
+     "Git",
+     "Docker",
+     "PostgreSQL"
+    ],
+    "preferredLocations": [
+     "Hồ Chí Minh"
+    ],
+    "preferredWorkTypes": [
+     "Thực tập"
+    ]
+   },
+   "job": {
+    "id": "job-011",
+    "requiredSkills": [
+     "React",
+     "TypeScript",
+     "HTML",
+     "CSS",
+     "Git",
+     "REST API"
+    ],
+    "preferredSkills": [
+     "React Query",
+     "Zustand",
+     "Jest",
+     "Storybook",
+     "Figma"
+    ],
+    "location": "Remote",
+    "workType": "Remote"
+   },
+   "expected": {
+    "jobId": "job-011",
+    "matchScore": 20,
+    "matchedSkills": [
+     "Git",
+     "REST API"
+    ],
+    "missingSkills": [
+     "React",
+     "TypeScript",
+     "HTML",
+     "CSS"
+    ],
+    "totalRequired": 6,
+    "matchedPreferred": [],
+    "missingPreferred": [
+     "React Query",
+     "Zustand",
+     "Jest",
+     "Storybook",
+     "Figma"
+    ],
+    "requiredScore": 33,
+    "preferredScore": 0,
+    "preferenceScore": 0,
+    "locationMatch": false,
+    "workTypeMatch": false
+   }
+  },
+  {
+   "profile": {
+    "id": "cand-001",
+    "skills": [
+     "Node.js",
+     "JavaScript",
+     "SQL",
+     "REST API",
+     "Git",
+     "Docker",
+     "PostgreSQL"
+    ],
+    "preferredLocations": [
+     "Hồ Chí Minh"
+    ],
+    "preferredWorkTypes": [
+     "Thực tập"
+    ]
+   },
+   "job": {
+    "id": "job-012",
+    "requiredSkills": [
+     "Python",
+     "SQL",
+     "ETL",
+     "Git",
+     "Linux cơ bản"
+    ],
+    "preferredSkills": [
+     "Apache Spark",
+     "Airflow",
+     "Kafka",
+     "Docker",
+     "Cloud (AWS/GCP)"
+    ],
+    "location": "Hồ Chí Minh",
+    "workType": "Thực tập"
+   },
+   "expected": {
+    "jobId": "job-012",
+    "matchScore": 44,
+    "matchedSkills": [
+     "SQL",
+     "Git"
+    ],
+    "missingSkills": [
+     "Python",
+     "ETL",
+     "Linux cơ bản"
+    ],
+    "totalRequired": 5,
+    "matchedPreferred": [
+     "Docker"
+    ],
+    "missingPreferred": [
+     "Apache Spark",
+     "Airflow",
+     "Kafka",
+     "Cloud (AWS/GCP)"
+    ],
+    "requiredScore": 40,
+    "preferredScore": 20,
+    "preferenceScore": 100,
+    "locationMatch": true,
+    "workTypeMatch": true
+   }
+  },
+  {
+   "profile": {
+    "id": "cand-002",
+    "skills": [
+     "SQL",
+     "Python",
+     "Excel",
+     "Power BI",
+     "Thống kê cơ bản",
+     "Pandas"
+    ],
+    "preferredLocations": [
+     "Hà Nội"
+    ],
+    "preferredWorkTypes": [
+     "Thực tập",
+     "Bán thời gian"
+    ]
+   },
+   "job": {
+    "id": "job-001",
+    "requiredSkills": [
+     "HTML",
+     "CSS",
+     "JavaScript",
+     "React",
+     "Git"
+    ],
+    "preferredSkills": [
+     "TypeScript",
+     "Tailwind CSS",
+     "REST API"
+    ],
+    "location": "Hà Nội",
+    "workType": "Thực tập"
+   },
+   "expected": {
+    "jobId": "job-001",
+    "matchScore": 15,
+    "matchedSkills": [],
+    "missingSkills": [
+     "HTML",
+     "CSS",
+     "JavaScript",
+     "React",
+     "Git"
+    ],
+    "totalRequired": 5,
+    "matchedPreferred": [],
+    "missingPreferred": [
+     "TypeScript",
+     "Tailwind CSS",
+     "REST API"
+    ],
+    "requiredScore": 0,
+    "preferredScore": 0,
+    "preferenceScore": 100,
+    "locationMatch": true,
+    "workTypeMatch": true
+   }
+  },
+  {
+   "profile": {
+    "id": "cand-002",
+    "skills": [
+     "SQL",
+     "Python",
+     "Excel",
+     "Power BI",
+     "Thống kê cơ bản",
+     "Pandas"
+    ],
+    "preferredLocations": [
+     "Hà Nội"
+    ],
+    "preferredWorkTypes": [
+     "Thực tập",
+     "Bán thời gian"
+    ]
+   },
+   "job": {
+    "id": "job-002",
+    "requiredSkills": [
+     "Node.js",
+     "JavaScript",
+     "SQL",
+     "REST API",
+     "Git"
+    ],
+    "preferredSkills": [
+     "TypeScript",
+     "Docker",
+     "PostgreSQL",
+     "MongoDB"
+    ],
+    "location": "Hồ Chí Minh",
+    "workType": "Thực tập"
+   },
+   "expected": {
+    "jobId": "job-002",
+    "matchScore": 20,
+    "matchedSkills": [
+     "SQL"
+    ],
+    "missingSkills": [
+     "Node.js",
+     "JavaScript",
+     "REST API",
+     "Git"
+    ],
+    "totalRequired": 5,
+    "matchedPreferred": [],
+    "missingPreferred": [
+     "TypeScript",
+     "Docker",
+     "PostgreSQL",
+     "MongoDB"
+    ],
+    "requiredScore": 20,
+    "preferredScore": 0,
+    "preferenceScore": 50,
+    "locationMatch": false,
+    "workTypeMatch": true
+   }
+  },
+  {
+   "profile": {
+    "id": "cand-002",
+    "skills": [
+     "SQL",
+     "Python",
+     "Excel",
+     "Power BI",
+     "Thống kê cơ bản",
+     "Pandas"
+    ],
+    "preferredLocations": [
+     "Hà Nội"
+    ],
+    "preferredWorkTypes": [
+     "Thực tập",
+     "Bán thời gian"
+    ]
+   },
+   "job": {
+    "id": "job-003",
+    "requiredSkills": [
+     "SQL",
+     "Python",
+     "Excel",
+     "Thống kê cơ bản",
+     "Git"
+    ],
+    "preferredSkills": [
+     "Power BI",
+     "Tableau",
+     "Pandas",
+     "Matplotlib",
+     "Machine Learning cơ bản"
+    ],
+    "location": "Hà Nội",
+    "workType": "Thực tập"
+   },
+   "expected": {
+    "jobId": "job-003",
+    "matchScore": 73,
+    "matchedSkills": [
+     "SQL",
+     "Python",
+     "Excel",
+     "Thống kê cơ bản"
+    ],
+    "missingSkills": [
+     "Git"
+    ],
+    "totalRequired": 5,
+    "matchedPreferred": [
+     "Power BI",
+     "Pandas"
+    ],
+    "missingPreferred": [
+     "Tableau",
+     "Matplotlib",
+     "Machine Learning cơ bản"
+    ],
+    "requiredScore": 80,
+    "preferredScore": 40,
+    "preferenceScore": 100,
+    "locationMatch": true,
+    "workTypeMatch": true
+   }
+  },
+  {
+   "profile": {
+    "id": "cand-002",
+    "skills": [
+     "SQL",
+     "Python",
+     "Excel",
+     "Power BI",
+     "Thống kê cơ bản",
+     "Pandas"
+    ],
+    "preferredLocations": [
+     "Hà Nội"
+    ],
+    "preferredWorkTypes": [
+     "Thực tập",
+     "Bán thời gian"
+    ]
+   },
+   "job": {
+    "id": "job-004",
+    "requiredSkills": [
+     "Phân tích nghiệp vụ",
+     "Excel",
+     "Tư duy logic",
+     "Giao tiếp",
+     "Viết tài liệu"
+    ],
+    "preferredSkills": [
+     "SQL",
+     "BPMN",
+     "Jira",
+     "Confluence",
+     "UML"
+    ],
+    "location": "Hồ Chí Minh",
+    "workType": "Thực tập"
+   },
+   "expected": {
+    "jobId": "job-004",
+    "matchScore": 25,
+    "matchedSkills": [
+     "Excel"
+    ],
+    "missingSkills": [
+     "Phân tích nghiệp vụ",
+     "Tư duy logic",
+     "Giao tiếp",
+     "Viết tài liệu"
+    ],
+    "totalRequired": 5,
+    "matchedPreferred": [
+     "SQL"
+    ],
+    "missingPreferred": [
+     "BPMN",
+     "Jira",
+     "Confluence",
+     "UML"
+    ],
+    "requiredScore": 20,
+    "preferredScore": 20,
+    "preferenceScore": 50,
+    "locationMatch": false,
+    "workTypeMatch": true
+   }
+  },
+  {
+   "profile": {
+    "id": "cand-002",
+    "skills": [
+     "SQL",
+     "Python",
+     "Excel",
+     "Power BI",
+     "Thống kê cơ bản",
+     "Pandas"
+    ],
+    "preferredLocations": [
+     "Hà Nội"
+    ],
+    "preferredWorkTypes": [
+     "Thực tập",
+     "Bán thời gian"
+    ]
+   },
+   "job": {
+    "id": "job-005",
+    "requiredSkills": [
+     "Kiểm thử phần mềm",
+     "Viết test case",
+     "Tư duy phân tích",
+     "Excel",
+     "Git"
+    ],
+    "preferredSkills": [
+     "Selenium",
+     "Playwright",
+     "Postman",
+     "Jira",
+     "SQL"
+    ],
+    "location": "Đà Nẵng",
+    "workType": "Thực tập"
+   },
+   "expected": {
+    "jobId": "job-005",
+    "matchScore": 25,
+    "matchedSkills": [
+     "Excel"
+    ],
+    "missingSkills": [
+     "Kiểm thử phần mềm",
+     "Viết test case",
+     "Tư duy phân tích",
+     "Git"
+    ],
+    "totalRequired": 5,
+    "matchedPreferred": [
+     "SQL"
+    ],
+    "missingPreferred": [
+     "Selenium",
+     "Playwright",
+     "Postman",
+     "Jira"
+    ],
+    "requiredScore": 20,
+    "preferredScore": 20,
+    "preferenceScore": 50,
+    "locationMatch": false,
+    "workTypeMatch": true
+   }
+  },
+  {
+   "profile": {
+    "id": "cand-002",
+    "skills": [
+     "SQL",
+     "Python",
+     "Excel",
+     "Power BI",
+     "Thống kê cơ bản",
+     "Pandas"
+    ],
+    "preferredLocations": [
+     "Hà Nội"
+    ],
+    "preferredWorkTypes": [
+     "Thực tập",
+     "Bán thời gian"
+    ]
+   },
+   "job": {
+    "id": "job-006",
+    "requiredSkills": [
+     "Figma",
+     "Nguyên lý UX",
+     "Thiết kế UI",
+     "Tư duy sáng tạo",
+     "Giao tiếp"
+    ],
+    "preferredSkills": [
+     "Adobe XD",
+     "Prototyping",
+     "User Research",
+     "Design System",
+     "HTML/CSS cơ bản"
+    ],
+    "location": "Hồ Chí Minh",
+    "workType": "Thực tập"
+   },
+   "expected": {
+    "jobId": "job-006",
+    "matchScore": 8,
+    "matchedSkills": [],
+    "missingSkills": [
+     "Figma",
+     "Nguyên lý UX",
+     "Thiết kế UI",
+     "Tư duy sáng tạo",
+     "Giao tiếp"
+    ],
+    "totalRequired": 5,
+    "matchedPreferred": [],
+    "missingPreferred": [
+     "Adobe XD",
+     "Prototyping",
+     "User Research",
+     "Design System",
+     "HTML/CSS cơ bản"
+    ],
+    "requiredScore": 0,
+    "preferredScore": 0,
+    "preferenceScore": 50,
+    "locationMatch": false,
+    "workTypeMatch": true
+   }
+  },
+  {
+   "profile": {
+    "id": "cand-002",
+    "skills": [
+     "SQL",
+     "Python",
+     "Excel",
+     "Power BI",
+     "Thống kê cơ bản",
+     "Pandas"
+    ],
+    "preferredLocations": [
+     "Hà Nội"
+    ],
+    "preferredWorkTypes": [
+     "Thực tập",
+     "Bán thời gian"
+    ]
+   },
+   "job": {
+    "id": "job-007",
+    "requiredSkills": [
+     "Kỹ thuật máy tính",
+     "Windows Server",
+     "Mạng cơ bản",
+     "Xử lý sự cố",
+     "Giao tiếp"
+    ],
+    "preferredSkills": [
+     "Linux",
+     "Active Directory",
+     "Office 365",
+     "ITIL cơ bản",
+     "Virtualization"
+    ],
+    "location": "Hà Nội",
+    "workType": "Thực tập"
+   },
+   "expected": {
+    "jobId": "job-007",
+    "matchScore": 15,
+    "matchedSkills": [],
+    "missingSkills": [
+     "Kỹ thuật máy tính",
+     "Windows Server",
+     "Mạng cơ bản",
+     "Xử lý sự cố",
+     "Giao tiếp"
+    ],
+    "totalRequired": 5,
+    "matchedPreferred": [],
+    "missingPreferred": [
+     "Linux",
+     "Active Directory",
+     "Office 365",
+     "ITIL cơ bản",
+     "Virtualization"
+    ],
+    "requiredScore": 0,
+    "preferredScore": 0,
+    "preferenceScore": 100,
+    "locationMatch": true,
+    "workTypeMatch": true
+   }
+  },
+  {
+   "profile": {
+    "id": "cand-002",
+    "skills": [
+     "SQL",
+     "Python",
+     "Excel",
+     "Power BI",
+     "Thống kê cơ bản",
+     "Pandas"
+    ],
+    "preferredLocations": [
+     "Hà Nội"
+    ],
+    "preferredWorkTypes": [
+     "Thực tập",
+     "Bán thời gian"
+    ]
+   },
+   "job": {
+    "id": "job-008",
+    "requiredSkills": [
+     "Viết nội dung",
+     "Mạng xã hội",
+     "Tư duy sáng tạo",
+     "Excel",
+     "Giao tiếp"
+    ],
+    "preferredSkills": [
+     "Google Analytics",
+     "Facebook Ads",
+     "Canva",
+     "SEO cơ bản",
+     "Email Marketing"
+    ],
+    "location": "Hồ Chí Minh",
+    "workType": "Bán thời gian"
+   },
+   "expected": {
+    "jobId": "job-008",
+    "matchScore": 20,
+    "matchedSkills": [
+     "Excel"
+    ],
+    "missingSkills": [
+     "Viết nội dung",
+     "Mạng xã hội",
+     "Tư duy sáng tạo",
+     "Giao tiếp"
+    ],
+    "totalRequired": 5,
+    "matchedPreferred": [],
+    "missingPreferred": [
+     "Google Analytics",
+     "Facebook Ads",
+     "Canva",
+     "SEO cơ bản",
+     "Email Marketing"
+    ],
+    "requiredScore": 20,
+    "preferredScore": 0,
+    "preferenceScore": 50,
+    "locationMatch": false,
+    "workTypeMatch": true
+   }
+  },
+  {
+   "profile": {
+    "id": "cand-002",
+    "skills": [
+     "SQL",
+     "Python",
+     "Excel",
+     "Power BI",
+     "Thống kê cơ bản",
+     "Pandas"
+    ],
+    "preferredLocations": [
+     "Hà Nội"
+    ],
+    "preferredWorkTypes": [
+     "Thực tập",
+     "Bán thời gian"
+    ]
+   },
+   "job": {
+    "id": "job-009",
+    "requiredSkills": [
+     "JavaScript",
+     "React hoặc Node.js",
+     "SQL",
+     "Git",
+     "REST API",
+     "OOP"
+    ],
+    "preferredSkills": [
+     "TypeScript",
+     "Docker",
+     "CI/CD",
+     "AWS cơ bản",
+     "Agile/Scrum"
+    ],
+    "location": "Hà Nội",
+    "workType": "Toàn thời gian"
+   },
+   "expected": {
+    "jobId": "job-009",
+    "matchScore": 18,
+    "matchedSkills": [
+     "SQL"
+    ],
+    "missingSkills": [
+     "JavaScript",
+     "React hoặc Node.js",
+     "Git",
+     "REST API",
+     "OOP"
+    ],
+    "totalRequired": 6,
+    "matchedPreferred": [],
+    "missingPreferred": [
+     "TypeScript",
+     "Docker",
+     "CI/CD",
+     "AWS cơ bản",
+     "Agile/Scrum"
+    ],
+    "requiredScore": 17,
+    "preferredScore": 0,
+    "preferenceScore": 50,
+    "locationMatch": true,
+    "workTypeMatch": false
+   }
+  },
+  {
+   "profile": {
+    "id": "cand-002",
+    "skills": [
+     "SQL",
+     "Python",
+     "Excel",
+     "Power BI",
+     "Thống kê cơ bản",
+     "Pandas"
+    ],
+    "preferredLocations": [
+     "Hà Nội"
+    ],
+    "preferredWorkTypes": [
+     "Thực tập",
+     "Bán thời gian"
+    ]
+   },
+   "job": {
+    "id": "job-010",
+    "requiredSkills": [
+     "Phân tích nghiệp vụ",
+     "SQL",
+     "Giao tiếp",
+     "Viết tài liệu",
+     "UML",
+     "Excel"
+    ],
+    "preferredSkills": [
+     "Nghiệp vụ ngân hàng",
+     "BPMN",
+     "Jira",
+     "Agile/Scrum",
+     "Power BI"
+    ],
+    "location": "Hà Nội",
+    "workType": "Toàn thời gian"
+   },
+   "expected": {
+    "jobId": "job-010",
+    "matchScore": 32,
+    "matchedSkills": [
+     "SQL",
+     "Excel"
+    ],
+    "missingSkills": [
+     "Phân tích nghiệp vụ",
+     "Giao tiếp",
+     "Viết tài liệu",
+     "UML"
+    ],
+    "totalRequired": 6,
+    "matchedPreferred": [
+     "Power BI"
+    ],
+    "missingPreferred": [
+     "Nghiệp vụ ngân hàng",
+     "BPMN",
+     "Jira",
+     "Agile/Scrum"
+    ],
+    "requiredScore": 33,
+    "preferredScore": 20,
+    "preferenceScore": 50,
+    "locationMatch": true,
+    "workTypeMatch": false
+   }
+  },
+  {
+   "profile": {
+    "id": "cand-002",
+    "skills": [
+     "SQL",
+     "Python",
+     "Excel",
+     "Power BI",
+     "Thống kê cơ bản",
+     "Pandas"
+    ],
+    "preferredLocations": [
+     "Hà Nội"
+    ],
+    "preferredWorkTypes": [
+     "Thực tập",
+     "Bán thời gian"
+    ]
+   },
+   "job": {
+    "id": "job-011",
+    "requiredSkills": [
+     "React",
+     "TypeScript",
+     "HTML",
+     "CSS",
+     "Git",
+     "REST API"
+    ],
+    "preferredSkills": [
+     "React Query",
+     "Zustand",
+     "Jest",
+     "Storybook",
+     "Figma"
+    ],
+    "location": "Remote",
+    "workType": "Remote"
+   },
+   "expected": {
+    "jobId": "job-011",
+    "matchScore": 0,
+    "matchedSkills": [],
+    "missingSkills": [
+     "React",
+     "TypeScript",
+     "HTML",
+     "CSS",
+     "Git",
+     "REST API"
+    ],
+    "totalRequired": 6,
+    "matchedPreferred": [],
+    "missingPreferred": [
+     "React Query",
+     "Zustand",
+     "Jest",
+     "Storybook",
+     "Figma"
+    ],
+    "requiredScore": 0,
+    "preferredScore": 0,
+    "preferenceScore": 0,
+    "locationMatch": false,
+    "workTypeMatch": false
+   }
+  },
+  {
+   "profile": {
+    "id": "cand-002",
+    "skills": [
+     "SQL",
+     "Python",
+     "Excel",
+     "Power BI",
+     "Thống kê cơ bản",
+     "Pandas"
+    ],
+    "preferredLocations": [
+     "Hà Nội"
+    ],
+    "preferredWorkTypes": [
+     "Thực tập",
+     "Bán thời gian"
+    ]
+   },
+   "job": {
+    "id": "job-012",
+    "requiredSkills": [
+     "Python",
+     "SQL",
+     "ETL",
+     "Git",
+     "Linux cơ bản"
+    ],
+    "preferredSkills": [
+     "Apache Spark",
+     "Airflow",
+     "Kafka",
+     "Docker",
+     "Cloud (AWS/GCP)"
+    ],
+    "location": "Hồ Chí Minh",
+    "workType": "Thực tập"
+   },
+   "expected": {
+    "jobId": "job-012",
+    "matchScore": 32,
+    "matchedSkills": [
+     "Python",
+     "SQL"
+    ],
+    "missingSkills": [
+     "ETL",
+     "Git",
+     "Linux cơ bản"
+    ],
+    "totalRequired": 5,
+    "matchedPreferred": [],
+    "missingPreferred": [
+     "Apache Spark",
+     "Airflow",
+     "Kafka",
+     "Docker",
+     "Cloud (AWS/GCP)"
+    ],
+    "requiredScore": 40,
+    "preferredScore": 0,
+    "preferenceScore": 50,
+    "locationMatch": false,
+    "workTypeMatch": true
+   }
+  },
+  {
+   "profile": {
+    "id": "cand-003",
+    "skills": [
+     "React",
+     "TypeScript",
+     "HTML",
+     "CSS",
+     "Git",
+     "REST API",
+     "Tailwind CSS",
+     "Jest"
+    ],
+    "preferredLocations": [
+     "Hà Nội",
+     "Remote"
+    ],
+    "preferredWorkTypes": [
+     "Remote",
+     "Thực tập"
+    ]
+   },
+   "job": {
+    "id": "job-001",
+    "requiredSkills": [
+     "HTML",
+     "CSS",
+     "JavaScript",
+     "React",
+     "Git"
+    ],
+    "preferredSkills": [
+     "TypeScript",
+     "Tailwind CSS",
+     "REST API"
+    ],
+    "location": "Hà Nội",
+    "workType": "Thực tập"
+   },
+   "expected": {
+    "jobId": "job-001",
+    "matchScore": 88,
+    "matchedSkills": [
+     "HTML",
+     "CSS",
+     "React",
+     "Git"
+    ],
+    "missingSkills": [
+     "JavaScript"
+    ],
+    "totalRequired": 5,
+    "matchedPreferred": [
+     "TypeScript",
+     "Tailwind CSS",
+     "REST API"
+    ],
+    "missingPreferred": [],
+    "requiredScore": 80,
+    "preferredScore": 100,
+    "preferenceScore": 100,
+    "locationMatch": true,
+    "workTypeMatch": true
+   }
+  },
+  {
+   "profile": {
+    "id": "cand-003",
+    "skills": [
+     "React",
+     "TypeScript",
+     "HTML",
+     "CSS",
+     "Git",
+     "REST API",
+     "Tailwind CSS",
+     "Jest"
+    ],
+    "preferredLocations": [
+     "Hà Nội",
+     "Remote"
+    ],
+    "preferredWorkTypes": [
+     "Remote",
+     "Thực tập"
+    ]
+   },
+   "job": {
+    "id": "job-002",
+    "requiredSkills": [
+     "Node.js",
+     "JavaScript",
+     "SQL",
+     "REST API",
+     "Git"
+    ],
+    "preferredSkills": [
+     "TypeScript",
+     "Docker",
+     "PostgreSQL",
+     "MongoDB"
+    ],
+    "location": "Hồ Chí Minh",
+    "workType": "Thực tập"
+   },
+   "expected": {
+    "jobId": "job-002",
+    "matchScore": 38,
+    "matchedSkills": [
+     "REST API",
+     "Git"
+    ],
+    "missingSkills": [
+     "Node.js",
+     "JavaScript",
+     "SQL"
+    ],
+    "totalRequired": 5,
+    "matchedPreferred": [
+     "TypeScript"
+    ],
+    "missingPreferred": [
+     "Docker",
+     "PostgreSQL",
+     "MongoDB"
+    ],
+    "requiredScore": 40,
+    "preferredScore": 25,
+    "preferenceScore": 50,
+    "locationMatch": false,
+    "workTypeMatch": true
+   }
+  },
+  {
+   "profile": {
+    "id": "cand-003",
+    "skills": [
+     "React",
+     "TypeScript",
+     "HTML",
+     "CSS",
+     "Git",
+     "REST API",
+     "Tailwind CSS",
+     "Jest"
+    ],
+    "preferredLocations": [
+     "Hà Nội",
+     "Remote"
+    ],
+    "preferredWorkTypes": [
+     "Remote",
+     "Thực tập"
+    ]
+   },
+   "job": {
+    "id": "job-003",
+    "requiredSkills": [
+     "SQL",
+     "Python",
+     "Excel",
+     "Thống kê cơ bản",
+     "Git"
+    ],
+    "preferredSkills": [
+     "Power BI",
+     "Tableau",
+     "Pandas",
+     "Matplotlib",
+     "Machine Learning cơ bản"
+    ],
+    "location": "Hà Nội",
+    "workType": "Thực tập"
+   },
+   "expected": {
+    "jobId": "job-003",
+    "matchScore": 27,
+    "matchedSkills": [
+     "Git"
+    ],
+    "missingSkills": [
+     "SQL",
+     "Python",
+     "Excel",
+     "Thống kê cơ bản"
+    ],
+    "totalRequired": 5,
+    "matchedPreferred": [],
+    "missingPreferred": [
+     "Power BI",
+     "Tableau",
+     "Pandas",
+     "Matplotlib",
+     "Machine Learning cơ bản"
+    ],
+    "requiredScore": 20,
+    "preferredScore": 0,
+    "preferenceScore": 100,
+    "locationMatch": true,
+    "workTypeMatch": true
+   }
+  },
+  {
+   "profile": {
+    "id": "cand-003",
+    "skills": [
+     "React",
+     "TypeScript",
+     "HTML",
+     "CSS",
+     "Git",
+     "REST API",
+     "Tailwind CSS",
+     "Jest"
+    ],
+    "preferredLocations": [
+     "Hà Nội",
+     "Remote"
+    ],
+    "preferredWorkTypes": [
+     "Remote",
+     "Thực tập"
+    ]
+   },
+   "job": {
+    "id": "job-004",
+    "requiredSkills": [
+     "Phân tích nghiệp vụ",
+     "Excel",
+     "Tư duy logic",
+     "Giao tiếp",
+     "Viết tài liệu"
+    ],
+    "preferredSkills": [
+     "SQL",
+     "BPMN",
+     "Jira",
+     "Confluence",
+     "UML"
+    ],
+    "location": "Hồ Chí Minh",
+    "workType": "Thực tập"
+   },
+   "expected": {
+    "jobId": "job-004",
+    "matchScore": 8,
+    "matchedSkills": [],
+    "missingSkills": [
+     "Phân tích nghiệp vụ",
+     "Excel",
+     "Tư duy logic",
+     "Giao tiếp",
+     "Viết tài liệu"
+    ],
+    "totalRequired": 5,
+    "matchedPreferred": [],
+    "missingPreferred": [
+     "SQL",
+     "BPMN",
+     "Jira",
+     "Confluence",
+     "UML"
+    ],
+    "requiredScore": 0,
+    "preferredScore": 0,
+    "preferenceScore": 50,
+    "locationMatch": false,
+    "workTypeMatch": true
+   }
+  },
+  {
+   "profile": {
+    "id": "cand-003",
+    "skills": [
+     "React",
+     "TypeScript",
+     "HTML",
+     "CSS",
+     "Git",
+     "REST API",
+     "Tailwind CSS",
+     "Jest"
+    ],
+    "preferredLocations": [
+     "Hà Nội",
+     "Remote"
+    ],
+    "preferredWorkTypes": [
+     "Remote",
+     "Thực tập"
+    ]
+   },
+   "job": {
+    "id": "job-005",
+    "requiredSkills": [
+     "Kiểm thử phần mềm",
+     "Viết test case",
+     "Tư duy phân tích",
+     "Excel",
+     "Git"
+    ],
+    "preferredSkills": [
+     "Selenium",
+     "Playwright",
+     "Postman",
+     "Jira",
+     "SQL"
+    ],
+    "location": "Đà Nẵng",
+    "workType": "Thực tập"
+   },
+   "expected": {
+    "jobId": "job-005",
+    "matchScore": 20,
+    "matchedSkills": [
+     "Git"
+    ],
+    "missingSkills": [
+     "Kiểm thử phần mềm",
+     "Viết test case",
+     "Tư duy phân tích",
+     "Excel"
+    ],
+    "totalRequired": 5,
+    "matchedPreferred": [],
+    "missingPreferred": [
+     "Selenium",
+     "Playwright",
+     "Postman",
+     "Jira",
+     "SQL"
+    ],
+    "requiredScore": 20,
+    "preferredScore": 0,
+    "preferenceScore": 50,
+    "locationMatch": false,
+    "workTypeMatch": true
+   }
+  },
+  {
+   "profile": {
+    "id": "cand-003",
+    "skills": [
+     "React",
+     "TypeScript",
+     "HTML",
+     "CSS",
+     "Git",
+     "REST API",
+     "Tailwind CSS",
+     "Jest"
+    ],
+    "preferredLocations": [
+     "Hà Nội",
+     "Remote"
+    ],
+    "preferredWorkTypes": [
+     "Remote",
+     "Thực tập"
+    ]
+   },
+   "job": {
+    "id": "job-006",
+    "requiredSkills": [
+     "Figma",
+     "Nguyên lý UX",
+     "Thiết kế UI",
+     "Tư duy sáng tạo",
+     "Giao tiếp"
+    ],
+    "preferredSkills": [
+     "Adobe XD",
+     "Prototyping",
+     "User Research",
+     "Design System",
+     "HTML/CSS cơ bản"
+    ],
+    "location": "Hồ Chí Minh",
+    "workType": "Thực tập"
+   },
+   "expected": {
+    "jobId": "job-006",
+    "matchScore": 13,
+    "matchedSkills": [],
+    "missingSkills": [
+     "Figma",
+     "Nguyên lý UX",
+     "Thiết kế UI",
+     "Tư duy sáng tạo",
+     "Giao tiếp"
+    ],
+    "totalRequired": 5,
+    "matchedPreferred": [
+     "HTML/CSS cơ bản"
+    ],
+    "missingPreferred": [
+     "Adobe XD",
+     "Prototyping",
+     "User Research",
+     "Design System"
+    ],
+    "requiredScore": 0,
+    "preferredScore": 20,
+    "preferenceScore": 50,
+    "locationMatch": false,
+    "workTypeMatch": true
+   }
+  },
+  {
+   "profile": {
+    "id": "cand-003",
+    "skills": [
+     "React",
+     "TypeScript",
+     "HTML",
+     "CSS",
+     "Git",
+     "REST API",
+     "Tailwind CSS",
+     "Jest"
+    ],
+    "preferredLocations": [
+     "Hà Nội",
+     "Remote"
+    ],
+    "preferredWorkTypes": [
+     "Remote",
+     "Thực tập"
+    ]
+   },
+   "job": {
+    "id": "job-007",
+    "requiredSkills": [
+     "Kỹ thuật máy tính",
+     "Windows Server",
+     "Mạng cơ bản",
+     "Xử lý sự cố",
+     "Giao tiếp"
+    ],
+    "preferredSkills": [
+     "Linux",
+     "Active Directory",
+     "Office 365",
+     "ITIL cơ bản",
+     "Virtualization"
+    ],
+    "location": "Hà Nội",
+    "workType": "Thực tập"
+   },
+   "expected": {
+    "jobId": "job-007",
+    "matchScore": 15,
+    "matchedSkills": [],
+    "missingSkills": [
+     "Kỹ thuật máy tính",
+     "Windows Server",
+     "Mạng cơ bản",
+     "Xử lý sự cố",
+     "Giao tiếp"
+    ],
+    "totalRequired": 5,
+    "matchedPreferred": [],
+    "missingPreferred": [
+     "Linux",
+     "Active Directory",
+     "Office 365",
+     "ITIL cơ bản",
+     "Virtualization"
+    ],
+    "requiredScore": 0,
+    "preferredScore": 0,
+    "preferenceScore": 100,
+    "locationMatch": true,
+    "workTypeMatch": true
+   }
+  },
+  {
+   "profile": {
+    "id": "cand-003",
+    "skills": [
+     "React",
+     "TypeScript",
+     "HTML",
+     "CSS",
+     "Git",
+     "REST API",
+     "Tailwind CSS",
+     "Jest"
+    ],
+    "preferredLocations": [
+     "Hà Nội",
+     "Remote"
+    ],
+    "preferredWorkTypes": [
+     "Remote",
+     "Thực tập"
+    ]
+   },
+   "job": {
+    "id": "job-008",
+    "requiredSkills": [
+     "Viết nội dung",
+     "Mạng xã hội",
+     "Tư duy sáng tạo",
+     "Excel",
+     "Giao tiếp"
+    ],
+    "preferredSkills": [
+     "Google Analytics",
+     "Facebook Ads",
+     "Canva",
+     "SEO cơ bản",
+     "Email Marketing"
+    ],
+    "location": "Hồ Chí Minh",
+    "workType": "Bán thời gian"
+   },
+   "expected": {
+    "jobId": "job-008",
+    "matchScore": 0,
+    "matchedSkills": [],
+    "missingSkills": [
+     "Viết nội dung",
+     "Mạng xã hội",
+     "Tư duy sáng tạo",
+     "Excel",
+     "Giao tiếp"
+    ],
+    "totalRequired": 5,
+    "matchedPreferred": [],
+    "missingPreferred": [
+     "Google Analytics",
+     "Facebook Ads",
+     "Canva",
+     "SEO cơ bản",
+     "Email Marketing"
+    ],
+    "requiredScore": 0,
+    "preferredScore": 0,
+    "preferenceScore": 0,
+    "locationMatch": false,
+    "workTypeMatch": false
+   }
+  },
+  {
+   "profile": {
+    "id": "cand-003",
+    "skills": [
+     "React",
+     "TypeScript",
+     "HTML",
+     "CSS",
+     "Git",
+     "REST API",
+     "Tailwind CSS",
+     "Jest"
+    ],
+    "preferredLocations": [
+     "Hà Nội",
+     "Remote"
+    ],
+    "preferredWorkTypes": [
+     "Remote",
+     "Thực tập"
+    ]
+   },
+   "job": {
+    "id": "job-009",
+    "requiredSkills": [
+     "JavaScript",
+     "React hoặc Node.js",
+     "SQL",
+     "Git",
+     "REST API",
+     "OOP"
+    ],
+    "preferredSkills": [
+     "TypeScript",
+     "Docker",
+     "CI/CD",
+     "AWS cơ bản",
+     "Agile/Scrum"
+    ],
+    "location": "Hà Nội",
+    "workType": "Toàn thời gian"
+   },
+   "expected": {
+    "jobId": "job-009",
+    "matchScore": 43,
+    "matchedSkills": [
+     "React hoặc Node.js",
+     "Git",
+     "REST API"
+    ],
+    "missingSkills": [
+     "JavaScript",
+     "SQL",
+     "OOP"
+    ],
+    "totalRequired": 6,
+    "matchedPreferred": [
+     "TypeScript"
+    ],
+    "missingPreferred": [
+     "Docker",
+     "CI/CD",
+     "AWS cơ bản",
+     "Agile/Scrum"
+    ],
+    "requiredScore": 50,
+    "preferredScore": 20,
+    "preferenceScore": 50,
+    "locationMatch": true,
+    "workTypeMatch": false
+   }
+  },
+  {
+   "profile": {
+    "id": "cand-003",
+    "skills": [
+     "React",
+     "TypeScript",
+     "HTML",
+     "CSS",
+     "Git",
+     "REST API",
+     "Tailwind CSS",
+     "Jest"
+    ],
+    "preferredLocations": [
+     "Hà Nội",
+     "Remote"
+    ],
+    "preferredWorkTypes": [
+     "Remote",
+     "Thực tập"
+    ]
+   },
+   "job": {
+    "id": "job-010",
+    "requiredSkills": [
+     "Phân tích nghiệp vụ",
+     "SQL",
+     "Giao tiếp",
+     "Viết tài liệu",
+     "UML",
+     "Excel"
+    ],
+    "preferredSkills": [
+     "Nghiệp vụ ngân hàng",
+     "BPMN",
+     "Jira",
+     "Agile/Scrum",
+     "Power BI"
+    ],
+    "location": "Hà Nội",
+    "workType": "Toàn thời gian"
+   },
+   "expected": {
+    "jobId": "job-010",
+    "matchScore": 8,
+    "matchedSkills": [],
+    "missingSkills": [
+     "Phân tích nghiệp vụ",
+     "SQL",
+     "Giao tiếp",
+     "Viết tài liệu",
+     "UML",
+     "Excel"
+    ],
+    "totalRequired": 6,
+    "matchedPreferred": [],
+    "missingPreferred": [
+     "Nghiệp vụ ngân hàng",
+     "BPMN",
+     "Jira",
+     "Agile/Scrum",
+     "Power BI"
+    ],
+    "requiredScore": 0,
+    "preferredScore": 0,
+    "preferenceScore": 50,
+    "locationMatch": true,
+    "workTypeMatch": false
+   }
+  },
+  {
+   "profile": {
+    "id": "cand-003",
+    "skills": [
+     "React",
+     "TypeScript",
+     "HTML",
+     "CSS",
+     "Git",
+     "REST API",
+     "Tailwind CSS",
+     "Jest"
+    ],
+    "preferredLocations": [
+     "Hà Nội",
+     "Remote"
+    ],
+    "preferredWorkTypes": [
+     "Remote",
+     "Thực tập"
+    ]
+   },
+   "job": {
+    "id": "job-011",
+    "requiredSkills": [
+     "React",
+     "TypeScript",
+     "HTML",
+     "CSS",
+     "Git",
+     "REST API"
+    ],
+    "preferredSkills": [
+     "React Query",
+     "Zustand",
+     "Jest",
+     "Storybook",
+     "Figma"
+    ],
+    "location": "Remote",
+    "workType": "Remote"
+   },
+   "expected": {
+    "jobId": "job-011",
+    "matchScore": 80,
+    "matchedSkills": [
+     "React",
+     "TypeScript",
+     "HTML",
+     "CSS",
+     "Git",
+     "REST API"
+    ],
+    "missingSkills": [],
+    "totalRequired": 6,
+    "matchedPreferred": [
+     "Jest"
+    ],
+    "missingPreferred": [
+     "React Query",
+     "Zustand",
+     "Storybook",
+     "Figma"
+    ],
+    "requiredScore": 100,
+    "preferredScore": 20,
+    "preferenceScore": 100,
+    "locationMatch": true,
+    "workTypeMatch": true
+   }
+  },
+  {
+   "profile": {
+    "id": "cand-003",
+    "skills": [
+     "React",
+     "TypeScript",
+     "HTML",
+     "CSS",
+     "Git",
+     "REST API",
+     "Tailwind CSS",
+     "Jest"
+    ],
+    "preferredLocations": [
+     "Hà Nội",
+     "Remote"
+    ],
+    "preferredWorkTypes": [
+     "Remote",
+     "Thực tập"
+    ]
+   },
+   "job": {
+    "id": "job-012",
+    "requiredSkills": [
+     "Python",
+     "SQL",
+     "ETL",
+     "Git",
+     "Linux cơ bản"
+    ],
+    "preferredSkills": [
+     "Apache Spark",
+     "Airflow",
+     "Kafka",
+     "Docker",
+     "Cloud (AWS/GCP)"
+    ],
+    "location": "Hồ Chí Minh",
+    "workType": "Thực tập"
+   },
+   "expected": {
+    "jobId": "job-012",
+    "matchScore": 20,
+    "matchedSkills": [
+     "Git"
+    ],
+    "missingSkills": [
+     "Python",
+     "SQL",
+     "ETL",
+     "Linux cơ bản"
+    ],
+    "totalRequired": 5,
+    "matchedPreferred": [],
+    "missingPreferred": [
+     "Apache Spark",
+     "Airflow",
+     "Kafka",
+     "Docker",
+     "Cloud (AWS/GCP)"
+    ],
+    "requiredScore": 20,
+    "preferredScore": 0,
+    "preferenceScore": 50,
+    "locationMatch": false,
+    "workTypeMatch": true
+   }
+  },
+  {
+   "profile": {
+    "id": "cand-004",
+    "skills": [
+     "Phân tích nghiệp vụ",
+     "Excel",
+     "Giao tiếp",
+     "Viết tài liệu",
+     "UML",
+     "SQL",
+     "BPMN"
+    ],
+    "preferredLocations": [
+     "Hà Nội"
+    ],
+    "preferredWorkTypes": [
+     "Toàn thời gian",
+     "Thực tập"
+    ]
+   },
+   "job": {
+    "id": "job-001",
+    "requiredSkills": [
+     "HTML",
+     "CSS",
+     "JavaScript",
+     "React",
+     "Git"
+    ],
+    "preferredSkills": [
+     "TypeScript",
+     "Tailwind CSS",
+     "REST API"
+    ],
+    "location": "Hà Nội",
+    "workType": "Thực tập"
+   },
+   "expected": {
+    "jobId": "job-001",
+    "matchScore": 15,
+    "matchedSkills": [],
+    "missingSkills": [
+     "HTML",
+     "CSS",
+     "JavaScript",
+     "React",
+     "Git"
+    ],
+    "totalRequired": 5,
+    "matchedPreferred": [],
+    "missingPreferred": [
+     "TypeScript",
+     "Tailwind CSS",
+     "REST API"
+    ],
+    "requiredScore": 0,
+    "preferredScore": 0,
+    "preferenceScore": 100,
+    "locationMatch": true,
+    "workTypeMatch": true
+   }
+  },
+  {
+   "profile": {
+    "id": "cand-004",
+    "skills": [
+     "Phân tích nghiệp vụ",
+     "Excel",
+     "Giao tiếp",
+     "Viết tài liệu",
+     "UML",
+     "SQL",
+     "BPMN"
+    ],
+    "preferredLocations": [
+     "Hà Nội"
+    ],
+    "preferredWorkTypes": [
+     "Toàn thời gian",
+     "Thực tập"
+    ]
+   },
+   "job": {
+    "id": "job-002",
+    "requiredSkills": [
+     "Node.js",
+     "JavaScript",
+     "SQL",
+     "REST API",
+     "Git"
+    ],
+    "preferredSkills": [
+     "TypeScript",
+     "Docker",
+     "PostgreSQL",
+     "MongoDB"
+    ],
+    "location": "Hồ Chí Minh",
+    "workType": "Thực tập"
+   },
+   "expected": {
+    "jobId": "job-002",
+    "matchScore": 20,
+    "matchedSkills": [
+     "SQL"
+    ],
+    "missingSkills": [
+     "Node.js",
+     "JavaScript",
+     "REST API",
+     "Git"
+    ],
+    "totalRequired": 5,
+    "matchedPreferred": [],
+    "missingPreferred": [
+     "TypeScript",
+     "Docker",
+     "PostgreSQL",
+     "MongoDB"
+    ],
+    "requiredScore": 20,
+    "preferredScore": 0,
+    "preferenceScore": 50,
+    "locationMatch": false,
+    "workTypeMatch": true
+   }
+  },
+  {
+   "profile": {
+    "id": "cand-004",
+    "skills": [
+     "Phân tích nghiệp vụ",
+     "Excel",
+     "Giao tiếp",
+     "Viết tài liệu",
+     "UML",
+     "SQL",
+     "BPMN"
+    ],
+    "preferredLocations": [
+     "Hà Nội"
+    ],
+    "preferredWorkTypes": [
+     "Toàn thời gian",
+     "Thực tập"
+    ]
+   },
+   "job": {
+    "id": "job-003",
+    "requiredSkills": [
+     "SQL",
+     "Python",
+     "Excel",
+     "Thống kê cơ bản",
+     "Git"
+    ],
+    "preferredSkills": [
+     "Power BI",
+     "Tableau",
+     "Pandas",
+     "Matplotlib",
+     "Machine Learning cơ bản"
+    ],
+    "location": "Hà Nội",
+    "workType": "Thực tập"
+   },
+   "expected": {
+    "jobId": "job-003",
+    "matchScore": 39,
+    "matchedSkills": [
+     "SQL",
+     "Excel"
+    ],
+    "missingSkills": [
+     "Python",
+     "Thống kê cơ bản",
+     "Git"
+    ],
+    "totalRequired": 5,
+    "matchedPreferred": [],
+    "missingPreferred": [
+     "Power BI",
+     "Tableau",
+     "Pandas",
+     "Matplotlib",
+     "Machine Learning cơ bản"
+    ],
+    "requiredScore": 40,
+    "preferredScore": 0,
+    "preferenceScore": 100,
+    "locationMatch": true,
+    "workTypeMatch": true
+   }
+  },
+  {
+   "profile": {
+    "id": "cand-004",
+    "skills": [
+     "Phân tích nghiệp vụ",
+     "Excel",
+     "Giao tiếp",
+     "Viết tài liệu",
+     "UML",
+     "SQL",
+     "BPMN"
+    ],
+    "preferredLocations": [
+     "Hà Nội"
+    ],
+    "preferredWorkTypes": [
+     "Toàn thời gian",
+     "Thực tập"
+    ]
+   },
+   "job": {
+    "id": "job-004",
+    "requiredSkills": [
+     "Phân tích nghiệp vụ",
+     "Excel",
+     "Tư duy logic",
+     "Giao tiếp",
+     "Viết tài liệu"
+    ],
+    "preferredSkills": [
+     "SQL",
+     "BPMN",
+     "Jira",
+     "Confluence",
+     "UML"
+    ],
+    "location": "Hồ Chí Minh",
+    "workType": "Thực tập"
+   },
+   "expected": {
+    "jobId": "job-004",
+    "matchScore": 71,
+    "matchedSkills": [
+     "Phân tích nghiệp vụ",
+     "Excel",
+     "Giao tiếp",
+     "Viết tài liệu"
+    ],
+    "missingSkills": [
+     "Tư duy logic"
+    ],
+    "totalRequired": 5,
+    "matchedPreferred": [
+     "SQL",
+     "BPMN",
+     "UML"
+    ],
+    "missingPreferred": [
+     "Jira",
+     "Confluence"
+    ],
+    "requiredScore": 80,
+    "preferredScore": 60,
+    "preferenceScore": 50,
+    "locationMatch": false,
+    "workTypeMatch": true
+   }
+  },
+  {
+   "profile": {
+    "id": "cand-004",
+    "skills": [
+     "Phân tích nghiệp vụ",
+     "Excel",
+     "Giao tiếp",
+     "Viết tài liệu",
+     "UML",
+     "SQL",
+     "BPMN"
+    ],
+    "preferredLocations": [
+     "Hà Nội"
+    ],
+    "preferredWorkTypes": [
+     "Toàn thời gian",
+     "Thực tập"
+    ]
+   },
+   "job": {
+    "id": "job-005",
+    "requiredSkills": [
+     "Kiểm thử phần mềm",
+     "Viết test case",
+     "Tư duy phân tích",
+     "Excel",
+     "Git"
+    ],
+    "preferredSkills": [
+     "Selenium",
+     "Playwright",
+     "Postman",
+     "Jira",
+     "SQL"
+    ],
+    "location": "Đà Nẵng",
+    "workType": "Thực tập"
+   },
+   "expected": {
+    "jobId": "job-005",
+    "matchScore": 25,
+    "matchedSkills": [
+     "Excel"
+    ],
+    "missingSkills": [
+     "Kiểm thử phần mềm",
+     "Viết test case",
+     "Tư duy phân tích",
+     "Git"
+    ],
+    "totalRequired": 5,
+    "matchedPreferred": [
+     "SQL"
+    ],
+    "missingPreferred": [
+     "Selenium",
+     "Playwright",
+     "Postman",
+     "Jira"
+    ],
+    "requiredScore": 20,
+    "preferredScore": 20,
+    "preferenceScore": 50,
+    "locationMatch": false,
+    "workTypeMatch": true
+   }
+  },
+  {
+   "profile": {
+    "id": "cand-004",
+    "skills": [
+     "Phân tích nghiệp vụ",
+     "Excel",
+     "Giao tiếp",
+     "Viết tài liệu",
+     "UML",
+     "SQL",
+     "BPMN"
+    ],
+    "preferredLocations": [
+     "Hà Nội"
+    ],
+    "preferredWorkTypes": [
+     "Toàn thời gian",
+     "Thực tập"
+    ]
+   },
+   "job": {
+    "id": "job-006",
+    "requiredSkills": [
+     "Figma",
+     "Nguyên lý UX",
+     "Thiết kế UI",
+     "Tư duy sáng tạo",
+     "Giao tiếp"
+    ],
+    "preferredSkills": [
+     "Adobe XD",
+     "Prototyping",
+     "User Research",
+     "Design System",
+     "HTML/CSS cơ bản"
+    ],
+    "location": "Hồ Chí Minh",
+    "workType": "Thực tập"
+   },
+   "expected": {
+    "jobId": "job-006",
+    "matchScore": 20,
+    "matchedSkills": [
+     "Giao tiếp"
+    ],
+    "missingSkills": [
+     "Figma",
+     "Nguyên lý UX",
+     "Thiết kế UI",
+     "Tư duy sáng tạo"
+    ],
+    "totalRequired": 5,
+    "matchedPreferred": [],
+    "missingPreferred": [
+     "Adobe XD",
+     "Prototyping",
+     "User Research",
+     "Design System",
+     "HTML/CSS cơ bản"
+    ],
+    "requiredScore": 20,
+    "preferredScore": 0,
+    "preferenceScore": 50,
+    "locationMatch": false,
+    "workTypeMatch": true
+   }
+  },
+  {
+   "profile": {
+    "id": "cand-004",
+    "skills": [
+     "Phân tích nghiệp vụ",
+     "Excel",
+     "Giao tiếp",
+     "Viết tài liệu",
+     "UML",
+     "SQL",
+     "BPMN"
+    ],
+    "preferredLocations": [
+     "Hà Nội"
+    ],
+    "preferredWorkTypes": [
+     "Toàn thời gian",
+     "Thực tập"
+    ]
+   },
+   "job": {
+    "id": "job-007",
+    "requiredSkills": [
+     "Kỹ thuật máy tính",
+     "Windows Server",
+     "Mạng cơ bản",
+     "Xử lý sự cố",
+     "Giao tiếp"
+    ],
+    "preferredSkills": [
+     "Linux",
+     "Active Directory",
+     "Office 365",
+     "ITIL cơ bản",
+     "Virtualization"
+    ],
+    "location": "Hà Nội",
+    "workType": "Thực tập"
+   },
+   "expected": {
+    "jobId": "job-007",
+    "matchScore": 27,
+    "matchedSkills": [
+     "Giao tiếp"
+    ],
+    "missingSkills": [
+     "Kỹ thuật máy tính",
+     "Windows Server",
+     "Mạng cơ bản",
+     "Xử lý sự cố"
+    ],
+    "totalRequired": 5,
+    "matchedPreferred": [],
+    "missingPreferred": [
+     "Linux",
+     "Active Directory",
+     "Office 365",
+     "ITIL cơ bản",
+     "Virtualization"
+    ],
+    "requiredScore": 20,
+    "preferredScore": 0,
+    "preferenceScore": 100,
+    "locationMatch": true,
+    "workTypeMatch": true
+   }
+  },
+  {
+   "profile": {
+    "id": "cand-004",
+    "skills": [
+     "Phân tích nghiệp vụ",
+     "Excel",
+     "Giao tiếp",
+     "Viết tài liệu",
+     "UML",
+     "SQL",
+     "BPMN"
+    ],
+    "preferredLocations": [
+     "Hà Nội"
+    ],
+    "preferredWorkTypes": [
+     "Toàn thời gian",
+     "Thực tập"
+    ]
+   },
+   "job": {
+    "id": "job-008",
+    "requiredSkills": [
+     "Viết nội dung",
+     "Mạng xã hội",
+     "Tư duy sáng tạo",
+     "Excel",
+     "Giao tiếp"
+    ],
+    "preferredSkills": [
+     "Google Analytics",
+     "Facebook Ads",
+     "Canva",
+     "SEO cơ bản",
+     "Email Marketing"
+    ],
+    "location": "Hồ Chí Minh",
+    "workType": "Bán thời gian"
+   },
+   "expected": {
+    "jobId": "job-008",
+    "matchScore": 24,
+    "matchedSkills": [
+     "Excel",
+     "Giao tiếp"
+    ],
+    "missingSkills": [
+     "Viết nội dung",
+     "Mạng xã hội",
+     "Tư duy sáng tạo"
+    ],
+    "totalRequired": 5,
+    "matchedPreferred": [],
+    "missingPreferred": [
+     "Google Analytics",
+     "Facebook Ads",
+     "Canva",
+     "SEO cơ bản",
+     "Email Marketing"
+    ],
+    "requiredScore": 40,
+    "preferredScore": 0,
+    "preferenceScore": 0,
+    "locationMatch": false,
+    "workTypeMatch": false
+   }
+  },
+  {
+   "profile": {
+    "id": "cand-004",
+    "skills": [
+     "Phân tích nghiệp vụ",
+     "Excel",
+     "Giao tiếp",
+     "Viết tài liệu",
+     "UML",
+     "SQL",
+     "BPMN"
+    ],
+    "preferredLocations": [
+     "Hà Nội"
+    ],
+    "preferredWorkTypes": [
+     "Toàn thời gian",
+     "Thực tập"
+    ]
+   },
+   "job": {
+    "id": "job-009",
+    "requiredSkills": [
+     "JavaScript",
+     "React hoặc Node.js",
+     "SQL",
+     "Git",
+     "REST API",
+     "OOP"
+    ],
+    "preferredSkills": [
+     "TypeScript",
+     "Docker",
+     "CI/CD",
+     "AWS cơ bản",
+     "Agile/Scrum"
+    ],
+    "location": "Hà Nội",
+    "workType": "Toàn thời gian"
+   },
+   "expected": {
+    "jobId": "job-009",
+    "matchScore": 25,
+    "matchedSkills": [
+     "SQL"
+    ],
+    "missingSkills": [
+     "JavaScript",
+     "React hoặc Node.js",
+     "Git",
+     "REST API",
+     "OOP"
+    ],
+    "totalRequired": 6,
+    "matchedPreferred": [],
+    "missingPreferred": [
+     "TypeScript",
+     "Docker",
+     "CI/CD",
+     "AWS cơ bản",
+     "Agile/Scrum"
+    ],
+    "requiredScore": 17,
+    "preferredScore": 0,
+    "preferenceScore": 100,
+    "locationMatch": true,
+    "workTypeMatch": true
+   }
+  },
+  {
+   "profile": {
+    "id": "cand-004",
+    "skills": [
+     "Phân tích nghiệp vụ",
+     "Excel",
+     "Giao tiếp",
+     "Viết tài liệu",
+     "UML",
+     "SQL",
+     "BPMN"
+    ],
+    "preferredLocations": [
+     "Hà Nội"
+    ],
+    "preferredWorkTypes": [
+     "Toàn thời gian",
+     "Thực tập"
+    ]
+   },
+   "job": {
+    "id": "job-010",
+    "requiredSkills": [
+     "Phân tích nghiệp vụ",
+     "SQL",
+     "Giao tiếp",
+     "Viết tài liệu",
+     "UML",
+     "Excel"
+    ],
+    "preferredSkills": [
+     "Nghiệp vụ ngân hàng",
+     "BPMN",
+     "Jira",
+     "Agile/Scrum",
+     "Power BI"
+    ],
+    "location": "Hà Nội",
+    "workType": "Toàn thời gian"
+   },
+   "expected": {
+    "jobId": "job-010",
+    "matchScore": 80,
+    "matchedSkills": [
+     "Phân tích nghiệp vụ",
+     "SQL",
+     "Giao tiếp",
+     "Viết tài liệu",
+     "UML",
+     "Excel"
+    ],
+    "missingSkills": [],
+    "totalRequired": 6,
+    "matchedPreferred": [
+     "BPMN"
+    ],
+    "missingPreferred": [
+     "Nghiệp vụ ngân hàng",
+     "Jira",
+     "Agile/Scrum",
+     "Power BI"
+    ],
+    "requiredScore": 100,
+    "preferredScore": 20,
+    "preferenceScore": 100,
+    "locationMatch": true,
+    "workTypeMatch": true
+   }
+  },
+  {
+   "profile": {
+    "id": "cand-004",
+    "skills": [
+     "Phân tích nghiệp vụ",
+     "Excel",
+     "Giao tiếp",
+     "Viết tài liệu",
+     "UML",
+     "SQL",
+     "BPMN"
+    ],
+    "preferredLocations": [
+     "Hà Nội"
+    ],
+    "preferredWorkTypes": [
+     "Toàn thời gian",
+     "Thực tập"
+    ]
+   },
+   "job": {
+    "id": "job-011",
+    "requiredSkills": [
+     "React",
+     "TypeScript",
+     "HTML",
+     "CSS",
+     "Git",
+     "REST API"
+    ],
+    "preferredSkills": [
+     "React Query",
+     "Zustand",
+     "Jest",
+     "Storybook",
+     "Figma"
+    ],
+    "location": "Remote",
+    "workType": "Remote"
+   },
+   "expected": {
+    "jobId": "job-011",
+    "matchScore": 0,
+    "matchedSkills": [],
+    "missingSkills": [
+     "React",
+     "TypeScript",
+     "HTML",
+     "CSS",
+     "Git",
+     "REST API"
+    ],
+    "totalRequired": 6,
+    "matchedPreferred": [],
+    "missingPreferred": [
+     "React Query",
+     "Zustand",
+     "Jest",
+     "Storybook",
+     "Figma"
+    ],
+    "requiredScore": 0,
+    "preferredScore": 0,
+    "preferenceScore": 0,
+    "locationMatch": false,
+    "workTypeMatch": false
+   }
+  },
+  {
+   "profile": {
+    "id": "cand-004",
+    "skills": [
+     "Phân tích nghiệp vụ",
+     "Excel",
+     "Giao tiếp",
+     "Viết tài liệu",
+     "UML",
+     "SQL",
+     "BPMN"
+    ],
+    "preferredLocations": [
+     "Hà Nội"
+    ],
+    "preferredWorkTypes": [
+     "Toàn thời gian",
+     "Thực tập"
+    ]
+   },
+   "job": {
+    "id": "job-012",
+    "requiredSkills": [
+     "Python",
+     "SQL",
+     "ETL",
+     "Git",
+     "Linux cơ bản"
+    ],
+    "preferredSkills": [
+     "Apache Spark",
+     "Airflow",
+     "Kafka",
+     "Docker",
+     "Cloud (AWS/GCP)"
+    ],
+    "location": "Hồ Chí Minh",
+    "workType": "Thực tập"
+   },
+   "expected": {
+    "jobId": "job-012",
+    "matchScore": 20,
+    "matchedSkills": [
+     "SQL"
+    ],
+    "missingSkills": [
+     "Python",
+     "ETL",
+     "Git",
+     "Linux cơ bản"
+    ],
+    "totalRequired": 5,
+    "matchedPreferred": [],
+    "missingPreferred": [
+     "Apache Spark",
+     "Airflow",
+     "Kafka",
+     "Docker",
+     "Cloud (AWS/GCP)"
+    ],
+    "requiredScore": 20,
+    "preferredScore": 0,
+    "preferenceScore": 50,
+    "locationMatch": false,
+    "workTypeMatch": true
+   }
+  },
+  {
+   "profile": {
+    "id": "cand-005",
+    "skills": [
+     "Kiểm thử phần mềm",
+     "Viết test case",
+     "Excel",
+     "Git",
+     "Tư duy phân tích",
+     "Postman"
+    ],
+    "preferredLocations": [
+     "Đà Nẵng"
+    ],
+    "preferredWorkTypes": [
+     "Thực tập"
+    ]
+   },
+   "job": {
+    "id": "job-001",
+    "requiredSkills": [
+     "HTML",
+     "CSS",
+     "JavaScript",
+     "React",
+     "Git"
+    ],
+    "preferredSkills": [
+     "TypeScript",
+     "Tailwind CSS",
+     "REST API"
+    ],
+    "location": "Hà Nội",
+    "workType": "Thực tập"
+   },
+   "expected": {
+    "jobId": "job-001",
+    "matchScore": 20,
+    "matchedSkills": [
+     "Git"
+    ],
+    "missingSkills": [
+     "HTML",
+     "CSS",
+     "JavaScript",
+     "React"
+    ],
+    "totalRequired": 5,
+    "matchedPreferred": [],
+    "missingPreferred": [
+     "TypeScript",
+     "Tailwind CSS",
+     "REST API"
+    ],
+    "requiredScore": 20,
+    "preferredScore": 0,
+    "preferenceScore": 50,
+    "locationMatch": false,
+    "workTypeMatch": true
+   }
+  },
+  {
+   "profile": {
+    "id": "cand-005",
+    "skills": [
+     "Kiểm thử phần mềm",
+     "Viết test case",
+     "Excel",
+     "Git",
+     "Tư duy phân tích",
+     "Postman"
+    ],
+    "preferredLocations": [
+     "Đà Nẵng"
+    ],
+    "preferredWorkTypes": [
+     "Thực tập"
+    ]
+   },
+   "job": {
+    "id": "job-002",
+    "requiredSkills": [
+     "Node.js",
+     "JavaScript",
+     "SQL",
+     "REST API",
+     "Git"
+    ],
+    "preferredSkills": [
+     "TypeScript",
+     "Docker",
+     "PostgreSQL",
+     "MongoDB"
+    ],
+    "location": "Hồ Chí Minh",
+    "workType": "Thực tập"
+   },
+   "expected": {
+    "jobId": "job-002",
+    "matchScore": 20,
+    "matchedSkills": [
+     "Git"
+    ],
+    "missingSkills": [
+     "Node.js",
+     "JavaScript",
+     "SQL",
+     "REST API"
+    ],
+    "totalRequired": 5,
+    "matchedPreferred": [],
+    "missingPreferred": [
+     "TypeScript",
+     "Docker",
+     "PostgreSQL",
+     "MongoDB"
+    ],
+    "requiredScore": 20,
+    "preferredScore": 0,
+    "preferenceScore": 50,
+    "locationMatch": false,
+    "workTypeMatch": true
+   }
+  },
+  {
+   "profile": {
+    "id": "cand-005",
+    "skills": [
+     "Kiểm thử phần mềm",
+     "Viết test case",
+     "Excel",
+     "Git",
+     "Tư duy phân tích",
+     "Postman"
+    ],
+    "preferredLocations": [
+     "Đà Nẵng"
+    ],
+    "preferredWorkTypes": [
+     "Thực tập"
+    ]
+   },
+   "job": {
+    "id": "job-003",
+    "requiredSkills": [
+     "SQL",
+     "Python",
+     "Excel",
+     "Thống kê cơ bản",
+     "Git"
+    ],
+    "preferredSkills": [
+     "Power BI",
+     "Tableau",
+     "Pandas",
+     "Matplotlib",
+     "Machine Learning cơ bản"
+    ],
+    "location": "Hà Nội",
+    "workType": "Thực tập"
+   },
+   "expected": {
+    "jobId": "job-003",
+    "matchScore": 32,
+    "matchedSkills": [
+     "Excel",
+     "Git"
+    ],
+    "missingSkills": [
+     "SQL",
+     "Python",
+     "Thống kê cơ bản"
+    ],
+    "totalRequired": 5,
+    "matchedPreferred": [],
+    "missingPreferred": [
+     "Power BI",
+     "Tableau",
+     "Pandas",
+     "Matplotlib",
+     "Machine Learning cơ bản"
+    ],
+    "requiredScore": 40,
+    "preferredScore": 0,
+    "preferenceScore": 50,
+    "locationMatch": false,
+    "workTypeMatch": true
+   }
+  },
+  {
+   "profile": {
+    "id": "cand-005",
+    "skills": [
+     "Kiểm thử phần mềm",
+     "Viết test case",
+     "Excel",
+     "Git",
+     "Tư duy phân tích",
+     "Postman"
+    ],
+    "preferredLocations": [
+     "Đà Nẵng"
+    ],
+    "preferredWorkTypes": [
+     "Thực tập"
+    ]
+   },
+   "job": {
+    "id": "job-004",
+    "requiredSkills": [
+     "Phân tích nghiệp vụ",
+     "Excel",
+     "Tư duy logic",
+     "Giao tiếp",
+     "Viết tài liệu"
+    ],
+    "preferredSkills": [
+     "SQL",
+     "BPMN",
+     "Jira",
+     "Confluence",
+     "UML"
+    ],
+    "location": "Hồ Chí Minh",
+    "workType": "Thực tập"
+   },
+   "expected": {
+    "jobId": "job-004",
+    "matchScore": 20,
+    "matchedSkills": [
+     "Excel"
+    ],
+    "missingSkills": [
+     "Phân tích nghiệp vụ",
+     "Tư duy logic",
+     "Giao tiếp",
+     "Viết tài liệu"
+    ],
+    "totalRequired": 5,
+    "matchedPreferred": [],
+    "missingPreferred": [
+     "SQL",
+     "BPMN",
+     "Jira",
+     "Confluence",
+     "UML"
+    ],
+    "requiredScore": 20,
+    "preferredScore": 0,
+    "preferenceScore": 50,
+    "locationMatch": false,
+    "workTypeMatch": true
+   }
+  },
+  {
+   "profile": {
+    "id": "cand-005",
+    "skills": [
+     "Kiểm thử phần mềm",
+     "Viết test case",
+     "Excel",
+     "Git",
+     "Tư duy phân tích",
+     "Postman"
+    ],
+    "preferredLocations": [
+     "Đà Nẵng"
+    ],
+    "preferredWorkTypes": [
+     "Thực tập"
+    ]
+   },
+   "job": {
+    "id": "job-005",
+    "requiredSkills": [
+     "Kiểm thử phần mềm",
+     "Viết test case",
+     "Tư duy phân tích",
+     "Excel",
+     "Git"
+    ],
+    "preferredSkills": [
+     "Selenium",
+     "Playwright",
+     "Postman",
+     "Jira",
+     "SQL"
+    ],
+    "location": "Đà Nẵng",
+    "workType": "Thực tập"
+   },
+   "expected": {
+    "jobId": "job-005",
+    "matchScore": 80,
+    "matchedSkills": [
+     "Kiểm thử phần mềm",
+     "Viết test case",
+     "Tư duy phân tích",
+     "Excel",
+     "Git"
+    ],
+    "missingSkills": [],
+    "totalRequired": 5,
+    "matchedPreferred": [
+     "Postman"
+    ],
+    "missingPreferred": [
+     "Selenium",
+     "Playwright",
+     "Jira",
+     "SQL"
+    ],
+    "requiredScore": 100,
+    "preferredScore": 20,
+    "preferenceScore": 100,
+    "locationMatch": true,
+    "workTypeMatch": true
+   }
+  },
+  {
+   "profile": {
+    "id": "cand-005",
+    "skills": [
+     "Kiểm thử phần mềm",
+     "Viết test case",
+     "Excel",
+     "Git",
+     "Tư duy phân tích",
+     "Postman"
+    ],
+    "preferredLocations": [
+     "Đà Nẵng"
+    ],
+    "preferredWorkTypes": [
+     "Thực tập"
+    ]
+   },
+   "job": {
+    "id": "job-006",
+    "requiredSkills": [
+     "Figma",
+     "Nguyên lý UX",
+     "Thiết kế UI",
+     "Tư duy sáng tạo",
+     "Giao tiếp"
+    ],
+    "preferredSkills": [
+     "Adobe XD",
+     "Prototyping",
+     "User Research",
+     "Design System",
+     "HTML/CSS cơ bản"
+    ],
+    "location": "Hồ Chí Minh",
+    "workType": "Thực tập"
+   },
+   "expected": {
+    "jobId": "job-006",
+    "matchScore": 8,
+    "matchedSkills": [],
+    "missingSkills": [
+     "Figma",
+     "Nguyên lý UX",
+     "Thiết kế UI",
+     "Tư duy sáng tạo",
+     "Giao tiếp"
+    ],
+    "totalRequired": 5,
+    "matchedPreferred": [],
+    "missingPreferred": [
+     "Adobe XD",
+     "Prototyping",
+     "User Research",
+     "Design System",
+     "HTML/CSS cơ bản"
+    ],
+    "requiredScore": 0,
+    "preferredScore": 0,
+    "preferenceScore": 50,
+    "locationMatch": false,
+    "workTypeMatch": true
+   }
+  },
+  {
+   "profile": {
+    "id": "cand-005",
+    "skills": [
+     "Kiểm thử phần mềm",
+     "Viết test case",
+     "Excel",
+     "Git",
+     "Tư duy phân tích",
+     "Postman"
+    ],
+    "preferredLocations": [
+     "Đà Nẵng"
+    ],
+    "preferredWorkTypes": [
+     "Thực tập"
+    ]
+   },
+   "job": {
+    "id": "job-007",
+    "requiredSkills": [
+     "Kỹ thuật máy tính",
+     "Windows Server",
+     "Mạng cơ bản",
+     "Xử lý sự cố",
+     "Giao tiếp"
+    ],
+    "preferredSkills": [
+     "Linux",
+     "Active Directory",
+     "Office 365",
+     "ITIL cơ bản",
+     "Virtualization"
+    ],
+    "location": "Hà Nội",
+    "workType": "Thực tập"
+   },
+   "expected": {
+    "jobId": "job-007",
+    "matchScore": 8,
+    "matchedSkills": [],
+    "missingSkills": [
+     "Kỹ thuật máy tính",
+     "Windows Server",
+     "Mạng cơ bản",
+     "Xử lý sự cố",
+     "Giao tiếp"
+    ],
+    "totalRequired": 5,
+    "matchedPreferred": [],
+    "missingPreferred": [
+     "Linux",
+     "Active Directory",
+     "Office 365",
+     "ITIL cơ bản",
+     "Virtualization"
+    ],
+    "requiredScore": 0,
+    "preferredScore": 0,
+    "preferenceScore": 50,
+    "locationMatch": false,
+    "workTypeMatch": true
+   }
+  },
+  {
+   "profile": {
+    "id": "cand-005",
+    "skills": [
+     "Kiểm thử phần mềm",
+     "Viết test case",
+     "Excel",
+     "Git",
+     "Tư duy phân tích",
+     "Postman"
+    ],
+    "preferredLocations": [
+     "Đà Nẵng"
+    ],
+    "preferredWorkTypes": [
+     "Thực tập"
+    ]
+   },
+   "job": {
+    "id": "job-008",
+    "requiredSkills": [
+     "Viết nội dung",
+     "Mạng xã hội",
+     "Tư duy sáng tạo",
+     "Excel",
+     "Giao tiếp"
+    ],
+    "preferredSkills": [
+     "Google Analytics",
+     "Facebook Ads",
+     "Canva",
+     "SEO cơ bản",
+     "Email Marketing"
+    ],
+    "location": "Hồ Chí Minh",
+    "workType": "Bán thời gian"
+   },
+   "expected": {
+    "jobId": "job-008",
+    "matchScore": 12,
+    "matchedSkills": [
+     "Excel"
+    ],
+    "missingSkills": [
+     "Viết nội dung",
+     "Mạng xã hội",
+     "Tư duy sáng tạo",
+     "Giao tiếp"
+    ],
+    "totalRequired": 5,
+    "matchedPreferred": [],
+    "missingPreferred": [
+     "Google Analytics",
+     "Facebook Ads",
+     "Canva",
+     "SEO cơ bản",
+     "Email Marketing"
+    ],
+    "requiredScore": 20,
+    "preferredScore": 0,
+    "preferenceScore": 0,
+    "locationMatch": false,
+    "workTypeMatch": false
+   }
+  },
+  {
+   "profile": {
+    "id": "cand-005",
+    "skills": [
+     "Kiểm thử phần mềm",
+     "Viết test case",
+     "Excel",
+     "Git",
+     "Tư duy phân tích",
+     "Postman"
+    ],
+    "preferredLocations": [
+     "Đà Nẵng"
+    ],
+    "preferredWorkTypes": [
+     "Thực tập"
+    ]
+   },
+   "job": {
+    "id": "job-009",
+    "requiredSkills": [
+     "JavaScript",
+     "React hoặc Node.js",
+     "SQL",
+     "Git",
+     "REST API",
+     "OOP"
+    ],
+    "preferredSkills": [
+     "TypeScript",
+     "Docker",
+     "CI/CD",
+     "AWS cơ bản",
+     "Agile/Scrum"
+    ],
+    "location": "Hà Nội",
+    "workType": "Toàn thời gian"
+   },
+   "expected": {
+    "jobId": "job-009",
+    "matchScore": 10,
+    "matchedSkills": [
+     "Git"
+    ],
+    "missingSkills": [
+     "JavaScript",
+     "React hoặc Node.js",
+     "SQL",
+     "REST API",
+     "OOP"
+    ],
+    "totalRequired": 6,
+    "matchedPreferred": [],
+    "missingPreferred": [
+     "TypeScript",
+     "Docker",
+     "CI/CD",
+     "AWS cơ bản",
+     "Agile/Scrum"
+    ],
+    "requiredScore": 17,
+    "preferredScore": 0,
+    "preferenceScore": 0,
+    "locationMatch": false,
+    "workTypeMatch": false
+   }
+  },
+  {
+   "profile": {
+    "id": "cand-005",
+    "skills": [
+     "Kiểm thử phần mềm",
+     "Viết test case",
+     "Excel",
+     "Git",
+     "Tư duy phân tích",
+     "Postman"
+    ],
+    "preferredLocations": [
+     "Đà Nẵng"
+    ],
+    "preferredWorkTypes": [
+     "Thực tập"
+    ]
+   },
+   "job": {
+    "id": "job-010",
+    "requiredSkills": [
+     "Phân tích nghiệp vụ",
+     "SQL",
+     "Giao tiếp",
+     "Viết tài liệu",
+     "UML",
+     "Excel"
+    ],
+    "preferredSkills": [
+     "Nghiệp vụ ngân hàng",
+     "BPMN",
+     "Jira",
+     "Agile/Scrum",
+     "Power BI"
+    ],
+    "location": "Hà Nội",
+    "workType": "Toàn thời gian"
+   },
+   "expected": {
+    "jobId": "job-010",
+    "matchScore": 10,
+    "matchedSkills": [
+     "Excel"
+    ],
+    "missingSkills": [
+     "Phân tích nghiệp vụ",
+     "SQL",
+     "Giao tiếp",
+     "Viết tài liệu",
+     "UML"
+    ],
+    "totalRequired": 6,
+    "matchedPreferred": [],
+    "missingPreferred": [
+     "Nghiệp vụ ngân hàng",
+     "BPMN",
+     "Jira",
+     "Agile/Scrum",
+     "Power BI"
+    ],
+    "requiredScore": 17,
+    "preferredScore": 0,
+    "preferenceScore": 0,
+    "locationMatch": false,
+    "workTypeMatch": false
+   }
+  },
+  {
+   "profile": {
+    "id": "cand-005",
+    "skills": [
+     "Kiểm thử phần mềm",
+     "Viết test case",
+     "Excel",
+     "Git",
+     "Tư duy phân tích",
+     "Postman"
+    ],
+    "preferredLocations": [
+     "Đà Nẵng"
+    ],
+    "preferredWorkTypes": [
+     "Thực tập"
+    ]
+   },
+   "job": {
+    "id": "job-011",
+    "requiredSkills": [
+     "React",
+     "TypeScript",
+     "HTML",
+     "CSS",
+     "Git",
+     "REST API"
+    ],
+    "preferredSkills": [
+     "React Query",
+     "Zustand",
+     "Jest",
+     "Storybook",
+     "Figma"
+    ],
+    "location": "Remote",
+    "workType": "Remote"
+   },
+   "expected": {
+    "jobId": "job-011",
+    "matchScore": 10,
+    "matchedSkills": [
+     "Git"
+    ],
+    "missingSkills": [
+     "React",
+     "TypeScript",
+     "HTML",
+     "CSS",
+     "REST API"
+    ],
+    "totalRequired": 6,
+    "matchedPreferred": [],
+    "missingPreferred": [
+     "React Query",
+     "Zustand",
+     "Jest",
+     "Storybook",
+     "Figma"
+    ],
+    "requiredScore": 17,
+    "preferredScore": 0,
+    "preferenceScore": 0,
+    "locationMatch": false,
+    "workTypeMatch": false
+   }
+  },
+  {
+   "profile": {
+    "id": "cand-005",
+    "skills": [
+     "Kiểm thử phần mềm",
+     "Viết test case",
+     "Excel",
+     "Git",
+     "Tư duy phân tích",
+     "Postman"
+    ],
+    "preferredLocations": [
+     "Đà Nẵng"
+    ],
+    "preferredWorkTypes": [
+     "Thực tập"
+    ]
+   },
+   "job": {
+    "id": "job-012",
+    "requiredSkills": [
+     "Python",
+     "SQL",
+     "ETL",
+     "Git",
+     "Linux cơ bản"
+    ],
+    "preferredSkills": [
+     "Apache Spark",
+     "Airflow",
+     "Kafka",
+     "Docker",
+     "Cloud (AWS/GCP)"
+    ],
+    "location": "Hồ Chí Minh",
+    "workType": "Thực tập"
+   },
+   "expected": {
+    "jobId": "job-012",
+    "matchScore": 20,
+    "matchedSkills": [
+     "Git"
+    ],
+    "missingSkills": [
+     "Python",
+     "SQL",
+     "ETL",
+     "Linux cơ bản"
+    ],
+    "totalRequired": 5,
+    "matchedPreferred": [],
+    "missingPreferred": [
+     "Apache Spark",
+     "Airflow",
+     "Kafka",
+     "Docker",
+     "Cloud (AWS/GCP)"
+    ],
+    "requiredScore": 20,
+    "preferredScore": 0,
+    "preferenceScore": 50,
+    "locationMatch": false,
+    "workTypeMatch": true
+   }
+  },
+  {
+   "profile": {
+    "id": "cand-006",
+    "skills": [
+     "Figma",
+     "Nguyên lý UX",
+     "Thiết kế UI",
+     "Tư duy sáng tạo",
+     "Giao tiếp",
+     "Prototyping"
+    ],
+    "preferredLocations": [
+     "Hồ Chí Minh"
+    ],
+    "preferredWorkTypes": [
+     "Thực tập"
+    ]
+   },
+   "job": {
+    "id": "job-001",
+    "requiredSkills": [
+     "HTML",
+     "CSS",
+     "JavaScript",
+     "React",
+     "Git"
+    ],
+    "preferredSkills": [
+     "TypeScript",
+     "Tailwind CSS",
+     "REST API"
+    ],
+    "location": "Hà Nội",
+    "workType": "Thực tập"
+   },
+   "expected": {
+    "jobId": "job-001",
+    "matchScore": 8,
+    "matchedSkills": [],
+    "missingSkills": [
+     "HTML",
+     "CSS",
+     "JavaScript",
+     "React",
+     "Git"
+    ],
+    "totalRequired": 5,
+    "matchedPreferred": [],
+    "missingPreferred": [
+     "TypeScript",
+     "Tailwind CSS",
+     "REST API"
+    ],
+    "requiredScore": 0,
+    "preferredScore": 0,
+    "preferenceScore": 50,
+    "locationMatch": false,
+    "workTypeMatch": true
+   }
+  },
+  {
+   "profile": {
+    "id": "cand-006",
+    "skills": [
+     "Figma",
+     "Nguyên lý UX",
+     "Thiết kế UI",
+     "Tư duy sáng tạo",
+     "Giao tiếp",
+     "Prototyping"
+    ],
+    "preferredLocations": [
+     "Hồ Chí Minh"
+    ],
+    "preferredWorkTypes": [
+     "Thực tập"
+    ]
+   },
+   "job": {
+    "id": "job-002",
+    "requiredSkills": [
+     "Node.js",
+     "JavaScript",
+     "SQL",
+     "REST API",
+     "Git"
+    ],
+    "preferredSkills": [
+     "TypeScript",
+     "Docker",
+     "PostgreSQL",
+     "MongoDB"
+    ],
+    "location": "Hồ Chí Minh",
+    "workType": "Thực tập"
+   },
+   "expected": {
+    "jobId": "job-002",
+    "matchScore": 15,
+    "matchedSkills": [],
+    "missingSkills": [
+     "Node.js",
+     "JavaScript",
+     "SQL",
+     "REST API",
+     "Git"
+    ],
+    "totalRequired": 5,
+    "matchedPreferred": [],
+    "missingPreferred": [
+     "TypeScript",
+     "Docker",
+     "PostgreSQL",
+     "MongoDB"
+    ],
+    "requiredScore": 0,
+    "preferredScore": 0,
+    "preferenceScore": 100,
+    "locationMatch": true,
+    "workTypeMatch": true
+   }
+  },
+  {
+   "profile": {
+    "id": "cand-006",
+    "skills": [
+     "Figma",
+     "Nguyên lý UX",
+     "Thiết kế UI",
+     "Tư duy sáng tạo",
+     "Giao tiếp",
+     "Prototyping"
+    ],
+    "preferredLocations": [
+     "Hồ Chí Minh"
+    ],
+    "preferredWorkTypes": [
+     "Thực tập"
+    ]
+   },
+   "job": {
+    "id": "job-003",
+    "requiredSkills": [
+     "SQL",
+     "Python",
+     "Excel",
+     "Thống kê cơ bản",
+     "Git"
+    ],
+    "preferredSkills": [
+     "Power BI",
+     "Tableau",
+     "Pandas",
+     "Matplotlib",
+     "Machine Learning cơ bản"
+    ],
+    "location": "Hà Nội",
+    "workType": "Thực tập"
+   },
+   "expected": {
+    "jobId": "job-003",
+    "matchScore": 8,
+    "matchedSkills": [],
+    "missingSkills": [
+     "SQL",
+     "Python",
+     "Excel",
+     "Thống kê cơ bản",
+     "Git"
+    ],
+    "totalRequired": 5,
+    "matchedPreferred": [],
+    "missingPreferred": [
+     "Power BI",
+     "Tableau",
+     "Pandas",
+     "Matplotlib",
+     "Machine Learning cơ bản"
+    ],
+    "requiredScore": 0,
+    "preferredScore": 0,
+    "preferenceScore": 50,
+    "locationMatch": false,
+    "workTypeMatch": true
+   }
+  },
+  {
+   "profile": {
+    "id": "cand-006",
+    "skills": [
+     "Figma",
+     "Nguyên lý UX",
+     "Thiết kế UI",
+     "Tư duy sáng tạo",
+     "Giao tiếp",
+     "Prototyping"
+    ],
+    "preferredLocations": [
+     "Hồ Chí Minh"
+    ],
+    "preferredWorkTypes": [
+     "Thực tập"
+    ]
+   },
+   "job": {
+    "id": "job-004",
+    "requiredSkills": [
+     "Phân tích nghiệp vụ",
+     "Excel",
+     "Tư duy logic",
+     "Giao tiếp",
+     "Viết tài liệu"
+    ],
+    "preferredSkills": [
+     "SQL",
+     "BPMN",
+     "Jira",
+     "Confluence",
+     "UML"
+    ],
+    "location": "Hồ Chí Minh",
+    "workType": "Thực tập"
+   },
+   "expected": {
+    "jobId": "job-004",
+    "matchScore": 27,
+    "matchedSkills": [
+     "Giao tiếp"
+    ],
+    "missingSkills": [
+     "Phân tích nghiệp vụ",
+     "Excel",
+     "Tư duy logic",
+     "Viết tài liệu"
+    ],
+    "totalRequired": 5,
+    "matchedPreferred": [],
+    "missingPreferred": [
+     "SQL",
+     "BPMN",
+     "Jira",
+     "Confluence",
+     "UML"
+    ],
+    "requiredScore": 20,
+    "preferredScore": 0,
+    "preferenceScore": 100,
+    "locationMatch": true,
+    "workTypeMatch": true
+   }
+  },
+  {
+   "profile": {
+    "id": "cand-006",
+    "skills": [
+     "Figma",
+     "Nguyên lý UX",
+     "Thiết kế UI",
+     "Tư duy sáng tạo",
+     "Giao tiếp",
+     "Prototyping"
+    ],
+    "preferredLocations": [
+     "Hồ Chí Minh"
+    ],
+    "preferredWorkTypes": [
+     "Thực tập"
+    ]
+   },
+   "job": {
+    "id": "job-005",
+    "requiredSkills": [
+     "Kiểm thử phần mềm",
+     "Viết test case",
+     "Tư duy phân tích",
+     "Excel",
+     "Git"
+    ],
+    "preferredSkills": [
+     "Selenium",
+     "Playwright",
+     "Postman",
+     "Jira",
+     "SQL"
+    ],
+    "location": "Đà Nẵng",
+    "workType": "Thực tập"
+   },
+   "expected": {
+    "jobId": "job-005",
+    "matchScore": 8,
+    "matchedSkills": [],
+    "missingSkills": [
+     "Kiểm thử phần mềm",
+     "Viết test case",
+     "Tư duy phân tích",
+     "Excel",
+     "Git"
+    ],
+    "totalRequired": 5,
+    "matchedPreferred": [],
+    "missingPreferred": [
+     "Selenium",
+     "Playwright",
+     "Postman",
+     "Jira",
+     "SQL"
+    ],
+    "requiredScore": 0,
+    "preferredScore": 0,
+    "preferenceScore": 50,
+    "locationMatch": false,
+    "workTypeMatch": true
+   }
+  },
+  {
+   "profile": {
+    "id": "cand-006",
+    "skills": [
+     "Figma",
+     "Nguyên lý UX",
+     "Thiết kế UI",
+     "Tư duy sáng tạo",
+     "Giao tiếp",
+     "Prototyping"
+    ],
+    "preferredLocations": [
+     "Hồ Chí Minh"
+    ],
+    "preferredWorkTypes": [
+     "Thực tập"
+    ]
+   },
+   "job": {
+    "id": "job-006",
+    "requiredSkills": [
+     "Figma",
+     "Nguyên lý UX",
+     "Thiết kế UI",
+     "Tư duy sáng tạo",
+     "Giao tiếp"
+    ],
+    "preferredSkills": [
+     "Adobe XD",
+     "Prototyping",
+     "User Research",
+     "Design System",
+     "HTML/CSS cơ bản"
+    ],
+    "location": "Hồ Chí Minh",
+    "workType": "Thực tập"
+   },
+   "expected": {
+    "jobId": "job-006",
+    "matchScore": 80,
+    "matchedSkills": [
+     "Figma",
+     "Nguyên lý UX",
+     "Thiết kế UI",
+     "Tư duy sáng tạo",
+     "Giao tiếp"
+    ],
+    "missingSkills": [],
+    "totalRequired": 5,
+    "matchedPreferred": [
+     "Prototyping"
+    ],
+    "missingPreferred": [
+     "Adobe XD",
+     "User Research",
+     "Design System",
+     "HTML/CSS cơ bản"
+    ],
+    "requiredScore": 100,
+    "preferredScore": 20,
+    "preferenceScore": 100,
+    "locationMatch": true,
+    "workTypeMatch": true
+   }
+  },
+  {
+   "profile": {
+    "id": "cand-006",
+    "skills": [
+     "Figma",
+     "Nguyên lý UX",
+     "Thiết kế UI",
+     "Tư duy sáng tạo",
+     "Giao tiếp",
+     "Prototyping"
+    ],
+    "preferredLocations": [
+     "Hồ Chí Minh"
+    ],
+    "preferredWorkTypes": [
+     "Thực tập"
+    ]
+   },
+   "job": {
+    "id": "job-007",
+    "requiredSkills": [
+     "Kỹ thuật máy tính",
+     "Windows Server",
+     "Mạng cơ bản",
+     "Xử lý sự cố",
+     "Giao tiếp"
+    ],
+    "preferredSkills": [
+     "Linux",
+     "Active Directory",
+     "Office 365",
+     "ITIL cơ bản",
+     "Virtualization"
+    ],
+    "location": "Hà Nội",
+    "workType": "Thực tập"
+   },
+   "expected": {
+    "jobId": "job-007",
+    "matchScore": 20,
+    "matchedSkills": [
+     "Giao tiếp"
+    ],
+    "missingSkills": [
+     "Kỹ thuật máy tính",
+     "Windows Server",
+     "Mạng cơ bản",
+     "Xử lý sự cố"
+    ],
+    "totalRequired": 5,
+    "matchedPreferred": [],
+    "missingPreferred": [
+     "Linux",
+     "Active Directory",
+     "Office 365",
+     "ITIL cơ bản",
+     "Virtualization"
+    ],
+    "requiredScore": 20,
+    "preferredScore": 0,
+    "preferenceScore": 50,
+    "locationMatch": false,
+    "workTypeMatch": true
+   }
+  },
+  {
+   "profile": {
+    "id": "cand-006",
+    "skills": [
+     "Figma",
+     "Nguyên lý UX",
+     "Thiết kế UI",
+     "Tư duy sáng tạo",
+     "Giao tiếp",
+     "Prototyping"
+    ],
+    "preferredLocations": [
+     "Hồ Chí Minh"
+    ],
+    "preferredWorkTypes": [
+     "Thực tập"
+    ]
+   },
+   "job": {
+    "id": "job-008",
+    "requiredSkills": [
+     "Viết nội dung",
+     "Mạng xã hội",
+     "Tư duy sáng tạo",
+     "Excel",
+     "Giao tiếp"
+    ],
+    "preferredSkills": [
+     "Google Analytics",
+     "Facebook Ads",
+     "Canva",
+     "SEO cơ bản",
+     "Email Marketing"
+    ],
+    "location": "Hồ Chí Minh",
+    "workType": "Bán thời gian"
+   },
+   "expected": {
+    "jobId": "job-008",
+    "matchScore": 32,
+    "matchedSkills": [
+     "Tư duy sáng tạo",
+     "Giao tiếp"
+    ],
+    "missingSkills": [
+     "Viết nội dung",
+     "Mạng xã hội",
+     "Excel"
+    ],
+    "totalRequired": 5,
+    "matchedPreferred": [],
+    "missingPreferred": [
+     "Google Analytics",
+     "Facebook Ads",
+     "Canva",
+     "SEO cơ bản",
+     "Email Marketing"
+    ],
+    "requiredScore": 40,
+    "preferredScore": 0,
+    "preferenceScore": 50,
+    "locationMatch": true,
+    "workTypeMatch": false
+   }
+  },
+  {
+   "profile": {
+    "id": "cand-006",
+    "skills": [
+     "Figma",
+     "Nguyên lý UX",
+     "Thiết kế UI",
+     "Tư duy sáng tạo",
+     "Giao tiếp",
+     "Prototyping"
+    ],
+    "preferredLocations": [
+     "Hồ Chí Minh"
+    ],
+    "preferredWorkTypes": [
+     "Thực tập"
+    ]
+   },
+   "job": {
+    "id": "job-009",
+    "requiredSkills": [
+     "JavaScript",
+     "React hoặc Node.js",
+     "SQL",
+     "Git",
+     "REST API",
+     "OOP"
+    ],
+    "preferredSkills": [
+     "TypeScript",
+     "Docker",
+     "CI/CD",
+     "AWS cơ bản",
+     "Agile/Scrum"
+    ],
+    "location": "Hà Nội",
+    "workType": "Toàn thời gian"
+   },
+   "expected": {
+    "jobId": "job-009",
+    "matchScore": 0,
+    "matchedSkills": [],
+    "missingSkills": [
+     "JavaScript",
+     "React hoặc Node.js",
+     "SQL",
+     "Git",
+     "REST API",
+     "OOP"
+    ],
+    "totalRequired": 6,
+    "matchedPreferred": [],
+    "missingPreferred": [
+     "TypeScript",
+     "Docker",
+     "CI/CD",
+     "AWS cơ bản",
+     "Agile/Scrum"
+    ],
+    "requiredScore": 0,
+    "preferredScore": 0,
+    "preferenceScore": 0,
+    "locationMatch": false,
+    "workTypeMatch": false
+   }
+  },
+  {
+   "profile": {
+    "id": "cand-006",
+    "skills": [
+     "Figma",
+     "Nguyên lý UX",
+     "Thiết kế UI",
+     "Tư duy sáng tạo",
+     "Giao tiếp",
+     "Prototyping"
+    ],
+    "preferredLocations": [
+     "Hồ Chí Minh"
+    ],
+    "preferredWorkTypes": [
+     "Thực tập"
+    ]
+   },
+   "job": {
+    "id": "job-010",
+    "requiredSkills": [
+     "Phân tích nghiệp vụ",
+     "SQL",
+     "Giao tiếp",
+     "Viết tài liệu",
+     "UML",
+     "Excel"
+    ],
+    "preferredSkills": [
+     "Nghiệp vụ ngân hàng",
+     "BPMN",
+     "Jira",
+     "Agile/Scrum",
+     "Power BI"
+    ],
+    "location": "Hà Nội",
+    "workType": "Toàn thời gian"
+   },
+   "expected": {
+    "jobId": "job-010",
+    "matchScore": 10,
+    "matchedSkills": [
+     "Giao tiếp"
+    ],
+    "missingSkills": [
+     "Phân tích nghiệp vụ",
+     "SQL",
+     "Viết tài liệu",
+     "UML",
+     "Excel"
+    ],
+    "totalRequired": 6,
+    "matchedPreferred": [],
+    "missingPreferred": [
+     "Nghiệp vụ ngân hàng",
+     "BPMN",
+     "Jira",
+     "Agile/Scrum",
+     "Power BI"
+    ],
+    "requiredScore": 17,
+    "preferredScore": 0,
+    "preferenceScore": 0,
+    "locationMatch": false,
+    "workTypeMatch": false
+   }
+  },
+  {
+   "profile": {
+    "id": "cand-006",
+    "skills": [
+     "Figma",
+     "Nguyên lý UX",
+     "Thiết kế UI",
+     "Tư duy sáng tạo",
+     "Giao tiếp",
+     "Prototyping"
+    ],
+    "preferredLocations": [
+     "Hồ Chí Minh"
+    ],
+    "preferredWorkTypes": [
+     "Thực tập"
+    ]
+   },
+   "job": {
+    "id": "job-011",
+    "requiredSkills": [
+     "React",
+     "TypeScript",
+     "HTML",
+     "CSS",
+     "Git",
+     "REST API"
+    ],
+    "preferredSkills": [
+     "React Query",
+     "Zustand",
+     "Jest",
+     "Storybook",
+     "Figma"
+    ],
+    "location": "Remote",
+    "workType": "Remote"
+   },
+   "expected": {
+    "jobId": "job-011",
+    "matchScore": 5,
+    "matchedSkills": [],
+    "missingSkills": [
+     "React",
+     "TypeScript",
+     "HTML",
+     "CSS",
+     "Git",
+     "REST API"
+    ],
+    "totalRequired": 6,
+    "matchedPreferred": [
+     "Figma"
+    ],
+    "missingPreferred": [
+     "React Query",
+     "Zustand",
+     "Jest",
+     "Storybook"
+    ],
+    "requiredScore": 0,
+    "preferredScore": 20,
+    "preferenceScore": 0,
+    "locationMatch": false,
+    "workTypeMatch": false
+   }
+  },
+  {
+   "profile": {
+    "id": "cand-006",
+    "skills": [
+     "Figma",
+     "Nguyên lý UX",
+     "Thiết kế UI",
+     "Tư duy sáng tạo",
+     "Giao tiếp",
+     "Prototyping"
+    ],
+    "preferredLocations": [
+     "Hồ Chí Minh"
+    ],
+    "preferredWorkTypes": [
+     "Thực tập"
+    ]
+   },
+   "job": {
+    "id": "job-012",
+    "requiredSkills": [
+     "Python",
+     "SQL",
+     "ETL",
+     "Git",
+     "Linux cơ bản"
+    ],
+    "preferredSkills": [
+     "Apache Spark",
+     "Airflow",
+     "Kafka",
+     "Docker",
+     "Cloud (AWS/GCP)"
+    ],
+    "location": "Hồ Chí Minh",
+    "workType": "Thực tập"
+   },
+   "expected": {
+    "jobId": "job-012",
+    "matchScore": 15,
+    "matchedSkills": [],
+    "missingSkills": [
+     "Python",
+     "SQL",
+     "ETL",
+     "Git",
+     "Linux cơ bản"
+    ],
+    "totalRequired": 5,
+    "matchedPreferred": [],
+    "missingPreferred": [
+     "Apache Spark",
+     "Airflow",
+     "Kafka",
+     "Docker",
+     "Cloud (AWS/GCP)"
+    ],
+    "requiredScore": 0,
+    "preferredScore": 0,
+    "preferenceScore": 100,
+    "locationMatch": true,
+    "workTypeMatch": true
+   }
+  }
+ ]
+}

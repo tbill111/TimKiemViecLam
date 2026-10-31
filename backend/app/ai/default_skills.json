@@ -1,0 +1,369 @@
+{
+ "skills": [
+  {
+   "name": "React",
+   "category": "Frontend"
+  },
+  {
+   "name": "Node.js",
+   "category": "Backend"
+  },
+  {
+   "name": "HTML",
+   "category": "Frontend"
+  },
+  {
+   "name": "CSS",
+   "category": "Frontend"
+  },
+  {
+   "name": "JavaScript",
+   "category": "Frontend"
+  },
+  {
+   "name": "TypeScript",
+   "category": "Frontend"
+  },
+  {
+   "name": "REST API",
+   "category": "Backend"
+  },
+  {
+   "name": "PostgreSQL",
+   "category": "Backend"
+  },
+  {
+   "name": "Python",
+   "category": "Backend"
+  },
+  {
+   "name": "Excel",
+   "category": "Dữ liệu"
+  },
+  {
+   "name": "Power BI",
+   "category": "Dữ liệu"
+  },
+  {
+   "name": "Tailwind CSS",
+   "category": "Khác"
+  },
+  {
+   "name": "Thống kê cơ bản",
+   "category": "Dữ liệu"
+  },
+  {
+   "name": "Kiểm thử phần mềm",
+   "category": "Khác"
+  },
+  {
+   "name": "Giao tiếp",
+   "category": "Kỹ năng mềm"
+  },
+  {
+   "name": "Agile/Scrum",
+   "category": "Khác"
+  },
+  {
+   "name": "Figma",
+   "category": "Thiết kế"
+  },
+  {
+   "name": "Git",
+   "category": "DevOps"
+  },
+  {
+   "name": "Docker",
+   "category": "DevOps"
+  },
+  {
+   "name": "SQL",
+   "category": "Backend"
+  },
+  {
+   "name": "MongoDB",
+   "category": "Khác"
+  },
+  {
+   "name": "Tableau",
+   "category": "Khác"
+  },
+  {
+   "name": "Pandas",
+   "category": "Khác"
+  },
+  {
+   "name": "Matplotlib",
+   "category": "Khác"
+  },
+  {
+   "name": "Machine Learning cơ bản",
+   "category": "Khác"
+  },
+  {
+   "name": "Phân tích nghiệp vụ",
+   "category": "Khác"
+  },
+  {
+   "name": "Tư duy logic",
+   "category": "Kỹ năng mềm"
+  },
+  {
+   "name": "Viết tài liệu",
+   "category": "Kỹ năng mềm"
+  },
+  {
+   "name": "BPMN",
+   "category": "Khác"
+  },
+  {
+   "name": "Jira",
+   "category": "Khác"
+  },
+  {
+   "name": "Confluence",
+   "category": "Khác"
+  },
+  {
+   "name": "UML",
+   "category": "Khác"
+  },
+  {
+   "name": "Viết test case",
+   "category": "Khác"
+  },
+  {
+   "name": "Tư duy phân tích",
+   "category": "Khác"
+  },
+  {
+   "name": "Selenium",
+   "category": "Khác"
+  },
+  {
+   "name": "Playwright",
+   "category": "Khác"
+  },
+  {
+   "name": "Postman",
+   "category": "Khác"
+  },
+  {
+   "name": "Nguyên lý UX",
+   "category": "Thiết kế"
+  },
+  {
+   "name": "Thiết kế UI",
+   "category": "Thiết kế"
+  },
+  {
+   "name": "Tư duy sáng tạo",
+   "category": "Khác"
+  },
+  {
+   "name": "Adobe XD",
+   "category": "Khác"
+  },
+  {
+   "name": "Prototyping",
+   "category": "Khác"
+  },
+  {
+   "name": "User Research",
+   "category": "Khác"
+  },
+  {
+   "name": "Design System",
+   "category": "Khác"
+  },
+  {
+   "name": "HTML/CSS cơ bản",
+   "category": "Khác"
+  },
+  {
+   "name": "Kỹ thuật máy tính",
+   "category": "Khác"
+  },
+  {
+   "name": "Windows Server",
+   "category": "Khác"
+  },
+  {
+   "name": "Mạng cơ bản",
+   "category": "Khác"
+  },
+  {
+   "name": "Xử lý sự cố",
+   "category": "Khác"
+  },
+  {
+   "name": "Linux",
+   "category": "Khác"
+  },
+  {
+   "name": "Active Directory",
+   "category": "Khác"
+  },
+  {
+   "name": "Office 365",
+   "category": "Khác"
+  },
+  {
+   "name": "ITIL cơ bản",
+   "category": "Khác"
+  },
+  {
+   "name": "Virtualization",
+   "category": "Khác"
+  },
+  {
+   "name": "Viết nội dung",
+   "category": "Khác"
+  },
+  {
+   "name": "Mạng xã hội",
+   "category": "Khác"
+  },
+  {
+   "name": "Google Analytics",
+   "category": "Khác"
+  },
+  {
+   "name": "Facebook Ads",
+   "category": "Khác"
+  },
+  {
+   "name": "Canva",
+   "category": "Khác"
+  },
+  {
+   "name": "SEO cơ bản",
+   "category": "Khác"
+  },
+  {
+   "name": "Email Marketing",
+   "category": "Khác"
+  },
+  {
+   "name": "OOP",
+   "category": "Khác"
+  },
+  {
+   "name": "CI/CD",
+   "category": "DevOps"
+  },
+  {
+   "name": "AWS cơ bản",
+   "category": "Khác"
+  },
+  {
+   "name": "Nghiệp vụ ngân hàng",
+   "category": "Khác"
+  },
+  {
+   "name": "React Query",
+   "category": "Khác"
+  },
+  {
+   "name": "Zustand",
+   "category": "Khác"
+  },
+  {
+   "name": "Jest",
+   "category": "Khác"
+  },
+  {
+   "name": "Storybook",
+   "category": "Khác"
+  },
+  {
+   "name": "ETL",
+   "category": "Khác"
+  },
+  {
+   "name": "Linux cơ bản",
+   "category": "DevOps"
+  },
+  {
+   "name": "Apache Spark",
+   "category": "Khác"
+  },
+  {
+   "name": "Airflow",
+   "category": "Khác"
+  },
+  {
+   "name": "Kafka",
+   "category": "Khác"
+  },
+  {
+   "name": "Cloud (AWS/GCP)",
+   "category": "Khác"
+  }
+ ],
+ "aliases": {
+  "React": [
+   "reactjs",
+   "react.js",
+   "react js"
+  ],
+  "Node.js": [
+   "nodejs",
+   "node js"
+  ],
+  "HTML": [
+   "html5"
+  ],
+  "CSS": [
+   "css3"
+  ],
+  "JavaScript": [
+   "javascript es6",
+   "ecmascript"
+  ],
+  "TypeScript": [],
+  "REST API": [
+   "restful api",
+   "restful",
+   "rest apis"
+  ],
+  "PostgreSQL": [
+   "postgres",
+   "postgre sql"
+  ],
+  "Python": [
+   "python3"
+  ],
+  "Excel": [
+   "microsoft excel",
+   "ms excel"
+  ],
+  "Power BI": [
+   "powerbi"
+  ],
+  "Tailwind CSS": [
+   "tailwind",
+   "tailwindcss"
+  ],
+  "Thống kê cơ bản": [
+   "thống kê",
+   "statistics"
+  ],
+  "Kiểm thử phần mềm": [
+   "kiểm thử",
+   "software testing"
+  ],
+  "Giao tiếp": [
+   "kỹ năng giao tiếp",
+   "communication"
+  ],
+  "Agile/Scrum": [
+   "agile",
+   "scrum"
+  ],
+  "Figma": [],
+  "Git": [],
+  "Docker": [],
+  "SQL": []
+ }
+}
