@@ -1,0 +1,78 @@
+# Chạy toàn bộ hệ thống:  cp .env.example .env  &&  docker compose up --build
+#   web      http://localhost:8080        (React + nginx, proxy /api → api)
+#   api      http://localhost:8000/docs   (Swagger)
+#   superset http://localhost:8088        (đăng nhập admin/admin theo .env)
+#   db       localhost:5432
+services:
+  db:
+    image: postgres:16
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-smartcareer}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-smartcareer_pw}
+      POSTGRES_DB: ${POSTGRES_DB:-smartcareer}
+      BI_READER_PASSWORD: ${BI_READER_PASSWORD:-bi_reader_pw}
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+      - ./bi/db_init:/docker-entrypoint-initdb.d:ro
+    ports:
+      - "5432:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $${POSTGRES_USER} -d $${POSTGRES_DB}"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+
+  api:
+    build:
+      context: .
+      dockerfile: backend/Dockerfile
+      args:
+        WITH_ST: ${WITH_ST:-1}
+    environment:
+      DATABASE_URL: postgresql+psycopg://${POSTGRES_USER:-smartcareer}:${POSTGRES_PASSWORD:-smartcareer_pw}@db:5432/${POSTGRES_DB:-smartcareer}
+      JWT_SECRET: ${JWT_SECRET:-doi-chuoi-nay-it-nhat-32-ky-tu-ngau-nhien}
+      DEFAULT_MODEL: ${DEFAULT_MODEL:-m3}
+      SEED_ON_START: ${SEED_ON_START:-1}
+      SEED_PASSWORD: ${SEED_PASSWORD:-Demo@12345}
+      CORS_ORIGINS: http://localhost:5173,http://localhost:8080
+      SUPERSET_URL: http://superset:8088
+      SUPERSET_PUBLIC_URL: http://localhost:8088
+      SUPERSET_ADMIN_USER: ${SUPERSET_ADMIN_USER:-admin}
+      SUPERSET_ADMIN_PASSWORD: ${SUPERSET_ADMIN_PASSWORD:-admin}
+      SUPERSET_DASHBOARD_ID: ${SUPERSET_DASHBOARD_ID:-}
+      SUPERSET_RLS_DATASET_IDS: ${SUPERSET_RLS_DATASET_IDS:-}
+    depends_on:
+      db:
+        condition: service_healthy
+    ports:
+      - "8000:8000"
+
+  superset:
+    build:
+      context: ./bi/superset
+    environment:
+      SUPERSET_SECRET_KEY: ${SUPERSET_SECRET_KEY:-doi-chuoi-nay-khac-it-nhat-32-ky-tu}
+      GUEST_TOKEN_JWT_SECRET: ${GUEST_TOKEN_JWT_SECRET:-doi-chuoi-guest-token-it-nhat-32-ky-tu}
+      SUPERSET_METADATA_URI: postgresql+psycopg2://${POSTGRES_USER:-smartcareer}:${POSTGRES_PASSWORD:-smartcareer_pw}@db:5432/superset_meta
+      SUPERSET_ADMIN_USER: ${SUPERSET_ADMIN_USER:-admin}
+      SUPERSET_ADMIN_PASSWORD: ${SUPERSET_ADMIN_PASSWORD:-admin}
+      CORS_ORIGINS: http://localhost:5173,http://localhost:8080
+    depends_on:
+      db:
+        condition: service_healthy
+    ports:
+      - "8088:8088"
+
+  web:
+    build:
+      context: .
+      args:
+        VITE_API_URL: ${VITE_API_URL:-/api}
+        VITE_OFFLINE_DEMO: ${VITE_OFFLINE_DEMO:-false}
+    depends_on:
+      - api
+    ports:
+      - "8080:80"
+
+volumes:
+  pgdata:

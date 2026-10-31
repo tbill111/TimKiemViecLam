@@ -1,0 +1,25 @@
+# Phụ thuộc chạy backend (image python:3.11-slim). Tầng AI nặng (torch, sentence-transformers, underthesea)
+# được cài thêm trong Dockerfile khi WITH_ST=1; xem requirements-ai.txt.
+
+fastapi>=0.115
+uvicorn[standard]>=0.30
+sqlalchemy>=2.0
+alembic>=1.13
+psycopg[binary]>=3.1
+pydantic>=2.7
+pydantic-settings>=2.3
+email-validator>=2.1
+pyjwt>=2.8
+bcrypt>=4.1
+python-multipart>=0.0.9
+httpx>=0.27
+
+# Tầng AI (không cần GPU)
+numpy>=1.26
+scipy>=1.11
+pandas>=2.1
+scikit-learn>=1.4
+joblib>=1.3
+pdfplumber>=0.11
+python-docx>=1.1
+rapidfuzz>=3.6
