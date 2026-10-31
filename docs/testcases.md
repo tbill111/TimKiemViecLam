@@ -1,8 +1,10 @@
 # Bảng test case (≥ 25) theo F01–F10
 
 **Cách đọc cột "Kết quả thực tế":** chỉ ghi *Đạt* khi test tự động hoặc kịch bản E2E tương ứng đã được chạy và xanh ở lần chạy gần nhất
-(`cd backend && python -m pytest` → 225 passed; `scripts/e2e_smoke.py` → 10/10 bước; `scripts/e2e_offline.py` → 12/12 bước, 0 lời gọi API).
-Các ca ghi *Chưa kiểm* cần người kiểm thủ công hoặc môi trường chưa có (Docker, Superset thật, model embedding thật).
+(`cd backend && python -m pytest` → 231 passed; trong container có model thật `EMBEDDER=st` → 223 passed + 2 skipped do thiếu file ngoài image;
+`scripts/e2e_smoke.py` → **14/14 bước trên stack Docker thật** (nginx → API + model thật → PostgreSQL 16 → Superset 4.1.1 nhúng);
+`scripts/e2e_offline.py` → 12/12 bước, 0 lời gọi API).
+Các ca ghi *Chưa kiểm* cần người kiểm thủ công hoặc dữ liệu chưa có (nhãn tay).
 Hoàng Anh bổ sung kết quả thủ công và ảnh minh chứng vào cột cuối.
 
 | Mã | Chức năng | Mô tả / bước | Dữ liệu vào | Kết quả mong đợi | Cách kiểm | Kết quả thực tế |
@@ -37,11 +39,17 @@ Hoàng Anh bổ sung kết quả thủ công và ảnh minh chứng vào cột c
 | TC28 | F09 | Guest token Superset | HR / admin; chưa cấu hình; thiếu dataset RLS | HR nhận RLS `company_id = <công ty>` trên cả hai dataset; admin không RLS; chưa cấu hình/thiếu RLS → 503 | `test_guest_token_*` (Superset giả bằng `httpx.MockTransport`) | Đạt (token) / Chưa kiểm với Superset thật |
 | TC29 | F09 | Dashboard hiển thị khi chưa có Superset | HR đăng nhập | KPI + 3 biểu đồ dự phòng (kỹ năng, lương, phễu) | E2E bước "dashboard hiển thị 3 biểu đồ" | Đạt |
 | TC30 | F10 | Quản trị danh mục | admin thêm kỹ năng, alias; trùng; alias tới kỹ năng lạ; ứng viên gọi | 201, 409, 404, 403 | `test_admin_skill_catalog` | Đạt |
-| TC31 | NFR | Hiệu năng | 1 cặp; 150 và 500 tin | < 200 ms; < 2 s (đo: 45 ms và 116 ms trên SQLite + embedder thay thế) | `test_performance.py` | Đạt (cần đo lại trong Docker với model thật) |
+| TC31 | NFR | Hiệu năng | 1 cặp; 150 và 500 tin | < 200 ms; < 2 s | `test_performance.py` (SQLite, embedder thay thế: 45 ms / 116 ms) và **đo qua HTTP trên PostgreSQL + model thật**: 1 cặp 38 ms (trung vị 58 ms), 150 tin 38 ms, 500 tin 70–77 ms, ngay sau khi lưu hồ sơ 20 ms | Đạt |
 | TC32 | NFR | Chế độ demo không backend | `VITE_OFFLINE_DEMO=true` | 12 bước đều qua, 0 lời gọi API | `scripts/e2e_offline.py` | Đạt |
-| TC33 | NFR | Migration và 15 bảng | Alembic `upgrade head` / `downgrade base` từ DB trống | đủ 15 bảng; gỡ sạch | `test_alembic_upgrade_creates_all_15_tables_and_downgrades` | Đạt (SQLite); Chưa kiểm trên PostgreSQL |
+| TC33 | NFR | Migration và 15 bảng | Alembic `upgrade head` / `downgrade base` từ DB trống | đủ 15 bảng; gỡ sạch | `test_alembic_upgrade_creates_all_15_tables_and_downgrades` (SQLite) và chạy thật trên PostgreSQL 16 trong container `api` | Đạt |
 | TC34 | Dữ liệu | Số lượng seed | — | ≥ 80 kỹ năng, ≥ 150 alias, 30 công ty, 150 tin, 301 ứng viên, 50 CV; phễu hợp lệ | `test_seed.py` | Đạt |
-| TC35 | NFR | View BI trên PostgreSQL | `bi/views.sql` | chạy được và số khớp `/api/bi/*` | cú pháp: `test_views_sql_parses_as_postgresql` | Cú pháp đạt; **Chưa chạy trên PostgreSQL thật** |
-| TC36 | NFR | `docker compose up` trên máy sạch | `.env` từ `.env.example` | 4 dịch vụ chạy; đăng nhập được ở http://localhost:8080 | thủ công | `docker compose config` hợp lệ; **Chưa kiểm** (máy dựng không bật Docker) |
-| TC37 | F03/F05 | Model embedding thật | `EMBEDDER=st` trong Docker | notebook in `Embedder: st:…` | thủ công | **Chưa kiểm** |
-| TC38 | F09 | Nhúng Superset thật | UUID dashboard + dataset RLS | dashboard hiển thị trong trang, HR chỉ thấy dữ liệu công ty mình | thủ công theo `bi/README.md` | **Chưa kiểm** |
+| TC35 | NFR | View BI trên PostgreSQL | `bi/views.sql` | chạy được và số khớp `/api/bi/*` | cú pháp `test_views_sql_parses_as_postgresql`; **chạy thật** `scripts/check_bi_views.py` | Đạt: 4 view tạo được; phễu, chuyển đổi tổng, trung vị time-to-hire, nhóm điểm, cung–cầu 108 kỹ năng, lương 51 nhóm tháng×cấp bậc, lọc theo công ty đều khớp API; `bi_reader` đọc được view, không đọc được bảng `users` |
+| TC36 | NFR | `docker compose up` | `.env` từ `.env.example` | 4 dịch vụ chạy; đăng nhập được ở http://localhost:8080 | chạy thật trên Docker Desktop (WSL2) | Đạt (db, api có model thật, superset, web); cổng Superset đổi bằng `SUPERSET_PORT` khi 8088 bị chiếm |
+| TC37 | F03/F05 | Model embedding thật | `EMBEDDER=st` trong container | nạp offline được; hiểu Việt–Anh | `Embedder: st:paraphrase-multilingual-MiniLM-L12-v2`, nạp 7,4 s; cosine câu Việt–Anh cùng nghĩa 0,847, khác nghĩa 0,036; bộ test AI/API đạt với model thật | Đạt (chưa có số liệu trên nhãn tay) |
+| TC38 | F09 | Nhúng Superset thật + RLS | dashboard tạo bằng `bi/superset/bootstrap.py` | dashboard hiển thị trong trang; HR chỉ thấy dữ liệu công ty mình | E2E (iframe hiển thị 7 biểu đồ); gọi `/api/v1/chart/data` bằng guest token: HR công ty 1 → 19 hồ sơ, công ty 5 → 63, admin → 1255, khớp `/api/bi/funnel` | Đạt |
+| TC39 | F10 | Giao diện quản trị kỹ năng | thêm kỹ năng, alias, lộ trình; xóa alias | alias mới có hiệu lực ở `/ai/extract-skills`, xóa thì hết hiệu lực | `scripts/e2e_smoke.py` (4 bước quản trị), `test_admin_can_edit_skill_and_delete_alias` | Đạt |
+| TC40 | NFR | Nạp seed an toàn | lỗi giữa chừng; hai tiến trình `--reset` cùng lúc | không để dữ liệu nửa vời; tuần tự nhờ khoá cố vấn, kết quả 150 tin / 301 ứng viên / 1255 đơn | `test_seed_is_atomic_failure_midway_leaves_no_partial_data`; chạy thật trên PostgreSQL | Đạt |
+| TC41 | NFR | Nâng cấp CSDL cũ | PostgreSQL đang có dữ liệu ở revision 0002 | `alembic upgrade head` thêm cột `candidates.embedding` mà không mất dữ liệu | chạy thật: `Running upgrade 0002 -> 0003` | Đạt |
+| TC42 | F05 | Điểm khớp không mã hoá lại khi chấm | lưu hồ sơ rồi gọi match | embedding hồ sơ/tin lấy từ DB, không gọi encode | `test_profile_embedding_is_stored_on_save_and_scoring_does_not_re_encode` | Đạt |
+| TC43 | F03 | Đánh giá parser trên nhãn tay | 50 CV + `labels_cv_skills.csv` | bảng P/R/F1 từng tầng | `notebooks/01_parser_eval.ipynb` | **Chưa kiểm** (chưa có nhãn tay). Trên đáp án *tổng hợp* với model thật: P/R/F1 T1 0,969/0,993/0,981; T1+2 0,963/0,996/0,979; T1+2+3 0,963/0,996/0,979; MAE năm KN 0 |
+| TC44 | F05 | Đánh giá M0–M4 trên nhãn tay | 300 cặp, hai người gán | bảng P@5, nDCG@10, MRR, Spearman, AUC; huấn luyện M4 | `notebooks/02`, `03` | **Chưa kiểm** (chưa có nhãn tay) |

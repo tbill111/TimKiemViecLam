@@ -2,7 +2,7 @@
 
 Superset đọc 4 view trong `views.sql` bằng role `bi_reader` (chỉ `SELECT`). Dữ liệu seed là **mô phỏng**, nên các biểu đồ minh hoạ cách tính chứ không chứng minh hiệu quả mô hình AI.
 
-> Phần Superset trong tài liệu này CHƯA được chạy thử trên máy dựng dự án (không có Docker). Các bước và tên trường bên dưới đúng với `views.sql`, nhưng giao diện Superset có thể khác chút giữa các bản. Nếu nhúng lỗi, ứng dụng tự chuyển sang 3 biểu đồ Recharts đọc `/api/bi/*` (đã có test).
+> Đã chạy thật trên Superset 4.1.1 + PostgreSQL 16 (Docker): `bootstrap.py` dựng được dashboard, nhúng hiển thị đúng trong ứng dụng và guest token áp RLS theo công ty khớp `/api/bi/funnel`. Nếu nhúng lỗi, ứng dụng tự chuyển sang 3 biểu đồ Recharts đọc `/api/bi/*`.
 
 ## 1. Chạy
 
@@ -13,7 +13,16 @@ docker compose up --build         # db, api (tự migrate + seed), superset, web
 
 Superset: http://localhost:8088 (admin / admin theo `.env`).
 
-## 2. Kết nối dữ liệu
+## 1b. Dựng dashboard tự động (khuyến nghị)
+
+```bash
+python bi/superset/bootstrap.py --url http://localhost:8088 --write-env .env   # đổi cổng nếu đặt SUPERSET_PORT
+docker compose up -d api                                                       # nạp SUPERSET_DASHBOARD_ID, SUPERSET_RLS_DATASET_IDS
+```
+
+Script tạo kết nối (role `bi_reader`), 4 dataset, 7 biểu đồ (1, 1b, 2, 3, 4, 6, 8), dashboard "Thị trường tuyển dụng", bật nhúng cho `http://localhost:8080` và `:5173`, rồi ghi UUID và id dataset RLS vào `.env`. Chạy lại không tạo trùng. Biểu đồ 5, 7 và Native Filters thêm bằng giao diện nếu cần; mục 2–4 dưới đây là cách làm thủ công tương đương.
+
+## 2. Kết nối dữ liệu (thủ công)
 
 *Settings → Database Connections → + Database → PostgreSQL*:
 `postgresql+psycopg2://bi_reader:<BI_READER_PASSWORD>@db:5432/smartcareer`

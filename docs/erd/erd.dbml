@@ -41,6 +41,7 @@ Table candidates {
   work_mode varchar(20) [not null]
   consent_at timestamp
   profile_json jsonb [not null]
+  embedding bytea
 }
 
 Table companies {

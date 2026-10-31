@@ -18,14 +18,16 @@ và dashboard **BI** cho nhà tuyển dụng (ứng viên theo kỹ năng, xu h�
 
 ```bash
 cp .env.example .env
-docker compose up --build        # lần đầu tải model embedding nên lâu; WITH_ST=0 trong .env để bỏ qua (dùng embedder thay thế)
+docker compose up -d --build     # lần đầu build image có model embedding nên lâu; WITH_ST=0 trong .env để bỏ qua (dùng embedder thay thế)
+python bi/superset/bootstrap.py --url http://localhost:8088 --write-env .env   # dựng dashboard Superset + bật nhúng
+docker compose up -d api         # nạp UUID dashboard vào API
 ```
 
 | Dịch vụ | Địa chỉ |
 |---|---|
 | Ứng dụng | http://localhost:8080 |
 | Swagger | http://localhost:8000/docs |
-| Superset | http://localhost:8088 (xem `bi/README.md` để dựng và nhúng dashboard) |
+| Superset | http://localhost:8088 (đổi `SUPERSET_PORT` trong `.env` nếu cổng bị chiếm; xem `bi/README.md`) |
 
 API tự migrate (`alembic upgrade head`) và nạp dữ liệu demo khi khởi động (`SEED_ON_START=1`).
 
@@ -60,13 +62,14 @@ VITE_API_URL=http://localhost:8000/api npm run dev
 ## Kiểm thử
 
 ```bash
-cd backend && python -m pytest                 # 225 test: AI, API, phân quyền, luật trạng thái, phễu BI, seed, hiệu năng, migration
+cd backend && python -m pytest                 # 231 test: AI, API, phân quyền, luật trạng thái, phễu BI, seed, hiệu năng, migration
 npm run build && npm run lint                  # kiểu TypeScript + oxlint
-python scripts/e2e_smoke.py  --web http://localhost:4173     # E2E trình duyệt, 2 luồng online (xem docs/E2E.md)
+python scripts/e2e_smoke.py  --web http://localhost:8080     # E2E trình duyệt trên stack Docker: ứng viên, nhà tuyển dụng, quản trị (14 bước)
+python scripts/check_bi_views.py                              # đối chiếu 4 view PostgreSQL với /api/bi/*
 python scripts/e2e_offline.py --web http://localhost:4174    # E2E chế độ demo, kiểm tra không gọi API
 ```
 
-Bảng 38 test case: [docs/testcases.md](docs/testcases.md).
+Bảng 44 test case: [docs/testcases.md](docs/testcases.md).
 
 ## Cấu trúc
 
@@ -85,5 +88,6 @@ scripts/                export dữ liệu chuẩn M0 từ TypeScript, E2E
 
 - **Dữ liệu là mô phỏng.** Ứng viên, CV, tin và đơn ứng tuyển đều hư cấu; xác suất đi tiếp mỗi bước phễu không phụ thuộc điểm khớp. Biểu đồ lương và tỷ lệ tuyển chỉ minh hoạ cách tính.
 - **Hiệu quả mô hình chỉ kết luận từ nhãn tay** (30 ứng viên × 10 tin, hai người gán độc lập) bằng `notebooks/`. Các file nhãn và model M4 **chưa có**: `m4` trả 503 cho đến khi huấn luyện; số liệu trong notebook chạy trên dữ liệu tổng hợp chỉ để kiểm tra luồng.
-- **Chưa kiểm chứng trong môi trường dựng dự án** (không có Docker): `docker compose up`, SQL view trên PostgreSQL thật, nhúng Superset thật, model embedding thật. Phần này có test cú pháp/giả lập, cần chạy thử trên máy có Docker (xem [docs/E2E.md](docs/E2E.md)).
+- **Đã chạy thật trên Docker:** `docker compose up` (4 dịch vụ), migration và 4 view trên PostgreSQL 16 (khớp API từng số liệu), Superset 4.1.1 nhúng + RLS theo công ty, model embedding thật, E2E 14/14 và đo hiệu năng (xem [docs/E2E.md](docs/E2E.md)).
+- **Chưa có:** nhãn tay và kết quả đánh giá trên nhãn tay; biểu đồ 5, 7 và Native Filters của Superset; ảnh PNG Use Case/ERD.
 - CV dạng ảnh scan không đọc được; hệ thống báo lỗi thay vì đoán.

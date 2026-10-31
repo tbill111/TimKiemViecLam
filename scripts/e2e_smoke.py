@@ -167,7 +167,7 @@ def recruiter_flow(page: Page, web: str, shots: Path | None) -> None:
         fn()
 
 
-def admin_flow(page: Page, web: str, shots: Path | None) -> None:
+def admin_flow(page: Page, web: str, shots: Path | None, api: str) -> None:
     @step("Quản trị: đăng nhập, mở Quản lý kỹ năng")
     def _open():
         page.get_by_role("button", name="Đăng xuất").click()
@@ -194,7 +194,6 @@ def admin_flow(page: Page, web: str, shots: Path | None) -> None:
     @step("Quản trị: từ đồng nghĩa mới có hiệu lực ở bộ trích kỹ năng")
     def _effect():
         token = page.evaluate("localStorage.getItem('smartcareer_token')")
-        api = page.evaluate("document.location.origin") + "/api"
         r = page.request.post(f"{api}/ai/extract-skills", data={"text": "Yêu cầu: ky-nang-e2e và Git"}, headers={"Authorization": f"Bearer {token}"})
         names = {x["name"] for x in r.json()["skills"]}
         assert "Kỹ năng E2E" in names and "Git" in names, names
@@ -204,7 +203,6 @@ def admin_flow(page: Page, web: str, shots: Path | None) -> None:
         page.get_by_role("button", name="Xóa từ đồng nghĩa ky-nang-e2e").click()
         expect(page.get_by_text("Đã xóa từ đồng nghĩa.")).to_be_visible(timeout=15000)
         token = page.evaluate("localStorage.getItem('smartcareer_token')")
-        api = page.evaluate("document.location.origin") + "/api"
         r = page.request.post(f"{api}/ai/extract-skills", data={"text": "Yêu cầu: ky-nang-e2e"}, headers={"Authorization": f"Bearer {token}"})
         assert "Kỹ năng E2E" not in {x["name"] for x in r.json()["skills"]}
 
@@ -215,6 +213,7 @@ def admin_flow(page: Page, web: str, shots: Path | None) -> None:
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--web", default="http://localhost:4173")
+    ap.add_argument("--api", default=None, help="địa chỉ API (mặc định <web>/api, đúng khi đi qua nginx)")
     ap.add_argument("--shots", type=Path, default=None)
     args = ap.parse_args()
     with sync_playwright() as p:
@@ -225,7 +224,7 @@ def main() -> int:
         t0 = time.time()
         candidate_flow(page, args.web, args.shots)
         recruiter_flow(page, args.web, args.shots)
-        admin_flow(page, args.web, args.shots)
+        admin_flow(page, args.web, args.shots, args.api or args.web.rstrip("/") + "/api")
         browser.close()
     failed = [r for r in results if not r[1]]
     print(f"\n{len(results) - len(failed)}/{len(results)} bước đạt trong {time.time() - t0:.0f}s; lỗi JS không bắt: {len(console_errors)}")

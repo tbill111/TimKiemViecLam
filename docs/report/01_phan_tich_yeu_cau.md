@@ -24,13 +24,13 @@
 | F07 | Ứng tuyển và trạng thái | Ứng viên, nhà tuyển dụng | Nộp đơn (lưu điểm khớp), đổi trạng thái theo phễu, ghi lịch sử | `routers/applications.py` | TC21–TC24 |
 | F08 | Skill Gap | Ứng viên | Kỹ năng thiếu so với việc mục tiêu, xếp theo bắt buộc rồi theo số tin yêu cầu; lộ trình học | `/candidates/me/skill-gap` | TC25 |
 | F09 | Dashboard BI | Nhà tuyển dụng, quản trị | Số ứng viên theo kỹ năng, xu hướng lương, tỷ lệ chuyển đổi; nhúng Superset hoặc dự phòng Recharts; lọc theo công ty | `routers/bi.py`, `bi/views.sql` | TC26–TC29 |
-| F10 | Danh mục kỹ năng | Quản trị | Thêm kỹ năng và alias (ví dụ `reactjs` → React) | `routers/saved_admin.py` | TC30 |
+| F10 | Danh mục kỹ năng | Quản trị | Thêm kỹ năng, sửa nhóm và lộ trình học, thêm/xóa alias (ví dụ `reactjs` → React); có giao diện `/admin/skills` | `routers/saved_admin.py`, `src/pages/AdminSkillsPage.tsx` | TC30, TC39 |
 
 ## 3. Yêu cầu phi chức năng
 
 | Nhóm | Yêu cầu | Cách đáp ứng | Kiểm thử |
 |---|---|---|---|
-| Hiệu năng | Chấm 1 cặp < 200 ms; gợi ý trên 500 tin < 2 giây | Embedding tính sẵn khi lưu CV/tin; chấm bằng numpy trong bộ nhớ | TC31 |
+| Hiệu năng | Chấm 1 cặp < 200 ms; gợi ý trên 500 tin < 2 giây | Embedding tính sẵn khi lưu CV, tin và hồ sơ (`resumes.embedding`, `jobs.embedding`, `candidates.embedding`); chấm bằng numpy. Đo thật: 38 ms/cặp, 70–77 ms/500 tin | TC31, TC42 |
 | Giải thích được | Mọi điểm kèm điểm thành phần và danh sách kỹ năng thiếu | `MatchDTO` thống nhất, `explain.py` | TC15 |
 | Bảo mật | Mật khẩu băm bcrypt, JWT, phân quyền theo vai trò; nhà tuyển dụng chỉ xem ứng viên đã nộp vào tin của công ty mình; dashboard lọc theo `company_id` | `security.py`, `deps.py`, RLS ở guest token | TC05, TC13, TC20, TC27 |
 | Dữ liệu cá nhân | CV chỉ lưu khi có `consent`; có chức năng xóa hồ sơ | `consent_at`, `DELETE /candidates/me` | TC07, TC09 |
@@ -42,4 +42,4 @@
 ## 4. Phạm vi và giới hạn
 
 Ngoài phạm vi: thanh toán, chat hai bên, gửi email thật, thu thập dữ liệu từ LinkedIn/TopCV (điều khoản sử dụng không cho phép).
-Giới hạn đã biết: CV dạng ảnh scan không đọc được (báo lỗi `no_text`); từ điển kỹ năng có 108 kỹ năng; dữ liệu mô phỏng nên xu hướng lương và tỷ lệ tuyển chỉ minh hoạ cách tính.
+Giới hạn đã biết: CV dạng ảnh scan không đọc được (báo lỗi `no_text`); từ điển kỹ năng có 108 kỹ năng; dữ liệu mô phỏng nên xu hướng lương và tỷ lệ tuyển chỉ minh hoạ cách tính; trên bộ CV tổng hợp, so khớp mờ và embedding (tầng 2–3) chưa cải thiện F1 so với từ điển (tầng 1) — cần nhãn tay để kết luận.
