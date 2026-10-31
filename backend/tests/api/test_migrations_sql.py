@@ -80,3 +80,18 @@ def test_erd_dbml_is_current_and_lists_15_tables_in_five_groups():
     assert text.count("Table ") == 15 and text.count("TableGroup ") == 5 == len(GROUPS)
     assert "timestamp_without" not in text and "numeric(3,_1)" not in text
     assert OUT.exists() and OUT.read_text(encoding="utf-8") == text, "docs/erd/erd.dbml đã cũ: chạy python -m scripts.gen_erd"
+
+
+def test_bi_sql_statements_split_correctly_even_with_semicolons_in_comments():
+    """Hồi quy: dấu ';' trong chú thích từng làm migration tách sai câu lệnh trên PostgreSQL thật."""
+    import sys
+
+    sys.path.insert(0, str(BACKEND))
+    from app.bi_sql import VIEWS, statements
+
+    stmts = statements()
+    assert len(stmts) == len(VIEWS) == 4
+    for stmt, view in zip(stmts, VIEWS):
+        parsed = pglast.parse_sql(stmt)  # từng câu lệnh phải tự hợp lệ
+        assert parsed[0].stmt.view.relname == view
+        assert "--" not in stmt

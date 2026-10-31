@@ -1,6 +1,7 @@
 """Tạo/xoá 4 view BI từ bi/views.sql (chỉ PostgreSQL). Dùng chung cho migration 0002 và `seed.load_seed --reset`."""
 from __future__ import annotations
 
+import re
 from pathlib import Path
 
 from sqlalchemy import text
@@ -23,12 +24,9 @@ $$
 
 
 def statements() -> list[str]:
-    out = []
-    for stmt in VIEWS_SQL.read_text(encoding="utf-8").split(";"):
-        body = "\n".join(ln for ln in stmt.splitlines() if not ln.strip().startswith("--")).strip()
-        if body:
-            out.append(body)
-    return out
+    """Tách bi/views.sql thành từng câu lệnh. Phải bỏ chú thích TRƯỚC khi tách theo ';' (chú thích có thể chứa dấu ';')."""
+    lines = (re.sub(r"--.*$", "", ln) for ln in VIEWS_SQL.read_text(encoding="utf-8").splitlines())
+    return [stmt.strip() for stmt in "\n".join(lines).split(";") if stmt.strip()]
 
 
 def apply_views(conn: Connection) -> None:
