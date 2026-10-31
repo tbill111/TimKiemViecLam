@@ -1,0 +1,3 @@
+skill_name,steps
+TypeScript,Hoàn thành khóa TypeScript cơ bản trên freeCodeCamp hoặc Udemy|Chuyển đổi một project React hiện có sang TypeScript|Áp dụng generic types và utility types trong project thực tế
+REST API,Học cách gọi API với fetch() và axios|Thực hành với các public API như GitHub API|Xử lý loading states, error handling và authentication token
