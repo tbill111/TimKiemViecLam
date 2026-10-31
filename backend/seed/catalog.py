@@ -1,0 +1,263 @@
+"""Danh mục dùng để sinh dữ liệu seed: kỹ năng, alias, lộ trình học, nhóm nghề và công ty.
+
+Tất cả là dữ liệu hư cấu/tổng hợp phục vụ demo; không lấy từ TopCV, LinkedIn hay nguồn thương mại nào.
+"""
+from __future__ import annotations
+
+# (tên chuẩn, nhóm). 75 kỹ năng đầu giữ nguyên tên đang dùng ở frontend (src/data), phần sau là bổ sung.
+SKILLS: list[tuple[str, str]] = [
+    # Frontend
+    ("HTML", "Frontend"), ("CSS", "Frontend"), ("JavaScript", "Frontend"), ("TypeScript", "Frontend"), ("React", "Frontend"),
+    ("Tailwind CSS", "Frontend"), ("React Query", "Frontend"), ("Zustand", "Frontend"), ("Jest", "Frontend"), ("Storybook", "Frontend"),
+    ("HTML/CSS cơ bản", "Frontend"), ("Vue.js", "Frontend"), ("Angular", "Frontend"), ("Next.js", "Frontend"), ("Redux", "Frontend"),
+    ("Sass", "Frontend"), ("Webpack", "Frontend"), ("Responsive Design", "Frontend"),
+    # Backend
+    ("Node.js", "Backend"), ("REST API", "Backend"), ("PostgreSQL", "Backend"), ("MongoDB", "Backend"), ("OOP", "Backend"),
+    ("Java", "Backend"), ("Spring Boot", "Backend"), ("C#", "Backend"), (".NET", "Backend"), ("PHP", "Backend"), ("Laravel", "Backend"),
+    ("Go", "Backend"), ("Express.js", "Backend"), ("GraphQL", "Backend"), ("MySQL", "Backend"), ("Redis", "Backend"),
+    # Dữ liệu
+    ("Python", "Dữ liệu"), ("SQL", "Dữ liệu"), ("Excel", "Dữ liệu"), ("Power BI", "Dữ liệu"), ("Thống kê cơ bản", "Dữ liệu"),
+    ("Tableau", "Dữ liệu"), ("Pandas", "Dữ liệu"), ("Matplotlib", "Dữ liệu"), ("Machine Learning cơ bản", "Dữ liệu"), ("ETL", "Dữ liệu"),
+    ("Apache Spark", "Dữ liệu"), ("Airflow", "Dữ liệu"), ("Kafka", "Dữ liệu"), ("NumPy", "Dữ liệu"), ("Scikit-learn", "Dữ liệu"),
+    ("TensorFlow", "Dữ liệu"), ("Looker Studio", "Dữ liệu"), ("Data Warehouse", "Dữ liệu"),
+    # DevOps / hạ tầng / kiểm thử
+    ("Git", "DevOps"), ("Docker", "DevOps"), ("CI/CD", "DevOps"), ("AWS cơ bản", "DevOps"), ("Linux", "DevOps"), ("Linux cơ bản", "DevOps"),
+    ("Cloud (AWS/GCP)", "DevOps"), ("Kubernetes", "DevOps"), ("Nginx", "DevOps"), ("GitHub Actions", "DevOps"), ("Terraform", "DevOps"),
+    ("Kiểm thử phần mềm", "DevOps"), ("Viết test case", "DevOps"), ("Selenium", "DevOps"), ("Playwright", "DevOps"), ("Postman", "DevOps"),
+    ("Kỹ thuật máy tính", "DevOps"), ("Windows Server", "DevOps"), ("Mạng cơ bản", "DevOps"), ("Xử lý sự cố", "DevOps"),
+    ("Active Directory", "DevOps"), ("Office 365", "DevOps"), ("ITIL cơ bản", "DevOps"), ("Virtualization", "DevOps"),
+    # Thiết kế
+    ("Figma", "Thiết kế"), ("Nguyên lý UX", "Thiết kế"), ("Thiết kế UI", "Thiết kế"), ("Adobe XD", "Thiết kế"), ("Prototyping", "Thiết kế"),
+    ("User Research", "Thiết kế"), ("Design System", "Thiết kế"), ("Canva", "Thiết kế"), ("Photoshop", "Thiết kế"), ("Illustrator", "Thiết kế"),
+    # Marketing / nghiệp vụ
+    ("Viết nội dung", "Marketing"), ("Mạng xã hội", "Marketing"), ("Google Analytics", "Marketing"), ("Facebook Ads", "Marketing"),
+    ("SEO cơ bản", "Marketing"), ("Email Marketing", "Marketing"), ("Phân tích nghiệp vụ", "Nghiệp vụ"), ("BPMN", "Nghiệp vụ"),
+    ("UML", "Nghiệp vụ"), ("Jira", "Nghiệp vụ"), ("Confluence", "Nghiệp vụ"), ("Nghiệp vụ ngân hàng", "Nghiệp vụ"), ("Agile/Scrum", "Nghiệp vụ"),
+    # Kỹ năng mềm
+    ("Giao tiếp", "Kỹ năng mềm"), ("Tư duy logic", "Kỹ năng mềm"), ("Tư duy phân tích", "Kỹ năng mềm"), ("Tư duy sáng tạo", "Kỹ năng mềm"),
+    ("Viết tài liệu", "Kỹ năng mềm"), ("Thuyết trình", "Kỹ năng mềm"), ("Làm việc nhóm", "Kỹ năng mềm"), ("Quản lý thời gian", "Kỹ năng mềm"),
+    ("Tiếng Anh giao tiếp", "Kỹ năng mềm"),
+]
+
+# alias (viết thường) → tên chuẩn. Không dùng viết tắt quá ngắn dễ khớp nhầm như "js", "ts", "ml".
+ALIASES: dict[str, list[str]] = {
+    "React": ["reactjs", "react.js", "react js", "react native web"],
+    "Node.js": ["nodejs", "node js"],
+    "HTML": ["html5", "html 5", "ngôn ngữ html"],
+    "CSS": ["css3", "css 3", "cascading style sheets"],
+    "JavaScript": ["javascript es6", "ecmascript", "es6", "java script", "vanilla js"],
+    "TypeScript": ["typescript 5", "type script"],
+    "REST API": ["restful api", "restful", "rest apis", "web api"],
+    "PostgreSQL": ["postgres", "postgre sql", "postgresql 16", "psql"],
+    "Python": ["python3", "python 3", "lập trình python"],
+    "Excel": ["microsoft excel", "ms excel", "excel nâng cao", "bảng tính excel"],
+    "Power BI": ["powerbi", "power-bi", "microsoft power bi"],
+    "Tailwind CSS": ["tailwind", "tailwindcss"],
+    "Thống kê cơ bản": ["thống kê", "statistics", "thống kê mô tả"],
+    "Kiểm thử phần mềm": ["kiểm thử", "software testing", "testing", "qa manual", "manual testing"],
+    "Giao tiếp": ["kỹ năng giao tiếp", "communication", "giao tiếp hiệu quả"],
+    "Agile/Scrum": ["agile", "scrum", "agile scrum", "phương pháp agile"],
+    "Figma": ["figma design", "thiết kế figma"],
+    "Git": ["github", "gitlab", "git flow", "quản lý phiên bản"],
+    "Docker": ["docker compose", "container", "dockerfile"],
+    "SQL": ["truy vấn sql", "t-sql", "sql server", "ngôn ngữ sql"],
+    "MongoDB": ["mongo", "mongo db", "nosql"],
+    "Tableau": ["tableau desktop"],
+    "Pandas": ["python pandas", "thư viện pandas"],
+    "Matplotlib": ["matplotlib.pyplot", "seaborn"],
+    "Machine Learning cơ bản": ["machine learning", "học máy", "ml cơ bản"],
+    "Phân tích nghiệp vụ": ["business analysis", "phân tích yêu cầu"],
+    "Tư duy logic": ["logical thinking", "tư duy lập luận"],
+    "Viết tài liệu": ["technical writing", "tài liệu kỹ thuật", "documentation"],
+    "BPMN": ["bpmn 2.0", "mô hình hoá quy trình"],
+    "Jira": ["atlassian jira", "jira software"],
+    "Confluence": ["atlassian confluence"],
+    "UML": ["uml diagram", "sơ đồ uml", "use case diagram"],
+    "Viết test case": ["test case", "testcase", "thiết kế test case"],
+    "Tư duy phân tích": ["analytical thinking", "kỹ năng phân tích"],
+    "Selenium": ["selenium webdriver"],
+    "Playwright": ["playwright test"],
+    "Postman": ["postman api"],
+    "Nguyên lý UX": ["ux design", "trải nghiệm người dùng", "nguyên lý ux/ui"],
+    "Thiết kế UI": ["ui design", "thiết kế giao diện"],
+    "Tư duy sáng tạo": ["creative thinking", "sáng tạo"],
+    "Adobe XD": ["adobexd"],
+    "Prototyping": ["prototype", "làm prototype", "wireframe"],
+    "User Research": ["nghiên cứu người dùng", "ux research"],
+    "Design System": ["hệ thống thiết kế", "design systems"],
+    "HTML/CSS cơ bản": ["html css cơ bản", "html và css cơ bản"],
+    "Kỹ thuật máy tính": ["sửa chữa máy tính", "phần cứng máy tính"],
+    "Windows Server": ["windows server 2019", "windows server 2022"],
+    "Mạng cơ bản": ["networking", "mạng máy tính", "tcp/ip", "tcp ip"],
+    "Xử lý sự cố": ["troubleshooting", "khắc phục sự cố", "hỗ trợ kỹ thuật"],
+    "Linux": ["ubuntu", "centos", "debian", "linux server"],
+    "Active Directory": ["microsoft active directory"],
+    "Office 365": ["microsoft 365", "o365", "ms office"],
+    "ITIL cơ bản": ["itil", "itil v4"],
+    "Virtualization": ["ảo hoá", "vmware", "hyper-v"],
+    "Viết nội dung": ["content writing", "copywriting", "viết content", "content marketing"],
+    "Mạng xã hội": ["social media", "quản lý fanpage", "social media marketing"],
+    "Google Analytics": ["ga4", "google analytic"],
+    "Facebook Ads": ["fb ads", "quảng cáo facebook", "meta ads"],
+    "Canva": ["canva design"],
+    "SEO cơ bản": ["seo", "tối ưu công cụ tìm kiếm"],
+    "Email Marketing": ["mailchimp"],
+    "OOP": ["lập trình hướng đối tượng", "object oriented programming", "oop cơ bản"],
+    "CI/CD": ["ci cd", "continuous integration", "jenkins", "gitlab ci"],
+    "AWS cơ bản": ["aws", "amazon web services", "aws ec2", "aws s3"],
+    "Nghiệp vụ ngân hàng": ["banking", "nghiệp vụ tín dụng", "core banking"],
+    "React Query": ["tanstack query", "react-query"],
+    "Zustand": ["zustand state"],
+    "Jest": ["jest testing", "unit test javascript"],
+    "Storybook": ["storybook.js"],
+    "ETL": ["extract transform load", "quy trình etl"],
+    "Linux cơ bản": ["linux commands", "lệnh linux"],
+    "Apache Spark": ["spark", "pyspark"],
+    "Airflow": ["apache airflow"],
+    "Kafka": ["apache kafka"],
+    "Cloud (AWS/GCP)": ["gcp", "google cloud", "google cloud platform"],
+    "Vue.js": ["vuejs", "vue", "vue 3"],
+    "Angular": ["angularjs", "angular 15"],
+    "Next.js": ["nextjs", "next js"],
+    "Redux": ["redux toolkit", "react redux"],
+    "Sass": ["scss", "sass/scss"],
+    "Webpack": ["webpack 5"],
+    "Responsive Design": ["responsive", "thiết kế responsive", "mobile first"],
+    "Java": ["java core", "java 17", "lập trình java"],
+    "Spring Boot": ["springboot", "spring framework"],
+    "C#": ["c sharp", "csharp"],
+    ".NET": ["dotnet", "asp.net", "asp.net core", ".net core"],
+    "PHP": ["php 8", "lập trình php"],
+    "Laravel": ["laravel framework", "laravel 10"],
+    "Go": ["golang", "ngôn ngữ go"],
+    "Express.js": ["expressjs"],
+    "GraphQL": ["graph ql", "apollo graphql"],
+    "MySQL": ["my sql", "mariadb"],
+    "Redis": ["redis cache", "bộ nhớ đệm redis"],
+    "NumPy": ["numpy array"],
+    "Scikit-learn": ["sklearn", "scikit learn"],
+    "TensorFlow": ["tensor flow", "keras"],
+    "Looker Studio": ["google data studio", "data studio"],
+    "Data Warehouse": ["kho dữ liệu", "datawarehouse", "dwh"],
+    "Kubernetes": ["k8s", "kube"],
+    "Nginx": ["nginx server", "reverse proxy"],
+    "GitHub Actions": ["github action", "gh actions"],
+    "Terraform": ["infrastructure as code", "iac"],
+    "Photoshop": ["adobe photoshop"],
+    "Illustrator": ["adobe illustrator"],
+    "Thuyết trình": ["presentation", "kỹ năng thuyết trình", "trình bày"],
+    "Làm việc nhóm": ["teamwork", "kỹ năng làm việc nhóm", "làm việc theo nhóm"],
+    "Quản lý thời gian": ["time management", "sắp xếp công việc"],
+    "Tiếng Anh giao tiếp": ["english communication", "tiếng anh", "giao tiếp tiếng anh"],
+}
+
+# Lộ trình học (3 bước) cho các kỹ năng hay bị thiếu; kỹ năng không có dòng dùng lộ trình mặc định ở API.
+LEARNING_STEPS: dict[str, list[str]] = {
+    "TypeScript": ["Hoàn thành khóa TypeScript cơ bản trên freeCodeCamp hoặc Udemy", "Chuyển đổi một project React hiện có sang TypeScript", "Áp dụng generic types và utility types trong project thực tế"],
+    "REST API": ["Học cách gọi API với fetch() và axios", "Thực hành với các public API như GitHub API hoặc OpenWeatherMap", "Xử lý loading, error handling và token xác thực"],
+    "React": ["Học component, props, state và hooks qua tài liệu react.dev", "Xây dựng ứng dụng todo và ứng dụng gọi API", "Triển khai một project nhỏ lên Vercel hoặc Netlify"],
+    "Git": ["Học các lệnh clone, add, commit, push, pull", "Thực hành tạo nhánh và mở pull request trên GitHub", "Giải quyết xung đột merge trong dự án nhóm"],
+    "SQL": ["Học SELECT, WHERE, JOIN, GROUP BY trên bộ dữ liệu mẫu", "Giải 30 bài tập trên SQLZoo hoặc LeetCode Database", "Thiết kế và truy vấn một CSDL nhỏ cho project cá nhân"],
+    "Python": ["Học cú pháp, kiểu dữ liệu và hàm qua tài liệu python.org", "Làm bài tập xử lý chuỗi và danh sách", "Viết một script phân tích tệp CSV"],
+    "Docker": ["Học khái niệm image, container và Dockerfile", "Đóng gói một ứng dụng web nhỏ bằng Dockerfile", "Dùng docker compose chạy ứng dụng cùng cơ sở dữ liệu"],
+    "Node.js": ["Học module, npm và xử lý bất đồng bộ", "Xây dựng API REST bằng Express", "Kết nối cơ sở dữ liệu và viết test cho API"],
+    "JavaScript": ["Học biến, hàm, mảng và đối tượng trên javascript.info", "Thao tác DOM và xử lý sự kiện", "Làm một ứng dụng nhỏ gọi API bằng fetch"],
+    "Power BI": ["Làm quen giao diện và nhập dữ liệu từ Excel", "Dựng dashboard có 3 biểu đồ và bộ lọc", "Viết một vài measure bằng DAX cơ bản"],
+    "Excel": ["Học hàm VLOOKUP, SUMIF, INDEX/MATCH", "Làm Pivot Table cho bộ dữ liệu bán hàng", "Xây dựng báo cáo có biểu đồ và định dạng có điều kiện"],
+    "Figma": ["Làm quen frame, auto layout và component", "Sao chép thiết kế của một ứng dụng quen thuộc", "Tạo prototype có tương tác cho một luồng người dùng"],
+    "Tailwind CSS": ["Học các lớp tiện ích về layout, spacing, màu sắc", "Dựng lại một trang landing page", "Tách component và dùng responsive breakpoint"],
+    "PostgreSQL": ["Cài đặt PostgreSQL và làm quen psql", "Thiết kế bảng có khoá chính, khoá ngoại và chỉ mục", "Viết truy vấn nâng cao với CTE và hàm cửa sổ"],
+    "Machine Learning cơ bản": ["Học hồi quy và phân loại qua khóa Machine Learning của Andrew Ng", "Thực hành với scikit-learn trên bộ dữ liệu Iris", "Đánh giá mô hình bằng cross-validation và viết báo cáo ngắn"],
+    "Kiểm thử phần mềm": ["Học các loại kiểm thử và quy trình STLC", "Viết test case cho một trang đăng nhập", "Thực hành báo lỗi rõ ràng trên Jira"],
+    "Agile/Scrum": ["Học vai trò, sự kiện và artifact của Scrum", "Tham gia dự án nhóm có sprint planning và retrospective", "Quản lý backlog bằng Jira hoặc Trello"],
+    "Giao tiếp": ["Luyện trình bày ý ngắn gọn theo cấu trúc", "Tham gia một buổi thuyết trình hoặc câu lạc bộ", "Xin phản hồi từ bạn học sau mỗi buổi báo cáo nhóm"],
+    "CI/CD": ["Học khái niệm tích hợp và triển khai liên tục", "Viết workflow GitHub Actions chạy test", "Tự động triển khai một ứng dụng nhỏ khi merge vào main"],
+    "Linux": ["Học các lệnh thao tác tệp, quyền và tiến trình", "Cài đặt Ubuntu Server trên máy ảo", "Viết shell script tự động hoá một tác vụ"],
+    "MongoDB": ["Học tài liệu, collection và truy vấn cơ bản", "Kết nối MongoDB với ứng dụng Node.js", "Thiết kế schema cho một ứng dụng blog"],
+    "Phân tích nghiệp vụ": ["Học cách thu thập và viết yêu cầu (user story)", "Vẽ sơ đồ quy trình BPMN cho một nghiệp vụ quen thuộc", "Viết tài liệu BRD cho một dự án nhỏ"],
+    "Tiếng Anh giao tiếp": ["Luyện nghe và nói 15 phút mỗi ngày", "Đọc tài liệu kỹ thuật tiếng Anh", "Viết CV và email bằng tiếng Anh"],
+}
+
+LOCATIONS = [("Hà Nội", "Bắc"), ("Hồ Chí Minh", "Nam"), ("Đà Nẵng", "Trung"), ("Hải Phòng", "Bắc"), ("Cần Thơ", "Nam"), ("Remote", "Remote")]
+
+# Nhóm nghề (10 giá trị của JobCategory): kỹ năng cốt lõi/tuỳ chọn và danh sách vị trí để sinh tin tuyển dụng.
+OCCUPATIONS: dict[str, dict] = {
+    "Frontend Development": {
+        "core": ["HTML", "CSS", "JavaScript", "React", "Git"],
+        "optional": ["TypeScript", "Tailwind CSS", "REST API", "Responsive Design", "Redux", "Next.js", "Vue.js", "Jest"],
+        "titles": ["Frontend Developer", "React Developer", "Web Developer", "Frontend Engineer"],
+        "major": "Công nghệ Thông tin",
+    },
+    "Backend Development": {
+        "core": ["Node.js", "SQL", "REST API", "Git", "OOP"],
+        "optional": ["PostgreSQL", "MongoDB", "Docker", "Java", "Spring Boot", "Express.js", "Redis", "GraphQL", "MySQL"],
+        "titles": ["Backend Developer", "Node.js Developer", "Java Developer", "API Developer"],
+        "major": "Kỹ thuật Phần mềm",
+    },
+    "Data Science & Analytics": {
+        "core": ["SQL", "Python", "Excel", "Thống kê cơ bản"],
+        "optional": ["Power BI", "Pandas", "Tableau", "Matplotlib", "Machine Learning cơ bản", "NumPy", "Scikit-learn", "ETL", "Looker Studio"],
+        "titles": ["Data Analyst", "Business Intelligence Analyst", "Data Engineer Intern", "Data Scientist"],
+        "major": "Hệ thống Thông tin",
+    },
+    "Business Analysis": {
+        "core": ["Phân tích nghiệp vụ", "Viết tài liệu", "Tư duy phân tích", "Giao tiếp"],
+        "optional": ["BPMN", "UML", "Jira", "Confluence", "SQL", "Agile/Scrum", "Nghiệp vụ ngân hàng", "Excel"],
+        "titles": ["Business Analyst", "System Analyst", "Product Analyst", "Requirements Analyst"],
+        "major": "Quản trị Kinh doanh",
+    },
+    "QA & Testing": {
+        "core": ["Kiểm thử phần mềm", "Viết test case", "Tư duy logic", "Git"],
+        "optional": ["Selenium", "Playwright", "Postman", "SQL", "Jira", "Agile/Scrum", "Jest"],
+        "titles": ["QA Tester", "QA Engineer", "Automation Tester", "Software Tester"],
+        "major": "Công nghệ Thông tin",
+    },
+    "UI/UX Design": {
+        "core": ["Figma", "Nguyên lý UX", "Thiết kế UI", "Tư duy sáng tạo"],
+        "optional": ["Adobe XD", "Prototyping", "User Research", "Design System", "HTML/CSS cơ bản", "Photoshop", "Illustrator"],
+        "titles": ["UI/UX Designer", "Product Designer", "UI Designer", "UX Researcher"],
+        "major": "Thiết kế Đồ họa",
+    },
+    "IT Support": {
+        "core": ["Kỹ thuật máy tính", "Mạng cơ bản", "Xử lý sự cố", "Giao tiếp"],
+        "optional": ["Windows Server", "Linux", "Active Directory", "Office 365", "ITIL cơ bản", "Virtualization"],
+        "titles": ["IT Helpdesk", "IT Support Engineer", "System Administrator Intern", "Technical Support"],
+        "major": "Công nghệ Thông tin",
+    },
+    "Digital Marketing": {
+        "core": ["Viết nội dung", "Mạng xã hội", "Google Analytics", "Giao tiếp"],
+        "optional": ["Facebook Ads", "SEO cơ bản", "Email Marketing", "Canva", "Excel", "Photoshop"],
+        "titles": ["Digital Marketing Executive", "Content Marketing", "Social Media Executive", "SEO Specialist"],
+        "major": "Marketing",
+    },
+    "Software Engineering": {
+        "core": ["JavaScript", "SQL", "Git", "OOP", "REST API"],
+        "optional": ["React", "Node.js", "Docker", "CI/CD", "Java", "C#", ".NET", "Agile/Scrum", "AWS cơ bản", "Kubernetes"],
+        "titles": ["Software Engineer", "Full-stack Developer", "Application Developer", "DevOps Engineer"],
+        "major": "Kỹ thuật Phần mềm",
+    },
+    "Business Operations": {
+        "core": ["Excel", "Giao tiếp", "Tư duy phân tích", "Viết tài liệu"],
+        "optional": ["SQL", "Power BI", "Quản lý thời gian", "Làm việc nhóm", "Tiếng Anh giao tiếp", "Thuyết trình"],
+        "titles": ["Operations Executive", "Business Operations Analyst", "Project Coordinator", "Customer Success"],
+        "major": "Quản trị Kinh doanh",
+    },
+}
+
+COMPANY_INDUSTRY = {
+    "Frontend Development": "Phần mềm & Công nghệ", "Backend Development": "Phần mềm & Công nghệ", "Software Engineering": "Phần mềm & Công nghệ",
+    "Data Science & Analytics": "Phân tích dữ liệu", "Business Analysis": "Tài chính – Ngân hàng", "QA & Testing": "Phần mềm & Công nghệ",
+    "UI/UX Design": "Thiết kế & Sáng tạo", "IT Support": "Hạ tầng & Dịch vụ CNTT", "Digital Marketing": "Marketing số",
+    "Business Operations": "Thương mại & Dịch vụ",
+}
+
+# 18 công ty bổ sung (hư cấu); 12 công ty còn lại lấy từ 12 tin mẫu của frontend.
+EXTRA_COMPANIES = [
+    "Hải Âu Digital", "Bình Minh Data", "Thăng Long Systems", "Phù Sa Tech", "Đông Dương Solutions", "Vạn Xuân Analytics",
+    "Lạc Hồng Software", "Trường Sơn Cloud", "Cửu Long Studio", "Hoa Sen Fintech", "Kim Long Labs", "Bạch Mã Digital",
+    "Sông Hương Tech", "Tây Nguyên Data", "An Phát Services", "Hồng Hà Media", "Minh Khai Consulting", "Việt Tiến Logistics",
+]
+SIZES = ["10–50 nhân viên", "50–200 nhân viên", "200–500 nhân viên", "500+ nhân viên"]
+
+# Lương trung bình (triệu VNĐ/tháng) theo cấp bậc tại tháng đầu; xu hướng tăng nhẹ theo thời gian được thêm khi sinh tin.
+BASE_SALARY = {"intern": 4.0, "fresher": 9.0, "junior": 14.0, "middle": 24.0, "senior": 38.0}

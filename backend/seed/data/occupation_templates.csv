@@ -1,4 +1,11 @@
 occupation,core_skills,optional_skills
-Frontend Development,HTML|CSS|JavaScript|React|Git,TypeScript|Tailwind CSS|REST API
-Data Science & Analytics,SQL|Python|Excel|Thống kê cơ bản,Power BI|Pandas|Machine Learning cơ bản
-QA & Testing,Kiểm thử phần mềm|SQL|Git,Selenium|Postman|Agile/Scrum
+Frontend Development,HTML|CSS|JavaScript|React|Git,TypeScript|Tailwind CSS|REST API|Responsive Design|Redux|Next.js|Vue.js|Jest
+Backend Development,Node.js|SQL|REST API|Git|OOP,PostgreSQL|MongoDB|Docker|Java|Spring Boot|Express.js|Redis|GraphQL|MySQL
+Data Science & Analytics,SQL|Python|Excel|Thống kê cơ bản,Power BI|Pandas|Tableau|Matplotlib|Machine Learning cơ bản|NumPy|Scikit-learn|ETL|Looker Studio
+Business Analysis,Phân tích nghiệp vụ|Viết tài liệu|Tư duy phân tích|Giao tiếp,BPMN|UML|Jira|Confluence|SQL|Agile/Scrum|Nghiệp vụ ngân hàng|Excel
+QA & Testing,Kiểm thử phần mềm|Viết test case|Tư duy logic|Git,Selenium|Playwright|Postman|SQL|Jira|Agile/Scrum|Jest
+UI/UX Design,Figma|Nguyên lý UX|Thiết kế UI|Tư duy sáng tạo,Adobe XD|Prototyping|User Research|Design System|HTML/CSS cơ bản|Photoshop|Illustrator
+IT Support,Kỹ thuật máy tính|Mạng cơ bản|Xử lý sự cố|Giao tiếp,Windows Server|Linux|Active Directory|Office 365|ITIL cơ bản|Virtualization
+Digital Marketing,Viết nội dung|Mạng xã hội|Google Analytics|Giao tiếp,Facebook Ads|SEO cơ bản|Email Marketing|Canva|Excel|Photoshop
+Software Engineering,JavaScript|SQL|Git|OOP|REST API,React|Node.js|Docker|CI/CD|Java|C#|.NET|Agile/Scrum|AWS cơ bản|Kubernetes
+Business Operations,Excel|Giao tiếp|Tư duy phân tích|Viết tài liệu,SQL|Power BI|Quản lý thời gian|Làm việc nhóm|Tiếng Anh giao tiếp|Thuyết trình

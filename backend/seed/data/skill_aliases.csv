@@ -1,4 +1,260 @@
 alias,skill_name
 reactjs,React
+react.js,React
+react js,React
+react native web,React
 nodejs,Node.js
+node js,Node.js
+html5,HTML
+html 5,HTML
+ngôn ngữ html,HTML
+css3,CSS
+css 3,CSS
+cascading style sheets,CSS
+javascript es6,JavaScript
+ecmascript,JavaScript
+es6,JavaScript
+java script,JavaScript
+vanilla js,JavaScript
+typescript 5,TypeScript
+type script,TypeScript
+restful api,REST API
+restful,REST API
+rest apis,REST API
+web api,REST API
+postgres,PostgreSQL
+postgre sql,PostgreSQL
+postgresql 16,PostgreSQL
+psql,PostgreSQL
+python3,Python
+python 3,Python
+lập trình python,Python
+microsoft excel,Excel
+ms excel,Excel
+excel nâng cao,Excel
+bảng tính excel,Excel
 powerbi,Power BI
+power-bi,Power BI
+microsoft power bi,Power BI
+tailwind,Tailwind CSS
+tailwindcss,Tailwind CSS
+thống kê,Thống kê cơ bản
+statistics,Thống kê cơ bản
+thống kê mô tả,Thống kê cơ bản
+kiểm thử,Kiểm thử phần mềm
+software testing,Kiểm thử phần mềm
+testing,Kiểm thử phần mềm
+qa manual,Kiểm thử phần mềm
+manual testing,Kiểm thử phần mềm
+kỹ năng giao tiếp,Giao tiếp
+communication,Giao tiếp
+giao tiếp hiệu quả,Giao tiếp
+agile,Agile/Scrum
+scrum,Agile/Scrum
+agile scrum,Agile/Scrum
+phương pháp agile,Agile/Scrum
+figma design,Figma
+thiết kế figma,Figma
+github,Git
+gitlab,Git
+git flow,Git
+quản lý phiên bản,Git
+docker compose,Docker
+container,Docker
+dockerfile,Docker
+truy vấn sql,SQL
+t-sql,SQL
+sql server,SQL
+ngôn ngữ sql,SQL
+mongo,MongoDB
+mongo db,MongoDB
+nosql,MongoDB
+tableau desktop,Tableau
+python pandas,Pandas
+thư viện pandas,Pandas
+matplotlib.pyplot,Matplotlib
+seaborn,Matplotlib
+machine learning,Machine Learning cơ bản
+học máy,Machine Learning cơ bản
+ml cơ bản,Machine Learning cơ bản
+business analysis,Phân tích nghiệp vụ
+phân tích yêu cầu,Phân tích nghiệp vụ
+logical thinking,Tư duy logic
+tư duy lập luận,Tư duy logic
+technical writing,Viết tài liệu
+tài liệu kỹ thuật,Viết tài liệu
+documentation,Viết tài liệu
+bpmn 2.0,BPMN
+mô hình hoá quy trình,BPMN
+atlassian jira,Jira
+jira software,Jira
+atlassian confluence,Confluence
+uml diagram,UML
+sơ đồ uml,UML
+use case diagram,UML
+test case,Viết test case
+testcase,Viết test case
+thiết kế test case,Viết test case
+analytical thinking,Tư duy phân tích
+kỹ năng phân tích,Tư duy phân tích
+selenium webdriver,Selenium
+playwright test,Playwright
+postman api,Postman
+ux design,Nguyên lý UX
+trải nghiệm người dùng,Nguyên lý UX
+nguyên lý ux/ui,Nguyên lý UX
+ui design,Thiết kế UI
+thiết kế giao diện,Thiết kế UI
+creative thinking,Tư duy sáng tạo
+sáng tạo,Tư duy sáng tạo
+adobexd,Adobe XD
+prototype,Prototyping
+làm prototype,Prototyping
+wireframe,Prototyping
+nghiên cứu người dùng,User Research
+ux research,User Research
+hệ thống thiết kế,Design System
+design systems,Design System
+html css cơ bản,HTML/CSS cơ bản
+html và css cơ bản,HTML/CSS cơ bản
+sửa chữa máy tính,Kỹ thuật máy tính
+phần cứng máy tính,Kỹ thuật máy tính
+windows server 2019,Windows Server
+windows server 2022,Windows Server
+networking,Mạng cơ bản
+mạng máy tính,Mạng cơ bản
+tcp/ip,Mạng cơ bản
+tcp ip,Mạng cơ bản
+troubleshooting,Xử lý sự cố
+khắc phục sự cố,Xử lý sự cố
+hỗ trợ kỹ thuật,Xử lý sự cố
+ubuntu,Linux
+centos,Linux
+debian,Linux
+linux server,Linux
+microsoft active directory,Active Directory
+microsoft 365,Office 365
+o365,Office 365
+ms office,Office 365
+itil,ITIL cơ bản
+itil v4,ITIL cơ bản
+ảo hoá,Virtualization
+vmware,Virtualization
+hyper-v,Virtualization
+content writing,Viết nội dung
+copywriting,Viết nội dung
+viết content,Viết nội dung
+content marketing,Viết nội dung
+social media,Mạng xã hội
+quản lý fanpage,Mạng xã hội
+social media marketing,Mạng xã hội
+ga4,Google Analytics
+google analytic,Google Analytics
+fb ads,Facebook Ads
+quảng cáo facebook,Facebook Ads
+meta ads,Facebook Ads
+canva design,Canva
+seo,SEO cơ bản
+tối ưu công cụ tìm kiếm,SEO cơ bản
+mailchimp,Email Marketing
+lập trình hướng đối tượng,OOP
+object oriented programming,OOP
+oop cơ bản,OOP
+ci cd,CI/CD
+continuous integration,CI/CD
+jenkins,CI/CD
+gitlab ci,CI/CD
+aws,AWS cơ bản
+amazon web services,AWS cơ bản
+aws ec2,AWS cơ bản
+aws s3,AWS cơ bản
+banking,Nghiệp vụ ngân hàng
+nghiệp vụ tín dụng,Nghiệp vụ ngân hàng
+core banking,Nghiệp vụ ngân hàng
+tanstack query,React Query
+react-query,React Query
+zustand state,Zustand
+jest testing,Jest
+unit test javascript,Jest
+storybook.js,Storybook
+extract transform load,ETL
+quy trình etl,ETL
+linux commands,Linux cơ bản
+lệnh linux,Linux cơ bản
+spark,Apache Spark
+pyspark,Apache Spark
+apache airflow,Airflow
+apache kafka,Kafka
+gcp,Cloud (AWS/GCP)
+google cloud,Cloud (AWS/GCP)
+google cloud platform,Cloud (AWS/GCP)
+vuejs,Vue.js
+vue,Vue.js
+vue 3,Vue.js
+angularjs,Angular
+angular 15,Angular
+nextjs,Next.js
+next js,Next.js
+redux toolkit,Redux
+react redux,Redux
+scss,Sass
+sass/scss,Sass
+webpack 5,Webpack
+responsive,Responsive Design
+thiết kế responsive,Responsive Design
+mobile first,Responsive Design
+java core,Java
+java 17,Java
+lập trình java,Java
+springboot,Spring Boot
+spring framework,Spring Boot
+c sharp,C#
+csharp,C#
+dotnet,.NET
+asp.net,.NET
+asp.net core,.NET
+.net core,.NET
+php 8,PHP
+lập trình php,PHP
+laravel framework,Laravel
+laravel 10,Laravel
+golang,Go
+ngôn ngữ go,Go
+expressjs,Express.js
+graph ql,GraphQL
+apollo graphql,GraphQL
+my sql,MySQL
+mariadb,MySQL
+redis cache,Redis
+bộ nhớ đệm redis,Redis
+numpy array,NumPy
+sklearn,Scikit-learn
+scikit learn,Scikit-learn
+tensor flow,TensorFlow
+keras,TensorFlow
+google data studio,Looker Studio
+data studio,Looker Studio
+kho dữ liệu,Data Warehouse
+datawarehouse,Data Warehouse
+dwh,Data Warehouse
+k8s,Kubernetes
+kube,Kubernetes
+nginx server,Nginx
+reverse proxy,Nginx
+github action,GitHub Actions
+gh actions,GitHub Actions
+infrastructure as code,Terraform
+iac,Terraform
+adobe photoshop,Photoshop
+adobe illustrator,Illustrator
+presentation,Thuyết trình
+kỹ năng thuyết trình,Thuyết trình
+trình bày,Thuyết trình
+teamwork,Làm việc nhóm
+kỹ năng làm việc nhóm,Làm việc nhóm
+làm việc theo nhóm,Làm việc nhóm
+time management,Quản lý thời gian
+sắp xếp công việc,Quản lý thời gian
+english communication,Tiếng Anh giao tiếp
+tiếng anh,Tiếng Anh giao tiếp
+giao tiếp tiếng anh,Tiếng Anh giao tiếp

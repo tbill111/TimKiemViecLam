@@ -1,3 +1,24 @@
 skill_name,steps
 TypeScript,Hoàn thành khóa TypeScript cơ bản trên freeCodeCamp hoặc Udemy|Chuyển đổi một project React hiện có sang TypeScript|Áp dụng generic types và utility types trong project thực tế
-REST API,Học cách gọi API với fetch() và axios|Thực hành với các public API như GitHub API|Xử lý loading states, error handling và authentication token
+REST API,"Học cách gọi API với fetch() và axios|Thực hành với các public API như GitHub API hoặc OpenWeatherMap|Xử lý loading, error handling và token xác thực"
+React,"Học component, props, state và hooks qua tài liệu react.dev|Xây dựng ứng dụng todo và ứng dụng gọi API|Triển khai một project nhỏ lên Vercel hoặc Netlify"
+Git,"Học các lệnh clone, add, commit, push, pull|Thực hành tạo nhánh và mở pull request trên GitHub|Giải quyết xung đột merge trong dự án nhóm"
+SQL,"Học SELECT, WHERE, JOIN, GROUP BY trên bộ dữ liệu mẫu|Giải 30 bài tập trên SQLZoo hoặc LeetCode Database|Thiết kế và truy vấn một CSDL nhỏ cho project cá nhân"
+Python,"Học cú pháp, kiểu dữ liệu và hàm qua tài liệu python.org|Làm bài tập xử lý chuỗi và danh sách|Viết một script phân tích tệp CSV"
+Docker,"Học khái niệm image, container và Dockerfile|Đóng gói một ứng dụng web nhỏ bằng Dockerfile|Dùng docker compose chạy ứng dụng cùng cơ sở dữ liệu"
+Node.js,"Học module, npm và xử lý bất đồng bộ|Xây dựng API REST bằng Express|Kết nối cơ sở dữ liệu và viết test cho API"
+JavaScript,"Học biến, hàm, mảng và đối tượng trên javascript.info|Thao tác DOM và xử lý sự kiện|Làm một ứng dụng nhỏ gọi API bằng fetch"
+Power BI,Làm quen giao diện và nhập dữ liệu từ Excel|Dựng dashboard có 3 biểu đồ và bộ lọc|Viết một vài measure bằng DAX cơ bản
+Excel,"Học hàm VLOOKUP, SUMIF, INDEX/MATCH|Làm Pivot Table cho bộ dữ liệu bán hàng|Xây dựng báo cáo có biểu đồ và định dạng có điều kiện"
+Figma,"Làm quen frame, auto layout và component|Sao chép thiết kế của một ứng dụng quen thuộc|Tạo prototype có tương tác cho một luồng người dùng"
+Tailwind CSS,"Học các lớp tiện ích về layout, spacing, màu sắc|Dựng lại một trang landing page|Tách component và dùng responsive breakpoint"
+PostgreSQL,"Cài đặt PostgreSQL và làm quen psql|Thiết kế bảng có khoá chính, khoá ngoại và chỉ mục|Viết truy vấn nâng cao với CTE và hàm cửa sổ"
+Machine Learning cơ bản,Học hồi quy và phân loại qua khóa Machine Learning của Andrew Ng|Thực hành với scikit-learn trên bộ dữ liệu Iris|Đánh giá mô hình bằng cross-validation và viết báo cáo ngắn
+Kiểm thử phần mềm,Học các loại kiểm thử và quy trình STLC|Viết test case cho một trang đăng nhập|Thực hành báo lỗi rõ ràng trên Jira
+Agile/Scrum,"Học vai trò, sự kiện và artifact của Scrum|Tham gia dự án nhóm có sprint planning và retrospective|Quản lý backlog bằng Jira hoặc Trello"
+Giao tiếp,Luyện trình bày ý ngắn gọn theo cấu trúc|Tham gia một buổi thuyết trình hoặc câu lạc bộ|Xin phản hồi từ bạn học sau mỗi buổi báo cáo nhóm
+CI/CD,Học khái niệm tích hợp và triển khai liên tục|Viết workflow GitHub Actions chạy test|Tự động triển khai một ứng dụng nhỏ khi merge vào main
+Linux,"Học các lệnh thao tác tệp, quyền và tiến trình|Cài đặt Ubuntu Server trên máy ảo|Viết shell script tự động hoá một tác vụ"
+MongoDB,"Học tài liệu, collection và truy vấn cơ bản|Kết nối MongoDB với ứng dụng Node.js|Thiết kế schema cho một ứng dụng blog"
+Phân tích nghiệp vụ,Học cách thu thập và viết yêu cầu (user story)|Vẽ sơ đồ quy trình BPMN cho một nghiệp vụ quen thuộc|Viết tài liệu BRD cho một dự án nhỏ
+Tiếng Anh giao tiếp,Luyện nghe và nói 15 phút mỗi ngày|Đọc tài liệu kỹ thuật tiếng Anh|Viết CV và email bằng tiếng Anh

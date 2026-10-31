@@ -1,4 +1,109 @@
 name,category
+HTML,Frontend
+CSS,Frontend
+JavaScript,Frontend
+TypeScript,Frontend
 React,Frontend
+Tailwind CSS,Frontend
+React Query,Frontend
+Zustand,Frontend
+Jest,Frontend
+Storybook,Frontend
+HTML/CSS cơ bản,Frontend
+Vue.js,Frontend
+Angular,Frontend
+Next.js,Frontend
+Redux,Frontend
+Sass,Frontend
+Webpack,Frontend
+Responsive Design,Frontend
 Node.js,Backend
+REST API,Backend
+PostgreSQL,Backend
+MongoDB,Backend
+OOP,Backend
+Java,Backend
+Spring Boot,Backend
+C#,Backend
+.NET,Backend
+PHP,Backend
+Laravel,Backend
+Go,Backend
+Express.js,Backend
+GraphQL,Backend
+MySQL,Backend
+Redis,Backend
+Python,Dữ liệu
+SQL,Dữ liệu
+Excel,Dữ liệu
 Power BI,Dữ liệu
+Thống kê cơ bản,Dữ liệu
+Tableau,Dữ liệu
+Pandas,Dữ liệu
+Matplotlib,Dữ liệu
+Machine Learning cơ bản,Dữ liệu
+ETL,Dữ liệu
+Apache Spark,Dữ liệu
+Airflow,Dữ liệu
+Kafka,Dữ liệu
+NumPy,Dữ liệu
+Scikit-learn,Dữ liệu
+TensorFlow,Dữ liệu
+Looker Studio,Dữ liệu
+Data Warehouse,Dữ liệu
+Git,DevOps
+Docker,DevOps
+CI/CD,DevOps
+AWS cơ bản,DevOps
+Linux,DevOps
+Linux cơ bản,DevOps
+Cloud (AWS/GCP),DevOps
+Kubernetes,DevOps
+Nginx,DevOps
+GitHub Actions,DevOps
+Terraform,DevOps
+Kiểm thử phần mềm,DevOps
+Viết test case,DevOps
+Selenium,DevOps
+Playwright,DevOps
+Postman,DevOps
+Kỹ thuật máy tính,DevOps
+Windows Server,DevOps
+Mạng cơ bản,DevOps
+Xử lý sự cố,DevOps
+Active Directory,DevOps
+Office 365,DevOps
+ITIL cơ bản,DevOps
+Virtualization,DevOps
+Figma,Thiết kế
+Nguyên lý UX,Thiết kế
+Thiết kế UI,Thiết kế
+Adobe XD,Thiết kế
+Prototyping,Thiết kế
+User Research,Thiết kế
+Design System,Thiết kế
+Canva,Thiết kế
+Photoshop,Thiết kế
+Illustrator,Thiết kế
+Viết nội dung,Marketing
+Mạng xã hội,Marketing
+Google Analytics,Marketing
+Facebook Ads,Marketing
+SEO cơ bản,Marketing
+Email Marketing,Marketing
+Phân tích nghiệp vụ,Nghiệp vụ
+BPMN,Nghiệp vụ
+UML,Nghiệp vụ
+Jira,Nghiệp vụ
+Confluence,Nghiệp vụ
+Nghiệp vụ ngân hàng,Nghiệp vụ
+Agile/Scrum,Nghiệp vụ
+Giao tiếp,Kỹ năng mềm
+Tư duy logic,Kỹ năng mềm
+Tư duy phân tích,Kỹ năng mềm
+Tư duy sáng tạo,Kỹ năng mềm
+Viết tài liệu,Kỹ năng mềm
+Thuyết trình,Kỹ năng mềm
+Làm việc nhóm,Kỹ năng mềm
+Quản lý thời gian,Kỹ năng mềm
+Tiếng Anh giao tiếp,Kỹ năng mềm
