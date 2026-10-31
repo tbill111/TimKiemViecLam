@@ -4,7 +4,7 @@ Căn cứ là những gì đã **chạy thật**, không chỉ viết mã:
 
 | Kiểm chứng | Kết quả |
 |---|---|
-| `cd backend && python -m pytest` | 231 passed |
+| `cd backend && python -m pytest` | 236 passed |
 | Cùng bộ test trong container với model embedding thật (`EMBEDDER=st`) | 223 passed, 2 skipped (thiếu file ngoài image) |
 | `npx tsc -b`, `npm run build` (online và demo) | sạch |
 | `npm run lint` | exit 0, 8 cảnh báo, 0 lỗi |
@@ -18,11 +18,11 @@ Căn cứ là những gì đã **chạy thật**, không chỉ viết mã:
 
 | Mục | Mức đạt chuẩn | Căn cứ | Còn thiếu để nộp |
 |---|---|---|---|
-| **01** Phân tích yêu cầu, thiết kế CSDL (ứng viên, nhà tuyển dụng, tin) | **Đạt** về nội dung và kiểm chứng | F01–F10 + phi chức năng; Use Case + đặc tả 3 ca; ERD 15 bảng/5 nhóm sinh từ models; `schema.sql`; migration 0001–0003 chạy trên PostgreSQL thật, gồm nâng cấp CSDL cũ tại chỗ; seed 108 kỹ năng, 259 alias, 30 công ty, 150 tin, 301 ứng viên, 50 CV | Xuất ảnh PNG Use Case (PlantUML) và ERD (dbdiagram.io) |
-| **02** Mô hình AI/ML phân tích CV, tính điểm tương thích | **Đạt về mã và kiểm chứng; chưa đủ chuẩn nộp** | Parser 3 tầng, 6 đặc trưng, M0–M4, giải thích; M0 khớp TypeScript 100%; chạy với model thật (cosine Việt–Anh 0,847); đo công bằng; 38 ms/cặp | **Nhãn tay** (50 CV, 300 cặp), `m4.joblib` và bảng đánh giá thật. Chỉ có kết quả trên đáp án *tổng hợp* (F1 parser 0,98) |
+| **01** Phân tích yêu cầu, thiết kế CSDL (ứng viên, nhà tuyển dụng, tin) | **Đạt** (đã có ảnh Use Case và ERD) | F01–F10 + phi chức năng; Use Case + đặc tả 3 ca; ERD 15 bảng/5 nhóm sinh từ models; `schema.sql`; migration 0001–0003 chạy trên PostgreSQL thật, gồm nâng cấp CSDL cũ tại chỗ; seed 108 kỹ năng, 259 alias, 30 công ty, 150 tin, 301 ứng viên, 50 CV | — |
+| **02** Mô hình AI/ML phân tích CV, tính điểm tương thích | **Đạt về mã, quy trình và kiểm chứng; chưa đủ chuẩn nộp vì nhãn là mô phỏng** | Parser 3 tầng, 6 đặc trưng, M0–M4, giải thích; M0 khớp TypeScript 100%; model thật; công bằng; 38 ms/cặp; **3 notebook đã chạy trọn với model thật** (kappa, GroupKFold, `m4.joblib` mang nhãn `SYNTHETIC`, M0–M4, ablation, phân tích lỗi) | **Nhãn tay** (50 CV, 300 cặp) rồi chạy lại notebook và xoá `m4.joblib` mô phỏng; bảng ở `docs/report/tables_synthetic/` không dùng làm kết luận |
 | **03** Dashboard BI (ứng viên theo kỹ năng, xu hướng lương, tỷ lệ chuyển đổi) | **Đạt** | 3 biểu đồ bắt buộc (2, 4, 6) + 1, 1b, 3, 8; nhúng Superset thật trong ứng dụng; RLS theo công ty đã kiểm; `dashboard_export.zip` nhập lại được; ảnh; 4 nhận định có nêu giới hạn dữ liệu mô phỏng | Biểu đồ 5, 7 và Native Filters (mở rộng, thêm bằng giao diện) |
 | **04** Frontend và tích hợp API AI/BI | **Đạt** | Đăng nhập/đăng ký và phân quyền; tìm việc, Phân tích CV–JD (M0–M4), Skill Gap, tải CV, ứng tuyển; đăng tin có gợi ý kỹ năng; Kanban 6 cột; dashboard nhúng; **quản trị danh mục kỹ năng (F10) có giao diện**; chế độ demo; Docker Compose chạy thật | — |
-| **05** Kiểm thử với dữ liệu mẫu, báo cáo đánh giá mô hình | **Một phần** | 231 test; 44 test case (ca đã chạy ghi Đạt, ca chưa chạy ghi rõ); E2E; đo hiệu năng; notebook, kappa, ablation, script chọn 300 cặp, hướng dẫn gán nhãn | Hai file nhãn độc lập; chạy notebook trên nhãn thật; báo cáo cuối; video |
+| **05** Kiểm thử với dữ liệu mẫu, báo cáo đánh giá mô hình | **Đạt về quy trình, sản phẩm và tài liệu; số liệu đánh giá còn là mô phỏng** | 236 test; 46 test case; E2E 14/14; hiệu năng đo thật; notebook đã chạy; **báo cáo nháp đủ 7 chương** (`docs/report/BaoCao_TH3.md`, chỗ cần nhãn tay đánh dấu **[THAY BẰNG NHÃN TAY]**); kịch bản video và dàn slide (`docs/video_kich_ban.md`); ảnh Use Case, ERD | Nhãn tay thật; thay các bảng đánh dấu; quay và nén video; ghép slide |
 
 ## Phần phải do người làm (không thể thay bằng mã)
 

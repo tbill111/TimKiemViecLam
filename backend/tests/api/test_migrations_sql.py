@@ -95,3 +95,14 @@ def test_bi_sql_statements_split_correctly_even_with_semicolons_in_comments():
         parsed = pglast.parse_sql(stmt)  # từng câu lệnh phải tự hợp lệ
         assert parsed[0].stmt.view.relname == view
         assert "--" not in stmt
+
+
+def test_erd_puml_is_current():
+    import sys
+
+    sys.path.insert(0, str(BACKEND))
+    from scripts.gen_erd import PUML_OUT, build_puml
+
+    text = build_puml()
+    assert text.count("entity ") == 15 and text.startswith("@startuml") and text.rstrip().endswith("@enduml")
+    assert PUML_OUT.exists() and PUML_OUT.read_text(encoding="utf-8") == text, "docs/erd/erd.puml đã cũ: chạy python -m scripts.gen_erd"

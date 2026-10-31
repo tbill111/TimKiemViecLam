@@ -1,7 +1,7 @@
 # Bảng test case (≥ 25) theo F01–F10
 
 **Cách đọc cột "Kết quả thực tế":** chỉ ghi *Đạt* khi test tự động hoặc kịch bản E2E tương ứng đã được chạy và xanh ở lần chạy gần nhất
-(`cd backend && python -m pytest` → 231 passed; trong container có model thật `EMBEDDER=st` → 223 passed + 2 skipped do thiếu file ngoài image;
+(`cd backend && python -m pytest` → 236 passed; trong container có model thật `EMBEDDER=st` → 223 passed + 2 skipped do thiếu file ngoài image;
 `scripts/e2e_smoke.py` → **14/14 bước trên stack Docker thật** (nginx → API + model thật → PostgreSQL 16 → Superset 4.1.1 nhúng);
 `scripts/e2e_offline.py` → 12/12 bước, 0 lời gọi API).
 Các ca ghi *Chưa kiểm* cần người kiểm thủ công hoặc dữ liệu chưa có (nhãn tay).
@@ -51,5 +51,7 @@ Hoàng Anh bổ sung kết quả thủ công và ảnh minh chứng vào cột c
 | TC40 | NFR | Nạp seed an toàn | lỗi giữa chừng; hai tiến trình `--reset` cùng lúc | không để dữ liệu nửa vời; tuần tự nhờ khoá cố vấn, kết quả 150 tin / 301 ứng viên / 1255 đơn | `test_seed_is_atomic_failure_midway_leaves_no_partial_data`; chạy thật trên PostgreSQL | Đạt |
 | TC41 | NFR | Nâng cấp CSDL cũ | PostgreSQL đang có dữ liệu ở revision 0002 | `alembic upgrade head` thêm cột `candidates.embedding` mà không mất dữ liệu | chạy thật: `Running upgrade 0002 -> 0003` | Đạt |
 | TC42 | F05 | Điểm khớp không mã hoá lại khi chấm | lưu hồ sơ rồi gọi match | embedding hồ sơ/tin lấy từ DB, không gọi encode | `test_profile_embedding_is_stored_on_save_and_scoring_does_not_re_encode` | Đạt |
-| TC43 | F03 | Đánh giá parser trên nhãn tay | 50 CV + `labels_cv_skills.csv` | bảng P/R/F1 từng tầng | `notebooks/01_parser_eval.ipynb` | **Chưa kiểm** (chưa có nhãn tay). Trên đáp án *tổng hợp* với model thật: P/R/F1 T1 0,969/0,993/0,981; T1+2 0,963/0,996/0,979; T1+2+3 0,963/0,996/0,979; MAE năm KN 0 |
-| TC44 | F05 | Đánh giá M0–M4 trên nhãn tay | 300 cặp, hai người gán | bảng P@5, nDCG@10, MRR, Spearman, AUC; huấn luyện M4 | `notebooks/02`, `03` | **Chưa kiểm** (chưa có nhãn tay) |
+| TC43 | F03 | Đánh giá parser trên nhãn tay | 50 CV + `labels_cv_skills.csv` | bảng P/R/F1 từng tầng | `notebooks/01_parser_eval.ipynb` | Quy trình **Đạt** (đã chạy với model thật, lưu kết quả trong notebook). Số liệu hiện là **nhãn mô phỏng**: F1 T1 0,946; T1+2 0,945; T1+2+3 0,945; MAE năm KN 0. **Chưa có nhãn tay** |
+| TC44 | F05 | Đánh giá M0–M4 trên nhãn tay | 300 cặp, hai người gán | bảng P@5, nDCG@10, MRR, Spearman, AUC; huấn luyện M4 | `notebooks/02`, `03` (đã chạy, có đầu ra) | Quy trình **Đạt** với **nhãn mô phỏng**: kappa 0,826, M4 AUC 0,955 trên fold kiểm tra, bảng M0–M4, ablation, phân tích lỗi trong `docs/report/tables_synthetic/`. **Chưa có nhãn tay** nên chưa là đánh giá thật |
+| TC45 | F05 | Công bằng trên CV thật dạng văn bản | hai CV chỉ khác tên, giới tính, tuổi, email ở phần đầu | cùng kỹ năng, năm KN, học vấn và điểm M3 | `notebooks/03` (`fairness_check` với `backend/seed/fairness/`) | Đạt (cùng điểm M3 = 67) |
+| TC46 | UI | M4 huấn luyện trên nhãn mô phỏng | chọn M4 ở Phân tích CV–JD | hiện cảnh báo đỏ "huấn luyện trên nhãn mô phỏng", không vỡ trang | E2E bước Phân tích CV–JD | Đạt |

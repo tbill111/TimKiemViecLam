@@ -41,6 +41,11 @@ Chạy bộ test trong container với model thật: `docker compose exec api pi
 `docker compose exec -e EMBEDDER=st api python -m pytest -q --ignore tests/ai/test_notebooks_smoke.py --deselect tests/api/test_migrations_sql.py::test_erd_dbml_is_current_and_lists_15_tables_in_five_groups`
 (hai test cần file ngoài image nên loại ra).
 
+## 2b. Chạy 3 notebook đánh giá trong container (model thật)
+
+`scripts/run_notebooks.py` có sẵn lệnh `docker run` ở đầu file. Với nhãn mô phỏng, kết quả vào `docs/report/tables_synthetic/` và `models_store/m4.joblib` (phiên bản `m4-SYNTHETIC-labels`). Với nhãn tay thật, bỏ các biến `TH3_*` (kết quả vào `docs/report/tables/`), đồng thời xoá `m4.joblib` mô phỏng trước khi huấn luyện lại.
+Lưu ý: `docker compose up --build web` cũng build lại `api`; để `WITH_ST=1` trong `.env` kẻo image mất model thật.
+
 ## 3. Việc còn lại (cần dữ liệu hoặc người)
 
 1. Nhãn tay: 50 CV (`labels_cv_skills.csv`) và 300 cặp (hai file) → chạy 3 notebook trong container (`EMBEDDER=st`), huấn luyện M4, quyết định `UPDATE_M3`.

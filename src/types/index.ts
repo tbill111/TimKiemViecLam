@@ -147,6 +147,8 @@ export interface SkillMatchResult {
   eduScore?: number | null;
   explanation?: string;
   model?: string;
+  /** Phiên bản model của backend, ví dụ `m4-SYNTHETIC-labels` khi M4 được huấn luyện trên nhãn mô phỏng. */
+  modelVersion?: string;
 }
 
 /** Phần hồ sơ đủ để tính điểm ghép nối (dùng chung cho sinh viên và ứng viên mẫu). */

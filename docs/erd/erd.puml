@@ -1,0 +1,199 @@
+@startuml
+' Sinh tự động bởi backend/scripts/gen_erd.py. Xuất PNG: plantuml -tpng docs/erd/erd.puml
+hide circle
+skinparam linetype ortho
+skinparam shadowing false
+skinparam defaultFontName Arial
+left to right direction
+
+package "Ứng viên" #E3F2FD {
+  entity users {
+    * id : integer <<PK>>
+    --
+    * email : varchar(255)
+    * password_hash : varchar(255)
+    * role : varchar(20)
+    * full_name : varchar(255)
+    * created_at : timestamp without time zone
+  }
+  entity candidates {
+    * id : integer <<PK>>
+    --
+    * user_id : integer <<FK>>
+      external_id : varchar(50)
+    * full_name : varchar(255)
+    * phone : varchar(50)
+      location_id : integer <<FK>>
+    * years_exp : numeric(3, 1)
+    * education_level : integer
+    * major : varchar(255)
+      expected_salary_min : numeric(6, 1)
+      expected_salary_max : numeric(6, 1)
+    * work_mode : varchar(20)
+      consent_at : timestamp without time zone
+    * profile_json : jsonb
+      embedding : bytea
+  }
+  entity resumes {
+    * id : integer <<PK>>
+    --
+    * candidate_id : integer <<FK>>
+    * filename : varchar(255)
+    * file_path : varchar(500)
+    * raw_text : text
+    * parsed_json : jsonb
+      embedding : bytea
+    * is_active : boolean
+    * uploaded_at : timestamp without time zone
+  }
+  entity candidate_skills {
+    * candidate_id : integer <<PK>>
+    * skill_id : integer <<PK>>
+    --
+    * source : varchar(10)
+    * confirmed : boolean
+  }
+  entity saved_jobs {
+    * candidate_id : integer <<PK>>
+    * job_id : integer <<PK>>
+    --
+    * saved_at : timestamp without time zone
+  }
+}
+
+package "Nhà tuyển dụng" #FFF3E0 {
+  entity companies {
+    * id : integer <<PK>>
+    --
+    * name : varchar(255)
+    * industry : varchar(100)
+    * size_range : varchar(50)
+      location_id : integer <<FK>>
+    * verified : boolean
+  }
+  entity recruiters {
+    * id : integer <<PK>>
+    --
+    * user_id : integer <<FK>>
+    * company_id : integer <<FK>>
+    * position : varchar(100)
+  }
+}
+
+package "Tin tuyển dụng" #E8F5E9 {
+  entity jobs {
+    * id : integer <<PK>>
+    --
+      external_id : varchar(50)
+    * company_id : integer <<FK>>
+      recruiter_id : integer <<FK>>
+    * title : varchar(255)
+    * description : text
+    * responsibilities : jsonb
+    * category : varchar(60)
+    * level : varchar(20)
+    * job_type : varchar(20)
+    * work_mode : varchar(20)
+      location_id : integer <<FK>>
+      salary_min : numeric(6, 1)
+      salary_max : numeric(6, 1)
+    * min_years_exp : numeric(3, 1)
+    * min_education : integer
+    * status : varchar(10)
+    * posted_at : timestamp without time zone
+      deadline : timestamp without time zone
+      embedding : bytea
+  }
+  entity job_skills {
+    * job_id : integer <<PK>>
+    * skill_id : integer <<PK>>
+    --
+    * is_required : boolean
+  }
+}
+
+package "Tuyển dụng (đơn ứng tuyển)" #F3E5F5 {
+  entity applications {
+    * id : integer <<PK>>
+    --
+    * candidate_id : integer <<FK>>
+    * job_id : integer <<FK>>
+      resume_id : integer <<FK>>
+      match_score : integer
+    * status : varchar(15)
+    * applied_at : timestamp without time zone
+    * updated_at : timestamp without time zone
+  }
+  entity application_status_history {
+    * id : integer <<PK>>
+    --
+    * application_id : integer <<FK>>
+      from_status : varchar(15)
+    * to_status : varchar(15)
+      changed_by : integer <<FK>>
+    * changed_at : timestamp without time zone
+    * note : text
+  }
+}
+
+package "AI và danh mục" #ECEFF1 {
+  entity match_results {
+    * candidate_id : integer <<PK>>
+    * job_id : integer <<PK>>
+    * model_version : varchar(60) <<PK>>
+    --
+    * total_score : integer
+      skill_req_score : integer
+      skill_pref_score : integer
+      semantic_score : integer
+      exp_score : integer
+      edu_score : integer
+      location_score : integer
+    * matched_skills : jsonb
+    * missing_skills : jsonb
+    * computed_at : timestamp without time zone
+  }
+  entity skills {
+    * id : integer <<PK>>
+    --
+    * name : varchar(100)
+    * category : varchar(50)
+      learning_steps : jsonb
+  }
+  entity skill_aliases {
+    * alias : varchar(100) <<PK>>
+    --
+    * skill_id : integer <<FK>>
+  }
+  entity locations {
+    * id : integer <<PK>>
+    --
+    * name : varchar(100)
+    * region : varchar(50)
+  }
+}
+
+application_status_history }o--|| applications : application_id
+application_status_history }o--|| users : changed_by
+applications }o--|| candidates : candidate_id
+applications }o--|| jobs : job_id
+applications }o--|| resumes : resume_id
+candidate_skills }o--|| candidates : candidate_id
+candidate_skills }o--|| skills : skill_id
+candidates }o--|| locations : location_id
+candidates }o--|| users : user_id
+companies }o--|| locations : location_id
+job_skills }o--|| jobs : job_id
+job_skills }o--|| skills : skill_id
+jobs }o--|| companies : company_id
+jobs }o--|| locations : location_id
+jobs }o--|| recruiters : recruiter_id
+match_results }o--|| candidates : candidate_id
+match_results }o--|| jobs : job_id
+recruiters }o--|| companies : company_id
+recruiters }o--|| users : user_id
+resumes }o--|| candidates : candidate_id
+saved_jobs }o--|| candidates : candidate_id
+saved_jobs }o--|| jobs : job_id
+skill_aliases }o--|| skills : skill_id
+@enduml

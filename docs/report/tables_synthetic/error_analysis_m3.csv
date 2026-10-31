@@ -1,0 +1,6 @@
+candidate_id,job_id,label,score,error,missing_required,matched_required
+cand-0220,job-104,0,54,0.54,Phân tích nghiệp vụ|Viết tài liệu,Tư duy phân tích|Giao tiếp
+cand-0220,job-004,0,50,0.5,Phân tích nghiệp vụ|Tư duy logic|Viết tài liệu,Excel|Giao tiếp
+cand-0029,job-109,3,50,-0.5,JavaScript|Git,SQL
+cand-0029,job-059,3,50,-0.5,JavaScript|Git,SQL|OOP
+cand-0220,job-148,0,49,0.49,Viết nội dung|Mạng xã hội|Google Analytics,Giao tiếp

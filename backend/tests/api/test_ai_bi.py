@@ -56,7 +56,9 @@ def test_new_upload_replaces_active_resume(world, session):
     assert actives == [second] and first != second
 
 
-def test_match_and_recommendations_use_confirmed_skills(world):
+def test_match_and_recommendations_use_confirmed_skills(world, tmp_path, monkeypatch):
+    monkeypatch.setattr(scorers, "MODELS_DIR", tmp_path)  # độc lập với m4.joblib (mô phỏng) đã commit trong models_store
+    monkeypatch.setattr(scorers, "_m4_cache", None)
     c, token = world["client"], world["ca"]["access_token"]
     c.put("/api/candidates/me", json={"skills": ["HTML", "CSS"], "preferredLocations": ["Hà Nội"], "preferredWorkTypes": ["Thực tập"], "consent": True}, headers=auth(token))
     jid = world["job"]["id"]

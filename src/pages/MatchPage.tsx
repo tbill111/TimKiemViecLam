@@ -109,6 +109,13 @@ export default function MatchPage({ appState }: MatchPageProps) {
         </span>
       </div>
 
+      {!OFFLINE && matchResult.modelVersion?.toUpperCase().includes('SYNTHETIC') && (
+        <div role="note" className="flex items-start gap-3 p-3 bg-red-50 border border-red-100 rounded-xl text-sm text-red-700">
+          <Info size={16} className="shrink-0 mt-0.5" />
+          <span>Mô hình <strong>{matchResult.modelVersion}</strong> được huấn luyện trên nhãn <strong>mô phỏng</strong>, chỉ để chạy thử quy trình. Không dùng điểm này làm đánh giá thật; hãy huấn luyện lại bằng nhãn tay.</span>
+        </div>
+      )}
+
       {remoteError && <ErrorBlock message={remoteError} />}
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">

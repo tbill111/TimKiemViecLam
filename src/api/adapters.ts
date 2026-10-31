@@ -113,6 +113,7 @@ export function toMatch(m: MatchDTO, jobId: string): SkillMatchResult {
     eduScore: c.edu,
     explanation: m.explanation,
     model: m.model,
+    modelVersion: m.model_version,
   };
 }
 
