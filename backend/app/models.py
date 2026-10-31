@@ -109,6 +109,9 @@ class Candidate(Base):
     # Phần giàu cấu trúc của StudentProfile: university, year, careerGoal, languages, projects, experience,
     # certificates, githubUrl, linkedinUrl, preferredLocations, preferredWorkTypes
     profile_json: Mapped[dict[str, Any]] = mapped_column(Json, default=dict)
+    # Embedding của văn bản hồ sơ (kỹ năng, mục tiêu, dự án), tính khi lưu hồ sơ để chấm điểm không phải mã hoá lúc yêu cầu;
+    # khi có CV đang dùng thì dùng embedding của CV.
+    embedding: Mapped[Optional[bytes]] = mapped_column(LargeBinary, nullable=True)
 
     user: Mapped[User] = relationship()
 

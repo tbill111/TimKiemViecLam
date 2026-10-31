@@ -37,6 +37,24 @@ def profile_text(cand: Candidate, skills: list[str]) -> str:
     return " ".join(x for x in parts if x).strip() or cand.major or " "
 
 
+def refresh_candidate_embedding(db: Session, cand: Candidate) -> None:
+    """Tính và lưu embedding hồ sơ (gọi khi hồ sơ hoặc kỹ năng đổi) để điểm khớp không phải mã hoá lúc yêu cầu."""
+    from app.ai.embedder import to_bytes
+
+    names = list(
+        db.scalars(
+            select(Skill.name)
+            .join(CandidateSkill, CandidateSkill.skill_id == Skill.id)
+            .where(CandidateSkill.candidate_id == cand.id, CandidateSkill.confirmed.is_(True))
+            .order_by(Skill.id)
+        )
+    )
+    try:
+        cand.embedding = to_bytes(embed_text(profile_text(cand, names)))
+    except Exception:  # tầng AI chưa sẵn sàng: API vẫn chạy, lần chấm đầu sẽ tự mã hoá
+        cand.embedding = None
+
+
 class SqlAIRepository:
     def __init__(self, db: Session):
         self.db = db
@@ -59,7 +77,7 @@ class SqlAIRepository:
             emb = from_bytes(resume.embedding)
         else:
             text = profile_text(cand, skills)
-            emb = embed_text(text)
+            emb = from_bytes(cand.embedding) if cand.embedding else embed_text(text)  # embed_text chỉ là phương án cuối
         p = cand.profile_json or {}
         return CandidateInput(
             id=cand.id,

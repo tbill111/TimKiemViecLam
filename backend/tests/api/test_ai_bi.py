@@ -269,7 +269,51 @@ def test_guest_token_refused_for_recruiter_without_rls_datasets(world, monkeypat
     assert r.status_code == 503 and r.json()["detail"] == "superset_not_configured"
 
 
-def test_guest_token_unconfigured_or_forbidden(world):
+def test_guest_token_unconfigured_or_forbidden(world, monkeypatch):
+    from app.config import get_settings
+
+    s = get_settings()
+    monkeypatch.setattr(s, "superset_url", "")  # độc lập với biến môi trường của máy chạy test
+    monkeypatch.setattr(s, "superset_dashboard_id", "")
     c = world["client"]
     assert c.get("/api/bi/guest-token", headers=auth(world["ra"]["access_token"])).json()["detail"] == "superset_not_configured"
     assert c.get("/api/bi/guest-token", headers=auth(world["ca"]["access_token"])).status_code == 403
+
+
+def test_profile_embedding_is_stored_on_save_and_scoring_does_not_re_encode(world, session, monkeypatch):
+    """Yêu cầu phi chức năng: embedding tính sẵn khi lưu; chấm điểm lúc yêu cầu không được mã hoá lại hồ sơ/tin."""
+    c, token = world["client"], world["ca"]["access_token"]
+    c.put("/api/candidates/me", json={"skills": ["HTML", "CSS", "React"], "careerGoal": "Frontend", "consent": True}, headers=auth(token))
+    cand = session.scalar(select(Candidate).where(Candidate.full_name == "Nguyễn Văn An"))
+    session.refresh(cand)
+    assert cand.embedding is not None and len(cand.embedding) == 384 * 4
+
+    def boom(text):
+        raise AssertionError("không được mã hoá lại khi chấm điểm")
+
+    monkeypatch.setattr("app.services.ai_repo.embed_text", boom)
+    monkeypatch.setattr("app.services.jobs.embed_text", boom)
+    r = c.post("/api/ai/match", json={"job_id": world["job"]["id"], "model": "m3"}, headers=auth(token))
+    assert r.status_code == 200 and r.json()["components"]["semantic"] is not None
+    assert c.get("/api/candidates/me/matches", headers=auth(token)).status_code == 200
+
+
+def test_confirming_skills_refreshes_profile_embedding(world, session):
+    c, token = world["client"], world["ca"]["access_token"]
+    c.put("/api/candidates/me/skills", json={"skills": ["HTML"]}, headers=auth(token))
+    cand = session.scalar(select(Candidate).where(Candidate.full_name == "Nguyễn Văn An"))
+    session.refresh(cand)
+    first = cand.embedding
+    c.put("/api/candidates/me/skills", json={"skills": ["Python", "SQL", "Docker"]}, headers=auth(token))
+    session.refresh(cand)
+    assert cand.embedding is not None and cand.embedding != first
+
+
+def test_m1_tfidf_is_fitted_on_job_corpus_and_ranks_by_text(world):
+    c, ra, token = world["client"], auth(world["ra"]["access_token"]), world["ca"]["access_token"]
+    c.post("/api/jobs", json={**JOB_BODY, "title": "Data Analyst", "description": "Phân tích dữ liệu bằng SQL và Python, báo cáo Power BI",
+                              "category": "Data Science & Analytics", "required_skills": ["SQL", "Python"], "preferred_skills": []}, headers=ra)
+    c.put("/api/candidates/me", json={"skills": ["HTML", "CSS", "React"], "careerGoal": "Làm giao diện web frontend React", "consent": True}, headers=auth(token))
+    jobs = c.get("/api/jobs", headers=auth(token)).json()["items"]
+    score = {j["title"]: c.post("/api/ai/match", json={"job_id": j["id"], "model": "m1"}, headers=auth(token)).json()["total_score"] for j in jobs}
+    assert score["Frontend Intern"] > score["Data Analyst"], score

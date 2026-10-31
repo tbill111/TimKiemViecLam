@@ -19,7 +19,7 @@ import random
 from pathlib import Path
 from typing import Any
 
-from sqlalchemy import select
+from sqlalchemy import select, text
 from sqlalchemy.orm import Session
 
 from app import db as dbmod
@@ -180,10 +180,26 @@ def load_candidates(db: Session, skills: dict[str, Skill], locs: dict[str, Locat
                           parsed_json={k: v for k, v in parsed.items() if k != "embedding"}, embedding=parsed["embedding"], is_active=True))
         count += 1
     db.flush()
+    _embed_candidates(db)
     return count
 
 
+def _embed_candidates(db: Session) -> None:
+    """Embedding hồ sơ tính theo lô một lần (như khi người dùng lưu hồ sơ)."""
+    from app.services.ai_repo import profile_text
+
+    cands = list(db.scalars(select(Candidate)))
+    names: dict[int, list[str]] = {c.id: [] for c in cands}
+    for cid, name in db.execute(select(CandidateSkill.candidate_id, Skill.name).join(Skill, Skill.id == CandidateSkill.skill_id).order_by(Skill.id)):
+        names[cid].append(name)
+    vecs = get_embedder().encode([profile_text(c, names[c.id]) for c in cands])
+    for c, v in zip(cands, vecs):
+        c.embedding = to_bytes(v)
+
+
 def seed(db: Session, applications: bool = True, with_cv: bool = True, rng_seed: int = 42) -> dict[str, int]:
+    """Nạp toàn bộ dữ liệu trong MỘT giao dịch: lỗi giữa chừng thì không để lại dữ liệu nửa vời
+    (nếu để lại, lần khởi động sau sẽ thấy "đã có dữ liệu" và không bao giờ sinh đơn ứng tuyển)."""
     pw_hash = hash_password(PASSWORD)  # băm một lần dùng chung cho mọi tài khoản demo
     locs = {loc.name: loc for loc in [Location(name=n, region=r) for n, r in LOCATIONS]}
     db.add_all(locs.values())
@@ -192,13 +208,17 @@ def seed(db: Session, applications: bool = True, with_cv: bool = True, rng_seed:
     skills = load_catalog(db)
     load_companies_and_jobs(db, skills, locs, pw_hash)
     n_cand = load_candidates(db, skills, locs, pw_hash, with_cv)
-    db.commit()
     stats = {"skills": len(skills), "candidates": n_cand + 1, "jobs": len(rows("jobs.csv"))}
     if applications:
         from .gen_applications import generate_applications
 
-        stats["applications"] = generate_applications(db, random.Random(rng_seed))
+        stats["applications"] = generate_applications(db, random.Random(rng_seed))  # commit ở cuối
+    else:
+        db.commit()
     return stats
+
+
+LOCK_ID = 727274
 
 
 def main() -> None:
@@ -208,14 +228,26 @@ def main() -> None:
     args = ap.parse_args()
     engine = dbmod.get_engine()
     Base.metadata.create_all(engine)
-    db = dbmod.new_session()
-    if args.reset:
-        reset(db)
+    # PostgreSQL: một kết nối riêng giữ khoá cố vấn để hai tiến trình nạp (entrypoint và lệnh chạy tay) không chạy cùng lúc
+    lock = engine.connect() if engine.dialect.name == "postgresql" else None
+    try:
+        if lock is not None:
+            lock.execute(text("SELECT pg_advisory_lock(:id)"), {"id": LOCK_ID})
         db = dbmod.new_session()
-    if is_seeded(db):
-        print("CSDL đã có dữ liệu; dùng --reset để nạp lại.")
-        return
-    print("Đã nạp:", seed(db, applications=not args.no_applications))
+        if args.reset:
+            reset(db)
+            db = dbmod.new_session()
+        try:
+            if is_seeded(db):
+                print("CSDL đã có dữ liệu; dùng --reset để nạp lại.")
+                return
+            print("Đã nạp:", seed(db, applications=not args.no_applications))
+        finally:
+            db.close()
+    finally:
+        if lock is not None:
+            lock.execute(text("SELECT pg_advisory_unlock(:id)"), {"id": LOCK_ID})
+            lock.close()
 
 
 if __name__ == "__main__":

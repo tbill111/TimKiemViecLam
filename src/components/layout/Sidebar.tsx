@@ -66,7 +66,7 @@ const initials = (name: string) =>
   name
     .split(' ')
     .slice(-2)
-    .map((n) => n[0])
+    .map((n) => n[0]?.toUpperCase() ?? '')
     .join('');
 
 const ROLE_LABEL = { candidate: 'Ứng viên', recruiter: 'Nhà tuyển dụng', admin: 'Quản trị viên' } as const;

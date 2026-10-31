@@ -268,13 +268,19 @@ function useOnlineAppState(): UseAppState {
     [load]
   );
 
-  const updateProfile = useCallback((updates: Partial<StudentProfile>) => {
-    setProfile((prev) => ({ ...prev, ...updates })); // cập nhật ngay để giao diện không bị chậm
-    profileApi
-      .put(fromProfilePatch(updates))
-      .then((dto) => setProfile(toProfile(dto)))
-      .catch((e) => setError(errorMessage(e)));
-  }, []);
+  const updateProfile = useCallback(
+    (updates: Partial<StudentProfile>) => {
+      setProfile((prev) => ({ ...prev, ...updates })); // cập nhật ngay để giao diện không bị chậm
+      profileApi
+        .put(fromProfilePatch(updates))
+        .then((dto) => setProfile(toProfile(dto)))
+        .catch((e) => {
+          setError(errorMessage(e));
+          void load(); // lưu thất bại: trả giao diện về đúng dữ liệu trên máy chủ thay vì giữ giá trị chưa lưu
+        });
+    },
+    [load]
+  );
 
   const persistGap = useCallback((items: SkillGapItem[]) => {
     setSkillGapItems(items);

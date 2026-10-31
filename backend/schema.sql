@@ -44,6 +44,7 @@ CREATE TABLE candidates (
 	work_mode VARCHAR(20) NOT NULL, 
 	consent_at TIMESTAMP WITHOUT TIME ZONE, 
 	profile_json JSONB NOT NULL, 
+	embedding BYTEA, 
 	PRIMARY KEY (id), 
 	UNIQUE (user_id), 
 	FOREIGN KEY(user_id) REFERENCES users (id) ON DELETE CASCADE, 

@@ -119,3 +119,20 @@ def test_parser_reads_the_50_seed_cvs_against_synthetic_truth():
     assert table.attrs["education"] == truth_edu
     # tầng 2 phải bắt thêm lỗi gõ mà tầng 1 bỏ sót
     assert table.set_index("tier").loc["T1+2", "recall"] > table.set_index("tier").loc["T1", "recall"]
+
+
+def test_seed_is_atomic_failure_midway_leaves_no_partial_data(monkeypatch):
+    """Hồi quy: bản nạp từng commit giữa chừng nên lỗi ở bước đơn ứng tuyển để lại dữ liệu nửa vời và không bao giờ nạp lại."""
+    engine = dbmod.make_engine("sqlite://")
+    Base.metadata.create_all(engine)
+    dbmod.configure(engine)
+    db = dbmod.new_session()
+
+    def boom(*a, **kw):
+        raise RuntimeError("lỗi giả lập khi sinh đơn ứng tuyển")
+
+    monkeypatch.setattr("seed.gen_applications.generate_applications", boom)
+    with pytest.raises(RuntimeError):
+        load_seed.seed(db)
+    db.rollback()
+    assert not load_seed.is_seeded(dbmod.new_session()), "dữ liệu đã bị commit dở dang"

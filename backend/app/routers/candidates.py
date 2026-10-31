@@ -21,6 +21,7 @@ from app.models import (
     Skill,
     User,
 )
+from app.services.ai_repo import refresh_candidate_embedding
 from app.services.skills import SkillResolver
 
 router = APIRouter(prefix="/candidates/me", tags=["candidates"])
@@ -159,6 +160,8 @@ def put_profile(body: ProfileIn, user: CurrentUser = Depends(require_role("candi
         cand.consent_at = dt.datetime.now(dt.timezone.utc).replace(tzinfo=None)
     if "skills" in data:
         _set_skills(db, cand, data["skills"])
+    db.flush()
+    refresh_candidate_embedding(db, cand)
     db.commit()
     db.refresh(cand)
     return profile_out(db, cand)
@@ -181,6 +184,8 @@ def put_skills(body: SkillsIn, user: CurrentUser = Depends(require_role("candida
     """Xác nhận/sửa kỹ năng: danh sách gửi lên là toàn bộ kỹ năng đã xác nhận."""
     cand = get_candidate(db, user)
     unresolved = _set_skills(db, cand, body.skills)
+    db.flush()
+    refresh_candidate_embedding(db, cand)
     db.commit()
     return {"skills": confirmed_skill_names(db, cand), "unresolved": unresolved}
 

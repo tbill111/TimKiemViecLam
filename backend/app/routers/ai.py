@@ -15,6 +15,7 @@ from starlette.concurrency import run_in_threadpool
 from app.ai.explain import generic_learning_steps
 from app.ai.parser import suggest_skills
 from app.ai.repository import AIRepository, get_ai_repo
+from app.ai import scorers
 from app.ai.scorers import score_many, score_pair
 from app.ai.skills import SkillIndex
 from app.ai.types import MODELS, CandidateInput, JobInput, ModelNotAvailable
@@ -40,6 +41,20 @@ def _model(name: Optional[str]) -> str:
     if name not in MODELS:
         raise HTTPException(422, detail={"detail": "invalid_model", "allowed": list(MODELS)})
     return name
+
+
+_tfidf_jobs = -1
+
+
+def _ensure_tfidf(repo: AIRepository, model: str) -> None:
+    """M1 cần IDF tính trên kho tin; fit lại khi số tin đang mở đổi (đủ cho quy mô vài trăm tin)."""
+    global _tfidf_jobs
+    if model != "m1":
+        return
+    jobs = repo.open_jobs()
+    if len(jobs) != _tfidf_jobs:
+        scorers.fit_tfidf([j.text for j in jobs])
+        _tfidf_jobs = len(jobs)
 
 
 def _score(model: str, cand: CandidateInput, job: JobInput) -> dict:
@@ -88,6 +103,7 @@ async def match(
     repo: AIRepository = Depends(get_ai_repo),
 ):
     model = _model(body.model)
+    _ensure_tfidf(repo, model)
     job = _job_or_404(repo, body.job_id)
     if user.role == "candidate":
         cand = _my_candidate(repo, user)
@@ -116,6 +132,7 @@ async def my_matches(
 ):
     """Điểm khớp của hồ sơ với mọi tin đang mở (thay cho getAllMatchScores ở frontend)."""
     model = _model(model)
+    _ensure_tfidf(repo, model)
     cand = _my_candidate(repo, user)
     jobs = repo.open_jobs()
     try:
@@ -171,6 +188,7 @@ async def ranked_candidates(
 ):
     """Ứng viên ĐÃ NỘP vào tin của công ty mình, xếp theo điểm khớp. Tên chỉ để hiển thị, không dùng làm đặc trưng."""
     model = _model(model)
+    _ensure_tfidf(repo, model)
     job = _job_or_404(repo, job_id)
     _check_recruiter_owns(repo, user, job_id)
     rows = repo.applicants_for_job(job_id)

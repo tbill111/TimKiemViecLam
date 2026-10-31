@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+import logging
+
 from fastapi import Depends, FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from sqlalchemy.orm import Session
@@ -12,6 +14,9 @@ from app.services.ai_repo import SqlAIRepository
 
 
 def create_app() -> FastAPI:
+    settings = get_settings()
+    if settings.jwt_secret in ("dev-secret-change-me", "doi-chuoi-nay-it-nhat-32-ky-tu-ngau-nhien") and not settings.database_url.startswith("sqlite"):
+        logging.getLogger("uvicorn.error").warning("JWT_SECRET đang dùng giá trị mặc định: hãy đặt chuỗi ngẫu nhiên trong .env trước khi triển khai ngoài máy cá nhân.")
     app = FastAPI(title="SmartCareer API", version="2.0", docs_url="/docs", openapi_url="/openapi.json")
     app.add_middleware(
         CORSMiddleware,
