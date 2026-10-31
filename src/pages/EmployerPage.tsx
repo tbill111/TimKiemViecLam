@@ -12,7 +12,7 @@ interface EmployerPageProps {
 }
 
 const STUDENT_ID = 'me';
-const allStatuses: ApplicationStatus[] = ['Đã ứng tuyển', 'Đang xem xét', 'Phỏng vấn', 'Đã kết thúc'];
+const allStatuses: ApplicationStatus[] = ['Đã ứng tuyển', 'Đang xem xét', 'Phỏng vấn', 'Đề nghị', 'Đã tuyển', 'Từ chối'];
 
 interface RankedCandidate {
   candidate: Candidate;

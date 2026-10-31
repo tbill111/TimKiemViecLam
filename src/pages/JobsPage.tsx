@@ -2,8 +2,10 @@ import { useState, useMemo } from 'react';
 import { Search, X, SlidersHorizontal } from 'lucide-react';
 import type { UseAppState } from '../hooks/useAppState';
 import type { FilterState } from '../types';
-import { sampleJobs } from '../data/jobs';
-import { filterJobs, getAllMatchScores } from '../utils';
+import { useJobs } from '../context/JobsContext';
+import { OFFLINE } from '../config';
+import ErrorBlock from '../components/ui/ErrorBlock';
+import { filterJobs } from '../utils';
 import JobCard from '../components/jobs/JobCard';
 import JobDetailModal from '../components/jobs/JobDetailModal';
 import LoadingBlock from '../components/ui/LoadingBlock';
@@ -40,20 +42,20 @@ const defaultFilters: FilterState = {
 };
 
 export default function JobsPage({ appState }: JobsPageProps) {
-  const { studentProfile, isJobSaved, saveJob, unsaveJob, applyToJob, hasApplied } = appState;
+  const { isJobSaved, saveJob, unsaveJob, applyToJob, hasApplied } = appState;
+  const { jobs, matchScores, getMatch, loading: jobsLoading, error: jobsError, reload } = useJobs();
   const [filters, setFilters] = useState<FilterState>(defaultFilters);
   const [selectedJob, setSelectedJob] = useState<Job | null>(null);
   const [showFilters, setShowFilters] = useState(false);
 
-  const matchScores = useMemo(() => getAllMatchScores(studentProfile), [studentProfile]);
-
   const filteredJobs = useMemo(
-    () => filterJobs(sampleJobs, filters, matchScores),
-    [filters, matchScores]
+    () => filterJobs(jobs, filters, matchScores),
+    [jobs, filters, matchScores]
   );
 
-  // Giả lập thời gian lọc ngắn sau mỗi lần thay đổi bộ lọc
-  const loading = useSimulatedLoading(filters, 250);
+  // Chế độ demo giả lập thời gian lọc ngắn; chế độ online dùng trạng thái tải thật từ API
+  const simulated = useSimulatedLoading(filters, 250);
+  const loading = OFFLINE ? simulated : jobsLoading;
 
   const hasActiveFilters =
     filters.query !== '' ||
@@ -190,7 +192,9 @@ export default function JobsPage({ appState }: JobsPageProps) {
       </div>
 
       {/* Job list */}
-      {loading ? (
+      {jobsError ? (
+        <ErrorBlock message={jobsError} onRetry={reload} />
+      ) : loading ? (
         <LoadingBlock rows={4} message="Đang lọc công việc..." />
       ) : filteredJobs.length === 0 ? (
         <div className="card p-12 text-center">
@@ -209,7 +213,7 @@ export default function JobsPage({ appState }: JobsPageProps) {
             <JobCard
               key={job.id}
               job={job}
-              matchResult={matchScores.get(job.id)!}
+              matchResult={getMatch(job)}
               isSaved={isJobSaved(job.id)}
               onSave={() => toggleSave(job.id)}
               onViewDetail={() => setSelectedJob(job)}
@@ -222,7 +226,7 @@ export default function JobsPage({ appState }: JobsPageProps) {
       {selectedJob && (
         <JobDetailModal
           job={selectedJob}
-          matchResult={matchScores.get(selectedJob.id)!}
+          matchResult={getMatch(selectedJob)}
           isSaved={isJobSaved(selectedJob.id)}
           hasApplied={hasApplied(selectedJob.id)}
           onSave={() => toggleSave(selectedJob.id)}

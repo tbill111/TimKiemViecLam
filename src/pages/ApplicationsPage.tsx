@@ -2,10 +2,9 @@ import { useState } from 'react';
 import { Bookmark, FileCheck, Eye, Trash2, ChevronDown, Calendar, Building2, Info } from 'lucide-react';
 import type { UseAppState } from '../hooks/useAppState';
 import type { ApplicationStatus } from '../types';
-import { sampleJobs } from '../data/jobs';
+import { useJobs } from '../context/JobsContext';
 import { formatDate, formatRelativeDate } from '../utils';
 import JobDetailModal from '../components/jobs/JobDetailModal';
-import { calculateSkillMatch } from '../utils';
 import type { Job } from '../types';
 
 interface ApplicationsPageProps {
@@ -16,10 +15,18 @@ const statusColors: Record<ApplicationStatus, string> = {
   'Đã ứng tuyển': 'badge-blue',
   'Đang xem xét': 'badge-yellow',
   'Phỏng vấn': 'badge-green',
-  'Đã kết thúc': 'badge-gray',
+  'Đề nghị': 'badge-green',
+  'Đã tuyển': 'badge-green',
+  'Từ chối': 'badge-gray',
 };
 
-const allStatuses: ApplicationStatus[] = ['Đã ứng tuyển', 'Đang xem xét', 'Phỏng vấn', 'Đã kết thúc'];
+const allStatuses: ApplicationStatus[] = ['Đã ứng tuyển', 'Đang xem xét', 'Phỏng vấn', 'Đề nghị', 'Đã tuyển', 'Từ chối'];
+
+const statusSelectClass = (s: ApplicationStatus) =>
+  s === 'Đã ứng tuyển' ? 'bg-blue-50 text-blue-700 border-blue-100'
+  : s === 'Đang xem xét' ? 'bg-amber-50 text-amber-700 border-amber-100'
+  : s === 'Từ chối' ? 'bg-slate-50 text-slate-500 border-slate-100'
+  : 'bg-emerald-50 text-emerald-700 border-emerald-100';
 
 type Tab = 'saved' | 'applied' | 'tracking';
 
@@ -27,7 +34,7 @@ export default function ApplicationsPage({ appState }: ApplicationsPageProps) {
   const {
     savedJobs,
     applications,
-    studentProfile,
+    online,
     isJobSaved,
     saveJob,
     unsaveJob,
@@ -39,7 +46,8 @@ export default function ApplicationsPage({ appState }: ApplicationsPageProps) {
   const [activeTab, setActiveTab] = useState<Tab>('saved');
   const [selectedJob, setSelectedJob] = useState<Job | null>(null);
 
-  const getJob = (jobId: string) => sampleJobs.find((j) => j.id === jobId);
+  const { jobs, getMatch } = useJobs();
+  const getJob = (jobId: string) => jobs.find((j) => j.id === jobId);
 
   const savedJobsList = savedJobs
     .map((s) => ({ saved: s, job: getJob(s.jobId) }))
@@ -50,7 +58,7 @@ export default function ApplicationsPage({ appState }: ApplicationsPageProps) {
     .filter((x) => x.job !== undefined) as { app: typeof applications[0]; job: Job }[];
 
   const trackingList = appliedList.filter(
-    (x) => x.app.status === 'Đang xem xét' || x.app.status === 'Phỏng vấn'
+    (x) => x.app.status === 'Đang xem xét' || x.app.status === 'Phỏng vấn' || x.app.status === 'Đề nghị'
   );
 
   const tabs: { id: Tab; label: string; count: number }[] = [
@@ -111,7 +119,7 @@ export default function ApplicationsPage({ appState }: ApplicationsPageProps) {
           ) : (
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               {savedJobsList.map(({ saved, job }) => {
-                const match = calculateSkillMatch(studentProfile, job);
+                const match = getMatch(job);
                 return (
                   <div key={saved.jobId} className="card p-4 flex flex-col gap-3">
                     <div className="flex items-start gap-3">
@@ -171,24 +179,25 @@ export default function ApplicationsPage({ appState }: ApplicationsPageProps) {
                     </div>
                   </div>
 
-                  {/* Status selector */}
-                  <div className="relative">
-                    <select
-                      value={app.status}
-                      onChange={(e) => updateApplicationStatus(app.id, e.target.value as ApplicationStatus)}
-                      className={`text-xs font-medium px-3 py-1.5 rounded-lg border appearance-none cursor-pointer pr-7 ${
-                        app.status === 'Đã ứng tuyển' ? 'bg-blue-50 text-blue-700 border-blue-100' :
-                        app.status === 'Đang xem xét' ? 'bg-amber-50 text-amber-700 border-amber-100' :
-                        app.status === 'Phỏng vấn' ? 'bg-emerald-50 text-emerald-700 border-emerald-100' :
-                        'bg-slate-50 text-slate-500 border-slate-100'
-                      }`}
-                    >
-                      {allStatuses.map((s) => (
-                        <option key={s} value={s}>{s}</option>
-                      ))}
-                    </select>
-                    <ChevronDown size={12} className="absolute right-2 top-1/2 -translate-y-1/2 pointer-events-none text-slate-400" />
-                  </div>
+                  {/* Trạng thái: chế độ online do nhà tuyển dụng cập nhật nên ứng viên chỉ xem */}
+                  {online ? (
+                    <span className={`text-xs font-medium px-3 py-1.5 rounded-lg border ${statusSelectClass(app.status)}`} title="Do nhà tuyển dụng cập nhật">
+                      {app.status}
+                    </span>
+                  ) : (
+                    <div className="relative">
+                      <select
+                        value={app.status}
+                        onChange={(e) => updateApplicationStatus(app.id, e.target.value as ApplicationStatus)}
+                        className={`text-xs font-medium px-3 py-1.5 rounded-lg border appearance-none cursor-pointer pr-7 ${statusSelectClass(app.status)}`}
+                      >
+                        {allStatuses.map((s) => (
+                          <option key={s} value={s}>{s}</option>
+                        ))}
+                      </select>
+                      <ChevronDown size={12} className="absolute right-2 top-1/2 -translate-y-1/2 pointer-events-none text-slate-400" />
+                    </div>
+                  )}
 
                   <button onClick={() => handleOpenDetail(job)} className="btn-ghost text-xs py-1.5">
                     <Eye size={14} />
@@ -239,7 +248,7 @@ export default function ApplicationsPage({ appState }: ApplicationsPageProps) {
       {selectedJob && (
         <JobDetailModal
           job={selectedJob}
-          matchResult={calculateSkillMatch(studentProfile, selectedJob)}
+          matchResult={getMatch(selectedJob)}
           isSaved={isJobSaved(selectedJob.id)}
           hasApplied={hasApplied(selectedJob.id)}
           onSave={() => isJobSaved(selectedJob.id) ? unsaveJob(selectedJob.id) : saveJob(selectedJob.id)}

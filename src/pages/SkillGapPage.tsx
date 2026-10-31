@@ -1,10 +1,13 @@
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { CheckCircle2, Circle, ChevronDown, ChevronUp, Target, Info } from 'lucide-react';
 import type { UseAppState } from '../hooks/useAppState';
-import type { Job, SkillPriority, StudentProfile } from '../types';
-import { sampleJobs } from '../data/jobs';
+import type { Job, SkillMatchResult, SkillPriority, StudentProfile } from '../types';
+import { useJobs } from '../context/JobsContext';
+import { OFFLINE } from '../config';
+import { aiApi } from '../api/endpoints';
+import EmptyBlock from '../components/ui/EmptyBlock';
 import { buildLearningSteps } from '../data/skillGap';
-import { calculateSkillMatch, hasSkill } from '../utils';
+import { hasSkill } from '../utils';
 
 interface SkillGapPageProps {
   appState: UseAppState;
@@ -32,17 +35,17 @@ const priorityBg: Record<SkillPriority, string> = {
 const normalize = (s: string) => s.trim().toLowerCase();
 
 /** Công việc mục tiêu mặc định: công việc có nhiều kỹ năng bắt buộc còn thiếu nhất. */
-function findDefaultTarget(profile: StudentProfile): Job {
-  return sampleJobs.reduce((best, job) => {
-    const missing = calculateSkillMatch(profile, job).missingSkills.length;
-    const bestMissing = calculateSkillMatch(profile, best).missingSkills.length;
+function findDefaultTarget(jobs: Job[], getMatch: (job: Job) => SkillMatchResult): Job {
+  return jobs.reduce((best, job) => {
+    const missing = getMatch(job).missingSkills.length;
+    const bestMissing = getMatch(best).missingSkills.length;
     return missing > bestMissing ? job : best;
   });
 }
 
 /** Kỹ năng còn thiếu của công việc: bắt buộc (Cao) và ưu tiên (Trung bình) chưa có trong hồ sơ. */
-function buildGapRows(profile: StudentProfile, job: Job): SkillGapRow[] {
-  const required = calculateSkillMatch(profile, job).missingSkills.map((skill) => ({
+function buildGapRows(profile: StudentProfile, job: Job, match: SkillMatchResult): SkillGapRow[] {
+  const required = match.missingSkills.map((skill) => ({
     skill,
     priority: 'Cao' as const,
   }));
@@ -58,11 +61,27 @@ export default function SkillGapPage({ appState }: SkillGapPageProps) {
   const [expandedSkill, setExpandedSkill] = useState<string | null>(null);
   const [filterPriority, setFilterPriority] = useState<PriorityFilter>('Tất cả');
 
-  const defaultTarget = useMemo(() => findDefaultTarget(studentProfile), [studentProfile]);
-  const target = sampleJobs.find((j) => j.id === targetId) ?? defaultTarget;
-  const targetMatch = calculateSkillMatch(studentProfile, target);
+  const { jobs, getMatch } = useJobs();
+  // Lộ trình học theo kỹ năng do backend trả về (chỉ chế độ online): kỹ năng → các bước
+  const [apiSteps, setApiSteps] = useState<Record<string, string[]>>({});
 
-  const gapRows = useMemo(() => buildGapRows(studentProfile, target), [studentProfile, target]);
+  const defaultTarget = useMemo(() => (jobs.length ? findDefaultTarget(jobs, getMatch) : undefined), [jobs, getMatch]);
+  const target = jobs.find((j) => j.id === targetId) ?? defaultTarget;
+  const targetMatch = target ? getMatch(target) : undefined;
+
+  const gapRows = useMemo(() => (target && targetMatch ? buildGapRows(studentProfile, target, targetMatch) : []), [studentProfile, target, targetMatch]);
+
+  useEffect(() => {
+    if (OFFLINE || !target) return;
+    let cancelled = false;
+    aiApi
+      .skillGap(target.id)
+      .then((gap) => !cancelled && setApiSteps(Object.fromEntries(gap.missing.map((m) => [normalize(m.skill), m.learning_steps]))))
+      .catch(() => !cancelled && setApiSteps({})); // lỗi thì dùng lộ trình mặc định ở frontend
+    return () => {
+      cancelled = true;
+    };
+  }, [target]);
 
   const findGapItem = (skill: string) => skillGapItems.find((i) => normalize(i.skill) === normalize(skill));
   const isLearned = (skill: string) => findGapItem(skill)?.learned ?? false;
@@ -80,7 +99,7 @@ export default function SkillGapPage({ appState }: SkillGapPageProps) {
         id: `gap-custom-${normalize(row.skill).replace(/\s+/g, '-')}`,
         skill: row.skill,
         priority: row.priority,
-        category: target.category,
+        category: target?.category ?? '',
         learned: true,
         learningSteps: buildLearningSteps(row.skill),
       },
@@ -95,6 +114,10 @@ export default function SkillGapPage({ appState }: SkillGapPageProps) {
 
   const displayed = filterPriority === 'Tất cả' ? gapRows : gapRows.filter((r) => r.priority === filterPriority);
 
+  if (!target || !targetMatch) {
+    return <EmptyBlock title="Chưa có tin tuyển dụng để phân tích" hint="Hãy quay lại sau khi có tin được đăng." />;
+  }
+
   return (
     <div className="space-y-6">
       <div>
@@ -108,7 +131,7 @@ export default function SkillGapPage({ appState }: SkillGapPageProps) {
         <Info size={16} className="shrink-0 mt-0.5" />
         <span>
           Kỹ năng còn thiếu được tính bằng cách so sánh hồ sơ của bạn với yêu cầu của công việc mục tiêu.
-          Trạng thái "đã học" được lưu trên trình duyệt này.
+          Trạng thái "đã học" được lưu trên trình duyệt này{OFFLINE ? '' : '; lộ trình học và số tin yêu cầu kỹ năng lấy từ hệ thống'}.
         </span>
       </div>
 
@@ -127,7 +150,7 @@ export default function SkillGapPage({ appState }: SkillGapPageProps) {
               setExpandedSkill(null);
             }}
           >
-            {sampleJobs.map((job) => (
+            {jobs.map((job) => (
               <option key={job.id} value={job.id}>
                 {job.title} – {job.company}
               </option>
@@ -210,7 +233,7 @@ export default function SkillGapPage({ appState }: SkillGapPageProps) {
           {displayed.map((row) => {
             const learned = isLearned(row.skill);
             const expanded = expandedSkill === row.skill;
-            const steps = findGapItem(row.skill)?.learningSteps ?? buildLearningSteps(row.skill);
+            const steps = apiSteps[normalize(row.skill)] ?? findGapItem(row.skill)?.learningSteps ?? buildLearningSteps(row.skill);
             return (
               <div
                 key={row.skill}
