@@ -124,3 +124,9 @@ def test_parse_cv_real_pdf(idx):
     r = parse_cv(SAMPLE_PDF.read_bytes(), "cv-mau.pdf", index=idx, embedder=EMB)
     assert len(r["skills"]) >= 3
     print({s["name"] for s in r["skills"]}, r["years_exp"], r["education_level"])
+
+
+def test_comma_separated_skills_are_not_merged_into_one_phrase(idx):
+    # hồi quy: "HTML, CSS" từng bị gộp thành kỹ năng "HTML/CSS cơ bản"
+    assert names(extract_skills("HTML, CSS, JavaScript", idx, tiers=(1,))) == ["HTML", "CSS", "JavaScript"]
+    assert names(extract_skills("HTML\nCSS", idx, tiers=(1,))) == ["HTML", "CSS"]
