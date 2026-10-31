@@ -19,6 +19,29 @@ Bạn là kỹ sư AI/ML và tech lead của nhóm 3, đề bài **TH3 – Xây 
 - Không dùng tên, giới tính, tuổi, ảnh làm đặc trưng. Không gọi API AI ngoài; chạy local (`sentence-transformers`, `scikit-learn`).
 - Trung thực khi báo cáo số liệu: nếu M4 không hơn M3, ghi nguyên như vậy.
 
+## Trạng thái và ghi chú cách đã làm (cập nhật chiều 31/10, nhánh `feat/tung-ai-ml`)
+
+**Đã xong và có test (chạy `cd backend && python -m pytest -q`, 167 test xanh):**
+- A (nền): git, `.gitattributes`, `types.py`, CSV mẫu (`backend/seed/data/*.csv` + `backend/seed/README.md` chốt cột và enum).
+- B (parser): `parser.py` (đọc file, chuẩn hoá, tách mục, năm kinh nghiệm, học vấn, `parse_cv`, `suggest_skills`) và `extract.py` (3 tầng). Tách đoạn bằng `tokenize_segments` để "HTML, CSS" không bị gộp thành một cụm.
+- C (matching): `features.py`, `scorers.py` (M0–M4, `score_pair`, `score_many`), `explain.py`. M0 khớp 100% với TypeScript trên 84 ca (`backend/tests/golden`). Tái tạo dữ liệu chuẩn bằng `npx tsx scripts/export-golden.ts`.
+- D (API): `app/routers/ai.py`, `resumes.py` qua `AIRepository` (`app/ai/repository.py`). Hướng dẫn nối cho Thái Anh ở `backend/README_AI.md`.
+- E (đánh giá): `metrics.py`, `train.py`, `evaluate.py`, `datasets.py`, 3 notebook trong `notebooks/` (đã chạy thử bằng dữ liệu tổng hợp trong test), `seed/make_pair_list.py`, `docs/report/huong_dan_gan_nhan.md`.
+
+**Quyết định kỹ thuật cần nhớ:**
+- `parse_cv` trả `model_text` (đã bỏ phần đầu CV có tên/liên hệ); mọi embedding và M1/M2/M3 dùng `model_text`, để điểm không phụ thuộc nhân thân (đã có test công bằng).
+- Máy dev Python 3.13 chưa có `torch`/`sentence-transformers`, nên `get_embedder()` tự lùi về `HashingEmbedder`. **Số liệu chỉ dùng để báo cáo khi notebook in `Embedder: st:...`.** Chạy notebook trong Docker 3.11 có model thật.
+- M4 chỉ tồn tại sau khi chạy `notebooks/02_train_m4.ipynb`; trước đó `/ai/match` với `m4` trả 503 `model_not_trained` (frontend phải xử lý).
+- Lộ trình học Skill Gap: `repo.learning_steps(skill)` rỗng thì router dùng `generic_learning_steps` (3 bước mặc định, giống `buildLearningSteps` ở frontend).
+- `labels_pairs_*.csv` dùng **mã ngoài** (`candidate_id` trong `candidates_generated.csv`, `job_id` = `external_id` trong `jobs.csv`).
+
+**Còn lại của bạn (theo thứ tự):**
+1. Chạy `pip install -r backend/requirements-ai.txt` trong Docker 3.11 và kiểm tra model thật nạp được (`EMBEDDER=st`); ghi lại thời gian nạp và dung lượng image.
+2. Khi Thái Anh có `candidates_generated.csv` (22:00 1/11) và Hưng có `jobs.csv` (18:00 1/11): `python -m seed.make_pair_list` → giao `labels_pairs_template.csv` lúc 12:00 2/11.
+3. 3/11 chạy `01_parser_eval` khi có `labels_cv_skills.csv`; 4/11 chạy `02_train_m4` rồi `03_ranking_eval` khi có hai file nhãn; quyết định `UPDATE_M3`.
+4. Kiểm tra Thái Anh nối đúng `AIRepository` (`CandidateInput.skills` chỉ gồm kỹ năng đã xác nhận; `text` lấy từ `model_text`), rồi chạy lại end-to-end; quay video; viết chương AI.
+5. Nếu còn thời gian: đo hiệu năng 500 tin trên model embedding thật.
+
 ## Việc cần làm (theo thứ tự)
 
 ### A. Nền tảng (hạn 18:00 31/10)
