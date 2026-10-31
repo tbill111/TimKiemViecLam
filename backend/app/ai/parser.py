@@ -242,10 +242,18 @@ def extract_education_level(text: str, sections: Optional[dict[str, str]] = None
 # ---------------------------------------------------------------------------
 
 
+def model_text_of(sections: dict[str, str]) -> str:
+    """Nội dung CV không gồm phần đầu (`header`: tên, liên hệ)."""
+    return "\n".join(v for k, v in sections.items() if k != "header").strip()
+
+
 def parse_cv(data: bytes, filename: str, index=None, embedder=None, today: Optional[date] = None) -> dict:
     """Đọc CV và trả về kết quả phân tích (lưu vào `resumes.parsed_json`).
 
-    Trả về: {text, skills:[{name,source,confidence}], years_exp, education_level, sections, embedding(bytes)}.
+    Trả về: {text, model_text, skills:[{name,source,confidence}], years_exp, education_level, sections, embedding(bytes)}.
+
+    `model_text` là văn bản dùng cho M1/M2/M3: bỏ phần đầu CV (tên, ảnh, liên hệ) để điểm không phụ thuộc
+    thông tin nhân thân. Embedding lưu ở `resumes.embedding` cũng tính từ `model_text`.
     """
     from .embedder import get_embedder, to_bytes
     from .extract import extract_skills
@@ -254,9 +262,11 @@ def parse_cv(data: bytes, filename: str, index=None, embedder=None, today: Optio
     text = normalize_text(raw)
     sections = split_sections(text)
     hits = extract_skills(text, index=index, embedder=embedder, skills_section=sections.get("skills", ""))
-    emb = (embedder or get_embedder()).encode([text[:3000]])[0]
+    model_text = model_text_of(sections) or text
+    emb = (embedder or get_embedder()).encode([model_text[:3000]])[0]
     return {
         "text": text,
+        "model_text": model_text,
         "skills": [h.to_dict() for h in hits],
         "years_exp": extract_years_exp(text, sections, today),
         "education_level": extract_education_level(text, sections),
