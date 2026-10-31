@@ -1,5 +1,6 @@
 import type { Job, StudentProfile, SkillMatchResult, FilterState, DataQualityMetrics, MatchProfile } from '../types';
 import { sampleJobs } from '../data/jobs';
+import { OFFLINE } from '../config';
 
 /** Mốc ngày của dữ liệu demo; cố định để nhãn "X ngày trước" không đổi theo ngày chạy thật. */
 export const DEMO_NOW = new Date('2026-10-22T12:00:00Z');
@@ -99,20 +100,20 @@ export function calculateSkillMatch(profile: MatchProfile, job: Job): SkillMatch
 /**
  * Số công việc mẫu có điểm phù hợp đạt ngưỡng SUITABLE_THRESHOLD.
  */
-export function countSuitableJobs(profile: StudentProfile): number {
-  return sampleJobs.filter((job) => calculateSkillMatch(profile, job).matchScore >= SUITABLE_THRESHOLD).length;
+export function countSuitableJobs(profile: StudentProfile, jobs: Job[] = sampleJobs): number {
+  return jobs.filter((job) => calculateSkillMatch(profile, job).matchScore >= SUITABLE_THRESHOLD).length;
 }
 
 /**
  * Số tin mẫu có kỹ năng cho trước (ở mục yêu cầu hoặc ưu tiên).
  * Trả về cả số tin yêu cầu bắt buộc để hiển thị chi tiết.
  */
-export function countJobsWithSkill(skill: string): { anywhere: number; required: number } {
+export function countJobsWithSkill(skill: string, jobs: Job[] = sampleJobs): { anywhere: number; required: number } {
   const target = normalizeSkill(skill);
   const has = (list: string[]) => list.some((s) => normalizeSkill(s) === target);
   return {
-    anywhere: sampleJobs.filter((j) => has(j.requiredSkills) || has(j.preferredSkills)).length,
-    required: sampleJobs.filter((j) => has(j.requiredSkills)).length,
+    anywhere: jobs.filter((j) => has(j.requiredSkills) || has(j.preferredSkills)).length,
+    required: jobs.filter((j) => has(j.requiredSkills)).length,
   };
 }
 
@@ -128,9 +129,9 @@ export function getSkillCoverage(profile: StudentProfile, skills: string[]): num
 /**
  * Tính điểm phù hợp cho tất cả công việc và trả về đã sắp xếp.
  */
-export function getAllMatchScores(profile: StudentProfile): Map<string, SkillMatchResult> {
+export function getAllMatchScores(profile: StudentProfile, jobs: Job[] = sampleJobs): Map<string, SkillMatchResult> {
   const map = new Map<string, SkillMatchResult>();
-  for (const job of sampleJobs) {
+  for (const job of jobs) {
     map.set(job.id, calculateSkillMatch(profile, job));
   }
   return map;
@@ -212,15 +213,16 @@ export function filterJobs(
  */
 export function formatRelativeDate(isoDate: string): string {
   const date = new Date(isoDate);
-  const now = DEMO_NOW;
+  const now = OFFLINE ? DEMO_NOW : new Date(); // dữ liệu demo dùng mốc cố định; dữ liệu thật dùng giờ hiện tại
   const diffMs = now.getTime() - date.getTime();
-  const diffDays = Math.floor(diffMs / (1000 * 60 * 60 * 24));
+  const diffDays = Math.max(0, Math.floor(diffMs / (1000 * 60 * 60 * 24)));
 
   if (diffDays === 0) return 'Hôm nay';
   if (diffDays === 1) return '1 ngày trước';
   if (diffDays < 7) return `${diffDays} ngày trước`;
   if (diffDays < 30) return `${Math.floor(diffDays / 7)} tuần trước`;
-  return `${Math.floor(diffDays / 30)} tháng trước`;
+  if (diffDays < 365) return `${Math.floor(diffDays / 30)} tháng trước`;
+  return `${Math.floor(diffDays / 365)} năm trước`;
 }
 
 /**

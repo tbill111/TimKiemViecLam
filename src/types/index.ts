@@ -16,11 +16,14 @@ export type JobCategory =
   | 'Software Engineering'
   | 'Business Operations';
 
+/** 6 trạng thái theo phễu tuyển dụng: applied → screening → interview → offer → hired, và rejected ở bất kỳ bước chưa kết thúc. */
 export type ApplicationStatus =
   | 'Đã ứng tuyển'
   | 'Đang xem xét'
   | 'Phỏng vấn'
-  | 'Đã kết thúc';
+  | 'Đề nghị'
+  | 'Đã tuyển'
+  | 'Từ chối';
 
 export type SkillPriority = 'Cao' | 'Trung bình' | 'Thấp';
 
@@ -44,6 +47,10 @@ export interface Job {
   category: JobCategory;
   companySize?: string;
   companyIndustry?: string;
+  /** Dữ liệu số từ backend (triệu VNĐ/tháng); null = thỏa thuận. */
+  salaryMin?: number | null;
+  salaryMax?: number | null;
+  status?: 'open' | 'closed';
 }
 
 // ============================================================
@@ -134,6 +141,12 @@ export interface SkillMatchResult {
   preferenceScore: number;
   locationMatch: boolean;
   workTypeMatch: boolean;
+  /** Chỉ có khi điểm do backend (mô hình M1–M4) tính: điểm thành phần 0–100 và câu giải thích. */
+  semanticScore?: number | null;
+  expScore?: number | null;
+  eduScore?: number | null;
+  explanation?: string;
+  model?: string;
 }
 
 /** Phần hồ sơ đủ để tính điểm ghép nối (dùng chung cho sinh viên và ứng viên mẫu). */

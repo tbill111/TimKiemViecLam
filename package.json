@@ -10,7 +10,9 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@superset-ui/embedded-sdk": "^0.4.0",
     "@tailwindcss/vite": "^4.3.3",
+    "axios": "^1.21.0",
     "fflate": "^0.8.2",
     "lucide-react": "^1.61.0",
     "pdfjs-dist": "^4.10.38",
