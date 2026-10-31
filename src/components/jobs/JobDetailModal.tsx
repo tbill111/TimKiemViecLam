@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { OFFLINE } from '../../config';
 import {
   X,
   MapPin,
@@ -53,9 +54,16 @@ export default function JobDetailModal({
 
   const matchColor = getMatchColorClass(matchResult.matchScore);
 
+  // Đóng bằng phím Esc
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => e.key === 'Escape' && onClose();
+    window.addEventListener('keydown', onKey);
+    return () => window.removeEventListener('keydown', onKey);
+  }, [onClose]);
+
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/40 backdrop-blur-sm">
-      <div className="bg-white rounded-2xl shadow-2xl w-full max-w-2xl max-h-[90vh] flex flex-col">
+      <div role="dialog" aria-modal="true" aria-label={`Chi tiết: ${job.title}`} className="bg-white rounded-2xl shadow-2xl w-full max-w-2xl max-h-[90vh] flex flex-col">
         {/* Header */}
         <div className="px-6 py-5 border-b border-slate-100 flex items-start gap-4">
           <div className="flex-1 min-w-0">
@@ -85,7 +93,7 @@ export default function JobDetailModal({
               </span>
             </div>
           </div>
-          <button onClick={onClose} className="btn-ghost p-1.5 shrink-0">
+          <button onClick={onClose} className="btn-ghost p-1.5 shrink-0" aria-label="Đóng">
             <X size={18} />
           </button>
         </div>
@@ -106,9 +114,11 @@ export default function JobDetailModal({
               <div className="flex items-start gap-3">
                 <AlertCircle size={18} className="text-blue-600 shrink-0 mt-0.5" />
                 <div>
-                  <div className="font-semibold text-blue-800 text-sm">Xác nhận ứng tuyển (Demo)</div>
+                  <div className="font-semibold text-blue-800 text-sm">{OFFLINE ? 'Xác nhận ứng tuyển (Demo)' : 'Xác nhận ứng tuyển'}</div>
                   <div className="text-xs text-blue-600 mt-1">
-                    Đây là ứng tuyển mô phỏng. Không có dữ liệu thật nào được gửi đến nhà tuyển dụng.
+                    {OFFLINE
+                      ? 'Đây là ứng tuyển mô phỏng. Không có dữ liệu thật nào được gửi đến nhà tuyển dụng.'
+                      : 'Hồ sơ và điểm phù hợp hiện tại của bạn sẽ được gửi đến nhà tuyển dụng của tin này.'}
                   </div>
                 </div>
               </div>
@@ -225,7 +235,7 @@ export default function JobDetailModal({
                 Đã ứng tuyển
               </>
             ) : (
-              'Ứng tuyển Demo'
+              OFFLINE ? 'Ứng tuyển Demo' : 'Ứng tuyển'
             )}
           </button>
           <button
