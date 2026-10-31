@@ -68,3 +68,15 @@ def test_schema_sql_is_current_and_valid():
     creates = [s for s in stmts if type(s.stmt).__name__ == "CreateStmt"]
     assert len(creates) == 15
     assert OUT.exists() and OUT.read_text(encoding="utf-8") == text, "backend/schema.sql đã cũ: chạy python -m scripts.dump_schema"
+
+
+def test_erd_dbml_is_current_and_lists_15_tables_in_five_groups():
+    import sys
+
+    sys.path.insert(0, str(BACKEND))
+    from scripts.gen_erd import GROUPS, OUT, build
+
+    text = build()
+    assert text.count("Table ") == 15 and text.count("TableGroup ") == 5 == len(GROUPS)
+    assert "timestamp_without" not in text and "numeric(3,_1)" not in text
+    assert OUT.exists() and OUT.read_text(encoding="utf-8") == text, "docs/erd/erd.dbml đã cũ: chạy python -m scripts.gen_erd"
