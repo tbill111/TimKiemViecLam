@@ -58,6 +58,11 @@ class SkillIn(BaseModel):
     learning_steps: list[str] | None = None
 
 
+class SkillUpdate(BaseModel):
+    category: str | None = None
+    learning_steps: list[str] | None = None
+
+
 class AliasIn(BaseModel):
     alias: str = Field(min_length=1, max_length=100)
     skill_name: str
@@ -76,6 +81,29 @@ def admin_add_skill(body: SkillIn, user: CurrentUser = Depends(require_role("adm
     db.add(skill)
     db.commit()
     return {"id": skill.id, "name": skill.name, "category": skill.category}
+
+
+@admin_router.put("/skills/{skill_id}")
+def admin_update_skill(skill_id: int, body: SkillUpdate, user: CurrentUser = Depends(require_role("admin")), db: Session = Depends(get_db)):
+    """Sửa nhóm và lộ trình học của kỹ năng (tên chuẩn không đổi để không làm lệch dữ liệu đã gắn)."""
+    skill = db.get(Skill, skill_id)
+    if skill is None:
+        raise HTTPException(404, detail="skill_not_found")
+    if body.category is not None:
+        skill.category = body.category
+    if body.learning_steps is not None:
+        skill.learning_steps = [x.strip() for x in body.learning_steps if x.strip()] or None
+    db.commit()
+    return {"id": skill.id, "name": skill.name, "category": skill.category, "learning_steps": skill.learning_steps or []}
+
+
+@admin_router.delete("/skill-aliases/{alias}", status_code=204)
+def admin_delete_alias(alias: str, user: CurrentUser = Depends(require_role("admin")), db: Session = Depends(get_db)):
+    row = db.get(SkillAlias, alias.strip().lower())
+    if row is None:
+        raise HTTPException(404, detail="alias_not_found")
+    db.delete(row)
+    db.commit()
 
 
 @admin_router.get("/skill-aliases")

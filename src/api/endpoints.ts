@@ -69,3 +69,19 @@ export const biApi = {
   funnel: () => api.get<BiFunnel>('/bi/funnel').then((r) => r.data),
   guestToken: () => api.get<GuestToken>('/bi/guest-token').then((r) => r.data),
 };
+
+export interface AdminSkill {
+  id: number;
+  name: string;
+  category: string;
+  learning_steps: string[];
+}
+
+export const adminApi = {
+  skills: () => api.get<{ items: AdminSkill[] }>('/admin/skills').then((r) => r.data.items),
+  addSkill: (body: { name: string; category: string; learning_steps?: string[] }) => api.post<AdminSkill>('/admin/skills', body).then((r) => r.data),
+  updateSkill: (id: number, body: { category?: string; learning_steps?: string[] }) => api.put<AdminSkill>(`/admin/skills/${id}`, body).then((r) => r.data),
+  aliases: () => api.get<{ items: { alias: string; skill_name: string }[] }>('/admin/skill-aliases').then((r) => r.data.items),
+  addAlias: (alias: string, skill_name: string) => api.post('/admin/skill-aliases', { alias, skill_name }).then((r) => r.data),
+  deleteAlias: (alias: string) => api.delete(`/admin/skill-aliases/${encodeURIComponent(alias)}`).then(() => undefined),
+};

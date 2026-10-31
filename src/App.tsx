@@ -24,6 +24,7 @@ import EmployerJobsPage from './pages/EmployerJobsPage';
 import PostJobPage from './pages/PostJobPage';
 import EmployerCandidatesPage from './pages/EmployerCandidatesPage';
 import EmployerDashboardPage from './pages/EmployerDashboardPage';
+import AdminSkillsPage from './pages/AdminSkillsPage';
 
 export default function App() {
   const appState = useAppState();
@@ -51,6 +52,7 @@ function RoleRoute({ roles, children }: { roles: Role[]; children: ReactNode }) 
 
 const CANDIDATE: Role[] = ['candidate'];
 const STAFF: Role[] = ['recruiter', 'admin'];
+const ADMIN: Role[] = ['admin'];
 
 /** Các trang có sidebar. */
 function AppShell({ appState }: { appState: UseAppState }) {
@@ -62,6 +64,7 @@ function AppShell({ appState }: { appState: UseAppState }) {
   }
 
   const candidate = (el: ReactNode) => <RoleRoute roles={CANDIDATE}>{el}</RoleRoute>;
+  const admin = (el: ReactNode) => (OFFLINE ? <Navigate to="/" replace /> : <RoleRoute roles={ADMIN}>{el}</RoleRoute>);
   const staff = (el: ReactNode) => (OFFLINE ? <Navigate to="/employer" replace /> : <RoleRoute roles={STAFF}>{el}</RoleRoute>);
 
   return (
@@ -82,6 +85,8 @@ function AppShell({ appState }: { appState: UseAppState }) {
           <Route path="/employer/jobs/new" element={staff(<PostJobPage />)} />
           <Route path="/employer/jobs/:id/edit" element={staff(<PostJobPage />)} />
           <Route path="/employer/candidates" element={staff(<EmployerCandidatesPage />)} />
+
+          <Route path="/admin/skills" element={admin(<AdminSkillsPage />)} />
 
           <Route path="/etl" element={<ETLPage appState={appState} />} />
           <Route path="/dfd" element={<DFDPage />} />

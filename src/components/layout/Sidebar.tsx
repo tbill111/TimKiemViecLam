@@ -17,6 +17,7 @@ import {
   Users,
   PieChart,
   ListChecks,
+  Tags,
 } from 'lucide-react';
 import type { UseAppState } from '../../hooks/useAppState';
 import { useAuth } from '../../context/AuthContext';
@@ -53,6 +54,8 @@ const recruiterNav: NavEntry[] = [
   { to: '/employer/candidates', label: 'Ứng viên xếp hạng', icon: Users },
 ];
 
+const adminNav: NavEntry[] = [{ to: '/admin/skills', label: 'Quản lý kỹ năng', icon: Tags }];
+
 const systemItems: NavEntry[] = [
   { to: '/etl', label: 'Trung tâm Dữ liệu & ETL', icon: Database },
   { to: '/dfd', label: 'Sơ đồ Luồng Dữ liệu', icon: GitFork },
@@ -76,7 +79,7 @@ export default function Sidebar({ appState, open, onClose }: SidebarProps) {
 
   const isStaff = user?.role === 'recruiter' || user?.role === 'admin';
   // Chế độ demo giữ cổng nhà tuyển dụng mô phỏng cũ ở /employer
-  const navItems: NavEntry[] = isStaff ? recruiterNav : OFFLINE ? [...candidateNav, { to: '/employer', label: 'Cổng nhà tuyển dụng', icon: Building2 }] : candidateNav;
+  const navItems: NavEntry[] = isStaff ? (user?.role === 'admin' ? [...recruiterNav, ...adminNav] : recruiterNav) : OFFLINE ? [...candidateNav, { to: '/employer', label: 'Cổng nhà tuyển dụng', icon: Building2 }] : candidateNav;
   const displayName = isStaff ? user?.full_name ?? '' : studentProfile.fullName || user?.full_name || '';
 
   const handleReset = () => {

@@ -41,6 +41,10 @@ const MESSAGES: Record<string, string> = {
   superset_not_configured: 'Superset chưa được cấu hình.',
   superset_unavailable: 'Không kết nối được Superset.',
   candidate_profile_not_found: 'Chưa có hồ sơ ứng viên.',
+  skill_exists: 'Kỹ năng này đã có trong danh mục.',
+  alias_exists: 'Từ đồng nghĩa này đã tồn tại.',
+  skill_not_found: 'Không tìm thấy kỹ năng.',
+  alias_not_found: 'Không tìm thấy từ đồng nghĩa.',
   salary_min_greater_than_max: 'Lương tối thiểu không được lớn hơn lương tối đa.',
 };
 

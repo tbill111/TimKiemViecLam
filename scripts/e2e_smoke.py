@@ -118,11 +118,24 @@ def recruiter_flow(page: Page, web: str, shots: Path | None) -> None:
         login(page, web, "hr01@smartcareer.vn")
         expect(page.get_by_role("heading", name=re.compile("Dashboard thị trường"))).to_be_visible(timeout=20000)
 
-    @step("Nhà tuyển dụng: dashboard hiển thị 3 biểu đồ dự phòng (Superset chưa cấu hình)")
+    @step("Nhà tuyển dụng: dashboard hiển thị (nhúng Superset hoặc 3 biểu đồ dự phòng)")
     def _dash():
-        expect(page.get_by_text("Top 15 kỹ năng theo số ứng viên và nhu cầu tuyển")).to_be_visible(timeout=30000)
-        expect(page.get_by_text("Trung vị lương theo tháng đăng và cấp bậc")).to_be_visible()
-        expect(page.get_by_text("Phễu tuyển dụng (hồ sơ từng đạt mỗi bước)")).to_be_visible()
+        fallback = page.get_by_text("Phễu tuyển dụng (hồ sơ từng đạt mỗi bước)")
+        embedded = page.frame_locator("[data-testid=superset-mount] iframe").get_by_text(re.compile("Top 15 kỹ năng")).first
+        deadline = time.time() + 60
+        mode = None
+        while time.time() < deadline and mode is None:
+            if fallback.count():
+                mode = "dự phòng Recharts"
+            elif embedded.count():
+                mode = "Superset nhúng"
+            else:
+                page.wait_for_timeout(500)
+        assert mode, "dashboard không hiển thị cả nhúng lẫn dự phòng"
+        print(f"       (dashboard dùng: {mode})")
+        if mode == "dự phòng Recharts":
+            expect(page.get_by_text("Top 15 kỹ năng theo số ứng viên và nhu cầu tuyển")).to_be_visible()
+            expect(page.get_by_text("Trung vị lương theo tháng đăng và cấp bậc")).to_be_visible()
         shot(page, shots, "07_employer_dashboard")
 
     @step("Nhà tuyển dụng: đăng tin với gợi ý kỹ năng từ mô tả")
@@ -154,6 +167,51 @@ def recruiter_flow(page: Page, web: str, shots: Path | None) -> None:
         fn()
 
 
+def admin_flow(page: Page, web: str, shots: Path | None) -> None:
+    @step("Quản trị: đăng nhập, mở Quản lý kỹ năng")
+    def _open():
+        page.get_by_role("button", name="Đăng xuất").click()
+        login(page, web, "admin@smartcareer.vn")
+        expect(page.get_by_role("heading", name=re.compile("Dashboard thị trường"))).to_be_visible(timeout=30000)
+        page.get_by_role("link", name="Quản lý kỹ năng").click()
+        expect(page.get_by_role("heading", name="Quản lý danh mục kỹ năng")).to_be_visible(timeout=20000)
+
+    @step("Quản trị: thêm kỹ năng mới, từ đồng nghĩa và lộ trình học")
+    def _add():
+        page.get_by_label("Kỹ năng mới").fill("Kỹ năng E2E")
+        page.get_by_role("button", name="Thêm", exact=True).first.click()
+        expect(page.get_by_text("Đã thêm kỹ năng.")).to_be_visible(timeout=15000)
+        expect(page.get_by_role("heading", name="Kỹ năng E2E")).to_be_visible()
+        page.get_by_label("Từ đồng nghĩa mới").fill("ky-nang-e2e")
+        page.get_by_role("button", name="Thêm", exact=True).last.click()
+        expect(page.get_by_text("Đã thêm từ đồng nghĩa.")).to_be_visible(timeout=15000)
+        expect(page.get_by_text("ky-nang-e2e")).to_be_visible()
+        page.get_by_label("Lộ trình học", exact=False).fill("Bước một\nBước hai")
+        page.get_by_role("button", name="Lưu thay đổi").click()
+        expect(page.get_by_text("Đã lưu thay đổi.")).to_be_visible(timeout=15000)
+        shot(page, shots, "12_admin_skills")
+
+    @step("Quản trị: từ đồng nghĩa mới có hiệu lực ở bộ trích kỹ năng")
+    def _effect():
+        token = page.evaluate("localStorage.getItem('smartcareer_token')")
+        api = page.evaluate("document.location.origin") + "/api"
+        r = page.request.post(f"{api}/ai/extract-skills", data={"text": "Yêu cầu: ky-nang-e2e và Git"}, headers={"Authorization": f"Bearer {token}"})
+        names = {x["name"] for x in r.json()["skills"]}
+        assert "Kỹ năng E2E" in names and "Git" in names, names
+
+    @step("Quản trị: xóa từ đồng nghĩa thì không còn hiệu lực")
+    def _delete():
+        page.get_by_role("button", name="Xóa từ đồng nghĩa ky-nang-e2e").click()
+        expect(page.get_by_text("Đã xóa từ đồng nghĩa.")).to_be_visible(timeout=15000)
+        token = page.evaluate("localStorage.getItem('smartcareer_token')")
+        api = page.evaluate("document.location.origin") + "/api"
+        r = page.request.post(f"{api}/ai/extract-skills", data={"text": "Yêu cầu: ky-nang-e2e"}, headers={"Authorization": f"Bearer {token}"})
+        assert "Kỹ năng E2E" not in {x["name"] for x in r.json()["skills"]}
+
+    for fn in (_open, _add, _effect, _delete):
+        fn()
+
+
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--web", default="http://localhost:4173")
@@ -167,6 +225,7 @@ def main() -> int:
         t0 = time.time()
         candidate_flow(page, args.web, args.shots)
         recruiter_flow(page, args.web, args.shots)
+        admin_flow(page, args.web, args.shots)
         browser.close()
     failed = [r for r in results if not r[1]]
     print(f"\n{len(results) - len(failed)}/{len(results)} bước đạt trong {time.time() - t0:.0f}s; lỗi JS không bắt: {len(console_errors)}")

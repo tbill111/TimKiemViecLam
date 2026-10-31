@@ -188,3 +188,21 @@ def test_admin_skill_catalog(client, session):
     assert {"alias": "vuejs", "skill_name": "Vue"} in client.get("/api/admin/skill-aliases", headers=h).json()["items"]
     cand = register(client, "u@test.vn")["access_token"]
     assert client.get("/api/admin/skills", headers=auth(cand)).status_code == 403
+
+
+def test_admin_can_edit_skill_and_delete_alias(client, session):
+    from tests.api.conftest import login
+
+    h = auth(login(client, "admin@test.vn"))
+    skills = client.get("/api/admin/skills", headers=h).json()["items"]
+    react = next(s for s in skills if s["name"] == "React")
+    upd = client.put(f"/api/admin/skills/{react['id']}", json={"category": "Frontend", "learning_steps": ["Bước 1", " ", "Bước 2"]}, headers=h)
+    assert upd.status_code == 200 and upd.json()["learning_steps"] == ["Bước 1", "Bước 2"]  # bỏ dòng trống
+    # lộ trình mới được dùng ở Skill Gap
+    assert client.put("/api/admin/skills/9999", json={}, headers=h).status_code == 404
+    assert client.delete("/api/admin/skill-aliases/reactjs", headers=h).status_code == 204
+    assert client.delete("/api/admin/skill-aliases/reactjs", headers=h).status_code == 404
+    assert "reactjs" not in {a["alias"] for a in client.get("/api/admin/skill-aliases", headers=h).json()["items"]}
+    cand = register(client, "u2@test.vn")["access_token"]
+    assert client.put(f"/api/admin/skills/{react['id']}", json={}, headers=auth(cand)).status_code == 403
+    assert client.delete("/api/admin/skill-aliases/html5", headers=auth(cand)).status_code == 403

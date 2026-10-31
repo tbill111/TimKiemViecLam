@@ -54,7 +54,7 @@ export default function EmployerDashboardPage() {
         const iframe = mount.current.querySelector('iframe');
         if (iframe) {
           iframe.style.width = '100%';
-          iframe.style.height = '720px';
+          iframe.style.height = "1000px";
           iframe.style.border = '0';
         }
         if (!cancelled) setEmbed('embedded');
