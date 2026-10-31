@@ -23,7 +23,11 @@ class Settings(BaseSettings):
     superset_admin_user: str = "admin"
     superset_admin_password: str = "admin"
     superset_dashboard_id: str = ""  # UUID nhúng của dashboard
-    superset_funnel_dataset_id: int = 0  # dataset v_funnel, dùng cho RLS theo company_id
+    superset_rls_dataset_ids: str = ""  # id các dataset có cột company_id (v_funnel, v_funnel_stages), cách nhau dấu phẩy
+
+    @property
+    def rls_dataset_ids(self) -> list[int]:
+        return [int(x) for x in self.superset_rls_dataset_ids.split(",") if x.strip()]
 
     @property
     def cors_list(self) -> list[str]:

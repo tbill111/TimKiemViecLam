@@ -158,7 +158,7 @@ class Job(Base):
 
     id: Mapped[int] = mapped_column(Integer, primary_key=True)
     external_id: Mapped[Optional[str]] = mapped_column(String(50), unique=True, nullable=True)
-    company_id: Mapped[int] = mapped_column(ForeignKey("companies.id"), nullable=False)
+    company_id: Mapped[int] = mapped_column(ForeignKey("companies.id"), nullable=False, index=True)
     recruiter_id: Mapped[Optional[int]] = mapped_column(ForeignKey("recruiters.id"), nullable=True)
     title: Mapped[str] = mapped_column(String(255), nullable=False)
     description: Mapped[str] = mapped_column(Text, default="")
@@ -172,7 +172,7 @@ class Job(Base):
     salary_max: Mapped[Optional[float]] = mapped_column(Numeric(6, 1), nullable=True)
     min_years_exp: Mapped[float] = mapped_column(Numeric(3, 1), default=0)
     min_education: Mapped[int] = mapped_column(Integer, default=0)
-    status: Mapped[str] = mapped_column(String(10), default="open")
+    status: Mapped[str] = mapped_column(String(10), default="open", index=True)
     posted_at: Mapped[dt.datetime] = mapped_column(DateTime, default=utcnow)
     deadline: Mapped[Optional[dt.datetime]] = mapped_column(DateTime, nullable=True)
     embedding: Mapped[Optional[bytes]] = mapped_column(LargeBinary, nullable=True)
@@ -185,7 +185,7 @@ class JobSkill(Base):
     __tablename__ = "job_skills"
 
     job_id: Mapped[int] = mapped_column(ForeignKey("jobs.id", ondelete="CASCADE"), primary_key=True)
-    skill_id: Mapped[int] = mapped_column(ForeignKey("skills.id", ondelete="CASCADE"), primary_key=True)
+    skill_id: Mapped[int] = mapped_column(ForeignKey("skills.id", ondelete="CASCADE"), primary_key=True, index=True)
     is_required: Mapped[bool] = mapped_column(Boolean, default=True)
 
 
@@ -198,7 +198,7 @@ class Application(Base):
 
     id: Mapped[int] = mapped_column(Integer, primary_key=True)
     candidate_id: Mapped[int] = mapped_column(ForeignKey("candidates.id", ondelete="CASCADE"), nullable=False)
-    job_id: Mapped[int] = mapped_column(ForeignKey("jobs.id", ondelete="CASCADE"), nullable=False)
+    job_id: Mapped[int] = mapped_column(ForeignKey("jobs.id", ondelete="CASCADE"), nullable=False, index=True)
     resume_id: Mapped[Optional[int]] = mapped_column(ForeignKey("resumes.id", ondelete="SET NULL"), nullable=True)
     match_score: Mapped[Optional[int]] = mapped_column(Integer, nullable=True)
     status: Mapped[str] = mapped_column(String(15), default="applied")
@@ -213,7 +213,7 @@ class ApplicationStatusHistory(Base):
     __tablename__ = "application_status_history"
 
     id: Mapped[int] = mapped_column(Integer, primary_key=True)
-    application_id: Mapped[int] = mapped_column(ForeignKey("applications.id", ondelete="CASCADE"), nullable=False)
+    application_id: Mapped[int] = mapped_column(ForeignKey("applications.id", ondelete="CASCADE"), nullable=False, index=True)
     from_status: Mapped[Optional[str]] = mapped_column(String(15), nullable=True)
     to_status: Mapped[str] = mapped_column(String(15), nullable=False)
     changed_by: Mapped[Optional[int]] = mapped_column(ForeignKey("users.id"), nullable=True)

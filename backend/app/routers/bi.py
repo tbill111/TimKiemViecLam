@@ -127,9 +127,9 @@ def request_guest_token(user: CurrentUser) -> dict[str, Any]:
         raise HTTPException(503, detail="superset_not_configured")
     rls: list[dict[str, Any]] = []
     if user.role == "recruiter":
-        if not s.superset_funnel_dataset_id:
+        if not s.rls_dataset_ids:  # không có RLS thì recruiter sẽ thấy dữ liệu công ty khác: từ chối thay vì cấp token
             raise HTTPException(503, detail="superset_not_configured")
-        rls = [{"dataset": s.superset_funnel_dataset_id, "clause": f"company_id = {int(user.company_id or 0)}"}]
+        rls = [{"dataset": ds, "clause": f"company_id = {int(user.company_id or 0)}"} for ds in s.rls_dataset_ids]
     try:
         with httpx.Client(base_url=s.superset_url, timeout=10) as c:
             login = c.post("/api/v1/security/login", json={"username": s.superset_admin_user, "password": s.superset_admin_password, "provider": "db", "refresh": True})

@@ -59,10 +59,15 @@ def is_seeded(db: Session) -> bool:
 
 
 def reset(db: Session) -> None:
+    from app.bi_sql import apply_views, drop_views
+
     engine = db.get_bind()
     db.close()
-    Base.metadata.drop_all(engine)
-    Base.metadata.create_all(engine)
+    with engine.begin() as conn:
+        drop_views(conn)  # PostgreSQL: view phụ thuộc bảng nên phải xoá trước
+        Base.metadata.drop_all(conn)
+        Base.metadata.create_all(conn)
+        apply_views(conn)
 
 
 def get_location(db: Session, cache: dict[str, Location], name: str) -> Location:

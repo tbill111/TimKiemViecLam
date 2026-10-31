@@ -241,7 +241,7 @@ def test_guest_token_applies_company_rls_for_recruiter(world, monkeypatch):
     from app.config import get_settings
 
     s = get_settings()
-    for k, v in {"superset_url": "http://superset:8088", "superset_dashboard_id": "uuid-123", "superset_funnel_dataset_id": 7}.items():
+    for k, v in {"superset_url": "http://superset:8088", "superset_dashboard_id": "uuid-123", "superset_rls_dataset_ids": "7,8"}.items():
         monkeypatch.setattr(s, k, v)
     calls: list = []
     _mock_superset(monkeypatch, calls)
@@ -249,11 +249,24 @@ def test_guest_token_applies_company_rls_for_recruiter(world, monkeypatch):
     assert r.status_code == 200 and r.json() == {"token": "GUEST-TOKEN", "dashboard_id": "uuid-123", "superset_domain": s.superset_public_url}
     sent = json.loads(calls[-1][1])
     assert sent["resources"] == [{"type": "dashboard", "id": "uuid-123"}]
-    assert sent["rls"] == [{"dataset": 7, "clause": f"company_id = {world['ra']['user']['company_id']}"}]
+    cid = world["ra"]["user"]["company_id"]
+    assert sent["rls"] == [{"dataset": 7, "clause": f"company_id = {cid}"}, {"dataset": 8, "clause": f"company_id = {cid}"}]
     from tests.api.conftest import login
 
     world["client"].get("/api/bi/guest-token", headers=auth(login(world["client"], "admin@test.vn")))
     assert json.loads(calls[-1][1])["rls"] == []  # quản trị xem toàn thị trường
+
+
+def test_guest_token_refused_for_recruiter_without_rls_datasets(world, monkeypatch):
+    """Thiếu cấu hình RLS thì không cấp token cho recruiter (tránh lộ dữ liệu công ty khác)."""
+    from app.config import get_settings
+
+    s = get_settings()
+    monkeypatch.setattr(s, "superset_url", "http://superset:8088")
+    monkeypatch.setattr(s, "superset_dashboard_id", "uuid-123")
+    monkeypatch.setattr(s, "superset_rls_dataset_ids", "")
+    r = world["client"].get("/api/bi/guest-token", headers=auth(world["ra"]["access_token"]))
+    assert r.status_code == 503 and r.json()["detail"] == "superset_not_configured"
 
 
 def test_guest_token_unconfigured_or_forbidden(world):
