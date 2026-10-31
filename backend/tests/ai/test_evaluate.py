@@ -34,7 +34,8 @@ def test_loaders_follow_documented_format(data):
 def test_load_template_csv_from_repo():
     root = datasets.Path(__file__).resolve().parents[2] / "seed" / "data"
     jobs = datasets.load_jobs(root / "jobs.csv")
-    assert len(jobs) == 3 and jobs["job-003"].salary_min is None and jobs["job-003"].work_type_label == "Toàn thời gian"
+    assert len(jobs) == 150 and jobs["job-001"].work_type_label == "Thực tập" and jobs["job-011"].work_type_label == "Remote"
+    assert any(j.salary_min is None for j in jobs.values())  # có tin thoả thuận lương
 
 
 def test_kappa_between_two_raters_reasonable(data):
