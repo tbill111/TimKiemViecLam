@@ -18,7 +18,7 @@ from .embedder import Embedder
 from .explain import explain
 from .features import FEATURE_NAMES, PairFeatures, compute_features
 from .skills import split_skills
-from .types import MODELS, CandidateInput, JobInput
+from .types import MODELS, CandidateInput, JobInput, ModelNotAvailable
 
 MODELS_DIR = Path(os.getenv("MODELS_DIR", Path(__file__).resolve().parents[2] / "models_store"))
 
@@ -129,6 +129,84 @@ def score_m3(cand: CandidateInput, job: JobInput, embedder: Optional[Embedder] =
     return build_dto("m3", version, js_round(m3_total(f, weights)), _components_from_features(f), f)
 
 
+# --------------------------------------------------------------------------- M1: TF-IDF
+
+_tfidf = None  # (vectorizer đã fit trên toàn bộ tin) hoặc None
+
+
+def _tokens(text: str) -> list[str]:
+    """Từ đơn + cặp từ liền kề; dùng underthesea tách từ tiếng Việt nếu cài được."""
+    import re
+    import unicodedata
+
+    text = unicodedata.normalize("NFC", text).lower()
+    try:
+        from underthesea import word_tokenize
+
+        words = [w.replace(" ", "_") for w in word_tokenize(text)]
+    except Exception:
+        words = re.findall(r"\w+", text)
+    words = [w for w in words if re.search(r"\w", w)]
+    return words + [f"{a}__{b}" for a, b in zip(words, words[1:])]
+
+
+def fit_tfidf(corpus: list[str]) -> None:
+    """Fit IDF trên toàn bộ tin tuyển dụng (gọi một lần khi khởi động hoặc khi huấn luyện)."""
+    global _tfidf
+    from sklearn.feature_extraction.text import TfidfVectorizer
+
+    _tfidf = TfidfVectorizer(analyzer=_tokens, sublinear_tf=True).fit(corpus)
+
+
+def _tfidf_cosine(cand_text: str, job_text: str) -> float:
+    from sklearn.feature_extraction.text import TfidfVectorizer
+
+    vec = _tfidf
+    if vec is None:  # chưa có kho văn bản: fit tạm trên chính hai văn bản
+        vec = TfidfVectorizer(analyzer=_tokens, sublinear_tf=True).fit([cand_text, job_text])
+    m = vec.transform([cand_text, job_text])
+    return float((m[0].multiply(m[1])).sum())  # TfidfVectorizer đã chuẩn hoá L2
+
+
+def score_m1(cand: CandidateInput, job: JobInput, embedder: Optional[Embedder] = None) -> dict[str, Any]:
+    f = compute_features(cand, job, embedder)
+    total = js_round(max(0.0, _tfidf_cosine(cand.text, job.text)) * 100)
+    return build_dto("m1", MODEL_VERSIONS["m1"], total, _components_from_features(f), f)
+
+
+# --------------------------------------------------------------------------- M2: chỉ embedding
+
+
+def score_m2(cand: CandidateInput, job: JobInput, embedder: Optional[Embedder] = None) -> dict[str, Any]:
+    f = compute_features(cand, job, embedder)
+    return build_dto("m2", MODEL_VERSIONS["m2"], js_round(f.values["semantic"] * 100), _components_from_features(f), f)
+
+
+# --------------------------------------------------------------------------- M4: Logistic Regression
+
+_m4_cache: Optional[dict[str, Any]] = None
+
+
+def load_m4(force: bool = False) -> dict[str, Any]:
+    global _m4_cache
+    if _m4_cache is not None and not force:
+        return _m4_cache
+    path = MODELS_DIR / "m4.joblib"
+    if not path.exists():
+        raise ModelNotAvailable("Chưa huấn luyện M4 (thiếu models_store/m4.joblib).")
+    import joblib
+
+    _m4_cache = joblib.load(path)
+    return _m4_cache
+
+
+def score_m4(cand: CandidateInput, job: JobInput, embedder: Optional[Embedder] = None) -> dict[str, Any]:
+    artifact = load_m4()
+    f = compute_features(cand, job, embedder)
+    proba = float(artifact["model"].predict_proba([f.vector()])[0][1])
+    return build_dto("m4", artifact.get("version", "m4"), js_round(proba * 100), _components_from_features(f), f)
+
+
 # --------------------------------------------------------------------------- Điều phối
 
 Scorer = Callable[..., dict[str, Any]]
@@ -141,6 +219,9 @@ def score_pair(model: str, cand: CandidateInput, job: JobInput, embedder: Option
         raise ValueError(f"Model không hợp lệ: {model}")
     if model == "m0":
         return score_m0(cand, job)
-    if model == "m3":
-        return score_m3(cand, job, embedder)
-    raise NotImplementedError(model)
+    return {"m1": score_m1, "m2": score_m2, "m3": score_m3, "m4": score_m4}[model](cand, job, embedder)
+
+
+def score_many(model: str, cand: CandidateInput, jobs: list[JobInput], embedder: Optional[Embedder] = None) -> list[dict[str, Any]]:
+    """Chấm một ứng viên với nhiều tin; nên truyền sẵn `embedding` cho tin để đạt < 2 giây với 500 tin."""
+    return [score_pair(model, cand, j, embedder) for j in jobs]
