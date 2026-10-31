@@ -21,14 +21,14 @@ Checklist (5 mục, đây là thứ được chấm):
 | Mục | Phải có (bằng chứng kiểm được) | Người chính |
 |---|---|---|
 | **01** | Bảng yêu cầu F01–F10 + phi chức năng; Use Case có 4 tác nhân, 10 use case, `<<include>>` đúng, đặc tả 3 ca; ERD đủ 15 bảng và thấy rõ ba đối tượng ứng viên / nhà tuyển dụng / tin tuyển dụng; migration chạy từ **PostgreSQL trống**; seed: ≥ 80 kỹ năng, ≥ 150 alias, 30 công ty, 150 tin rải đều 12 tháng đủ 5 cấp bậc, 300 ứng viên, 50 CV PDF/DOCX, ~1.200 đơn có lịch sử trạng thái | Hoàng Anh, Thái Anh, Hoàng Hưng |
-| **02** | Parser đọc PDF/DOCX/TXT, trích kỹ năng 3 tầng, năm kinh nghiệm, học vấn, **đo P/R/F1 từng tầng trên 50 CV gán nhãn tay**; 5 model M0–M4 cùng giao diện; M0 Python khớp bản TypeScript 100%; mọi điểm có 6 thành phần + kỹ năng thiếu + câu giải thích; M4 huấn luyện bằng **nhãn tay** với GroupKFold theo ứng viên; kiểm tra công bằng (đổi tên/giới tính CV → điểm không đổi); **chấm 1 cặp < 200 ms, gợi ý trên 500 tin < 2 s đo qua HTTP trên PostgreSQL + model thật** | Tùng, Thái Anh |
+| **02** | Parser đọc PDF/DOCX/TXT, trích kỹ năng 3 tầng, năm kinh nghiệm, học vấn, **đo P/R/F1 từng tầng trên 50 CV có nhãn (agent AI gán)**; 5 model M0–M4 cùng giao diện; M0 Python khớp bản TypeScript 100%; mọi điểm có 6 thành phần + kỹ năng thiếu + câu giải thích; M4 huấn luyện bằng **nhãn đã gán (agent AI)** với GroupKFold theo ứng viên; kiểm tra công bằng (đổi tên/giới tính CV → điểm không đổi); **chấm 1 cặp < 200 ms, gợi ý trên 500 tin < 2 s đo qua HTTP trên PostgreSQL + model thật** | Tùng, Thái Anh |
 | **03** | 4 view SQL (`v_skill_supply_demand`, `v_salary`, `v_funnel`, `v_funnel_stages`); dashboard có biểu đồ **2, 4, 6 (bắt buộc)** + ≥ 2 biểu đồ mở rộng; **số trên dashboard = số API = truy vấn tay**; nhúng được trong trang nhà tuyển dụng; mỗi công ty chỉ thấy số của mình (RLS); file xuất `.zip` nhập lại được; ảnh + 3–4 nhận định; nói rõ dữ liệu là mô phỏng | Thái Anh, Hoàng Hưng |
 | **04** | Đăng nhập/đăng ký + chặn route theo vai trò; ứng viên: tìm việc có điểm, tải CV → xác nhận kỹ năng, phân tích CV–JD (chọn M0–M4), Skill Gap, ứng tuyển, theo dõi trạng thái (chỉ đọc); nhà tuyển dụng: đăng tin có gợi ý kỹ năng, Kanban 6 cột, dashboard; quản trị: quản lý kỹ năng; mọi trang có trạng thái tải/lỗi/rỗng; `docker compose up` chạy cả hệ thống; chế độ demo không backend vẫn chạy | Ngọc Anh, Thái Anh |
-| **05** | 300 cặp CV–JD **hai người gán nhãn độc lập**, kappa có trọng số bình phương ≥ 0,6; bảng M0–M4 (P@5, nDCG@10, MRR, Spearman, ROC-AUC, ms/cặp); ablation M3; hệ số M4; 5 cặp sai nhiều nhất; ≥ 25 test case thủ công (kết quả thực tế chỉ điền khi đã chạy); pytest; đo hiệu năng; báo cáo 7 chương; video | Tùng, Hoàng Hưng, Hoàng Anh |
+| **05** | 300 cặp CV–JD **hai lượt gán nhãn độc lập (hai phiên agent AI riêng biệt)**, kappa có trọng số bình phương ≥ 0,6; bảng M0–M4 (P@5, nDCG@10, MRR, Spearman, ROC-AUC, ms/cặp); ablation M3; hệ số M4; 5 cặp sai nhiều nhất; ≥ 25 test case thủ công (kết quả thực tế chỉ điền khi đã chạy); pytest; đo hiệu năng; báo cáo 7 chương; video | Tùng, Hoàng Hưng, Hoàng Anh |
 
 ## 3. Quy tắc cứng (vi phạm là làm hỏng cả bài)
 
-1. **Không bịa số liệu, không bịa nhãn.** Nhãn 300 cặp và 50 CV phải do **người** gán (Hoàng Hưng và Hoàng Anh độc lập, không nhìn điểm hệ thống, không bàn với nhau). Không nhờ AI/script sinh nhãn rồi nộp như nhãn tay. Mọi con số trong báo cáo lấy từ file kết quả do notebook/script sinh; chưa có thì ghi `TODO`, không điền ước chừng.
+1. **Không bịa số liệu, không giấu nguồn nhãn.** Nhãn 300 cặp và 50 CV do **agent AI** gán (không cần người gán tay). Quy tắc trung thực: (a) báo cáo và slide ghi rõ "nhãn do agent AI gán", không viết "do thành viên gán"; (b) hai lượt gán là hai phiên agent **riêng biệt**, mỗi phiên chỉ được nhận file mẫu + `huong_dan_gan_nhan.md`, **không** được xem điểm hệ thống, kết quả parser hay nhãn của phiên kia; (c) kappa giữa hai lượt chỉ phản ánh độ nhất quán của agent, không phải độ tin cậy như người gán; (d) kết luận về mô hình ghi kèm hạn chế này. Mọi con số trong báo cáo lấy từ file kết quả do notebook/script sinh; chưa có thì ghi `TODO`.
 2. **Dữ liệu là mô phỏng thì nói rõ là mô phỏng.** Đơn ứng tuyển và lịch sử trạng thái sinh ngẫu nhiên không phụ thuộc điểm khớp, nên biểu đồ "tỷ lệ tuyển theo nhóm điểm" chỉ minh hoạ cách tính. Hiệu quả mô hình chỉ kết luận từ nhãn tay. Không thu thập dữ liệu từ TopCV/LinkedIn.
 3. **Không tuyên bố "đã chạy" nếu chưa chạy.** Chỉ ghi Đạt vào test case/bảng nghiệm thu khi đã thực sự chạy và thấy kết quả.
 4. Git: mỗi người một nhánh `feat/<tên>-<việc>` tách từ `main`, mở Pull Request vào `main`. Tùng duyệt PR AI/backend lõi; Thái Anh duyệt PR frontend. **Không thêm dòng `Co-Authored-By: Claude` (hay bất kỳ attribution AI nào) vào commit và PR** – nhóm trưởng yêu cầu. Không commit `.env`, mật khẩu thật, dữ liệu cá nhân thật.
@@ -77,8 +77,8 @@ Chốt code **16:00 05/11**; viết xong phần báo cáo 12:00 06/11 (Tùng 18:
 | 02/11 22:00 | Thái Anh → Hưng | Superset chạy, nối 3–4 view |
 | 03/11 12:00 | Hoàng Anh → Tùng | `labels_cv_skills.csv` |
 | 03/11 18:00 | Thái Anh → Ngọc Anh | guest token + UUID dashboard |
-| 03/11 22:00 | Hưng, Hoàng Anh → Tùng | hai file nhãn cặp độc lập |
-| 04/11 22:00 | Tùng | `m4.joblib` (nhãn tay), bảng M0–M4, ablation |
+| 03/11 22:00 | Hưng, Hoàng Anh → Tùng | hai file nhãn cặp (hai phiên agent AI độc lập) |
+| 04/11 22:00 | Tùng | `m4.joblib` (nhãn do agent AI gán), bảng M0–M4, ablation |
 | 05/11 16:00 | cả nhóm → Tùng | `main` chạy bằng `docker compose up` |
 
 ## 6. Bẫy kỹ thuật đã gặp khi chạy thật – đừng đạp lại
@@ -96,7 +96,7 @@ Chốt code **16:00 05/11**; viết xong phần báo cáo 12:00 06/11 (Tùng 18:
 11. **Giao diện:** modal có `role="dialog"`, nút đóng có tên truy cập ("Đóng") và đóng bằng Esc; chế độ online không được ghi "Demo/không gửi dữ liệu thật"; chọn M4 chưa huấn luyện hiện lỗi **tại chỗ**; ứng viên chỉ **xem** trạng thái đơn ở chế độ online; giờ API không có múi giờ → thêm `Z` trước khi hiển thị; lưu hồ sơ thất bại thì tải lại dữ liệu thật thay vì giữ giá trị chưa lưu.
 12. **Chế độ demo** (`VITE_OFFLINE_DEMO=true`) phải chạy trọn mọi trang và **không gọi API nào**.
 13. **M0 phải khớp 100% `calculateSkillMatch` của TypeScript** (xem `backend/tests/golden`); đừng "cải tiến" `hasSkill` ở một phía.
-14. `cv_manifest.csv` (nếu có) là đáp án do trình sinh tạo, **không phải nhãn tay**; bảng P/R/F1 nộp cho giảng viên phải dùng nhãn tay.
+14. `cv_manifest.csv` (nếu có) là đáp án do trình sinh tạo, **không phải nhãn gán độc lập**; bảng P/R/F1 dùng `labels_cv_skills.csv` do agent AI gán từ việc đọc CV, ghi rõ nguồn nhãn.
 
 ## 7. Cổng kiểm tra cuối (cả nhóm cùng chạy trước 16:00 05/11)
 

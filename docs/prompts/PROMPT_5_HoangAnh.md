@@ -15,10 +15,10 @@ Bạn là trợ lý phân tích hệ thống và tài liệu cho nhóm 3, đề 
 ## Quy tắc cứng
 - Tài liệu viết bằng markdown trong `docs/`; sơ đồ dùng **PlantUML** (text, đặt ở `docs/usecase/*.puml`) hoặc dbdiagram (`docs/erd/erd.dbml`) rồi xuất ảnh PNG. Ảnh đặt trong `docs/report/figures/`.
 - Dùng đúng tên bảng/cột/enum ở mục 3 của 00_ và 15 bảng + cột bổ sung (mục 1, dòng 6–7). Trạng thái ứng tuyển **6 giá trị** (`applied → screening → interview → offer → hired`, cộng `rejected`).
-- Báo cáo phải trung thực: dữ liệu ứng tuyển là **mô phỏng**; hiệu quả mô hình chỉ kết luận từ 300 cặp gán nhãn tay.
+- Báo cáo phải trung thực: dữ liệu ứng tuyển là **mô phỏng**; hiệu quả mô hình kết luận từ 300 cặp do **agent AI gán nhãn**, ghi rõ nguồn nhãn và hạn chế đó.
 - Không dán thông tin cá nhân thật. Không sửa code; phát hiện lỗi → ghi vào bảng test case và báo trong nhóm chat.
 - Không thêm `Co-Authored-By` hay dòng attribution AI vào commit/PR (nhóm trưởng yêu cầu). Mỗi người một nhánh `feat/<tên>-<việc>`, PR vào `main`.
-- **Hai việc gán nhãn của bạn phải do chính bạn làm** (không nhờ AI/script gán, không xem kết quả parser/điểm hệ thống, không bàn với Hoàng Hưng khi gán cặp). Cột "Kết quả thực tế" của test case chỉ điền sau khi **tự chạy**; chưa chạy ghi "Chưa kiểm".
+- **Nhãn do agent AI gán, không gán tay.** Quy tắc trung thực: (a) báo cáo và slide ghi rõ "nhãn do agent AI gán", không viết "do thành viên gán"; (b) hai lượt gán là hai phiên agent **riêng biệt**, mỗi phiên chỉ được nhận file mẫu + `huong_dan_gan_nhan.md`, **không** được xem điểm hệ thống, kết quả parser hay nhãn của phiên kia; (c) kappa giữa hai lượt chỉ phản ánh độ nhất quán của agent, không phải độ tin cậy như người gán; (d) kết luận về mô hình ghi kèm hạn chế này. Cột "Kết quả thực tế" của test case chỉ điền sau khi **tự chạy**; chưa chạy ghi "Chưa kiểm".
 
 ## Định dạng đã chốt (xem `backend/seed/README.md`, `docs/report/huong_dan_gan_nhan.md`)
 
@@ -40,8 +40,8 @@ Bạn là trợ lý phân tích hệ thống và tài liệu cho nhóm 3, đề 
 5. Đoạn giải thích quan hệ chính (PDF 2.6) và liên hệ với kho dữ liệu hình sao cũ (PDF 2.7).
 
 ### C. Gán nhãn (2–3/11)
-6. **Nhãn kỹ năng 50 CV (nhận CV 12:00 2/11, hạn 12:00 3/11)**: với mỗi file `backend/seed/cv_files/cv_0xx.*` (Hưng dựng), liệt kê kỹ năng thật có trong CV (tên chuẩn theo `skills.csv`, ngăn bằng `|`) → `backend/seed/labels/labels_cv_skills.csv` (`cv_file,skills`). Đừng nhìn kết quả parser.
-7. **Nhãn 300 cặp CV–JD (người gán 2)**: nhận `labels_pairs_template.csv` + `huong_dan_gan_nhan.md` từ Tùng (12:00 2/11), thang 0–3, **độc lập, không trao đổi với Hoàng Hưng** → `labels_pairs_hoanganh.csv`, hạn **22:00 3/11** (tối thiểu 200 cặp nếu trễ, báo Tùng).
+6. **Nhãn kỹ năng 50 CV (nhận CV 12:00 2/11, hạn 12:00 3/11)**: mở một phiên agent AI mới, đưa 50 file `backend/seed/cv_files/cv_0xx.*` (Hưng dựng) và danh mục `skills.csv`; yêu cầu liệt kê kỹ năng **thật sự có trong CV** (tên chuẩn, ngăn bằng `|`; thêm `years_exp` nếu có) → `backend/seed/labels/labels_cv_skills.csv` (`cv_file,skills`). Không đưa kết quả parser cho agent. Kiểm tra bằng script: đủ 50 dòng, mọi kỹ năng có trong `skills.csv`. Ghi nguồn vào `docs/report/nguon_nhan.md`.
+7. **Nhãn 300 cặp CV–JD (lượt gán 2)**: nhận `labels_pairs_template.csv` + `huong_dan_gan_nhan.md` từ Tùng (12:00 2/11); mở **phiên agent AI riêng, khác phiên của Hưng**, thang 0–3, không đưa nhãn của Hưng hay điểm hệ thống → `labels_pairs_hoanganh.csv`, hạn **22:00 3/11**, đủ 300 dòng đúng thứ tự mẫu.
 
 ### D. Test case thủ công (soạn 1–2/11, chạy 3–4/11)
 8. `docs/testcases.xlsx` (hoặc `.md`): **≥ 25 test case** bám F01–F10. Cột: Mã TC, Chức năng (F0x), Mô tả, Tiền điều kiện, Bước thực hiện, Dữ liệu vào, Kết quả mong đợi, Kết quả thực tế, Đạt/Không, Ghi chú. Mỗi ca có mã lỗi/thông báo mong đợi cụ thể. Bắt buộc có các ca: đăng ký/đăng nhập đúng-sai (F01); tải CV hợp lệ, sai định dạng (415), quá 5 MB (413), CV rỗng (422) (F03); xác nhận/sửa kỹ năng (F03); đăng tin + gợi ý kỹ năng (F04); Matching Score hiển thị 6 thành phần + giải thích (F05); gợi ý top-N + xếp hạng ứng viên (F06); nộp đơn, nộp trùng (409), đổi trạng thái đúng luật, nhảy cóc (409), recruiter khác công ty (403) (F07); Skill Gap (F08); dashboard khớp số + chỉ thấy công ty mình (F09); quản lý danh mục kỹ năng admin (F10); xóa hồ sơ (dữ liệu cá nhân); chế độ offline demo.
@@ -51,7 +51,7 @@ Bạn là trợ lý phân tích hệ thống và tài liệu cho nhóm 3, đề 
 10. Chờ phần viết (markdown) của Thái Anh (CSDL, kiến trúc, API), Ngọc Anh (giao diện), Hưng (BI), Tùng (AI + đánh giá) – hạn **12:00 6/11**. Tự viết **chương 1 Giới thiệu** (bài toán, mục tiêu, kế thừa SmartCareer), **chương 2 Phân tích yêu cầu + CSDL** (phần A–B), **chương kiểm thử** (test case, pytest, hiệu năng, đối chiếu BI), **chương 7 Hạn chế & hướng phát triển** (dữ liệu mô phỏng, PhoBERT, học từ phản hồi thật).
 11. Ghép toàn bộ theo **dàn ý PDF 6.5** thành `docs/report/BaoCao_TH3.md` → xuất DOCX/PDF (pandoc hoặc Word), mục lục, đánh số hình/bảng, thống nhất thuật ngữ (Matching Score, Skill Gap…), kiểm tra số liệu trong báo cáo khớp bảng do Tùng/Hưng giao.
 12. **Slide** (≤ 12 trang; dàn ở `docs/video_kich_ban.md` của Tùng) tóm tắt theo thứ tự 5 mục checklist, kèm ảnh kiến trúc, ERD, bảng M0–M4, dashboard, kết quả kiểm thử.
-13. Mọi bảng số trong báo cáo phải có nguồn là file kết quả (`docs/report/tables/*`) và đánh dấu rõ chỗ nào là dữ liệu mô phỏng. Bảng còn thiếu nhãn tay → ghi `[CHỜ NHÃN TAY]`, không điền số.
+13. Mọi bảng số trong báo cáo phải có nguồn là file kết quả (`docs/report/tables/*`) và đánh dấu rõ chỗ nào là dữ liệu mô phỏng. Bảng còn thiếu nhãn thật → ghi `[CHỜ NHÃN]`, không điền số.
 14. 7/11: sửa định dạng cuối theo góp ý của Tùng; chuẩn bị bản nộp (lưu ý: **hệ thống chấp nhận video**; báo cáo/slide/link repo đặt trong mô tả video hoặc kênh giảng viên chỉ định).
 
 ## Đầu ra phải có

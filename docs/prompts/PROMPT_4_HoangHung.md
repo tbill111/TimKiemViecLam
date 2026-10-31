@@ -20,7 +20,7 @@ Bạn là trợ lý dữ liệu và tài liệu cho nhóm 3, đề bài **TH3 �
 - Dữ liệu **hư cấu hoàn toàn**: tên công ty, người, email; không copy từ TopCV/LinkedIn (điều khoản không cho phép). Nếu dùng dữ liệu Kaggle phải ghi nguồn + giấy phép trong `docs/report/nguon_du_lieu.md`.
 - Lương có xu hướng tăng nhẹ theo thời gian và theo cấp bậc (để biểu đồ lương có ý nghĩa).
 - Không thêm `Co-Authored-By` hay dòng attribution AI vào commit/PR (nhóm trưởng yêu cầu). Mỗi người một nhánh `feat/<tên>-<việc>`, PR vào `main`.
-- **Bạn là một trong hai người gán nhãn. Nhãn phải do chính bạn quyết định** (không nhờ AI/script gán, không xem điểm hệ thống, không bàn với Hoàng Anh). Số liệu đánh giá mô hình của cả nhóm dựa trên nhãn này; nhãn giả làm hỏng mục 02 và 05.
+- **Nhãn do agent AI gán, không gán tay.** Quy tắc trung thực: (a) báo cáo và slide ghi rõ "nhãn do agent AI gán", không viết "do thành viên gán"; (b) hai lượt gán là hai phiên agent **riêng biệt**, mỗi phiên chỉ được nhận file mẫu + `huong_dan_gan_nhan.md`, **không** được xem điểm hệ thống, kết quả parser hay nhãn của phiên kia; (c) kappa giữa hai lượt chỉ phản ánh độ nhất quán của agent, không phải độ tin cậy như người gán; (d) kết luận về mô hình ghi kèm hạn chế này.
 
 ## Định dạng đã chốt (xem `backend/seed/README.md` và các file mẫu trong `backend/seed/data/`)
 
@@ -44,11 +44,11 @@ Bạn là trợ lý dữ liệu và tài liệu cho nhóm 3, đề bài **TH3 �
 6. Cho AI kiểm tra tự động (viết script ngắn trong scratch, không commit) rằng: không có kỹ năng ngoài `skills.csv`; không có hai tin trùng `title+company`; `salary_min ≤ salary_max`; mọi `company_name` có trong `companies.csv`. Sửa tới khi sạch rồi mới giao Thái Anh.
 
 ### C. 50 file CV (1/11 – hạn 12:00 2/11)
-7. Dựng **50 file CV PDF/DOCX** (khác bố cục: 1 cột, 2 cột, bảng, tiêu đề tiếng Việt/Anh…) vào `backend/seed/cv_files/`, tên `cv_001.pdf … cv_050.pdf`, nội dung hư cấu theo nhóm nghề (có mục kỹ năng/kinh nghiệm/học vấn/dự án, có khoảng thời gian kiểu `06/2023 – 09/2024`, `2023 - nay`). Có thể dùng `public/cv-mau.pdf` làm mẫu bố cục. Ghi `backend/seed/data/cv_manifest.csv` (`cv_file,candidate_name,occupation`) để Thái Anh ghép hồ sơ. Lưu ý: những gì bạn ghi khi soạn CV **không phải nhãn tay** để đo parser – nhãn đo parser do Hoàng Anh gán riêng khi đọc từng CV. Không dùng thông tin người thật.
+7. Dựng **50 file CV PDF/DOCX** (khác bố cục: 1 cột, 2 cột, bảng, tiêu đề tiếng Việt/Anh…) vào `backend/seed/cv_files/`, tên `cv_001.pdf … cv_050.pdf`, nội dung hư cấu theo nhóm nghề (có mục kỹ năng/kinh nghiệm/học vấn/dự án, có khoảng thời gian kiểu `06/2023 – 09/2024`, `2023 - nay`). Có thể dùng `public/cv-mau.pdf` làm mẫu bố cục. Ghi `backend/seed/data/cv_manifest.csv` (`cv_file,candidate_name,occupation`) để Thái Anh ghép hồ sơ. Lưu ý: những gì bạn ghi khi soạn CV không phải nhãn để đo parser – nhãn đo parser do phiên agent của Hoàng Anh gán riêng khi đọc từng CV. Không dùng thông tin người thật.
 
-### D. Gán nhãn cặp CV–JD (người gán 1, từ 12:00 2/11, hạn 22:00 3/11)
-8. Nhận `labels_pairs_template.csv` từ Tùng (12:00 2/11) + `docs/report/huong_dan_gan_nhan.md`. Thang: `0` không phù hợp, `1` ít, `2` phù hợp, `3` rất phù hợp. **Gán độc lập, không nhìn điểm hệ thống, không trao đổi với Hoàng Anh.** Lưu `labels_pairs_hung.csv` (`candidate_id,job_id,label`), đủ 300 cặp (tối thiểu 200 nếu trễ, báo Tùng).
-9. AI hỗ trợ: tạo bảng đọc nhanh (ứng viên + tin cạnh nhau) để gán nhãn thuận tiện; **không** để AI tự gán nhãn thay tôi.
+### D. Gán nhãn cặp CV–JD bằng agent AI (lượt 1, từ 12:00 2/11, hạn 22:00 3/11)
+8. Nhận `labels_pairs_template.csv` từ Tùng (12:00 2/11) + `docs/report/huong_dan_gan_nhan.md`. Thang: `0` không phù hợp, `1` ít, `2` phù hợp, `3` rất phù hợp. Mở **một phiên agent AI mới**, chỉ đưa cho nó file mẫu và hướng dẫn gán nhãn (không đưa điểm hệ thống, không đưa nhãn của Hoàng Anh), yêu cầu gán đủ 300 dòng, giữ nguyên thứ tự và cột `candidate_id,job_id,label` → `labels_pairs_hung.csv`. Kiểm tra bằng script: đủ 300 dòng, nhãn ∈ {0,1,2,3}, khớp thứ tự mẫu. Ghi lại cách thực hiện (mô hình, ngày, prompt) vào `docs/report/nguon_nhan.md`.
+9. Không dùng chung phiên với Hoàng Anh; không chỉnh tay nhãn sau khi agent gán (nếu chỉnh, ghi lại trong `nguon_nhan.md`).
 
 ### E. Biểu đồ Superset (nhận Superset 22:00 2/11; làm 3–4/11)
 10. Mở Superset, tạo dataset từ **4 view** `v_skill_supply_demand`, `v_salary`, `v_funnel`, `v_funnel_stages` (biểu đồ Funnel dùng `v_funnel_stages`); dựng dashboard **"Thị trường tuyển dụng"** theo bảng 4.3 PDF: bắt buộc **biểu đồ 2** (Top 15 kỹ năng theo số ứng viên, Bar), **4** (trung vị lương theo tháng/cấp bậc, Line), **6** (phễu Applied→Screening→Interview→Offer→Hired, Funnel); mở rộng tối thiểu 2 trong **1, 3, 5, 7, 8** (nên có 8). Native Filters: thời gian, địa điểm, cấp bậc, nhóm kỹ năng. Ghi id dataset `v_funnel` và `v_funnel_stages` gửi Thái Anh để cấu hình RLS (`company_id`). Đặt tên chart tiếng Việt, rõ đơn vị (triệu VNĐ/tháng).
