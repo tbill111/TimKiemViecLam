@@ -13,7 +13,7 @@ Chuẩn bị trước khi quay: `docker compose up -d`, `docker compose exec api
 | 3:15–4:15 | **04 luồng ứng tuyển** | Ứng tuyển một tin; đăng xuất, đăng nhập `hr01@…`; Ứng viên xếp hạng, chuyển trạng thái; thử bước sai để thấy lỗi 409 | Luật trạng thái, lịch sử trạng thái, nhà tuyển dụng chỉ thấy ứng viên đã nộp tin của công ty mình |
 | 4:15–5:15 | **03 BI** | Dashboard Superset nhúng; chỉ ba biểu đồ bắt buộc (kỹ năng, lương, phễu); so với công ty khác (hr05) để thấy RLS; `python scripts/check_bi_views.py` | Ba chỉ số của đề; phễu đếm "từng đạt"; số view khớp API; dữ liệu mô phỏng |
 | 5:15–6:15 | Quản trị | `admin@…` → Quản lý kỹ năng: thêm alias; trích kỹ năng nhận alias mới | F10, tác động tới parser |
-| 6:15–7:30 | **05 Kiểm thử + đánh giá** | Chạy `pytest` (231 xanh); `docs/testcases.md`; bảng M0–M4, ablation (bản nhãn tay khi có); hiệu năng 38 ms | Quy trình gán nhãn, kappa, GroupKFold; kết luận trung thực và hạn chế |
+| 6:15–7:30 | **05 Kiểm thử + đánh giá** | Chạy `pytest` (236 xanh); `docs/testcases.md`; bảng M0–M4, ablation (bản nhãn tay khi có); hiệu năng 38 ms | Quy trình gán nhãn, kappa, GroupKFold; kết luận trung thực và hạn chế |
 | 7:30–8:00 | Kết | Slide tóm tắt | Điều đạt được, hạn chế (dữ liệu mô phỏng, nhãn), hướng phát triển |
 
 ## Dàn slide (≤ 12 trang)
