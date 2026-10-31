@@ -2,7 +2,7 @@ ARG SUPERSET_TAG=4.1.1
 FROM apache/superset:${SUPERSET_TAG}
 
 USER root
-RUN pip install --no-cache-dir psycopg2-binary
+RUN pip install --no-cache-dir psycopg2-binary flask-cors
 COPY superset_config.py /app/pythonpath/superset_config.py
 COPY init.sh /app/init.sh
 RUN chmod +x /app/init.sh
