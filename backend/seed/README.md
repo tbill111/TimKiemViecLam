@@ -9,6 +9,7 @@ Các file trong `data/` hiện chỉ là **mẫu 3 dòng**; Hoàng Hưng thay b�
 | `data/skill_aliases.csv` | Hoàng Hưng | `alias,skill_name` |
 | `data/occupation_templates.csv` | Hoàng Hưng | `occupation,core_skills,optional_skills` |
 | `data/companies.csv` | Hoàng Hưng | `name,industry,size_range,location` |
+| `data/skill_learning_steps.csv` | Hoàng Hưng | `skill_name,steps` (các bước ngăn bằng `\|`; kỹ năng không có dòng dùng lộ trình mặc định) |
 | `data/jobs.csv` | Hoàng Hưng | `external_id,company_name,title,category,level,job_type,work_mode,location,salary_min,salary_max,min_years_exp,min_education,posted_at,deadline,description,responsibilities,required_skills,preferred_skills` |
 | `data/candidates_generated.csv` | `gen_candidates.py` (Thái Anh) | `candidate_id,occupation,skills,years_exp,education_level,locations,work_types,expected_salary_min,expected_salary_max,text` |
 | `labels/labels_pairs_<tên>.csv` | Hoàng Hưng, Hoàng Anh | `candidate_id,job_id,label` |

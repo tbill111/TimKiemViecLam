@@ -26,3 +26,12 @@ def explain(total: int, matched_required: list[str], matched_preferred: list[str
     else:
         parts.append("Đáp ứng đủ các kỹ năng được nêu.")
     return " ".join(parts)
+
+
+def generic_learning_steps(skill: str) -> list[str]:
+    """Lộ trình học mặc định khi kỹ năng chưa có dữ liệu riêng (giống buildLearningSteps ở src/data/skillGap.ts)."""
+    return [
+        f"Tìm hiểu khái niệm cơ bản của {skill} qua tài liệu chính thức",
+        f"Thực hành {skill} bằng một bài tập nhỏ hoặc mini project",
+        f"Đưa {skill} vào dự án cá nhân và mô tả trong CV",
+    ]

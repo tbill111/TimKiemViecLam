@@ -12,6 +12,7 @@ from fastapi import APIRouter, Depends, HTTPException, Query
 from pydantic import BaseModel, Field
 from starlette.concurrency import run_in_threadpool
 
+from app.ai.explain import generic_learning_steps
 from app.ai.parser import suggest_skills
 from app.ai.repository import AIRepository, get_ai_repo
 from app.ai.scorers import score_many, score_pair
@@ -151,7 +152,7 @@ async def skill_gap(
             "skill": s,
             "required": required,
             "jobs_demanding": repo.open_jobs_requiring(s),
-            "learning_steps": repo.learning_steps(s),
+            "learning_steps": repo.learning_steps(s) or generic_learning_steps(s),
         }
         for required, group in ((True, result["missing_required"]), (False, result["missing_preferred"]))
         for s in group

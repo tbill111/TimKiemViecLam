@@ -39,7 +39,7 @@ class FakeRepo:
 
     def skill_index_rows(self): return [], []  # dùng từ điển mặc định
     def open_jobs_requiring(self, skill): return {"React": 5, "TypeScript": 3, "Power BI": 2}.get(skill, 0)
-    def learning_steps(self, skill): return [f"Học {skill}"]
+    def learning_steps(self, skill): return [f"Học {skill}"] if skill == "React" else []
 
     def save_resume(self, user_id, filename, parsed, consent):
         self.resumes.append({"user": user_id, "filename": filename, "consent": consent, "keys": set(parsed)})
@@ -123,6 +123,8 @@ def test_skill_gap_orders_required_first(env):
     assert [m["skill"] for m in r["missing"]] == ["React", "TypeScript"]
     assert r["missing"][0]["required"] is True and r["missing"][1]["required"] is False
     assert r["missing"][0]["jobs_demanding"] == 5 and r["missing"][0]["learning_steps"] == ["Học React"]
+    # kỹ năng chưa có dữ liệu riêng dùng lộ trình mặc định (3 bước)
+    assert len(r["missing"][1]["learning_steps"]) == 3 and "TypeScript" in r["missing"][1]["learning_steps"][0]
 
 
 def test_ranked_candidates_permissions(env):
