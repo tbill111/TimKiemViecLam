@@ -158,7 +158,7 @@ export default function ProfilePage({ appState }: ProfilePageProps) {
         <div>
           <h1 className="text-2xl font-bold text-slate-900">Hồ sơ của tôi</h1>
           <p className="text-slate-500 text-sm mt-0.5">
-            Thông tin được lưu trong trình duyệt (localStorage). Không gửi dữ liệu lên server.
+            Hồ sơ được đồng bộ với hệ thống khi online; chế độ offline demo chỉ lưu trong trình duyệt.
           </p>
         </div>
         <div className="flex gap-2">

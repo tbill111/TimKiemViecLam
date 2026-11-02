@@ -14,7 +14,7 @@ import {
 } from 'lucide-react';
 import type { UseAppState } from '../hooks/useAppState';
 import { useSimulatedLoading } from '../hooks/useSimulatedLoading';
-import { sampleJobs } from '../data/jobs';
+import { useJobs } from '../context/JobsContext';
 import { skillCategories } from '../data/skillCategories';
 import {
   calculateSkillMatch,
@@ -41,18 +41,19 @@ const getScoreColor = (score: number) => {
 export default function DashboardPage({ appState }: DashboardPageProps) {
   const navigate = useNavigate();
   const { studentProfile, savedJobs, applications } = appState;
+  const { jobs } = useJobs();
   const loading = useSimulatedLoading(null, 400);
 
-  const matchScores = useMemo(() => getAllMatchScores(studentProfile), [studentProfile]);
+  const matchScores = useMemo(() => getAllMatchScores(studentProfile, jobs), [studentProfile, jobs]);
 
   const topJobs = useMemo(() => {
-    return sampleJobs
+    return jobs
       .map((job) => ({ job, score: matchScores.get(job.id)?.matchScore ?? 0 }))
       .sort((a, b) => b.score - a.score)
       .slice(0, 4);
-  }, [matchScores]);
+  }, [jobs, matchScores]);
 
-  const suitableCount = useMemo(() => countSuitableJobs(studentProfile), [studentProfile]);
+  const suitableCount = useMemo(() => countSuitableJobs(studentProfile, jobs), [studentProfile, jobs]);
 
   const radarData = useMemo(
     () => skillCategories.map((c) => ({ name: c.name, score: getSkillCoverage(studentProfile, c.skills) })),
@@ -60,8 +61,8 @@ export default function DashboardPage({ appState }: DashboardPageProps) {
   );
 
   // Các con số trong phần gợi ý đều lấy từ dataset mẫu
-  const typeScriptStats = countJobsWithSkill('TypeScript');
-  const remoteSuitable = sampleJobs.filter(
+  const typeScriptStats = countJobsWithSkill('TypeScript', jobs);
+  const remoteSuitable = jobs.filter(
     (job) => job.workType === 'Remote' && calculateSkillMatch(studentProfile, job).matchScore >= SUITABLE_THRESHOLD
   ).length;
 
@@ -100,7 +101,7 @@ export default function DashboardPage({ appState }: DashboardPageProps) {
           </div>
           <div className="text-3xl font-bold text-slate-900 mt-1">{suitableCount}</div>
           <div className="text-xs text-emerald-600 font-medium">
-            Điểm từ {SUITABLE_THRESHOLD}% trên {sampleJobs.length} tin mẫu
+            Điểm từ {SUITABLE_THRESHOLD}% trên {jobs.length} tin
           </div>
         </div>
 
@@ -253,7 +254,7 @@ export default function DashboardPage({ appState }: DashboardPageProps) {
           <div className="p-4 bg-blue-50 border border-blue-100 rounded-xl">
             <div className="font-medium text-blue-800 text-sm mb-1.5">Học TypeScript</div>
             <div className="text-xs text-blue-600">
-              TypeScript xuất hiện trong {typeScriptStats.anywhere}/{sampleJobs.length} tin mẫu
+              TypeScript xuất hiện trong {typeScriptStats.anywhere}/{jobs.length} tin
               ({typeScriptStats.required} tin yêu cầu bắt buộc). Đây là kỹ năng nên ưu tiên để tăng điểm phù hợp.
             </div>
             <button onClick={() => navigate('/skill-gap')} className="mt-2 text-xs text-blue-700 font-semibold hover:underline flex items-center gap-1">

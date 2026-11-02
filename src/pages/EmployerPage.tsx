@@ -1,7 +1,7 @@
 import { useMemo, useState } from 'react';
 import { Building2, Info, Users, Star, Send, CheckCircle2, XCircle } from 'lucide-react';
 import type { UseAppState } from '../hooks/useAppState';
-import type { ApplicationStatus, Candidate, SkillMatchResult } from '../types';
+import type { Candidate, SkillMatchResult } from '../types';
 import { sampleJobs } from '../data/jobs';
 import { sampleCandidates } from '../data/candidates';
 import { calculateSkillMatch, getMatchColorClass, SUITABLE_THRESHOLD } from '../utils';
@@ -12,8 +12,6 @@ interface EmployerPageProps {
 }
 
 const STUDENT_ID = 'me';
-const allStatuses: ApplicationStatus[] = ['Đã ứng tuyển', 'Đang xem xét', 'Phỏng vấn', 'Đã kết thúc'];
-
 interface RankedCandidate {
   candidate: Candidate;
   result: SkillMatchResult;
@@ -28,7 +26,7 @@ const initials = (name: string) =>
     .join('');
 
 export default function EmployerPage({ appState }: EmployerPageProps) {
-  const { studentProfile, applications, updateApplicationStatus } = appState;
+  const { studentProfile, applications } = appState;
 
   // Mặc định mở tin mà sinh viên đã ứng tuyển gần nhất, nếu có
   const defaultJobId = applications.at(-1)?.jobId ?? 'job-011';
@@ -161,16 +159,7 @@ export default function EmployerPage({ appState }: EmployerPageProps) {
                 application ? (
                   <>
                     <label htmlFor="student-status" className="text-xs text-slate-500">Trạng thái hồ sơ</label>
-                    <select
-                      id="student-status"
-                      className="select-field text-xs"
-                      value={application.status}
-                      onChange={(e) => updateApplicationStatus(application.id, e.target.value as ApplicationStatus)}
-                    >
-                      {allStatuses.map((s) => (
-                        <option key={s} value={s}>{s}</option>
-                      ))}
-                    </select>
+                    <span className="badge-blue">{application.status}</span>
                   </>
                 ) : (
                   <p className="text-xs text-slate-500">

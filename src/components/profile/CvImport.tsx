@@ -3,6 +3,8 @@ import { FileUp, Info, CheckCircle2, AlertCircle, Download, Link2 } from 'lucide
 import type { StudentProfile } from '../../types';
 import { hasSkill } from '../../utils';
 import { extractFromCv, readCvText, type CvExtraction } from '../../utils/cvParser';
+import { isOfflineDemo, apiErrorMessage } from '../../api/client';
+import { uploadResume, type ResumeUploadResult } from '../../api/resumes';
 
 interface CvImportProps {
   profile: StudentProfile;
@@ -26,6 +28,8 @@ export default function CvImport({ profile, disabled, onApply }: CvImportProps) 
   const [keepLinks, setKeepLinks] = useState(true);
   const [error, setError] = useState('');
   const [applied, setApplied] = useState('');
+  const [consent, setConsent] = useState(false);
+  const [onlineResult, setOnlineResult] = useState<ResumeUploadResult | null>(null);
 
   const handleFile = async (file: File | undefined) => {
     if (!file) return;
@@ -34,6 +38,20 @@ export default function CvImport({ profile, disabled, onApply }: CvImportProps) 
     setApplied('');
     setError('');
     try {
+      if (!isOfflineDemo) {
+        if (!consent) throw new Error('Bạn cần đồng ý cho phép xử lý CV trước khi tải lên.');
+        const extraction = await uploadResume(file, consent);
+        setOnlineResult(extraction);
+        setResult({
+          skills: extraction.skills.filter((skill) => skill.source !== 'embedding').map((skill) => skill.name),
+          githubUrl: undefined,
+          linkedinUrl: undefined,
+        });
+        setCharCount(0);
+        setSelected(new Set(extraction.skills.filter((skill) => skill.source !== 'embedding' && !hasSkill(profile.skills, skill.name)).map((skill) => skill.name)));
+        setStatus('done');
+        return;
+      }
       const text = await readCvText(file);
       if (text.trim().length === 0) {
         throw new Error('Không đọc được chữ trong tệp. Tệp có thể là ảnh scan.');
@@ -45,7 +63,7 @@ export default function CvImport({ profile, disabled, onApply }: CvImportProps) 
       setSelected(new Set(extraction.skills.filter((s) => !hasSkill(profile.skills, s))));
       setStatus('done');
     } catch (e) {
-      setError(e instanceof Error ? e.message : 'Không đọc được tệp.');
+      setError(apiErrorMessage(e, e instanceof Error ? e.message : 'Không đọc được tệp.'));
       setStatus('error');
     }
   };
@@ -110,6 +128,12 @@ export default function CvImport({ profile, disabled, onApply }: CvImportProps) 
           CV mẫu
         </a>
       </div>
+      {!isOfflineDemo && (
+        <label className="flex items-start gap-2 text-xs text-slate-600 mt-3">
+          <input type="checkbox" checked={consent} onChange={(event) => setConsent(event.target.checked)} />
+          Tôi đồng ý cho hệ thống xử lý CV để trích xuất kỹ năng.
+        </label>
+      )}
       {disabled && <p className="text-xs text-amber-600 mt-2">Lưu hoặc hủy chỉnh sửa hồ sơ trước khi nhập CV.</p>}
 
       {status === 'reading' && (
@@ -126,7 +150,7 @@ export default function CvImport({ profile, disabled, onApply }: CvImportProps) 
       {status === 'done' && result && (
         <div className="mt-3 space-y-3">
           <p className="text-xs text-slate-600">
-            Đã đọc <strong>{fileName}</strong> ({charCount.toLocaleString()} ký tự). Phát hiện{' '}
+            {isOfflineDemo ? <>Đã đọc <strong>{fileName}</strong> ({charCount.toLocaleString()} ký tự). Phát hiện{' '}</> : <>Đã xử lý <strong>{fileName}</strong>. Phát hiện{' '}</>}
             <strong>{result.skills.length}</strong> kỹ năng.
           </p>
           <div className="flex flex-wrap gap-1.5">
@@ -154,6 +178,11 @@ export default function CvImport({ profile, disabled, onApply }: CvImportProps) 
                 </button>
               );
             })}
+            {onlineResult?.skills.filter((skill) => skill.source === 'embedding').map((skill) => (
+              <span key={skill.name} className="badge-yellow" title="Gợi ý từ embedding, chưa tự động chọn">
+                {skill.name} · gợi ý
+              </span>
+            ))}
             {result.skills.length === 0 && <span className="text-xs text-slate-400">Không tìm thấy kỹ năng nào trong danh mục.</span>}
           </div>
 

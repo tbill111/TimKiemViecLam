@@ -20,7 +20,9 @@ export type ApplicationStatus =
   | 'Đã ứng tuyển'
   | 'Đang xem xét'
   | 'Phỏng vấn'
-  | 'Đã kết thúc';
+  | 'Đã nhận việc'
+  | 'Đã từ chối'
+  | 'Đã rút';
 
 export type SkillPriority = 'Cao' | 'Trung bình' | 'Thấp';
 
@@ -134,6 +136,11 @@ export interface SkillMatchResult {
   preferenceScore: number;
   locationMatch: boolean;
   workTypeMatch: boolean;
+  semanticScore?: number;
+  expScore?: number;
+  eduScore?: number;
+  explanation?: string;
+  model?: string;
 }
 
 /** Phần hồ sơ đủ để tính điểm ghép nối (dùng chung cho sinh viên và ứng viên mẫu). */

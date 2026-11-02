@@ -12,17 +12,23 @@ import ETLPage from './pages/ETLPage';
 import DFDPage from './pages/DFDPage';
 import AboutPage from './pages/AboutPage';
 import EmployerPage from './pages/EmployerPage';
+import { AuthProvider } from './context/AuthContext';
+import { JobsProvider } from './context/JobsContext';
 
 export default function App() {
   const appState = useAppState();
 
   return (
     <BrowserRouter>
-      <Routes>
+      <AuthProvider>
+        <JobsProvider>
+          <Routes>
         {/* Xem sơ đồ toàn màn hình, không có sidebar */}
         <Route path="/dfd/view/:level" element={<DfdFullView />} />
         <Route path="*" element={<AppShell appState={appState} />} />
-      </Routes>
+          </Routes>
+        </JobsProvider>
+      </AuthProvider>
     </BrowserRouter>
   );
 }

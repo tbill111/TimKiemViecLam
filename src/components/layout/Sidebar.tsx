@@ -16,6 +16,7 @@ import {
 import { useMemo } from 'react';
 import type { UseAppState } from '../../hooks/useAppState';
 import { countSuitableJobs } from '../../utils';
+import { useJobs } from '../../context/JobsContext';
 
 interface SidebarProps {
   appState: UseAppState;
@@ -43,8 +44,9 @@ const systemItems = [
 export default function Sidebar({ appState, open, onClose }: SidebarProps) {
   const navigate = useNavigate();
   const { studentProfile, savedJobs, applications, resetToDemo } = appState;
+  const { jobs } = useJobs();
 
-  const suitableCount = useMemo(() => countSuitableJobs(studentProfile), [studentProfile]);
+  const suitableCount = useMemo(() => countSuitableJobs(studentProfile, jobs), [studentProfile, jobs]);
 
   const handleReset = () => {
     if (window.confirm('Đặt lại toàn bộ dữ liệu về trạng thái demo ban đầu?')) {

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import {
   X,
   MapPin,
@@ -16,6 +16,7 @@ import {
 import type { Job } from '../../types';
 import type { SkillMatchResult } from '../../types';
 import { formatRelativeDate, getMatchColorClass } from '../../utils';
+import { isOfflineDemo } from '../../api/client';
 import ScoreBreakdown from './ScoreBreakdown';
 
 interface JobDetailModalProps {
@@ -40,6 +41,14 @@ export default function JobDetailModal({
   const [showApplyConfirm, setShowApplyConfirm] = useState(false);
   const [applySuccess, setApplySuccess] = useState(false);
 
+  useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') onClose();
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [onClose]);
+
   const handleApply = () => {
     if (hasApplied) return;
     setShowApplyConfirm(true);
@@ -54,14 +63,14 @@ export default function JobDetailModal({
   const matchColor = getMatchColorClass(matchResult.matchScore);
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/40 backdrop-blur-sm">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/40 backdrop-blur-sm" role="dialog" aria-modal="true" aria-labelledby="job-detail-title">
       <div className="bg-white rounded-2xl shadow-2xl w-full max-w-2xl max-h-[90vh] flex flex-col">
         {/* Header */}
         <div className="px-6 py-5 border-b border-slate-100 flex items-start gap-4">
           <div className="flex-1 min-w-0">
             <div className="flex items-start gap-3">
               <div className="flex-1">
-                <h2 className="text-xl font-bold text-slate-900">{job.title}</h2>
+                <h2 id="job-detail-title" className="text-xl font-bold text-slate-900">{job.title}</h2>
                 <div className="flex items-center gap-2 mt-1">
                   <Building2 size={14} className="text-slate-400" />
                   <span className="text-slate-600 font-medium">{job.company}</span>
@@ -85,7 +94,7 @@ export default function JobDetailModal({
               </span>
             </div>
           </div>
-          <button onClick={onClose} className="btn-ghost p-1.5 shrink-0">
+          <button onClick={onClose} aria-label="Đóng" className="btn-ghost p-1.5 shrink-0">
             <X size={18} />
           </button>
         </div>
@@ -106,9 +115,9 @@ export default function JobDetailModal({
               <div className="flex items-start gap-3">
                 <AlertCircle size={18} className="text-blue-600 shrink-0 mt-0.5" />
                 <div>
-                  <div className="font-semibold text-blue-800 text-sm">Xác nhận ứng tuyển (Demo)</div>
+                  <div className="font-semibold text-blue-800 text-sm">Xác nhận ứng tuyển</div>
                   <div className="text-xs text-blue-600 mt-1">
-                    Đây là ứng tuyển mô phỏng. Không có dữ liệu thật nào được gửi đến nhà tuyển dụng.
+                    {isOfflineDemo ? 'Đây là ứng tuyển mô phỏng. Không có dữ liệu thật nào được gửi đến nhà tuyển dụng.' : 'Hồ sơ sẽ được gửi đến nhà tuyển dụng để xem xét.'}
                   </div>
                 </div>
               </div>

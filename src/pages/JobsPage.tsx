@@ -2,8 +2,8 @@ import { useState, useMemo } from 'react';
 import { Search, X, SlidersHorizontal } from 'lucide-react';
 import type { UseAppState } from '../hooks/useAppState';
 import type { FilterState } from '../types';
-import { sampleJobs } from '../data/jobs';
 import { filterJobs, getAllMatchScores } from '../utils';
+import { useJobs } from '../context/JobsContext';
 import JobCard from '../components/jobs/JobCard';
 import JobDetailModal from '../components/jobs/JobDetailModal';
 import LoadingBlock from '../components/ui/LoadingBlock';
@@ -41,15 +41,16 @@ const defaultFilters: FilterState = {
 
 export default function JobsPage({ appState }: JobsPageProps) {
   const { studentProfile, isJobSaved, saveJob, unsaveJob, applyToJob, hasApplied } = appState;
+  const { jobs } = useJobs();
   const [filters, setFilters] = useState<FilterState>(defaultFilters);
   const [selectedJob, setSelectedJob] = useState<Job | null>(null);
   const [showFilters, setShowFilters] = useState(false);
 
-  const matchScores = useMemo(() => getAllMatchScores(studentProfile), [studentProfile]);
+  const matchScores = useMemo(() => getAllMatchScores(studentProfile, jobs), [studentProfile, jobs]);
 
   const filteredJobs = useMemo(
-    () => filterJobs(sampleJobs, filters, matchScores),
-    [filters, matchScores]
+    () => filterJobs(jobs, filters, matchScores),
+    [filters, jobs, matchScores]
   );
 
   // Giả lập thời gian lọc ngắn sau mỗi lần thay đổi bộ lọc

@@ -1,8 +1,7 @@
 import { useState } from 'react';
 import { Bookmark, FileCheck, Eye, Trash2, ChevronDown, Calendar, Building2, Info } from 'lucide-react';
 import type { UseAppState } from '../hooks/useAppState';
-import type { ApplicationStatus } from '../types';
-import { sampleJobs } from '../data/jobs';
+import { useJobs } from '../context/JobsContext';
 import { formatDate, formatRelativeDate } from '../utils';
 import JobDetailModal from '../components/jobs/JobDetailModal';
 import { calculateSkillMatch } from '../utils';
@@ -12,14 +11,14 @@ interface ApplicationsPageProps {
   appState: UseAppState;
 }
 
-const statusColors: Record<ApplicationStatus, string> = {
+const statusColors: Record<string, string> = {
   'Đã ứng tuyển': 'badge-blue',
   'Đang xem xét': 'badge-yellow',
   'Phỏng vấn': 'badge-green',
-  'Đã kết thúc': 'badge-gray',
+  'Đã nhận việc': 'badge-green',
+  'Đã từ chối': 'badge-red',
+  'Đã rút': 'badge-gray',
 };
-
-const allStatuses: ApplicationStatus[] = ['Đã ứng tuyển', 'Đang xem xét', 'Phỏng vấn', 'Đã kết thúc'];
 
 type Tab = 'saved' | 'applied' | 'tracking';
 
@@ -33,13 +32,13 @@ export default function ApplicationsPage({ appState }: ApplicationsPageProps) {
     unsaveJob,
     applyToJob,
     hasApplied,
-    updateApplicationStatus,
   } = appState;
 
   const [activeTab, setActiveTab] = useState<Tab>('saved');
   const [selectedJob, setSelectedJob] = useState<Job | null>(null);
+  const { jobs } = useJobs();
 
-  const getJob = (jobId: string) => sampleJobs.find((j) => j.id === jobId);
+  const getJob = (jobId: string) => jobs.find((j) => j.id === jobId);
 
   const savedJobsList = savedJobs
     .map((s) => ({ saved: s, job: getJob(s.jobId) }))
@@ -173,20 +172,17 @@ export default function ApplicationsPage({ appState }: ApplicationsPageProps) {
 
                   {/* Status selector */}
                   <div className="relative">
-                    <select
-                      value={app.status}
-                      onChange={(e) => updateApplicationStatus(app.id, e.target.value as ApplicationStatus)}
-                      className={`text-xs font-medium px-3 py-1.5 rounded-lg border appearance-none cursor-pointer pr-7 ${
+                    <span
+                    className={`text-xs font-medium px-3 py-1.5 rounded-lg border ${
                         app.status === 'Đã ứng tuyển' ? 'bg-blue-50 text-blue-700 border-blue-100' :
                         app.status === 'Đang xem xét' ? 'bg-amber-50 text-amber-700 border-amber-100' :
-                        app.status === 'Phỏng vấn' ? 'bg-emerald-50 text-emerald-700 border-emerald-100' :
+                        app.status === 'Phỏng vấn' || app.status === 'Đã nhận việc' ? 'bg-emerald-50 text-emerald-700 border-emerald-100' :
+                        app.status === 'Đã từ chối' ? 'bg-red-50 text-red-700 border-red-100' :
                         'bg-slate-50 text-slate-500 border-slate-100'
                       }`}
-                    >
-                      {allStatuses.map((s) => (
-                        <option key={s} value={s}>{s}</option>
-                      ))}
-                    </select>
+                      >
+                        {app.status}
+                      </span>
                     <ChevronDown size={12} className="absolute right-2 top-1/2 -translate-y-1/2 pointer-events-none text-slate-400" />
                   </div>
 
