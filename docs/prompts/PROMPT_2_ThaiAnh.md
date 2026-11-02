@@ -35,28 +35,6 @@ Bạn là kỹ sư backend/DevOps của nhóm 3, đề bài **TH3 – Xây dựn
 - **Embedding tính sẵn khi lưu** ở `resumes`, `jobs` **và `candidates`** (cột `embedding BYTEA`, cập nhật khi lưu hồ sơ/kỹ năng/CV). `SqlAIRepository` không được mã hoá lại khi chấm điểm – đo được 417 ms/cặp nếu để vậy, sau khi sửa 38 ms. `fit_tfidf` trên các tin đang mở khi khởi động và khi số tin đổi.
 - **Đọc kỹ `docs/prompts/CHUNG.md` mục 6 (bẫy 1, 2, 7, 8, 10)** trước khi viết migration view, seed, Superset, RLS, Docker.
 
-## Kết quả review nhánh `feature/ThaiAnh-backend` (commit a56cdca) – PHẢI sửa trước khi mở PR vào `main`
-
-Đã chạy thật trên PostgreSQL 16: migration, 4 view, phân quyền, luật trạng thái, hợp đồng lỗi, điểm khớp, BI theo công ty đều **đúng**; 1 cặp 37 ms, 150 tin 378 ms (đo với embedder `hash`, cần đo lại với model thật). Còn các lỗi sau.
-
-**Lỗi chặn (sửa trước, nhánh chưa dùng được nếu chưa sửa):**
-1. **`python -m seed.load_seed --reset` lỗi** `UniqueViolation uq_candidate_skills` (ví dụ ứng viên 272): hồ sơ sinh ra có cả "X" và "X cơ bản" cùng quy về một kỹ năng nên chèn trùng. Sửa ở `load_seed.py` (vòng lặp gán `profile["skills"]`): loại trùng theo `skill.id` (và/hoặc loại trùng ngay ở `gen_candidates.py`). Kiểm: chạy `--reset` hai lần liên tiếp, ra cùng số dòng, không lỗi.
-2. **Test API chưa từng chạy:** cả 7 test lỗi `AttributeError: 'TestClient' object has no attribute 'state'` (`tests/api/conftest.py`). Không đặt `TEST_DATABASE_URL` thì cả module bị **skip**, nên `pytest` vẫn báo "xanh" – phải bỏ ý nghĩ đó. Sửa: lưu id vào một dict/dataclass trả về từ fixture (không gắn lên `TestClient`). Kiểm: `TEST_DATABASE_URL=postgresql+psycopg://...@localhost:.../test pytest backend/tests/api` phải **7 passed**, không phải skipped. Thêm ca còn thiếu trong CHUNG mục 4 (413 CV quá 5 MB, 422 CV rỗng, 403 `PATCH` khác công ty, đăng ký admin bị chặn). Dockerfile hiện chạy `pytest` lúc build nhưng module API bị skip; đặt `TEST_DATABASE_URL` trỏ tới một DB thật khi chạy bộ test API (trong `docker compose`, không phải lúc build).
-
-**Lỗi dữ liệu BI (sửa trước khi Hưng dựng biểu đồ):**
-3. **8 kỹ năng đuôi "cơ bản"** (AWS, HTML/CSS, ITIL, Linux, Machine Learning, Mạng, SEO, Thống kê) có **0 ứng viên** nhưng 12–13 tin yêu cầu, vì seed cắt đuôi ` cơ bản` khi gán kỹ năng ứng viên còn danh mục lưu tên có đuôi. Làm một trong hai cách nhất quán: (a) danh mục `skills.csv` dùng tên **không** đuôi (và alias `… cơ bản` → tên đó); hoặc (b) seed ánh xạ ứng viên đúng tên có đuôi. Kiểm: `SELECT s.name, count(cs) FROM skills s LEFT JOIN candidate_skills cs ... ` không còn kỹ năng nào 0 ứng viên chỉ do lệch tên; `scripts/check_bi_views.py` vẫn khớp.
-4. **52/81 kỹ năng ở nhóm `Khác`.** Phân vào 6 nhóm đã chốt (`Frontend`, `Backend`, `Dữ liệu`, `DevOps`, `Thiết kế`, `Kỹ năng mềm`); chỉ giữ `Khác` cho vài kỹ năng thật sự không thuộc nhóm nào (< 10%). Biểu đồ "theo nhóm kỹ năng" của Hưng cần việc này.
-5. **`v_funnel_stages`:** bước `rejected` có `conversion_rate` 333% (chia cho `offer`). Với `rejected` đặt tỷ lệ so với `applied` (hoặc NULL) và ghi chú trong `bi/README`; phễu biểu đồ chỉ dùng 5 bước đầu.
-
-**Lỗi hợp đồng / vận hành (sửa trong PR này):**
-6. `POST /applications` chỉ nhận `job_id` kiểu `int`, trong khi `GET /jobs` trả `id` là chuỗi (`"22"`) → gửi chuỗi sẽ 422 `job_id_required`. Nhận cả hai (ép kiểu an toàn) và thêm test; báo Ngọc Anh.
-7. `bi/superset/init.sh` chạy `superset run --reload --debugger` (chế độ debug). Dùng `gunicorn`/lệnh `superset run` không `--debugger` cho compose; chỉ bật debug khi phát triển.
-8. Các khoá mặc định trong `docker-compose.yml`/`.env.example` (`JWT_SECRET`, `GUEST_TOKEN_JWT_SECRET`, `SUPERSET_SECRET_KEY`, mật khẩu admin Superset) là giá trị demo: ghi rõ trong README là **không dùng khi triển khai thật**, và đừng đặt mật khẩu thật vào repo.
-9. Tên file tin là `jobs_seed.csv` (do `generate_reference_data.py` sinh) trong khi hợp đồng là `jobs.csv` của Hưng. Chốt **một nguồn**: nếu Hưng giao `jobs.csv` thì seed đọc `jobs.csv`; nếu bạn sinh bằng script thì báo Hưng/Tùng để họ không làm trùng và cập nhật `make_pair_list.py`/`seed/README.md` cho khớp.
-10. Chạy `docker compose up --build` từ máy sạch (chưa được kiểm chứng ở nhánh này), rồi tự chạy `docker compose exec api python -m seed.load_seed --reset` hai lần, `scripts/check_bi_views.py`, và đo lại hiệu năng bằng **model thật** (`EMBEDDER=st`, `WITH_ST=1`).
-
-**Còn thiếu so với prompt (làm tiếp):** các bàn giao cho Hưng (Superset đã nối 4 view, id dataset `v_funnel`/`v_funnel_stages`), `bi/superset` bootstrap để nhập `dashboard_export.zip` khi Hưng xuất, UUID dashboard + guest token cho Ngọc Anh, cấu hình `SUPERSET_*_ID` trong `.env`. Superset khi chưa cấu hình trả 503 `superset_not_configured` là đúng, đừng đổi.
-
 ## Việc cần làm (theo thứ tự)
 
 ### A. Khung dự án (hạn 22:00 31/10)
@@ -93,8 +71,6 @@ Bạn là kỹ sư backend/DevOps của nhóm 3, đề bài **TH3 – Xây dựn
 21. Viết chương CSDL, kiến trúc, API của báo cáo (nộp markdown 12:00 6/11, viết từ 5/11).
 
 ## Tự kiểm tra trước khi báo xong
-- `TEST_DATABASE_URL=... pytest backend/tests/api` → **passed, không phải skipped** (đọc dòng tóm tắt, không chỉ "xanh").
-- Không kỹ năng nào có 0 ứng viên chỉ vì lệch tên (bẫy mục 3 ở trên); `Khác` < 10% danh mục.
 - `docker compose up -d --build` từ máy sạch; `alembic upgrade head` trên PostgreSQL trống không lỗi; `load_seed --reset` hai lần liên tiếp ra cùng số dòng.
 - Hiệu năng qua HTTP: 1 cặp < 200 ms, 500 tin < 2 s (báo Tùng số đo thật).
 - 4 view == `/api/bi/*` == truy vấn tay; guest token hai công ty cho số khác nhau đúng như API.
