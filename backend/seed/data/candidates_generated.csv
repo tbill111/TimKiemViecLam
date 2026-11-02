@@ -1,0 +1,2399 @@
+candidate_id,occupation,skills,years_exp,education_level,locations,work_types,expected_salary_min,expected_salary_max,text
+cand-demo-001,Frontend Development,HTML|CSS|JavaScript|React|Git|SQL|Python|Figma|Responsive Design,1.0,3,Hà Nội|Remote,Thực tập|Remote,6.0,10.0,"Kỹ năng
+React, TypeScript, HTML, CSS, Git
+Kinh nghiệm
+Frontend Developer part time; phát triển giao diện React.
+Học vấn
+Đại học Thủy lợi, Công nghệ Thông tin"
+cand-gen-0001,Backend Development,Node.js|SQL|Git|Cloud (AWS/GCP)|Bảo mật ứng dụng|UML|Apache Spark|Windows Server,3,0,Hồ Chí Minh,Toàn thời gian,10,16,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực Backend Development.
+Kỹ năng
+Node.js | SQL | Git | Cloud (AWS/GCP) | Bảo mật ứng dụng | UML | Apache Spark | Windows Server
+Kinh nghiệm
+3 năm kinh nghiệm trong nhóm nghề Backend Development.
+Học vấn
+Đại học Quốc gia"
+cand-gen-0002,Business Analysis,Phân tích nghiệp vụ|Excel|Tư duy logic|Giao tiếp|Viết tài liệu|Email Marketing|JavaScript|Office 365|CSS,0.3,3,Đà Nẵng,Toàn thời gian|Thực tập,4.6,7.9,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực Business Analysis.
+Kỹ năng
+Phân tích nghiệp vụ | Excel | Tư duy logic | Giao tiếp | Viết tài liệu | Email Marketing | JavaScript | Office 365 | CSS
+Kinh nghiệm
+0.3 năm kinh nghiệm trong nhóm nghề Business Analysis.
+Học vấn
+Cao đẳng Công nghệ"
+cand-gen-0003,Business Operations,Excel|UML|Giao tiếp|Viết tài liệu|Phân tích nghiệp vụ|Power BI,1,3,Hồ Chí Minh,Remote,6,10,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực Business Operations.
+Kỹ năng
+Excel | UML | Giao tiếp | Viết tài liệu | Phân tích nghiệp vụ | Power BI
+Kinh nghiệm
+1 năm kinh nghiệm trong nhóm nghề Business Operations.
+Học vấn
+Đại học Kinh tế"
+cand-gen-0004,Data Science & Analytics,Excel|Linux cơ bản|Python|ETL|Canva|UML,1,2,Đà Nẵng,Thực tập,6,10,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực Data Science & Analytics.
+Kỹ năng
+Excel | Linux cơ bản | Python | ETL | Canva | UML
+Kinh nghiệm
+1 năm kinh nghiệm trong nhóm nghề Data Science & Analytics.
+Học vấn
+Đại học Bách khoa"
+cand-gen-0005,Digital Marketing,Tư duy sáng tạo|Viết nội dung|Excel|Mạng xã hội|Giao tiếp|Python|Storybook|Docker|Machine Learning cơ bản|Design System|Linux|UML,1.5,3,Remote,Bán thời gian|Toàn thời gian,7.0,11.5,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực Digital Marketing.
+Kỹ năng
+Tư duy sáng tạo | Viết nội dung | Excel | Mạng xã hội | Giao tiếp | Python | Storybook | Docker | Machine Learning cơ bản | Design System | Linux | UML
+Kinh nghiệm
+1.5 năm kinh nghiệm trong nhóm nghề Digital Marketing.
+Học vấn
+Cao đẳng Công nghệ"
+cand-gen-0006,Frontend Development,TypeScript|CSS|React|HTML|Phân tích dữ liệu|SQL|Tư duy phân tích|Kafka|User Research|Git|Apache Spark,5,3,Đà Nẵng|Hà Nội,Remote|Toàn thời gian,14,22,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực Frontend Development.
+Kỹ năng
+TypeScript | CSS | React | HTML | Phân tích dữ liệu | SQL | Tư duy phân tích | Kafka | User Research | Git | Apache Spark
+Kinh nghiệm
+5 năm kinh nghiệm trong nhóm nghề Frontend Development.
+Học vấn
+Cao đẳng Công nghệ"
+cand-gen-0007,IT Support,Giao tiếp|Kỹ thuật máy tính|Mạng cơ bản|Windows Server|Docker|PostgreSQL|ETL|Tư duy phân tích,5,4,Đà Nẵng|Hồ Chí Minh,Toàn thời gian,14,22,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực IT Support.
+Kỹ năng
+Giao tiếp | Kỹ thuật máy tính | Mạng cơ bản | Windows Server | Docker | PostgreSQL | ETL | Tư duy phân tích
+Kinh nghiệm
+5 năm kinh nghiệm trong nhóm nghề IT Support.
+Học vấn
+Đại học Kinh tế"
+cand-gen-0008,QA & Testing,Git|Kiểm thử phần mềm|Excel|Viết test case|Tư duy sáng tạo|Canva,0.5,3,Hồ Chí Minh|Remote,Bán thời gian|Thực tập,5.0,8.5,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực QA & Testing.
+Kỹ năng
+Git | Kiểm thử phần mềm | Excel | Viết test case | Tư duy sáng tạo | Canva
+Kinh nghiệm
+0.5 năm kinh nghiệm trong nhóm nghề QA & Testing.
+Học vấn
+Đại học Quốc gia"
+cand-gen-0009,Software Engineering,OOP|REST API|JavaScript|Git|SQL|Pandas,0,3,Hồ Chí Minh,Toàn thời gian,4,7,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực Software Engineering.
+Kỹ năng
+OOP | REST API | JavaScript | Git | SQL | Pandas
+Kinh nghiệm
+0 năm kinh nghiệm trong nhóm nghề Software Engineering.
+Học vấn
+Đại học Bách khoa"
+cand-gen-0010,UI/UX Design,Figma|Nguyên lý UX|Tư duy sáng tạo|Thiết kế UI|Giao tiếp|Windows Server|Tableau,1,3,Hồ Chí Minh,Toàn thời gian,6,10,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực UI/UX Design.
+Kỹ năng
+Figma | Nguyên lý UX | Tư duy sáng tạo | Thiết kế UI | Giao tiếp | Windows Server | Tableau
+Kinh nghiệm
+1 năm kinh nghiệm trong nhóm nghề UI/UX Design.
+Học vấn
+Cao đẳng Công nghệ"
+cand-gen-0011,Backend Development,Node.js|Git|REST API|JavaScript|SQL|Kiểm thử phần mềm,1,2,Hồ Chí Minh,Bán thời gian|Remote,6,10,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực Backend Development.
+Kỹ năng
+Node.js | Git | REST API | JavaScript | SQL | Kiểm thử phần mềm
+Kinh nghiệm
+1 năm kinh nghiệm trong nhóm nghề Backend Development.
+Học vấn
+Cao đẳng Công nghệ"
+cand-gen-0012,Business Analysis,Phân tích nghiệp vụ|Viết tài liệu|Giao tiếp|Email Marketing|Prototyping|Tableau|Storybook|HTML/CSS cơ bản,3,4,Remote,Remote,10,16,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực Business Analysis.
+Kỹ năng
+Phân tích nghiệp vụ | Viết tài liệu | Giao tiếp | Email Marketing | Prototyping | Tableau | Storybook | HTML/CSS cơ bản
+Kinh nghiệm
+3 năm kinh nghiệm trong nhóm nghề Business Analysis.
+Học vấn
+Đại học Kinh tế"
+cand-gen-0013,Business Operations,SQL|Excel|Giao tiếp|Phân tích nghiệp vụ|Viết tài liệu|UML|Adobe XD|Active Directory|Zustand|Thiết kế UI,5,4,Hồ Chí Minh|Hà Nội,Bán thời gian,14,22,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực Business Operations.
+Kỹ năng
+SQL | Excel | Giao tiếp | Phân tích nghiệp vụ | Viết tài liệu | UML | Adobe XD | Active Directory | Zustand | Thiết kế UI
+Kinh nghiệm
+5 năm kinh nghiệm trong nhóm nghề Business Operations.
+Học vấn
+Đại học Bách khoa"
+cand-gen-0014,Data Science & Analytics,SQL|Git|Python|Linux cơ bản|Excel|Thống kê cơ bản|Zustand|Windows Server|UML|Nguyên lý UX|Kiểm thử phần mềm,1,3,Hồ Chí Minh,Remote|Toàn thời gian,6,10,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực Data Science & Analytics.
+Kỹ năng
+SQL | Git | Python | Linux cơ bản | Excel | Thống kê cơ bản | Zustand | Windows Server | UML | Nguyên lý UX | Kiểm thử phần mềm
+Kinh nghiệm
+1 năm kinh nghiệm trong nhóm nghề Data Science & Analytics.
+Học vấn
+Đại học Kinh tế"
+cand-gen-0015,Digital Marketing,Excel|Viết nội dung|Giao tiếp|Thiết kế UI|Linux|CSS|Pandas|Active Directory,1,3,Remote,Toàn thời gian|Thực tập,6,10,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực Digital Marketing.
+Kỹ năng
+Excel | Viết nội dung | Giao tiếp | Thiết kế UI | Linux | CSS | Pandas | Active Directory
+Kinh nghiệm
+1 năm kinh nghiệm trong nhóm nghề Digital Marketing.
+Học vấn
+Đại học Kinh tế"
+cand-gen-0016,Frontend Development,HTML|TypeScript|Git|Kiểm thử phần mềm|Linux|Xử lý sự cố|Excel,2,2,Đà Nẵng|Remote,Thực tập|Toàn thời gian,8,13,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực Frontend Development.
+Kỹ năng
+HTML | TypeScript | Git | Kiểm thử phần mềm | Linux | Xử lý sự cố | Excel
+Kinh nghiệm
+2 năm kinh nghiệm trong nhóm nghề Frontend Development.
+Học vấn
+Đại học Bách khoa"
+cand-gen-0017,IT Support,Mạng cơ bản|Windows Server|Giao tiếp|Docker|React Query|Tư duy phân tích|REST API|Tư duy sáng tạo|Xử lý sự cố,0.3,1,Hồ Chí Minh|Đà Nẵng,Thực tập,4.6,7.9,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực IT Support.
+Kỹ năng
+Mạng cơ bản | Windows Server | Giao tiếp | Docker | React Query | Tư duy phân tích | REST API | Tư duy sáng tạo | Xử lý sự cố
+Kinh nghiệm
+0.3 năm kinh nghiệm trong nhóm nghề IT Support.
+Học vấn
+Đại học Quốc gia"
+cand-gen-0018,QA & Testing,Tư duy phân tích|Kiểm thử phần mềm|Viết test case|Excel|Git|Pandas,5,3,Hồ Chí Minh,Bán thời gian,14,22,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực QA & Testing.
+Kỹ năng
+Tư duy phân tích | Kiểm thử phần mềm | Viết test case | Excel | Git | Pandas
+Kinh nghiệm
+5 năm kinh nghiệm trong nhóm nghề QA & Testing.
+Học vấn
+Đại học Quốc gia"
+cand-gen-0019,Software Engineering,REST API|SQL|OOP|JavaScript|Git|Agile/Scrum|Thiết kế API|Jest|HTML|Tableau|Phân tích dữ liệu,1.5,3,Hồ Chí Minh,Bán thời gian,7.0,11.5,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực Software Engineering.
+Kỹ năng
+REST API | SQL | OOP | JavaScript | Git | Agile/Scrum | Thiết kế API | Jest | HTML | Tableau | Phân tích dữ liệu
+Kinh nghiệm
+1.5 năm kinh nghiệm trong nhóm nghề Software Engineering.
+Học vấn
+Cao đẳng Công nghệ"
+cand-gen-0020,UI/UX Design,Thiết kế UI|Tư duy sáng tạo|Giao tiếp|Nguyên lý UX|Figma|Linux cơ bản,0.5,3,Hà Nội,Remote,5.0,8.5,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực UI/UX Design.
+Kỹ năng
+Thiết kế UI | Tư duy sáng tạo | Giao tiếp | Nguyên lý UX | Figma | Linux cơ bản
+Kinh nghiệm
+0.5 năm kinh nghiệm trong nhóm nghề UI/UX Design.
+Học vấn
+Đại học Kinh tế"
+cand-gen-0021,Backend Development,REST API|JavaScript|Git|React Query|Node.js,5,4,Hồ Chí Minh|Remote,Toàn thời gian|Thực tập,14,22,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực Backend Development.
+Kỹ năng
+REST API | JavaScript | Git | React Query | Node.js
+Kinh nghiệm
+5 năm kinh nghiệm trong nhóm nghề Backend Development.
+Học vấn
+Đại học Kinh tế"
+cand-gen-0022,Business Analysis,Viết tài liệu|Tư duy logic|Giao tiếp|Excel|Phân tích nghiệp vụ|Mạng cơ bản|Virtualization|Design System|HTML|REST API|Postman,0.5,3,Remote,Thực tập,5.0,8.5,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực Business Analysis.
+Kỹ năng
+Viết tài liệu | Tư duy logic | Giao tiếp | Excel | Phân tích nghiệp vụ | Mạng cơ bản | Virtualization | Design System | HTML | REST API | Postman
+Kinh nghiệm
+0.5 năm kinh nghiệm trong nhóm nghề Business Analysis.
+Học vấn
+Đại học Kinh tế"
+cand-gen-0023,Business Operations,Viết tài liệu|Excel|UML|Giao tiếp|Phân tích nghiệp vụ|Facebook Ads|Apache Spark|Matplotlib|TypeScript nâng cao|OOP|Bảo mật ứng dụng|Kafka,1.5,2,Hồ Chí Minh,Toàn thời gian,7.0,11.5,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực Business Operations.
+Kỹ năng
+Viết tài liệu | Excel | UML | Giao tiếp | Phân tích nghiệp vụ | Facebook Ads | Apache Spark | Matplotlib | TypeScript nâng cao | OOP | Bảo mật ứng dụng | Kafka
+Kinh nghiệm
+1.5 năm kinh nghiệm trong nhóm nghề Business Operations.
+Học vấn
+Đại học Quốc gia"
+cand-gen-0024,Data Science & Analytics,Thống kê cơ bản|ETL|Git|Python|Excel|Linux cơ bản|REST API|Jest|CSS|SQL|Adobe XD|Responsive Design,1,2,Remote|Hà Nội,Toàn thời gian,6,10,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực Data Science & Analytics.
+Kỹ năng
+Thống kê cơ bản | ETL | Git | Python | Excel | Linux cơ bản | REST API | Jest | CSS | SQL | Adobe XD | Responsive Design
+Kinh nghiệm
+1 năm kinh nghiệm trong nhóm nghề Data Science & Analytics.
+Học vấn
+Cao đẳng Công nghệ"
+cand-gen-0025,Digital Marketing,Excel|Giao tiếp|Tư duy sáng tạo|Mạng xã hội|Viết nội dung|Selenium|Machine Learning cơ bản|Linux|MongoDB|Tư duy logic|Thiết kế UI|Kỹ thuật máy tính,1.5,3,Đà Nẵng|Hà Nội,Thực tập|Bán thời gian,7.0,11.5,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực Digital Marketing.
+Kỹ năng
+Excel | Giao tiếp | Tư duy sáng tạo | Mạng xã hội | Viết nội dung | Selenium | Machine Learning cơ bản | Linux | MongoDB | Tư duy logic | Thiết kế UI | Kỹ thuật máy tính
+Kinh nghiệm
+1.5 năm kinh nghiệm trong nhóm nghề Digital Marketing.
+Học vấn
+Đại học Bách khoa"
+cand-gen-0026,Frontend Development,TypeScript|CSS|REST API|HTML|Git|JavaScript|Virtualization|Tableau|Python|AWS cơ bản,1,3,Hà Nội,Remote|Toàn thời gian,6,10,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực Frontend Development.
+Kỹ năng
+TypeScript | CSS | REST API | HTML | Git | JavaScript | Virtualization | Tableau | Python | AWS cơ bản
+Kinh nghiệm
+1 năm kinh nghiệm trong nhóm nghề Frontend Development.
+Học vấn
+Đại học Kinh tế"
+cand-gen-0027,IT Support,Xử lý sự cố|Windows Server|Giao tiếp|Mạng cơ bản|Office 365|Power BI|Pandas|Python|Email Marketing|Selenium|Cloud (AWS/GCP)|Tư duy logic,0,4,Hà Nội|Remote,Bán thời gian|Remote,4,7,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực IT Support.
+Kỹ năng
+Xử lý sự cố | Windows Server | Giao tiếp | Mạng cơ bản | Office 365 | Power BI | Pandas | Python | Email Marketing | Selenium | Cloud (AWS/GCP) | Tư duy logic
+Kinh nghiệm
+0 năm kinh nghiệm trong nhóm nghề IT Support.
+Học vấn
+Đại học Quốc gia"
+cand-gen-0028,QA & Testing,Viết test case|Excel|Git|Tư duy phân tích|Kiểm thử phần mềm|REST API|Kỹ thuật máy tính|Apache Spark|Tailwind CSS,0,3,Đà Nẵng,Toàn thời gian,4,7,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực QA & Testing.
+Kỹ năng
+Viết test case | Excel | Git | Tư duy phân tích | Kiểm thử phần mềm | REST API | Kỹ thuật máy tính | Apache Spark | Tailwind CSS
+Kinh nghiệm
+0 năm kinh nghiệm trong nhóm nghề QA & Testing.
+Học vấn
+Đại học Bách khoa"
+cand-gen-0029,Software Engineering,OOP|SQL|JavaScript|Tableau|Bảo mật ứng dụng|Viết nội dung|HTML,4,3,Hồ Chí Minh,Bán thời gian,12,19,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực Software Engineering.
+Kỹ năng
+OOP | SQL | JavaScript | Tableau | Bảo mật ứng dụng | Viết nội dung | HTML
+Kinh nghiệm
+4 năm kinh nghiệm trong nhóm nghề Software Engineering.
+Học vấn
+Đại học Kinh tế"
+cand-gen-0030,UI/UX Design,Giao tiếp|Tư duy sáng tạo|Nguyên lý UX|Figma|Thiết kế UI|CSS|Mạng xã hội|Cloud (AWS/GCP),0,3,Đà Nẵng,Thực tập,4,7,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực UI/UX Design.
+Kỹ năng
+Giao tiếp | Tư duy sáng tạo | Nguyên lý UX | Figma | Thiết kế UI | CSS | Mạng xã hội | Cloud (AWS/GCP)
+Kinh nghiệm
+0 năm kinh nghiệm trong nhóm nghề UI/UX Design.
+Học vấn
+Đại học Bách khoa"
+cand-gen-0031,Backend Development,SQL|REST API|Git|Node.js|JavaScript|Tư duy sáng tạo|Linux cơ bản,5,3,Remote,Thực tập|Toàn thời gian,14,22,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực Backend Development.
+Kỹ năng
+SQL | REST API | Git | Node.js | JavaScript | Tư duy sáng tạo | Linux cơ bản
+Kinh nghiệm
+5 năm kinh nghiệm trong nhóm nghề Backend Development.
+Học vấn
+Đại học Bách khoa"
+cand-gen-0032,Business Analysis,Viết tài liệu|Giao tiếp|Excel|Phân tích nghiệp vụ|Tư duy logic|Google Analytics|Thiết kế API|JavaScript|Phân tích dữ liệu|Linux cơ bản,2,3,Đà Nẵng|Remote,Bán thời gian,8,13,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực Business Analysis.
+Kỹ năng
+Viết tài liệu | Giao tiếp | Excel | Phân tích nghiệp vụ | Tư duy logic | Google Analytics | Thiết kế API | JavaScript | Phân tích dữ liệu | Linux cơ bản
+Kinh nghiệm
+2 năm kinh nghiệm trong nhóm nghề Business Analysis.
+Học vấn
+Đại học Bách khoa"
+cand-gen-0033,Business Operations,UML|SQL|Viết tài liệu|Giao tiếp|Excel|Phân tích nghiệp vụ,0.3,3,Hồ Chí Minh,Thực tập|Bán thời gian,4.6,7.9,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực Business Operations.
+Kỹ năng
+UML | SQL | Viết tài liệu | Giao tiếp | Excel | Phân tích nghiệp vụ
+Kinh nghiệm
+0.3 năm kinh nghiệm trong nhóm nghề Business Operations.
+Học vấn
+Đại học Kinh tế"
+cand-gen-0034,Data Science & Analytics,ETL|Thống kê cơ bản|Excel|Git|Python|Agile/Scrum|Facebook Ads|Nghiệp vụ ngân hàng,0.3,3,Hồ Chí Minh|Hà Nội,Remote,4.6,7.9,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực Data Science & Analytics.
+Kỹ năng
+ETL | Thống kê cơ bản | Excel | Git | Python | Agile/Scrum | Facebook Ads | Nghiệp vụ ngân hàng
+Kinh nghiệm
+0.3 năm kinh nghiệm trong nhóm nghề Data Science & Analytics.
+Học vấn
+Đại học Kinh tế"
+cand-gen-0035,Digital Marketing,Mạng xã hội|Tư duy sáng tạo|Viết nội dung|Giao tiếp|Excel|MongoDB|AWS cơ bản,0,3,Hồ Chí Minh|Đà Nẵng,Toàn thời gian|Remote,4,7,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực Digital Marketing.
+Kỹ năng
+Mạng xã hội | Tư duy sáng tạo | Viết nội dung | Giao tiếp | Excel | MongoDB | AWS cơ bản
+Kinh nghiệm
+0 năm kinh nghiệm trong nhóm nghề Digital Marketing.
+Học vấn
+Đại học Kinh tế"
+cand-gen-0036,Frontend Development,CSS|HTML|JavaScript|React|TypeScript|Postman,4,1,Hà Nội|Remote,Thực tập,12,19,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực Frontend Development.
+Kỹ năng
+CSS | HTML | JavaScript | React | TypeScript | Postman
+Kinh nghiệm
+4 năm kinh nghiệm trong nhóm nghề Frontend Development.
+Học vấn
+Đại học Bách khoa"
+cand-gen-0037,IT Support,Giao tiếp|Windows Server|Mạng cơ bản|Xử lý sự cố|Kỹ thuật máy tính|Nghiệp vụ ngân hàng|React Query|Nguyên lý UX|Viết nội dung|Agile/Scrum|CI/CD|HTML,1,3,Hồ Chí Minh,Bán thời gian,6,10,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực IT Support.
+Kỹ năng
+Giao tiếp | Windows Server | Mạng cơ bản | Xử lý sự cố | Kỹ thuật máy tính | Nghiệp vụ ngân hàng | React Query | Nguyên lý UX | Viết nội dung | Agile/Scrum | CI/CD | HTML
+Kinh nghiệm
+1 năm kinh nghiệm trong nhóm nghề IT Support.
+Học vấn
+Đại học Bách khoa"
+cand-gen-0038,QA & Testing,Git|Excel|Viết test case|Kiểm thử phần mềm|Tư duy phân tích|Matplotlib|Storybook|Airflow|JavaScript,1.5,3,Hồ Chí Minh|Remote,Bán thời gian,7.0,11.5,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực QA & Testing.
+Kỹ năng
+Git | Excel | Viết test case | Kiểm thử phần mềm | Tư duy phân tích | Matplotlib | Storybook | Airflow | JavaScript
+Kinh nghiệm
+1.5 năm kinh nghiệm trong nhóm nghề QA & Testing.
+Học vấn
+Đại học Quốc gia"
+cand-gen-0039,Software Engineering,SQL|Git|REST API|Responsive Design|CSS|Storybook|Matplotlib|Power BI|Kỹ thuật máy tính,5,3,Hà Nội,Remote,14,22,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực Software Engineering.
+Kỹ năng
+SQL | Git | REST API | Responsive Design | CSS | Storybook | Matplotlib | Power BI | Kỹ thuật máy tính
+Kinh nghiệm
+5 năm kinh nghiệm trong nhóm nghề Software Engineering.
+Học vấn
+Đại học Kinh tế"
+cand-gen-0040,UI/UX Design,Giao tiếp|Figma|Thiết kế UI|Nguyên lý UX|Facebook Ads,4,3,Đà Nẵng,Remote,12,19,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực UI/UX Design.
+Kỹ năng
+Giao tiếp | Figma | Thiết kế UI | Nguyên lý UX | Facebook Ads
+Kinh nghiệm
+4 năm kinh nghiệm trong nhóm nghề UI/UX Design.
+Học vấn
+Cao đẳng Công nghệ"
+cand-gen-0041,Backend Development,SQL|Git|REST API|Node.js|JavaScript|React|TypeScript nâng cao|Matplotlib|Quản lý dự án|Viết nội dung,0,3,Đà Nẵng,Toàn thời gian|Bán thời gian,4,7,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực Backend Development.
+Kỹ năng
+SQL | Git | REST API | Node.js | JavaScript | React | TypeScript nâng cao | Matplotlib | Quản lý dự án | Viết nội dung
+Kinh nghiệm
+0 năm kinh nghiệm trong nhóm nghề Backend Development.
+Học vấn
+Đại học Bách khoa"
+cand-gen-0042,Business Analysis,Viết tài liệu|Tư duy logic|Giao tiếp|Excel|AWS cơ bản|HTML/CSS cơ bản|Linux cơ bản|User Research|Cloud (AWS/GCP)|Matplotlib|React Query|Tailwind CSS,0.3,0,Hồ Chí Minh|Đà Nẵng,Thực tập,4.6,7.9,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực Business Analysis.
+Kỹ năng
+Viết tài liệu | Tư duy logic | Giao tiếp | Excel | AWS cơ bản | HTML/CSS cơ bản | Linux cơ bản | User Research | Cloud (AWS/GCP) | Matplotlib | React Query | Tailwind CSS
+Kinh nghiệm
+0.3 năm kinh nghiệm trong nhóm nghề Business Analysis.
+Học vấn
+Đại học Bách khoa"
+cand-gen-0043,Business Operations,Viết tài liệu|Phân tích nghiệp vụ|SQL|Machine Learning cơ bản|Thống kê cơ bản|Kỹ thuật máy tính|Quản lý dự án|Tableau|Storybook|Jest|SEO cơ bản|Confluence,3,2,Hồ Chí Minh|Hà Nội,Remote|Bán thời gian,10,16,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực Business Operations.
+Kỹ năng
+Viết tài liệu | Phân tích nghiệp vụ | SQL | Machine Learning cơ bản | Thống kê cơ bản | Kỹ thuật máy tính | Quản lý dự án | Tableau | Storybook | Jest | SEO cơ bản | Confluence
+Kinh nghiệm
+3 năm kinh nghiệm trong nhóm nghề Business Operations.
+Học vấn
+Đại học Kinh tế"
+cand-gen-0044,Data Science & Analytics,Linux cơ bản|Python|Thống kê cơ bản|Git|ETL|Excel|Tailwind CSS|Node.js|Figma|JavaScript|Xử lý sự cố,3,2,Hà Nội,Remote|Thực tập,10,16,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực Data Science & Analytics.
+Kỹ năng
+Linux cơ bản | Python | Thống kê cơ bản | Git | ETL | Excel | Tailwind CSS | Node.js | Figma | JavaScript | Xử lý sự cố
+Kinh nghiệm
+3 năm kinh nghiệm trong nhóm nghề Data Science & Analytics.
+Học vấn
+Cao đẳng Công nghệ"
+cand-gen-0045,Digital Marketing,Viết nội dung|Mạng xã hội|Tư duy sáng tạo|Excel|Giao tiếp|Bảo mật ứng dụng|Tư duy phân tích|Storybook|Facebook Ads|Docker|REST API|ETL,0.3,3,Đà Nẵng,Toàn thời gian|Bán thời gian,4.6,7.9,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực Digital Marketing.
+Kỹ năng
+Viết nội dung | Mạng xã hội | Tư duy sáng tạo | Excel | Giao tiếp | Bảo mật ứng dụng | Tư duy phân tích | Storybook | Facebook Ads | Docker | REST API | ETL
+Kinh nghiệm
+0.3 năm kinh nghiệm trong nhóm nghề Digital Marketing.
+Học vấn
+Cao đẳng Công nghệ"
+cand-gen-0046,Frontend Development,Git|HTML|CSS|Google Analytics|Active Directory|Prototyping|Adobe XD|Viết test case|Python,0.5,3,Hà Nội,Toàn thời gian|Bán thời gian,5.0,8.5,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực Frontend Development.
+Kỹ năng
+Git | HTML | CSS | Google Analytics | Active Directory | Prototyping | Adobe XD | Viết test case | Python
+Kinh nghiệm
+0.5 năm kinh nghiệm trong nhóm nghề Frontend Development.
+Học vấn
+Đại học Kinh tế"
+cand-gen-0047,IT Support,Giao tiếp|Xử lý sự cố|Mạng cơ bản|Kỹ thuật máy tính|Excel|Apache Spark|Postman,1,3,Hồ Chí Minh|Hà Nội,Thực tập|Bán thời gian,6,10,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực IT Support.
+Kỹ năng
+Giao tiếp | Xử lý sự cố | Mạng cơ bản | Kỹ thuật máy tính | Excel | Apache Spark | Postman
+Kinh nghiệm
+1 năm kinh nghiệm trong nhóm nghề IT Support.
+Học vấn
+Đại học Kinh tế"
+cand-gen-0048,QA & Testing,Kiểm thử phần mềm|Excel|Viết test case|Tư duy phân tích|Kafka|SEO cơ bản|MongoDB|Giao tiếp|PostgreSQL|Tailwind CSS|Bảo mật ứng dụng,1,3,Đà Nẵng,Toàn thời gian|Thực tập,6,10,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực QA & Testing.
+Kỹ năng
+Kiểm thử phần mềm | Excel | Viết test case | Tư duy phân tích | Kafka | SEO cơ bản | MongoDB | Giao tiếp | PostgreSQL | Tailwind CSS | Bảo mật ứng dụng
+Kinh nghiệm
+1 năm kinh nghiệm trong nhóm nghề QA & Testing.
+Học vấn
+Cao đẳng Công nghệ"
+cand-gen-0049,Software Engineering,OOP|REST API|SQL|Zustand|Pandas|HTML/CSS cơ bản|Figma|Kafka,0.5,3,Hà Nội|Hồ Chí Minh,Toàn thời gian|Thực tập,5.0,8.5,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực Software Engineering.
+Kỹ năng
+OOP | REST API | SQL | Zustand | Pandas | HTML/CSS cơ bản | Figma | Kafka
+Kinh nghiệm
+0.5 năm kinh nghiệm trong nhóm nghề Software Engineering.
+Học vấn
+Đại học Kinh tế"
+cand-gen-0050,UI/UX Design,Tư duy sáng tạo|Nguyên lý UX|Figma|Thiết kế UI|Giao tiếp|Facebook Ads|Linux|Tailwind CSS|Mạng cơ bản,2,3,Hà Nội,Bán thời gian,8,13,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực UI/UX Design.
+Kỹ năng
+Tư duy sáng tạo | Nguyên lý UX | Figma | Thiết kế UI | Giao tiếp | Facebook Ads | Linux | Tailwind CSS | Mạng cơ bản
+Kinh nghiệm
+2 năm kinh nghiệm trong nhóm nghề UI/UX Design.
+Học vấn
+Cao đẳng Công nghệ"
+cand-gen-0051,Backend Development,SQL|Node.js|JavaScript|Kiểm thử phần mềm|Viết tài liệu|Playwright|Phân tích nghiệp vụ|Bảo mật ứng dụng|ITIL cơ bản|Tableau,0,3,Đà Nẵng|Remote,Toàn thời gian,4,7,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực Backend Development.
+Kỹ năng
+SQL | Node.js | JavaScript | Kiểm thử phần mềm | Viết tài liệu | Playwright | Phân tích nghiệp vụ | Bảo mật ứng dụng | ITIL cơ bản | Tableau
+Kinh nghiệm
+0 năm kinh nghiệm trong nhóm nghề Backend Development.
+Học vấn
+Cao đẳng Công nghệ"
+cand-gen-0052,Business Analysis,Excel|Phân tích nghiệp vụ|Giao tiếp|Tailwind CSS|CI/CD|Apache Spark|Jest|TypeScript nâng cao|Cloud (AWS/GCP),3,3,Remote|Đà Nẵng,Remote,10,16,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực Business Analysis.
+Kỹ năng
+Excel | Phân tích nghiệp vụ | Giao tiếp | Tailwind CSS | CI/CD | Apache Spark | Jest | TypeScript nâng cao | Cloud (AWS/GCP)
+Kinh nghiệm
+3 năm kinh nghiệm trong nhóm nghề Business Analysis.
+Học vấn
+Đại học Bách khoa"
+cand-gen-0053,Business Operations,Phân tích nghiệp vụ|Giao tiếp|SQL|Viết tài liệu|UML|Playwright|CI/CD|PostgreSQL,5,4,Đà Nẵng|Hà Nội,Thực tập|Toàn thời gian,14,22,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực Business Operations.
+Kỹ năng
+Phân tích nghiệp vụ | Giao tiếp | SQL | Viết tài liệu | UML | Playwright | CI/CD | PostgreSQL
+Kinh nghiệm
+5 năm kinh nghiệm trong nhóm nghề Business Operations.
+Học vấn
+Đại học Bách khoa"
+cand-gen-0054,Data Science & Analytics,SQL|Excel|Python|Viết nội dung|Facebook Ads|Machine Learning cơ bản|User Research,1,3,Đà Nẵng,Toàn thời gian,6,10,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực Data Science & Analytics.
+Kỹ năng
+SQL | Excel | Python | Viết nội dung | Facebook Ads | Machine Learning cơ bản | User Research
+Kinh nghiệm
+1 năm kinh nghiệm trong nhóm nghề Data Science & Analytics.
+Học vấn
+Đại học Kinh tế"
+cand-gen-0055,Digital Marketing,Mạng xã hội|Viết nội dung|Tư duy sáng tạo|Excel|Giao tiếp,2,3,Đà Nẵng,Bán thời gian,8,13,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực Digital Marketing.
+Kỹ năng
+Mạng xã hội | Viết nội dung | Tư duy sáng tạo | Excel | Giao tiếp
+Kinh nghiệm
+2 năm kinh nghiệm trong nhóm nghề Digital Marketing.
+Học vấn
+Đại học Kinh tế"
+cand-gen-0056,Frontend Development,TypeScript|HTML|React|OOP|Thống kê cơ bản|Viết tài liệu|Agile/Scrum|Quản lý dự án|Thiết kế UI|Giao tiếp|React Query|TypeScript nâng cao,1.5,3,Hà Nội,Remote|Bán thời gian,7.0,11.5,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực Frontend Development.
+Kỹ năng
+TypeScript | HTML | React | OOP | Thống kê cơ bản | Viết tài liệu | Agile/Scrum | Quản lý dự án | Thiết kế UI | Giao tiếp | React Query | TypeScript nâng cao
+Kinh nghiệm
+1.5 năm kinh nghiệm trong nhóm nghề Frontend Development.
+Học vấn
+Đại học Bách khoa"
+cand-gen-0057,IT Support,Kỹ thuật máy tính|Mạng cơ bản|Xử lý sự cố|Adobe XD|Canva|Linux cơ bản|Viết nội dung,5,3,Đà Nẵng,Remote|Toàn thời gian,14,22,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực IT Support.
+Kỹ năng
+Kỹ thuật máy tính | Mạng cơ bản | Xử lý sự cố | Adobe XD | Canva | Linux cơ bản | Viết nội dung
+Kinh nghiệm
+5 năm kinh nghiệm trong nhóm nghề IT Support.
+Học vấn
+Đại học Bách khoa"
+cand-gen-0058,QA & Testing,Excel|Tư duy phân tích|Viết test case|Git|BPMN|Mạng xã hội|REST API|Xử lý sự cố|Kafka|Phân tích dữ liệu|Design System,4,1,Hà Nội,Toàn thời gian|Thực tập,12,19,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực QA & Testing.
+Kỹ năng
+Excel | Tư duy phân tích | Viết test case | Git | BPMN | Mạng xã hội | REST API | Xử lý sự cố | Kafka | Phân tích dữ liệu | Design System
+Kinh nghiệm
+4 năm kinh nghiệm trong nhóm nghề QA & Testing.
+Học vấn
+Đại học Kinh tế"
+cand-gen-0059,Software Engineering,JavaScript|REST API|SQL|Git|OOP|Mạng xã hội|Phân tích nghiệp vụ|CSS|Windows Server,5,2,Remote|Hà Nội,Thực tập,14,22,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực Software Engineering.
+Kỹ năng
+JavaScript | REST API | SQL | Git | OOP | Mạng xã hội | Phân tích nghiệp vụ | CSS | Windows Server
+Kinh nghiệm
+5 năm kinh nghiệm trong nhóm nghề Software Engineering.
+Học vấn
+Đại học Kinh tế"
+cand-gen-0060,UI/UX Design,Tư duy sáng tạo|Figma|Thiết kế UI|Nguyên lý UX|Git,1.5,3,Đà Nẵng,Toàn thời gian|Remote,7.0,11.5,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực UI/UX Design.
+Kỹ năng
+Tư duy sáng tạo | Figma | Thiết kế UI | Nguyên lý UX | Git
+Kinh nghiệm
+1.5 năm kinh nghiệm trong nhóm nghề UI/UX Design.
+Học vấn
+Đại học Quốc gia"
+cand-gen-0061,Backend Development,Node.js|JavaScript|REST API|Selenium|OOP|ETL|Phân tích nghiệp vụ|Mạng cơ bản|Nghiệp vụ ngân hàng|Airflow|AWS cơ bản,0.5,2,Hà Nội|Đà Nẵng,Thực tập,5.0,8.5,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực Backend Development.
+Kỹ năng
+Node.js | JavaScript | REST API | Selenium | OOP | ETL | Phân tích nghiệp vụ | Mạng cơ bản | Nghiệp vụ ngân hàng | Airflow | AWS cơ bản
+Kinh nghiệm
+0.5 năm kinh nghiệm trong nhóm nghề Backend Development.
+Học vấn
+Cao đẳng Công nghệ"
+cand-gen-0062,Business Analysis,Giao tiếp|Tư duy logic|Phân tích nghiệp vụ|Viết tài liệu|Excel|Canva|MongoDB|Thiết kế API|Tư duy phân tích|Nghiệp vụ ngân hàng|AWS cơ bản,1,3,Hà Nội|Remote,Thực tập,6,10,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực Business Analysis.
+Kỹ năng
+Giao tiếp | Tư duy logic | Phân tích nghiệp vụ | Viết tài liệu | Excel | Canva | MongoDB | Thiết kế API | Tư duy phân tích | Nghiệp vụ ngân hàng | AWS cơ bản
+Kinh nghiệm
+1 năm kinh nghiệm trong nhóm nghề Business Analysis.
+Học vấn
+Đại học Quốc gia"
+cand-gen-0063,Business Operations,Phân tích nghiệp vụ|Excel|Viết tài liệu|Giao tiếp|SQL|Confluence|Postman,5,3,Đà Nẵng|Hà Nội,Toàn thời gian|Bán thời gian,14,22,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực Business Operations.
+Kỹ năng
+Phân tích nghiệp vụ | Excel | Viết tài liệu | Giao tiếp | SQL | Confluence | Postman
+Kinh nghiệm
+5 năm kinh nghiệm trong nhóm nghề Business Operations.
+Học vấn
+Đại học Bách khoa"
+cand-gen-0064,Data Science & Analytics,Git|Thống kê cơ bản|ETL|Excel|SQL|Python,2,2,Remote|Đà Nẵng,Toàn thời gian|Bán thời gian,8,13,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực Data Science & Analytics.
+Kỹ năng
+Git | Thống kê cơ bản | ETL | Excel | SQL | Python
+Kinh nghiệm
+2 năm kinh nghiệm trong nhóm nghề Data Science & Analytics.
+Học vấn
+Đại học Bách khoa"
+cand-gen-0065,Digital Marketing,Giao tiếp|Viết nội dung|Mạng xã hội|Tư duy sáng tạo|Excel|Pandas|Git|Airflow,5,3,Hồ Chí Minh|Remote,Bán thời gian|Toàn thời gian,14,22,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực Digital Marketing.
+Kỹ năng
+Giao tiếp | Viết nội dung | Mạng xã hội | Tư duy sáng tạo | Excel | Pandas | Git | Airflow
+Kinh nghiệm
+5 năm kinh nghiệm trong nhóm nghề Digital Marketing.
+Học vấn
+Đại học Bách khoa"
+cand-gen-0066,Frontend Development,Git|CSS|HTML|TypeScript|SQL|Viết nội dung|Viết tài liệu|Responsive Design|Windows Server|Mạng xã hội|Mạng cơ bản|Cloud (AWS/GCP),4,1,Đà Nẵng,Toàn thời gian|Bán thời gian,12,19,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực Frontend Development.
+Kỹ năng
+Git | CSS | HTML | TypeScript | SQL | Viết nội dung | Viết tài liệu | Responsive Design | Windows Server | Mạng xã hội | Mạng cơ bản | Cloud (AWS/GCP)
+Kinh nghiệm
+4 năm kinh nghiệm trong nhóm nghề Frontend Development.
+Học vấn
+Đại học Bách khoa"
+cand-gen-0067,IT Support,Kỹ thuật máy tính|Mạng cơ bản|Windows Server|Apache Spark|Viết tài liệu|Thiết kế API,3,3,Hà Nội|Hồ Chí Minh,Thực tập,10,16,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực IT Support.
+Kỹ năng
+Kỹ thuật máy tính | Mạng cơ bản | Windows Server | Apache Spark | Viết tài liệu | Thiết kế API
+Kinh nghiệm
+3 năm kinh nghiệm trong nhóm nghề IT Support.
+Học vấn
+Cao đẳng Công nghệ"
+cand-gen-0068,QA & Testing,Tư duy phân tích|Kiểm thử phần mềm|Git|Jira|JavaScript|React|TypeScript nâng cao,5,3,Đà Nẵng,Remote|Bán thời gian,14,22,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực QA & Testing.
+Kỹ năng
+Tư duy phân tích | Kiểm thử phần mềm | Git | Jira | JavaScript | React | TypeScript nâng cao
+Kinh nghiệm
+5 năm kinh nghiệm trong nhóm nghề QA & Testing.
+Học vấn
+Đại học Kinh tế"
+cand-gen-0069,Software Engineering,Git|JavaScript|OOP|Linux cơ bản|Kafka|Design System|Nghiệp vụ ngân hàng|Adobe XD|Confluence|Office 365|MongoDB,3,2,Hà Nội|Hồ Chí Minh,Thực tập|Toàn thời gian,10,16,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực Software Engineering.
+Kỹ năng
+Git | JavaScript | OOP | Linux cơ bản | Kafka | Design System | Nghiệp vụ ngân hàng | Adobe XD | Confluence | Office 365 | MongoDB
+Kinh nghiệm
+3 năm kinh nghiệm trong nhóm nghề Software Engineering.
+Học vấn
+Đại học Bách khoa"
+cand-gen-0070,UI/UX Design,Thiết kế UI|Giao tiếp|Figma|OOP|Tableau|Git|JavaScript|Cloud (AWS/GCP),0.5,1,Hà Nội,Bán thời gian|Thực tập,5.0,8.5,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực UI/UX Design.
+Kỹ năng
+Thiết kế UI | Giao tiếp | Figma | OOP | Tableau | Git | JavaScript | Cloud (AWS/GCP)
+Kinh nghiệm
+0.5 năm kinh nghiệm trong nhóm nghề UI/UX Design.
+Học vấn
+Cao đẳng Công nghệ"
+cand-gen-0071,Backend Development,REST API|Node.js|JavaScript|SQL|SEO cơ bản|Machine Learning cơ bản|Selenium|Jest,5,2,Hồ Chí Minh,Remote|Bán thời gian,14,22,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực Backend Development.
+Kỹ năng
+REST API | Node.js | JavaScript | SQL | SEO cơ bản | Machine Learning cơ bản | Selenium | Jest
+Kinh nghiệm
+5 năm kinh nghiệm trong nhóm nghề Backend Development.
+Học vấn
+Đại học Kinh tế"
+cand-gen-0072,Business Analysis,Excel|Viết tài liệu|Tư duy logic|Phân tích nghiệp vụ|Giao tiếp,4,3,Hà Nội|Đà Nẵng,Thực tập,12,19,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực Business Analysis.
+Kỹ năng
+Excel | Viết tài liệu | Tư duy logic | Phân tích nghiệp vụ | Giao tiếp
+Kinh nghiệm
+4 năm kinh nghiệm trong nhóm nghề Business Analysis.
+Học vấn
+Đại học Bách khoa"
+cand-gen-0073,Business Operations,Viết tài liệu|Phân tích nghiệp vụ|SQL|Excel|BPMN|REST API|Power BI|Prototyping|Thống kê cơ bản|Playwright,1,3,Đà Nẵng,Toàn thời gian,6,10,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực Business Operations.
+Kỹ năng
+Viết tài liệu | Phân tích nghiệp vụ | SQL | Excel | BPMN | REST API | Power BI | Prototyping | Thống kê cơ bản | Playwright
+Kinh nghiệm
+1 năm kinh nghiệm trong nhóm nghề Business Operations.
+Học vấn
+Đại học Kinh tế"
+cand-gen-0074,Data Science & Analytics,Python|SQL|Excel|Thống kê cơ bản|Tailwind CSS|SEO cơ bản|Git,0.3,0,Hồ Chí Minh,Toàn thời gian|Bán thời gian,4.6,7.9,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực Data Science & Analytics.
+Kỹ năng
+Python | SQL | Excel | Thống kê cơ bản | Tailwind CSS | SEO cơ bản | Git
+Kinh nghiệm
+0.3 năm kinh nghiệm trong nhóm nghề Data Science & Analytics.
+Học vấn
+Đại học Quốc gia"
+cand-gen-0075,Digital Marketing,Excel|Giao tiếp|Viết nội dung|Tư duy sáng tạo|Zustand|Tư duy phân tích|Facebook Ads|TypeScript|Kiểm thử phần mềm|Design System|Mạng cơ bản|React,0,3,Remote,Toàn thời gian,4,7,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực Digital Marketing.
+Kỹ năng
+Excel | Giao tiếp | Viết nội dung | Tư duy sáng tạo | Zustand | Tư duy phân tích | Facebook Ads | TypeScript | Kiểm thử phần mềm | Design System | Mạng cơ bản | React
+Kinh nghiệm
+0 năm kinh nghiệm trong nhóm nghề Digital Marketing.
+Học vấn
+Đại học Kinh tế"
+cand-gen-0076,Frontend Development,React|REST API|HTML|Office 365|Jira|Git|Node.js|Storybook|Nguyên lý UX|HTML/CSS cơ bản|Agile/Scrum,2,2,Đà Nẵng,Remote,8,13,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực Frontend Development.
+Kỹ năng
+React | REST API | HTML | Office 365 | Jira | Git | Node.js | Storybook | Nguyên lý UX | HTML/CSS cơ bản | Agile/Scrum
+Kinh nghiệm
+2 năm kinh nghiệm trong nhóm nghề Frontend Development.
+Học vấn
+Cao đẳng Công nghệ"
+cand-gen-0077,IT Support,Kỹ thuật máy tính|Mạng cơ bản|Giao tiếp|Xử lý sự cố|Windows Server,2,4,Remote|Đà Nẵng,Thực tập|Toàn thời gian,8,13,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực IT Support.
+Kỹ năng
+Kỹ thuật máy tính | Mạng cơ bản | Giao tiếp | Xử lý sự cố | Windows Server
+Kinh nghiệm
+2 năm kinh nghiệm trong nhóm nghề IT Support.
+Học vấn
+Đại học Quốc gia"
+cand-gen-0078,QA & Testing,Tư duy phân tích|Kiểm thử phần mềm|Viết test case|Git|Excel|Power BI|OOP|Figma|Thống kê cơ bản|Viết tài liệu|Phân tích nghiệp vụ|Tư duy logic,1.5,3,Remote|Hà Nội,Bán thời gian|Thực tập,7.0,11.5,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực QA & Testing.
+Kỹ năng
+Tư duy phân tích | Kiểm thử phần mềm | Viết test case | Git | Excel | Power BI | OOP | Figma | Thống kê cơ bản | Viết tài liệu | Phân tích nghiệp vụ | Tư duy logic
+Kinh nghiệm
+1.5 năm kinh nghiệm trong nhóm nghề QA & Testing.
+Học vấn
+Đại học Kinh tế"
+cand-gen-0079,Software Engineering,Git|OOP|SQL|REST API|JavaScript|Phân tích dữ liệu|Storybook|React|Phân tích nghiệp vụ|SEO cơ bản|Machine Learning cơ bản|Active Directory,0.3,3,Đà Nẵng,Toàn thời gian,4.6,7.9,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực Software Engineering.
+Kỹ năng
+Git | OOP | SQL | REST API | JavaScript | Phân tích dữ liệu | Storybook | React | Phân tích nghiệp vụ | SEO cơ bản | Machine Learning cơ bản | Active Directory
+Kinh nghiệm
+0.3 năm kinh nghiệm trong nhóm nghề Software Engineering.
+Học vấn
+Đại học Quốc gia"
+cand-gen-0080,UI/UX Design,Nguyên lý UX|Thiết kế UI|Giao tiếp|Viết nội dung|User Research|Docker|Responsive Design|Phân tích nghiệp vụ|Viết test case|React Query|Agile/Scrum,0.5,3,Đà Nẵng,Bán thời gian|Toàn thời gian,5.0,8.5,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực UI/UX Design.
+Kỹ năng
+Nguyên lý UX | Thiết kế UI | Giao tiếp | Viết nội dung | User Research | Docker | Responsive Design | Phân tích nghiệp vụ | Viết test case | React Query | Agile/Scrum
+Kinh nghiệm
+0.5 năm kinh nghiệm trong nhóm nghề UI/UX Design.
+Học vấn
+Đại học Bách khoa"
+cand-gen-0081,Backend Development,Git|Node.js|JavaScript|SQL|REST API|Matplotlib|Thống kê cơ bản|HTML,0.3,2,Remote,Remote,4.6,7.9,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực Backend Development.
+Kỹ năng
+Git | Node.js | JavaScript | SQL | REST API | Matplotlib | Thống kê cơ bản | HTML
+Kinh nghiệm
+0.3 năm kinh nghiệm trong nhóm nghề Backend Development.
+Học vấn
+Đại học Bách khoa"
+cand-gen-0082,Business Analysis,Viết tài liệu|Tư duy logic|Excel|Facebook Ads|Pandas|Thiết kế UI|ITIL cơ bản,0.3,4,Hồ Chí Minh,Toàn thời gian|Bán thời gian,4.6,7.9,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực Business Analysis.
+Kỹ năng
+Viết tài liệu | Tư duy logic | Excel | Facebook Ads | Pandas | Thiết kế UI | ITIL cơ bản
+Kinh nghiệm
+0.3 năm kinh nghiệm trong nhóm nghề Business Analysis.
+Học vấn
+Đại học Kinh tế"
+cand-gen-0083,Business Operations,Phân tích nghiệp vụ|Giao tiếp|Viết tài liệu|TypeScript nâng cao|Python|Xử lý sự cố|Viết nội dung|Active Directory|Canva|Mạng cơ bản|Viết test case|Responsive Design,4,3,Hồ Chí Minh,Bán thời gian,12,19,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực Business Operations.
+Kỹ năng
+Phân tích nghiệp vụ | Giao tiếp | Viết tài liệu | TypeScript nâng cao | Python | Xử lý sự cố | Viết nội dung | Active Directory | Canva | Mạng cơ bản | Viết test case | Responsive Design
+Kinh nghiệm
+4 năm kinh nghiệm trong nhóm nghề Business Operations.
+Học vấn
+Cao đẳng Công nghệ"
+cand-gen-0084,Data Science & Analytics,Excel|Python|ETL|Linux cơ bản|OOP|Tư duy phân tích|Kỹ thuật máy tính|Kafka,1.5,2,Đà Nẵng|Hà Nội,Toàn thời gian|Thực tập,7.0,11.5,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực Data Science & Analytics.
+Kỹ năng
+Excel | Python | ETL | Linux cơ bản | OOP | Tư duy phân tích | Kỹ thuật máy tính | Kafka
+Kinh nghiệm
+1.5 năm kinh nghiệm trong nhóm nghề Data Science & Analytics.
+Học vấn
+Đại học Quốc gia"
+cand-gen-0085,Digital Marketing,Giao tiếp|Viết nội dung|Excel|Tư duy sáng tạo|Mạng xã hội|Jest|Windows Server|React|SEO cơ bản,4,3,Đà Nẵng|Remote,Remote|Toàn thời gian,12,19,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực Digital Marketing.
+Kỹ năng
+Giao tiếp | Viết nội dung | Excel | Tư duy sáng tạo | Mạng xã hội | Jest | Windows Server | React | SEO cơ bản
+Kinh nghiệm
+4 năm kinh nghiệm trong nhóm nghề Digital Marketing.
+Học vấn
+Cao đẳng Công nghệ"
+cand-gen-0086,Frontend Development,CSS|React|TypeScript|SEO cơ bản|Excel|Nghiệp vụ ngân hàng|CI/CD|MongoDB|Viết nội dung|Nguyên lý UX|Playwright|BPMN,2,3,Đà Nẵng,Remote,8,13,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực Frontend Development.
+Kỹ năng
+CSS | React | TypeScript | SEO cơ bản | Excel | Nghiệp vụ ngân hàng | CI/CD | MongoDB | Viết nội dung | Nguyên lý UX | Playwright | BPMN
+Kinh nghiệm
+2 năm kinh nghiệm trong nhóm nghề Frontend Development.
+Học vấn
+Đại học Bách khoa"
+cand-gen-0087,IT Support,Kỹ thuật máy tính|Giao tiếp|Windows Server|Mạng cơ bản|Jira|ETL|Node.js|Viết nội dung|Nguyên lý UX|Figma|Viết tài liệu,4,4,Remote,Remote|Toàn thời gian,12,19,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực IT Support.
+Kỹ năng
+Kỹ thuật máy tính | Giao tiếp | Windows Server | Mạng cơ bản | Jira | ETL | Node.js | Viết nội dung | Nguyên lý UX | Figma | Viết tài liệu
+Kinh nghiệm
+4 năm kinh nghiệm trong nhóm nghề IT Support.
+Học vấn
+Đại học Bách khoa"
+cand-gen-0088,QA & Testing,Viết test case|Tư duy phân tích|Kiểm thử phần mềm|Excel|Thiết kế UI|Zustand|Tableau|Machine Learning cơ bản|Tư duy sáng tạo,0,3,Hồ Chí Minh,Thực tập|Bán thời gian,4,7,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực QA & Testing.
+Kỹ năng
+Viết test case | Tư duy phân tích | Kiểm thử phần mềm | Excel | Thiết kế UI | Zustand | Tableau | Machine Learning cơ bản | Tư duy sáng tạo
+Kinh nghiệm
+0 năm kinh nghiệm trong nhóm nghề QA & Testing.
+Học vấn
+Đại học Kinh tế"
+cand-gen-0089,Software Engineering,Git|OOP|JavaScript|SQL|Virtualization|Linux cơ bản|Canva|Cloud (AWS/GCP)|BPMN|Power BI|Playwright|Office 365,5,4,Hồ Chí Minh,Toàn thời gian|Remote,14,22,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực Software Engineering.
+Kỹ năng
+Git | OOP | JavaScript | SQL | Virtualization | Linux cơ bản | Canva | Cloud (AWS/GCP) | BPMN | Power BI | Playwright | Office 365
+Kinh nghiệm
+5 năm kinh nghiệm trong nhóm nghề Software Engineering.
+Học vấn
+Đại học Bách khoa"
+cand-gen-0090,UI/UX Design,Giao tiếp|Tư duy sáng tạo|Figma|Thiết kế UI|Nguyên lý UX|Excel|Python|Mạng xã hội|Zustand|Pandas,5,3,Remote|Đà Nẵng,Remote|Toàn thời gian,14,22,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực UI/UX Design.
+Kỹ năng
+Giao tiếp | Tư duy sáng tạo | Figma | Thiết kế UI | Nguyên lý UX | Excel | Python | Mạng xã hội | Zustand | Pandas
+Kinh nghiệm
+5 năm kinh nghiệm trong nhóm nghề UI/UX Design.
+Học vấn
+Đại học Kinh tế"
+cand-gen-0091,Backend Development,Git|SQL|REST API|Node.js|JavaScript|Xử lý sự cố|Windows Server|Jira|Adobe XD,4,2,Remote|Hà Nội,Toàn thời gian,12,19,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực Backend Development.
+Kỹ năng
+Git | SQL | REST API | Node.js | JavaScript | Xử lý sự cố | Windows Server | Jira | Adobe XD
+Kinh nghiệm
+4 năm kinh nghiệm trong nhóm nghề Backend Development.
+Học vấn
+Đại học Bách khoa"
+cand-gen-0092,Business Analysis,Giao tiếp|Excel|Viết tài liệu|Phân tích nghiệp vụ|Tư duy logic|Adobe XD|Docker|TypeScript nâng cao|ITIL cơ bản|Viết nội dung|Node.js|Tailwind CSS,5,3,Remote,Thực tập|Remote,14,22,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực Business Analysis.
+Kỹ năng
+Giao tiếp | Excel | Viết tài liệu | Phân tích nghiệp vụ | Tư duy logic | Adobe XD | Docker | TypeScript nâng cao | ITIL cơ bản | Viết nội dung | Node.js | Tailwind CSS
+Kinh nghiệm
+5 năm kinh nghiệm trong nhóm nghề Business Analysis.
+Học vấn
+Đại học Kinh tế"
+cand-gen-0093,Business Operations,UML|Giao tiếp|SQL|Viết tài liệu|Excel|Thiết kế UI|Nguyên lý UX|Thiết kế API,2,3,Đà Nẵng|Hồ Chí Minh,Remote,8,13,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực Business Operations.
+Kỹ năng
+UML | Giao tiếp | SQL | Viết tài liệu | Excel | Thiết kế UI | Nguyên lý UX | Thiết kế API
+Kinh nghiệm
+2 năm kinh nghiệm trong nhóm nghề Business Operations.
+Học vấn
+Cao đẳng Công nghệ"
+cand-gen-0094,Data Science & Analytics,Excel|ETL|SQL|React Query|ITIL cơ bản|Tailwind CSS|Figma|Email Marketing|Tư duy sáng tạo|Jest,5,3,Hà Nội,Bán thời gian,14,22,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực Data Science & Analytics.
+Kỹ năng
+Excel | ETL | SQL | React Query | ITIL cơ bản | Tailwind CSS | Figma | Email Marketing | Tư duy sáng tạo | Jest
+Kinh nghiệm
+5 năm kinh nghiệm trong nhóm nghề Data Science & Analytics.
+Học vấn
+Đại học Bách khoa"
+cand-gen-0095,Digital Marketing,Viết nội dung|Excel|Mạng xã hội|Apache Spark|Cloud (AWS/GCP)|Tư duy sáng tạo|UML|Docker|Python|Storybook|Tableau|HTML/CSS cơ bản,1.5,3,Hà Nội|Remote,Toàn thời gian,7.0,11.5,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực Digital Marketing.
+Kỹ năng
+Viết nội dung | Excel | Mạng xã hội | Apache Spark | Cloud (AWS/GCP) | Tư duy sáng tạo | UML | Docker | Python | Storybook | Tableau | HTML/CSS cơ bản
+Kinh nghiệm
+1.5 năm kinh nghiệm trong nhóm nghề Digital Marketing.
+Học vấn
+Đại học Quốc gia"
+cand-gen-0096,Frontend Development,REST API|React|CSS|JavaScript|HTML|TypeScript|Viết tài liệu|BPMN|Node.js,1.5,3,Remote|Hà Nội,Thực tập|Toàn thời gian,7.0,11.5,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực Frontend Development.
+Kỹ năng
+REST API | React | CSS | JavaScript | HTML | TypeScript | Viết tài liệu | BPMN | Node.js
+Kinh nghiệm
+1.5 năm kinh nghiệm trong nhóm nghề Frontend Development.
+Học vấn
+Đại học Bách khoa"
+cand-gen-0097,IT Support,Windows Server|Kỹ thuật máy tính|Mạng cơ bản|Giao tiếp|Xử lý sự cố|Facebook Ads|Quản lý dự án|React Query,5,3,Hà Nội,Bán thời gian,14,22,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực IT Support.
+Kỹ năng
+Windows Server | Kỹ thuật máy tính | Mạng cơ bản | Giao tiếp | Xử lý sự cố | Facebook Ads | Quản lý dự án | React Query
+Kinh nghiệm
+5 năm kinh nghiệm trong nhóm nghề IT Support.
+Học vấn
+Cao đẳng Công nghệ"
+cand-gen-0098,QA & Testing,Excel|Viết test case|Git|Tư duy phân tích|Kiểm thử phần mềm|Xử lý sự cố|Windows Server|Playwright|Linux,2,3,Hà Nội,Thực tập|Toàn thời gian,8,13,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực QA & Testing.
+Kỹ năng
+Excel | Viết test case | Git | Tư duy phân tích | Kiểm thử phần mềm | Xử lý sự cố | Windows Server | Playwright | Linux
+Kinh nghiệm
+2 năm kinh nghiệm trong nhóm nghề QA & Testing.
+Học vấn
+Cao đẳng Công nghệ"
+cand-gen-0099,Software Engineering,Git|SQL|JavaScript|OOP|REST API|Tableau|PostgreSQL,3,3,Hồ Chí Minh,Toàn thời gian,10,16,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực Software Engineering.
+Kỹ năng
+Git | SQL | JavaScript | OOP | REST API | Tableau | PostgreSQL
+Kinh nghiệm
+3 năm kinh nghiệm trong nhóm nghề Software Engineering.
+Học vấn
+Cao đẳng Công nghệ"
+cand-gen-0100,UI/UX Design,Figma|Nguyên lý UX|Thiết kế UI|Email Marketing|Nghiệp vụ ngân hàng|TypeScript|React Query,0.3,3,Remote|Hà Nội,Toàn thời gian|Bán thời gian,4.6,7.9,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực UI/UX Design.
+Kỹ năng
+Figma | Nguyên lý UX | Thiết kế UI | Email Marketing | Nghiệp vụ ngân hàng | TypeScript | React Query
+Kinh nghiệm
+0.3 năm kinh nghiệm trong nhóm nghề UI/UX Design.
+Học vấn
+Đại học Quốc gia"
+cand-gen-0101,Backend Development,Git|REST API|SQL|TypeScript|Power BI|Kafka|Node.js|HTML|Agile/Scrum,0,3,Hà Nội|Đà Nẵng,Toàn thời gian,4,7,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực Backend Development.
+Kỹ năng
+Git | REST API | SQL | TypeScript | Power BI | Kafka | Node.js | HTML | Agile/Scrum
+Kinh nghiệm
+0 năm kinh nghiệm trong nhóm nghề Backend Development.
+Học vấn
+Cao đẳng Công nghệ"
+cand-gen-0102,Business Analysis,Excel|Giao tiếp|Viết tài liệu|Tư duy logic|PostgreSQL|Zustand|Airflow|Tư duy sáng tạo|Design System|Office 365|Canva|Figma,5,3,Hồ Chí Minh,Toàn thời gian,14,22,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực Business Analysis.
+Kỹ năng
+Excel | Giao tiếp | Viết tài liệu | Tư duy logic | PostgreSQL | Zustand | Airflow | Tư duy sáng tạo | Design System | Office 365 | Canva | Figma
+Kinh nghiệm
+5 năm kinh nghiệm trong nhóm nghề Business Analysis.
+Học vấn
+Đại học Kinh tế"
+cand-gen-0103,Business Operations,UML|Viết tài liệu|SQL|Phân tích nghiệp vụ|Excel|Giao tiếp|Matplotlib,1,4,Hà Nội|Remote,Toàn thời gian|Remote,6,10,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực Business Operations.
+Kỹ năng
+UML | Viết tài liệu | SQL | Phân tích nghiệp vụ | Excel | Giao tiếp | Matplotlib
+Kinh nghiệm
+1 năm kinh nghiệm trong nhóm nghề Business Operations.
+Học vấn
+Đại học Quốc gia"
+cand-gen-0104,Data Science & Analytics,Thống kê cơ bản|Git|SQL|Tableau|Postman|React Query|Google Analytics|UML,1,3,Hồ Chí Minh,Bán thời gian|Thực tập,6,10,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực Data Science & Analytics.
+Kỹ năng
+Thống kê cơ bản | Git | SQL | Tableau | Postman | React Query | Google Analytics | UML
+Kinh nghiệm
+1 năm kinh nghiệm trong nhóm nghề Data Science & Analytics.
+Học vấn
+Đại học Kinh tế"
+cand-gen-0105,Digital Marketing,Giao tiếp|Mạng xã hội|Excel|Tư duy sáng tạo|Active Directory|Virtualization|Xử lý sự cố|Git|React,5,3,Remote,Remote|Bán thời gian,14,22,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực Digital Marketing.
+Kỹ năng
+Giao tiếp | Mạng xã hội | Excel | Tư duy sáng tạo | Active Directory | Virtualization | Xử lý sự cố | Git | React
+Kinh nghiệm
+5 năm kinh nghiệm trong nhóm nghề Digital Marketing.
+Học vấn
+Đại học Quốc gia"
+cand-gen-0106,Frontend Development,CSS|REST API|JavaScript|TypeScript|React|HTML|Python|Viết test case|UML|Cloud (AWS/GCP)|PostgreSQL,1,3,Hà Nội,Thực tập|Toàn thời gian,6,10,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực Frontend Development.
+Kỹ năng
+CSS | REST API | JavaScript | TypeScript | React | HTML | Python | Viết test case | UML | Cloud (AWS/GCP) | PostgreSQL
+Kinh nghiệm
+1 năm kinh nghiệm trong nhóm nghề Frontend Development.
+Học vấn
+Đại học Quốc gia"
+cand-gen-0107,IT Support,Kỹ thuật máy tính|Windows Server|Mạng cơ bản|Storybook|Git|Node.js|MongoDB|Giao tiếp,1,4,Hà Nội|Đà Nẵng,Bán thời gian|Thực tập,6,10,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực IT Support.
+Kỹ năng
+Kỹ thuật máy tính | Windows Server | Mạng cơ bản | Storybook | Git | Node.js | MongoDB | Giao tiếp
+Kinh nghiệm
+1 năm kinh nghiệm trong nhóm nghề IT Support.
+Học vấn
+Đại học Quốc gia"
+cand-gen-0108,QA & Testing,Tư duy phân tích|Excel|Viết test case|Git|Kiểm thử phần mềm|Phân tích dữ liệu|TypeScript nâng cao|Thống kê cơ bản|Tableau,0.3,3,Remote|Hồ Chí Minh,Thực tập,4.6,7.9,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực QA & Testing.
+Kỹ năng
+Tư duy phân tích | Excel | Viết test case | Git | Kiểm thử phần mềm | Phân tích dữ liệu | TypeScript nâng cao | Thống kê cơ bản | Tableau
+Kinh nghiệm
+0.3 năm kinh nghiệm trong nhóm nghề QA & Testing.
+Học vấn
+Đại học Kinh tế"
+cand-gen-0109,Software Engineering,SQL|JavaScript|OOP|Git|ETL|Google Analytics|Nguyên lý UX|Jest|PostgreSQL,1,3,Đà Nẵng|Hồ Chí Minh,Remote|Bán thời gian,6,10,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực Software Engineering.
+Kỹ năng
+SQL | JavaScript | OOP | Git | ETL | Google Analytics | Nguyên lý UX | Jest | PostgreSQL
+Kinh nghiệm
+1 năm kinh nghiệm trong nhóm nghề Software Engineering.
+Học vấn
+Đại học Quốc gia"
+cand-gen-0110,UI/UX Design,Nguyên lý UX|Figma|Thiết kế UI|Tư duy sáng tạo|Giao tiếp,0,3,Hồ Chí Minh|Hà Nội,Toàn thời gian,4,7,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực UI/UX Design.
+Kỹ năng
+Nguyên lý UX | Figma | Thiết kế UI | Tư duy sáng tạo | Giao tiếp
+Kinh nghiệm
+0 năm kinh nghiệm trong nhóm nghề UI/UX Design.
+Học vấn
+Đại học Quốc gia"
+cand-gen-0111,Backend Development,REST API|Node.js|Git|JavaScript|SQL,5,3,Đà Nẵng|Hà Nội,Bán thời gian|Toàn thời gian,14,22,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực Backend Development.
+Kỹ năng
+REST API | Node.js | Git | JavaScript | SQL
+Kinh nghiệm
+5 năm kinh nghiệm trong nhóm nghề Backend Development.
+Học vấn
+Đại học Bách khoa"
+cand-gen-0112,Business Analysis,Tư duy logic|Viết tài liệu|Excel|Phân tích nghiệp vụ|Giao tiếp|Selenium|Viết test case|Kỹ thuật máy tính|Jest|Mạng xã hội|Apache Spark,0,1,Remote,Toàn thời gian|Thực tập,4,7,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực Business Analysis.
+Kỹ năng
+Tư duy logic | Viết tài liệu | Excel | Phân tích nghiệp vụ | Giao tiếp | Selenium | Viết test case | Kỹ thuật máy tính | Jest | Mạng xã hội | Apache Spark
+Kinh nghiệm
+0 năm kinh nghiệm trong nhóm nghề Business Analysis.
+Học vấn
+Đại học Bách khoa"
+cand-gen-0113,Business Operations,Excel|Giao tiếp|Phân tích nghiệp vụ|UML|Viết tài liệu|SQL|Windows Server|Thiết kế API,1.5,0,Đà Nẵng,Bán thời gian,7.0,11.5,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực Business Operations.
+Kỹ năng
+Excel | Giao tiếp | Phân tích nghiệp vụ | UML | Viết tài liệu | SQL | Windows Server | Thiết kế API
+Kinh nghiệm
+1.5 năm kinh nghiệm trong nhóm nghề Business Operations.
+Học vấn
+Đại học Kinh tế"
+cand-gen-0114,Data Science & Analytics,Linux cơ bản|ETL|Thống kê cơ bản|SQL|CSS|Viết test case|HTML/CSS cơ bản|PostgreSQL|User Research,2,3,Hồ Chí Minh|Đà Nẵng,Thực tập,8,13,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực Data Science & Analytics.
+Kỹ năng
+Linux cơ bản | ETL | Thống kê cơ bản | SQL | CSS | Viết test case | HTML/CSS cơ bản | PostgreSQL | User Research
+Kinh nghiệm
+2 năm kinh nghiệm trong nhóm nghề Data Science & Analytics.
+Học vấn
+Đại học Bách khoa"
+cand-gen-0115,Digital Marketing,Tư duy sáng tạo|Excel|Mạng xã hội|Linux cơ bản|Responsive Design,4,2,Remote|Hồ Chí Minh,Remote,12,19,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực Digital Marketing.
+Kỹ năng
+Tư duy sáng tạo | Excel | Mạng xã hội | Linux cơ bản | Responsive Design
+Kinh nghiệm
+4 năm kinh nghiệm trong nhóm nghề Digital Marketing.
+Học vấn
+Đại học Bách khoa"
+cand-gen-0116,Frontend Development,JavaScript|CSS|React|Phân tích dữ liệu|MongoDB|OOP|Agile/Scrum,0.3,0,Remote,Thực tập|Toàn thời gian,4.6,7.9,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực Frontend Development.
+Kỹ năng
+JavaScript | CSS | React | Phân tích dữ liệu | MongoDB | OOP | Agile/Scrum
+Kinh nghiệm
+0.3 năm kinh nghiệm trong nhóm nghề Frontend Development.
+Học vấn
+Đại học Quốc gia"
+cand-gen-0117,IT Support,Giao tiếp|Xử lý sự cố|Kỹ thuật máy tính|Mạng cơ bản|Windows Server|UML|Bảo mật ứng dụng|OOP|Prototyping|Active Directory,1.5,3,Hồ Chí Minh,Remote,7.0,11.5,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực IT Support.
+Kỹ năng
+Giao tiếp | Xử lý sự cố | Kỹ thuật máy tính | Mạng cơ bản | Windows Server | UML | Bảo mật ứng dụng | OOP | Prototyping | Active Directory
+Kinh nghiệm
+1.5 năm kinh nghiệm trong nhóm nghề IT Support.
+Học vấn
+Đại học Quốc gia"
+cand-gen-0118,QA & Testing,Excel|Viết test case|Kiểm thử phần mềm|Tư duy phân tích|Git|REST API|Mạng cơ bản|Thiết kế API|Airflow,2,3,Remote,Remote,8,13,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực QA & Testing.
+Kỹ năng
+Excel | Viết test case | Kiểm thử phần mềm | Tư duy phân tích | Git | REST API | Mạng cơ bản | Thiết kế API | Airflow
+Kinh nghiệm
+2 năm kinh nghiệm trong nhóm nghề QA & Testing.
+Học vấn
+Đại học Bách khoa"
+cand-gen-0119,Software Engineering,Git|REST API|SQL|OOP|JavaScript|Design System|Mạng cơ bản|Nguyên lý UX|HTML|Thiết kế UI|Nghiệp vụ ngân hàng,0.5,4,Đà Nẵng,Bán thời gian|Remote,5.0,8.5,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực Software Engineering.
+Kỹ năng
+Git | REST API | SQL | OOP | JavaScript | Design System | Mạng cơ bản | Nguyên lý UX | HTML | Thiết kế UI | Nghiệp vụ ngân hàng
+Kinh nghiệm
+0.5 năm kinh nghiệm trong nhóm nghề Software Engineering.
+Học vấn
+Cao đẳng Công nghệ"
+cand-gen-0120,UI/UX Design,Giao tiếp|Nguyên lý UX|Thiết kế UI|UML|Prototyping|SQL|HTML,4,3,Hà Nội|Hồ Chí Minh,Bán thời gian|Thực tập,12,19,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực UI/UX Design.
+Kỹ năng
+Giao tiếp | Nguyên lý UX | Thiết kế UI | UML | Prototyping | SQL | HTML
+Kinh nghiệm
+4 năm kinh nghiệm trong nhóm nghề UI/UX Design.
+Học vấn
+Đại học Kinh tế"
+cand-gen-0121,Backend Development,REST API|Node.js|JavaScript|SQL|Git|Virtualization|AWS cơ bản|Playwright|User Research|BPMN|CSS,1,3,Hồ Chí Minh,Remote,6,10,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực Backend Development.
+Kỹ năng
+REST API | Node.js | JavaScript | SQL | Git | Virtualization | AWS cơ bản | Playwright | User Research | BPMN | CSS
+Kinh nghiệm
+1 năm kinh nghiệm trong nhóm nghề Backend Development.
+Học vấn
+Đại học Kinh tế"
+cand-gen-0122,Business Analysis,Tư duy logic|Excel|Viết tài liệu|React Query|Phân tích dữ liệu|Postman|SEO cơ bản|Windows Server,5,2,Remote,Thực tập,14,22,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực Business Analysis.
+Kỹ năng
+Tư duy logic | Excel | Viết tài liệu | React Query | Phân tích dữ liệu | Postman | SEO cơ bản | Windows Server
+Kinh nghiệm
+5 năm kinh nghiệm trong nhóm nghề Business Analysis.
+Học vấn
+Cao đẳng Công nghệ"
+cand-gen-0123,Business Operations,Giao tiếp|Excel|Viết tài liệu|Phân tích nghiệp vụ|SQL|Tailwind CSS|CI/CD|SEO cơ bản|Selenium|Nguyên lý UX,0.3,3,Hà Nội|Remote,Toàn thời gian|Thực tập,4.6,7.9,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực Business Operations.
+Kỹ năng
+Giao tiếp | Excel | Viết tài liệu | Phân tích nghiệp vụ | SQL | Tailwind CSS | CI/CD | SEO cơ bản | Selenium | Nguyên lý UX
+Kinh nghiệm
+0.3 năm kinh nghiệm trong nhóm nghề Business Operations.
+Học vấn
+Đại học Quốc gia"
+cand-gen-0124,Data Science & Analytics,Excel|Git|Thống kê cơ bản|ETL|Prototyping|Design System|React Query|Postman,0,3,Remote,Remote|Toàn thời gian,4,7,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực Data Science & Analytics.
+Kỹ năng
+Excel | Git | Thống kê cơ bản | ETL | Prototyping | Design System | React Query | Postman
+Kinh nghiệm
+0 năm kinh nghiệm trong nhóm nghề Data Science & Analytics.
+Học vấn
+Đại học Quốc gia"
+cand-gen-0125,Digital Marketing,Giao tiếp|Mạng xã hội|Excel|HTML/CSS cơ bản|SQL|Bảo mật ứng dụng|Linux|Tailwind CSS|TypeScript nâng cao|Nguyên lý UX,3,3,Hà Nội|Hồ Chí Minh,Remote|Thực tập,10,16,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực Digital Marketing.
+Kỹ năng
+Giao tiếp | Mạng xã hội | Excel | HTML/CSS cơ bản | SQL | Bảo mật ứng dụng | Linux | Tailwind CSS | TypeScript nâng cao | Nguyên lý UX
+Kinh nghiệm
+3 năm kinh nghiệm trong nhóm nghề Digital Marketing.
+Học vấn
+Đại học Quốc gia"
+cand-gen-0126,Frontend Development,TypeScript|CSS|JavaScript|HTML/CSS cơ bản|Matplotlib|Airflow,0.5,3,Remote,Bán thời gian|Thực tập,5.0,8.5,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực Frontend Development.
+Kỹ năng
+TypeScript | CSS | JavaScript | HTML/CSS cơ bản | Matplotlib | Airflow
+Kinh nghiệm
+0.5 năm kinh nghiệm trong nhóm nghề Frontend Development.
+Học vấn
+Cao đẳng Công nghệ"
+cand-gen-0127,IT Support,Giao tiếp|Windows Server|Xử lý sự cố|Mạng cơ bản|Facebook Ads|Nguyên lý UX|SEO cơ bản,0,3,Remote,Bán thời gian,4,7,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực IT Support.
+Kỹ năng
+Giao tiếp | Windows Server | Xử lý sự cố | Mạng cơ bản | Facebook Ads | Nguyên lý UX | SEO cơ bản
+Kinh nghiệm
+0 năm kinh nghiệm trong nhóm nghề IT Support.
+Học vấn
+Cao đẳng Công nghệ"
+cand-gen-0128,QA & Testing,Excel|Git|Kiểm thử phần mềm|Tư duy phân tích|Viết test case|MongoDB|SQL|Machine Learning cơ bản,1,3,Remote,Toàn thời gian|Thực tập,6,10,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực QA & Testing.
+Kỹ năng
+Excel | Git | Kiểm thử phần mềm | Tư duy phân tích | Viết test case | MongoDB | SQL | Machine Learning cơ bản
+Kinh nghiệm
+1 năm kinh nghiệm trong nhóm nghề QA & Testing.
+Học vấn
+Đại học Bách khoa"
+cand-gen-0129,Software Engineering,REST API|SQL|OOP|Jira|Matplotlib|CI/CD,4,3,Remote,Bán thời gian,12,19,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực Software Engineering.
+Kỹ năng
+REST API | SQL | OOP | Jira | Matplotlib | CI/CD
+Kinh nghiệm
+4 năm kinh nghiệm trong nhóm nghề Software Engineering.
+Học vấn
+Đại học Quốc gia"
+cand-gen-0130,UI/UX Design,Nguyên lý UX|Giao tiếp|Figma|Thiết kế UI|Tư duy sáng tạo|UML|Matplotlib|Facebook Ads|OOP|Mạng cơ bản,1.5,3,Hà Nội|Remote,Toàn thời gian|Bán thời gian,7.0,11.5,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực UI/UX Design.
+Kỹ năng
+Nguyên lý UX | Giao tiếp | Figma | Thiết kế UI | Tư duy sáng tạo | UML | Matplotlib | Facebook Ads | OOP | Mạng cơ bản
+Kinh nghiệm
+1.5 năm kinh nghiệm trong nhóm nghề UI/UX Design.
+Học vấn
+Đại học Quốc gia"
+cand-gen-0131,Backend Development,JavaScript|REST API|Git|Node.js|SQL|Power BI|Storybook|Apache Spark|Bảo mật ứng dụng|Quản lý dự án|Tư duy phân tích,1.5,3,Remote,Thực tập|Remote,7.0,11.5,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực Backend Development.
+Kỹ năng
+JavaScript | REST API | Git | Node.js | SQL | Power BI | Storybook | Apache Spark | Bảo mật ứng dụng | Quản lý dự án | Tư duy phân tích
+Kinh nghiệm
+1.5 năm kinh nghiệm trong nhóm nghề Backend Development.
+Học vấn
+Đại học Bách khoa"
+cand-gen-0132,Business Analysis,Phân tích nghiệp vụ|Giao tiếp|Viết tài liệu|Excel|Tư duy logic|Machine Learning cơ bản|Node.js|MongoDB|Office 365|Virtualization|Design System|Thiết kế API,2,3,Hà Nội,Remote,8,13,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực Business Analysis.
+Kỹ năng
+Phân tích nghiệp vụ | Giao tiếp | Viết tài liệu | Excel | Tư duy logic | Machine Learning cơ bản | Node.js | MongoDB | Office 365 | Virtualization | Design System | Thiết kế API
+Kinh nghiệm
+2 năm kinh nghiệm trong nhóm nghề Business Analysis.
+Học vấn
+Đại học Bách khoa"
+cand-gen-0133,Business Operations,Phân tích nghiệp vụ|Viết tài liệu|SQL|Giao tiếp|Excel|UML|Matplotlib,0.3,3,Hà Nội,Bán thời gian|Toàn thời gian,4.6,7.9,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực Business Operations.
+Kỹ năng
+Phân tích nghiệp vụ | Viết tài liệu | SQL | Giao tiếp | Excel | UML | Matplotlib
+Kinh nghiệm
+0.3 năm kinh nghiệm trong nhóm nghề Business Operations.
+Học vấn
+Cao đẳng Công nghệ"
+cand-gen-0134,Data Science & Analytics,ETL|SQL|Linux cơ bản|Git|Thống kê cơ bản|Python,0.5,3,Remote|Hà Nội,Thực tập,5.0,8.5,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực Data Science & Analytics.
+Kỹ năng
+ETL | SQL | Linux cơ bản | Git | Thống kê cơ bản | Python
+Kinh nghiệm
+0.5 năm kinh nghiệm trong nhóm nghề Data Science & Analytics.
+Học vấn
+Đại học Bách khoa"
+cand-gen-0135,Digital Marketing,Viết nội dung|Mạng xã hội|Excel|Giao tiếp|Tư duy sáng tạo|OOP,2,3,Remote,Bán thời gian,8,13,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực Digital Marketing.
+Kỹ năng
+Viết nội dung | Mạng xã hội | Excel | Giao tiếp | Tư duy sáng tạo | OOP
+Kinh nghiệm
+2 năm kinh nghiệm trong nhóm nghề Digital Marketing.
+Học vấn
+Đại học Bách khoa"
+cand-gen-0136,Frontend Development,JavaScript|TypeScript|CSS|Git|React|REST API|Airflow|Apache Spark,0.5,3,Remote|Hồ Chí Minh,Thực tập|Toàn thời gian,5.0,8.5,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực Frontend Development.
+Kỹ năng
+JavaScript | TypeScript | CSS | Git | React | REST API | Airflow | Apache Spark
+Kinh nghiệm
+0.5 năm kinh nghiệm trong nhóm nghề Frontend Development.
+Học vấn
+Đại học Quốc gia"
+cand-gen-0137,IT Support,Giao tiếp|Mạng cơ bản|Xử lý sự cố|Kỹ thuật máy tính|Google Analytics|TypeScript|Thống kê cơ bản|Figma|Prototyping,1.5,3,Remote,Toàn thời gian|Remote,7.0,11.5,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực IT Support.
+Kỹ năng
+Giao tiếp | Mạng cơ bản | Xử lý sự cố | Kỹ thuật máy tính | Google Analytics | TypeScript | Thống kê cơ bản | Figma | Prototyping
+Kinh nghiệm
+1.5 năm kinh nghiệm trong nhóm nghề IT Support.
+Học vấn
+Cao đẳng Công nghệ"
+cand-gen-0138,QA & Testing,Tư duy phân tích|Viết test case|Excel|Git|Kiểm thử phần mềm|Tailwind CSS|Airflow,0,3,Đà Nẵng,Toàn thời gian,4,7,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực QA & Testing.
+Kỹ năng
+Tư duy phân tích | Viết test case | Excel | Git | Kiểm thử phần mềm | Tailwind CSS | Airflow
+Kinh nghiệm
+0 năm kinh nghiệm trong nhóm nghề QA & Testing.
+Học vấn
+Đại học Bách khoa"
+cand-gen-0139,Software Engineering,REST API|OOP|JavaScript|Git|SQL|Mạng xã hội,0.3,3,Hồ Chí Minh,Remote|Thực tập,4.6,7.9,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực Software Engineering.
+Kỹ năng
+REST API | OOP | JavaScript | Git | SQL | Mạng xã hội
+Kinh nghiệm
+0.3 năm kinh nghiệm trong nhóm nghề Software Engineering.
+Học vấn
+Đại học Bách khoa"
+cand-gen-0140,UI/UX Design,Figma|Nguyên lý UX|Giao tiếp|Tư duy sáng tạo|SQL|Active Directory,1.5,3,Hồ Chí Minh|Hà Nội,Bán thời gian,7.0,11.5,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực UI/UX Design.
+Kỹ năng
+Figma | Nguyên lý UX | Giao tiếp | Tư duy sáng tạo | SQL | Active Directory
+Kinh nghiệm
+1.5 năm kinh nghiệm trong nhóm nghề UI/UX Design.
+Học vấn
+Đại học Bách khoa"
+cand-gen-0141,Backend Development,JavaScript|SQL|Node.js|Git|REST API,2,3,Hà Nội,Toàn thời gian|Bán thời gian,8,13,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực Backend Development.
+Kỹ năng
+JavaScript | SQL | Node.js | Git | REST API
+Kinh nghiệm
+2 năm kinh nghiệm trong nhóm nghề Backend Development.
+Học vấn
+Cao đẳng Công nghệ"
+cand-gen-0142,Business Analysis,Tư duy logic|Excel|Giao tiếp|Phân tích nghiệp vụ|Jest|Thống kê cơ bản,0,0,Hồ Chí Minh,Remote,4,7,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực Business Analysis.
+Kỹ năng
+Tư duy logic | Excel | Giao tiếp | Phân tích nghiệp vụ | Jest | Thống kê cơ bản
+Kinh nghiệm
+0 năm kinh nghiệm trong nhóm nghề Business Analysis.
+Học vấn
+Đại học Kinh tế"
+cand-gen-0143,Business Operations,UML|Viết tài liệu|SQL|Jest|Quản lý dự án|Mạng cơ bản|Kỹ thuật máy tính|Active Directory|Phân tích dữ liệu|CSS,5,3,Hồ Chí Minh,Toàn thời gian,14,22,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực Business Operations.
+Kỹ năng
+UML | Viết tài liệu | SQL | Jest | Quản lý dự án | Mạng cơ bản | Kỹ thuật máy tính | Active Directory | Phân tích dữ liệu | CSS
+Kinh nghiệm
+5 năm kinh nghiệm trong nhóm nghề Business Operations.
+Học vấn
+Cao đẳng Công nghệ"
+cand-gen-0144,Data Science & Analytics,Excel|SQL|Git|Thống kê cơ bản|ETL|Figma|MongoDB|Viết tài liệu|Mạng cơ bản|JavaScript,4,3,Hồ Chí Minh,Bán thời gian,12,19,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực Data Science & Analytics.
+Kỹ năng
+Excel | SQL | Git | Thống kê cơ bản | ETL | Figma | MongoDB | Viết tài liệu | Mạng cơ bản | JavaScript
+Kinh nghiệm
+4 năm kinh nghiệm trong nhóm nghề Data Science & Analytics.
+Học vấn
+Đại học Bách khoa"
+cand-gen-0145,Digital Marketing,Viết nội dung|Tư duy sáng tạo|Giao tiếp|Mạng xã hội|Excel|Jest,5,4,Remote,Bán thời gian,14,22,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực Digital Marketing.
+Kỹ năng
+Viết nội dung | Tư duy sáng tạo | Giao tiếp | Mạng xã hội | Excel | Jest
+Kinh nghiệm
+5 năm kinh nghiệm trong nhóm nghề Digital Marketing.
+Học vấn
+Đại học Kinh tế"
+cand-gen-0146,Frontend Development,TypeScript|JavaScript|React|HTML|REST API|Git|Postman,0.3,3,Remote,Bán thời gian,4.6,7.9,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực Frontend Development.
+Kỹ năng
+TypeScript | JavaScript | React | HTML | REST API | Git | Postman
+Kinh nghiệm
+0.3 năm kinh nghiệm trong nhóm nghề Frontend Development.
+Học vấn
+Đại học Kinh tế"
+cand-gen-0147,IT Support,Mạng cơ bản|Xử lý sự cố|Windows Server|Kỹ thuật máy tính|Giao tiếp|Design System|Viết tài liệu|CSS,0.5,2,Remote,Remote|Toàn thời gian,5.0,8.5,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực IT Support.
+Kỹ năng
+Mạng cơ bản | Xử lý sự cố | Windows Server | Kỹ thuật máy tính | Giao tiếp | Design System | Viết tài liệu | CSS
+Kinh nghiệm
+0.5 năm kinh nghiệm trong nhóm nghề IT Support.
+Học vấn
+Đại học Kinh tế"
+cand-gen-0148,QA & Testing,Tư duy phân tích|Kiểm thử phần mềm|Excel|Git|Viết test case,1,3,Hồ Chí Minh,Bán thời gian,6,10,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực QA & Testing.
+Kỹ năng
+Tư duy phân tích | Kiểm thử phần mềm | Excel | Git | Viết test case
+Kinh nghiệm
+1 năm kinh nghiệm trong nhóm nghề QA & Testing.
+Học vấn
+Đại học Kinh tế"
+cand-gen-0149,Software Engineering,Git|SQL|JavaScript|REST API|OOP|Bảo mật ứng dụng|Tailwind CSS|CSS,0.5,2,Hồ Chí Minh,Bán thời gian,5.0,8.5,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực Software Engineering.
+Kỹ năng
+Git | SQL | JavaScript | REST API | OOP | Bảo mật ứng dụng | Tailwind CSS | CSS
+Kinh nghiệm
+0.5 năm kinh nghiệm trong nhóm nghề Software Engineering.
+Học vấn
+Cao đẳng Công nghệ"
+cand-gen-0150,UI/UX Design,Giao tiếp|Thiết kế UI|Figma|Active Directory|Google Analytics,4,3,Đà Nẵng,Toàn thời gian,12,19,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực UI/UX Design.
+Kỹ năng
+Giao tiếp | Thiết kế UI | Figma | Active Directory | Google Analytics
+Kinh nghiệm
+4 năm kinh nghiệm trong nhóm nghề UI/UX Design.
+Học vấn
+Cao đẳng Công nghệ"
+cand-gen-0151,Backend Development,REST API|Git|Node.js|JavaScript|SQL|Phân tích nghiệp vụ|ITIL cơ bản,0.5,3,Hồ Chí Minh,Bán thời gian,5.0,8.5,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực Backend Development.
+Kỹ năng
+REST API | Git | Node.js | JavaScript | SQL | Phân tích nghiệp vụ | ITIL cơ bản
+Kinh nghiệm
+0.5 năm kinh nghiệm trong nhóm nghề Backend Development.
+Học vấn
+Đại học Kinh tế"
+cand-gen-0152,Business Analysis,Phân tích nghiệp vụ|Viết tài liệu|Excel|Tư duy logic|Giao tiếp|HTML/CSS cơ bản|Tư duy phân tích|Kỹ thuật máy tính|User Research|Jira|Postman,2,3,Đà Nẵng,Remote|Bán thời gian,8,13,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực Business Analysis.
+Kỹ năng
+Phân tích nghiệp vụ | Viết tài liệu | Excel | Tư duy logic | Giao tiếp | HTML/CSS cơ bản | Tư duy phân tích | Kỹ thuật máy tính | User Research | Jira | Postman
+Kinh nghiệm
+2 năm kinh nghiệm trong nhóm nghề Business Analysis.
+Học vấn
+Đại học Quốc gia"
+cand-gen-0153,Business Operations,Phân tích nghiệp vụ|Giao tiếp|Excel|SQL|Windows Server|JavaScript|ETL|Bảo mật ứng dụng|Kafka|Jest,1.5,3,Hà Nội|Remote,Thực tập|Toàn thời gian,7.0,11.5,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực Business Operations.
+Kỹ năng
+Phân tích nghiệp vụ | Giao tiếp | Excel | SQL | Windows Server | JavaScript | ETL | Bảo mật ứng dụng | Kafka | Jest
+Kinh nghiệm
+1.5 năm kinh nghiệm trong nhóm nghề Business Operations.
+Học vấn
+Đại học Quốc gia"
+cand-gen-0154,Data Science & Analytics,Git|SQL|Excel|Python|Linux cơ bản|TypeScript nâng cao|Virtualization|Mạng xã hội,0.5,3,Hà Nội,Bán thời gian,5.0,8.5,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực Data Science & Analytics.
+Kỹ năng
+Git | SQL | Excel | Python | Linux cơ bản | TypeScript nâng cao | Virtualization | Mạng xã hội
+Kinh nghiệm
+0.5 năm kinh nghiệm trong nhóm nghề Data Science & Analytics.
+Học vấn
+Đại học Bách khoa"
+cand-gen-0155,Digital Marketing,Mạng xã hội|Tư duy sáng tạo|Excel|Viết nội dung|Active Directory|Facebook Ads|Design System|Windows Server|CI/CD|Tư duy logic,2,4,Remote,Thực tập,8,13,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực Digital Marketing.
+Kỹ năng
+Mạng xã hội | Tư duy sáng tạo | Excel | Viết nội dung | Active Directory | Facebook Ads | Design System | Windows Server | CI/CD | Tư duy logic
+Kinh nghiệm
+2 năm kinh nghiệm trong nhóm nghề Digital Marketing.
+Học vấn
+Đại học Kinh tế"
+cand-gen-0156,Frontend Development,REST API|TypeScript|React|JavaScript|HTML|CSS|Email Marketing|Playwright,1.5,3,Hồ Chí Minh,Toàn thời gian,7.0,11.5,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực Frontend Development.
+Kỹ năng
+REST API | TypeScript | React | JavaScript | HTML | CSS | Email Marketing | Playwright
+Kinh nghiệm
+1.5 năm kinh nghiệm trong nhóm nghề Frontend Development.
+Học vấn
+Cao đẳng Công nghệ"
+cand-gen-0157,IT Support,Giao tiếp|Windows Server|Mạng cơ bản|Kỹ thuật máy tính|Xử lý sự cố|Pandas|Apache Spark,1,3,Hồ Chí Minh,Thực tập,6,10,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực IT Support.
+Kỹ năng
+Giao tiếp | Windows Server | Mạng cơ bản | Kỹ thuật máy tính | Xử lý sự cố | Pandas | Apache Spark
+Kinh nghiệm
+1 năm kinh nghiệm trong nhóm nghề IT Support.
+Học vấn
+Cao đẳng Công nghệ"
+cand-gen-0158,QA & Testing,Kiểm thử phần mềm|Tư duy phân tích|Viết test case|Git|AWS cơ bản,3,3,Hồ Chí Minh,Remote|Bán thời gian,10,16,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực QA & Testing.
+Kỹ năng
+Kiểm thử phần mềm | Tư duy phân tích | Viết test case | Git | AWS cơ bản
+Kinh nghiệm
+3 năm kinh nghiệm trong nhóm nghề QA & Testing.
+Học vấn
+Đại học Kinh tế"
+cand-gen-0159,Software Engineering,SQL|REST API|JavaScript|Git|Docker|Mạng xã hội|Kỹ thuật máy tính|Bảo mật ứng dụng|Adobe XD,2,2,Hồ Chí Minh,Toàn thời gian,8,13,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực Software Engineering.
+Kỹ năng
+SQL | REST API | JavaScript | Git | Docker | Mạng xã hội | Kỹ thuật máy tính | Bảo mật ứng dụng | Adobe XD
+Kinh nghiệm
+2 năm kinh nghiệm trong nhóm nghề Software Engineering.
+Học vấn
+Đại học Kinh tế"
+cand-gen-0160,UI/UX Design,Nguyên lý UX|Tư duy sáng tạo|Figma|Thiết kế UI|Giao tiếp|JavaScript|HTML|REST API|Viết nội dung|Virtualization,1.5,3,Hồ Chí Minh,Toàn thời gian,7.0,11.5,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực UI/UX Design.
+Kỹ năng
+Nguyên lý UX | Tư duy sáng tạo | Figma | Thiết kế UI | Giao tiếp | JavaScript | HTML | REST API | Viết nội dung | Virtualization
+Kinh nghiệm
+1.5 năm kinh nghiệm trong nhóm nghề UI/UX Design.
+Học vấn
+Cao đẳng Công nghệ"
+cand-gen-0161,Backend Development,Node.js|REST API|Git|JavaScript|SQL|CI/CD|MongoDB|HTML/CSS cơ bản,0.5,3,Remote,Thực tập,5.0,8.5,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực Backend Development.
+Kỹ năng
+Node.js | REST API | Git | JavaScript | SQL | CI/CD | MongoDB | HTML/CSS cơ bản
+Kinh nghiệm
+0.5 năm kinh nghiệm trong nhóm nghề Backend Development.
+Học vấn
+Cao đẳng Công nghệ"
+cand-gen-0162,Business Analysis,Viết tài liệu|Giao tiếp|Phân tích nghiệp vụ|Playwright|Phân tích dữ liệu|Figma|React Query|Confluence|Kỹ thuật máy tính|React,4,3,Hà Nội,Toàn thời gian,12,19,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực Business Analysis.
+Kỹ năng
+Viết tài liệu | Giao tiếp | Phân tích nghiệp vụ | Playwright | Phân tích dữ liệu | Figma | React Query | Confluence | Kỹ thuật máy tính | React
+Kinh nghiệm
+4 năm kinh nghiệm trong nhóm nghề Business Analysis.
+Học vấn
+Đại học Bách khoa"
+cand-gen-0163,Business Operations,UML|Phân tích nghiệp vụ|Viết tài liệu|Giao tiếp|Tư duy phân tích|Tableau|Viết test case|Jest|Xử lý sự cố|MongoDB|Airflow,3,4,Hà Nội|Đà Nẵng,Toàn thời gian,10,16,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực Business Operations.
+Kỹ năng
+UML | Phân tích nghiệp vụ | Viết tài liệu | Giao tiếp | Tư duy phân tích | Tableau | Viết test case | Jest | Xử lý sự cố | MongoDB | Airflow
+Kinh nghiệm
+3 năm kinh nghiệm trong nhóm nghề Business Operations.
+Học vấn
+Cao đẳng Công nghệ"
+cand-gen-0164,Data Science & Analytics,Python|SQL|Thống kê cơ bản|ETL|Facebook Ads|Bảo mật ứng dụng|Jest|Mạng xã hội|Apache Spark|Docker|PostgreSQL,5,3,Đà Nẵng,Toàn thời gian|Thực tập,14,22,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực Data Science & Analytics.
+Kỹ năng
+Python | SQL | Thống kê cơ bản | ETL | Facebook Ads | Bảo mật ứng dụng | Jest | Mạng xã hội | Apache Spark | Docker | PostgreSQL
+Kinh nghiệm
+5 năm kinh nghiệm trong nhóm nghề Data Science & Analytics.
+Học vấn
+Cao đẳng Công nghệ"
+cand-gen-0165,Digital Marketing,Giao tiếp|Viết nội dung|Excel|Tư duy sáng tạo|Tư duy phân tích|Phân tích dữ liệu|Quản lý dự án|Linux cơ bản|Power BI,4,3,Hà Nội,Thực tập,12,19,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực Digital Marketing.
+Kỹ năng
+Giao tiếp | Viết nội dung | Excel | Tư duy sáng tạo | Tư duy phân tích | Phân tích dữ liệu | Quản lý dự án | Linux cơ bản | Power BI
+Kinh nghiệm
+4 năm kinh nghiệm trong nhóm nghề Digital Marketing.
+Học vấn
+Cao đẳng Công nghệ"
+cand-gen-0166,Frontend Development,HTML|React|JavaScript|CSS|REST API|TypeScript|Phân tích nghiệp vụ|React Query|OOP,1.5,3,Hà Nội,Bán thời gian,7.0,11.5,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực Frontend Development.
+Kỹ năng
+HTML | React | JavaScript | CSS | REST API | TypeScript | Phân tích nghiệp vụ | React Query | OOP
+Kinh nghiệm
+1.5 năm kinh nghiệm trong nhóm nghề Frontend Development.
+Học vấn
+Đại học Kinh tế"
+cand-gen-0167,IT Support,Giao tiếp|Kỹ thuật máy tính|Xử lý sự cố|Windows Server|Mạng cơ bản|Thiết kế API|TypeScript nâng cao|Postman|Agile/Scrum|TypeScript|Email Marketing,0.3,3,Remote|Hà Nội,Bán thời gian,4.6,7.9,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực IT Support.
+Kỹ năng
+Giao tiếp | Kỹ thuật máy tính | Xử lý sự cố | Windows Server | Mạng cơ bản | Thiết kế API | TypeScript nâng cao | Postman | Agile/Scrum | TypeScript | Email Marketing
+Kinh nghiệm
+0.3 năm kinh nghiệm trong nhóm nghề IT Support.
+Học vấn
+Đại học Quốc gia"
+cand-gen-0168,QA & Testing,Excel|Kiểm thử phần mềm|Viết test case|Linux|Pandas|SEO cơ bản|Thiết kế UI|PostgreSQL,0.3,3,Đà Nẵng,Remote|Toàn thời gian,4.6,7.9,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực QA & Testing.
+Kỹ năng
+Excel | Kiểm thử phần mềm | Viết test case | Linux | Pandas | SEO cơ bản | Thiết kế UI | PostgreSQL
+Kinh nghiệm
+0.3 năm kinh nghiệm trong nhóm nghề QA & Testing.
+Học vấn
+Cao đẳng Công nghệ"
+cand-gen-0169,Software Engineering,JavaScript|Git|OOP|SQL|REST API|Windows Server|ITIL cơ bản,1,3,Hồ Chí Minh|Remote,Toàn thời gian|Thực tập,6,10,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực Software Engineering.
+Kỹ năng
+JavaScript | Git | OOP | SQL | REST API | Windows Server | ITIL cơ bản
+Kinh nghiệm
+1 năm kinh nghiệm trong nhóm nghề Software Engineering.
+Học vấn
+Đại học Bách khoa"
+cand-gen-0170,UI/UX Design,Nguyên lý UX|Thiết kế UI|Tư duy sáng tạo|Linux cơ bản|REST API|Playwright|Office 365|SEO cơ bản|Kiểm thử phần mềm,1,3,Remote|Đà Nẵng,Toàn thời gian,6,10,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực UI/UX Design.
+Kỹ năng
+Nguyên lý UX | Thiết kế UI | Tư duy sáng tạo | Linux cơ bản | REST API | Playwright | Office 365 | SEO cơ bản | Kiểm thử phần mềm
+Kinh nghiệm
+1 năm kinh nghiệm trong nhóm nghề UI/UX Design.
+Học vấn
+Đại học Kinh tế"
+cand-gen-0171,Backend Development,Node.js|SQL|JavaScript|REST API|Git|Mạng xã hội|Google Analytics|Email Marketing|Tư duy sáng tạo,1,3,Remote|Đà Nẵng,Bán thời gian|Thực tập,6,10,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực Backend Development.
+Kỹ năng
+Node.js | SQL | JavaScript | REST API | Git | Mạng xã hội | Google Analytics | Email Marketing | Tư duy sáng tạo
+Kinh nghiệm
+1 năm kinh nghiệm trong nhóm nghề Backend Development.
+Học vấn
+Đại học Bách khoa"
+cand-gen-0172,Business Analysis,Giao tiếp|Viết tài liệu|Tư duy logic|Phân tích nghiệp vụ|Excel|Jest|Tư duy sáng tạo|Tableau|Phân tích dữ liệu|Thống kê cơ bản,1.5,3,Hồ Chí Minh|Remote,Remote,7.0,11.5,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực Business Analysis.
+Kỹ năng
+Giao tiếp | Viết tài liệu | Tư duy logic | Phân tích nghiệp vụ | Excel | Jest | Tư duy sáng tạo | Tableau | Phân tích dữ liệu | Thống kê cơ bản
+Kinh nghiệm
+1.5 năm kinh nghiệm trong nhóm nghề Business Analysis.
+Học vấn
+Đại học Quốc gia"
+cand-gen-0173,Business Operations,Excel|Giao tiếp|Phân tích nghiệp vụ|Viết tài liệu|ITIL cơ bản|Mạng cơ bản|REST API|Node.js|Playwright|Kỹ thuật máy tính,1.5,3,Remote,Toàn thời gian,7.0,11.5,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực Business Operations.
+Kỹ năng
+Excel | Giao tiếp | Phân tích nghiệp vụ | Viết tài liệu | ITIL cơ bản | Mạng cơ bản | REST API | Node.js | Playwright | Kỹ thuật máy tính
+Kinh nghiệm
+1.5 năm kinh nghiệm trong nhóm nghề Business Operations.
+Học vấn
+Cao đẳng Công nghệ"
+cand-gen-0174,Data Science & Analytics,Git|Excel|Thống kê cơ bản|SQL|Linux cơ bản|ETL|Office 365|React,4,2,Hồ Chí Minh|Hà Nội,Thực tập|Remote,12,19,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực Data Science & Analytics.
+Kỹ năng
+Git | Excel | Thống kê cơ bản | SQL | Linux cơ bản | ETL | Office 365 | React
+Kinh nghiệm
+4 năm kinh nghiệm trong nhóm nghề Data Science & Analytics.
+Học vấn
+Đại học Quốc gia"
+cand-gen-0175,Digital Marketing,Excel|Tư duy sáng tạo|Viết nội dung|Viết test case|Docker|Tailwind CSS|Airflow,0.5,3,Remote|Hồ Chí Minh,Remote|Bán thời gian,5.0,8.5,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực Digital Marketing.
+Kỹ năng
+Excel | Tư duy sáng tạo | Viết nội dung | Viết test case | Docker | Tailwind CSS | Airflow
+Kinh nghiệm
+0.5 năm kinh nghiệm trong nhóm nghề Digital Marketing.
+Học vấn
+Đại học Bách khoa"
+cand-gen-0176,Frontend Development,HTML|JavaScript|Git|CSS|REST API,1,2,Đà Nẵng,Toàn thời gian,6,10,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực Frontend Development.
+Kỹ năng
+HTML | JavaScript | Git | CSS | REST API
+Kinh nghiệm
+1 năm kinh nghiệm trong nhóm nghề Frontend Development.
+Học vấn
+Cao đẳng Công nghệ"
+cand-gen-0177,IT Support,Mạng cơ bản|Giao tiếp|Windows Server|React|Cloud (AWS/GCP)|OOP|Tableau|Phân tích dữ liệu|Facebook Ads|ETL,3,0,Hồ Chí Minh,Toàn thời gian,10,16,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực IT Support.
+Kỹ năng
+Mạng cơ bản | Giao tiếp | Windows Server | React | Cloud (AWS/GCP) | OOP | Tableau | Phân tích dữ liệu | Facebook Ads | ETL
+Kinh nghiệm
+3 năm kinh nghiệm trong nhóm nghề IT Support.
+Học vấn
+Đại học Quốc gia"
+cand-gen-0178,QA & Testing,Tư duy phân tích|Kiểm thử phần mềm|Git|Excel|Viết test case,0,3,Remote,Toàn thời gian|Thực tập,4,7,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực QA & Testing.
+Kỹ năng
+Tư duy phân tích | Kiểm thử phần mềm | Git | Excel | Viết test case
+Kinh nghiệm
+0 năm kinh nghiệm trong nhóm nghề QA & Testing.
+Học vấn
+Đại học Kinh tế"
+cand-gen-0179,Software Engineering,JavaScript|Git|SQL|OOP|Confluence|Quản lý dự án|Bảo mật ứng dụng|Tư duy logic|Canva,1.5,2,Remote,Bán thời gian,7.0,11.5,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực Software Engineering.
+Kỹ năng
+JavaScript | Git | SQL | OOP | Confluence | Quản lý dự án | Bảo mật ứng dụng | Tư duy logic | Canva
+Kinh nghiệm
+1.5 năm kinh nghiệm trong nhóm nghề Software Engineering.
+Học vấn
+Đại học Kinh tế"
+cand-gen-0180,UI/UX Design,Nguyên lý UX|Figma|Thiết kế UI|Giao tiếp|Tư duy sáng tạo|Office 365|Kiểm thử phần mềm|Adobe XD|Prototyping|Bảo mật ứng dụng|Canva|Thống kê cơ bản,0.5,4,Hà Nội|Đà Nẵng,Thực tập,5.0,8.5,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực UI/UX Design.
+Kỹ năng
+Nguyên lý UX | Figma | Thiết kế UI | Giao tiếp | Tư duy sáng tạo | Office 365 | Kiểm thử phần mềm | Adobe XD | Prototyping | Bảo mật ứng dụng | Canva | Thống kê cơ bản
+Kinh nghiệm
+0.5 năm kinh nghiệm trong nhóm nghề UI/UX Design.
+Học vấn
+Đại học Quốc gia"
+cand-gen-0181,Backend Development,Node.js|Git|REST API|SQL|JavaScript|Nguyên lý UX|Responsive Design|Canva|CI/CD|Active Directory,0,3,Hồ Chí Minh|Remote,Remote|Thực tập,4,7,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực Backend Development.
+Kỹ năng
+Node.js | Git | REST API | SQL | JavaScript | Nguyên lý UX | Responsive Design | Canva | CI/CD | Active Directory
+Kinh nghiệm
+0 năm kinh nghiệm trong nhóm nghề Backend Development.
+Học vấn
+Đại học Kinh tế"
+cand-gen-0182,Business Analysis,Phân tích nghiệp vụ|Giao tiếp|Excel|Tư duy logic|Postman|Tableau|Quản lý dự án|Facebook Ads|CSS,0.5,3,Hồ Chí Minh,Remote,5.0,8.5,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực Business Analysis.
+Kỹ năng
+Phân tích nghiệp vụ | Giao tiếp | Excel | Tư duy logic | Postman | Tableau | Quản lý dự án | Facebook Ads | CSS
+Kinh nghiệm
+0.5 năm kinh nghiệm trong nhóm nghề Business Analysis.
+Học vấn
+Cao đẳng Công nghệ"
+cand-gen-0183,Business Operations,Giao tiếp|UML|Phân tích nghiệp vụ|Excel|Viết tài liệu|SQL|Cloud (AWS/GCP)|React|Selenium|AWS cơ bản|Airflow|Linux cơ bản,2,0,Hồ Chí Minh|Đà Nẵng,Toàn thời gian|Bán thời gian,8,13,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực Business Operations.
+Kỹ năng
+Giao tiếp | UML | Phân tích nghiệp vụ | Excel | Viết tài liệu | SQL | Cloud (AWS/GCP) | React | Selenium | AWS cơ bản | Airflow | Linux cơ bản
+Kinh nghiệm
+2 năm kinh nghiệm trong nhóm nghề Business Operations.
+Học vấn
+Đại học Quốc gia"
+cand-gen-0184,Data Science & Analytics,Linux cơ bản|Git|ETL|SQL|CSS,5,3,Hồ Chí Minh,Remote,14,22,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực Data Science & Analytics.
+Kỹ năng
+Linux cơ bản | Git | ETL | SQL | CSS
+Kinh nghiệm
+5 năm kinh nghiệm trong nhóm nghề Data Science & Analytics.
+Học vấn
+Đại học Kinh tế"
+cand-gen-0185,Digital Marketing,Giao tiếp|Mạng xã hội|Tư duy sáng tạo|Prototyping|Kafka|Agile/Scrum|SQL|React Query|Responsive Design|Airflow|Thiết kế API,4,3,Hà Nội,Remote,12,19,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực Digital Marketing.
+Kỹ năng
+Giao tiếp | Mạng xã hội | Tư duy sáng tạo | Prototyping | Kafka | Agile/Scrum | SQL | React Query | Responsive Design | Airflow | Thiết kế API
+Kinh nghiệm
+4 năm kinh nghiệm trong nhóm nghề Digital Marketing.
+Học vấn
+Cao đẳng Công nghệ"
+cand-gen-0186,Frontend Development,REST API|HTML|Git|Thống kê cơ bản|User Research|Excel|Responsive Design|Nghiệp vụ ngân hàng|OOP,0,3,Đà Nẵng,Thực tập|Remote,4,7,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực Frontend Development.
+Kỹ năng
+REST API | HTML | Git | Thống kê cơ bản | User Research | Excel | Responsive Design | Nghiệp vụ ngân hàng | OOP
+Kinh nghiệm
+0 năm kinh nghiệm trong nhóm nghề Frontend Development.
+Học vấn
+Cao đẳng Công nghệ"
+cand-gen-0187,IT Support,Mạng cơ bản|Giao tiếp|Xử lý sự cố|Tư duy phân tích|Thống kê cơ bản|Playwright|Bảo mật ứng dụng|ITIL cơ bản|ETL,4,2,Remote|Hà Nội,Bán thời gian|Toàn thời gian,12,19,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực IT Support.
+Kỹ năng
+Mạng cơ bản | Giao tiếp | Xử lý sự cố | Tư duy phân tích | Thống kê cơ bản | Playwright | Bảo mật ứng dụng | ITIL cơ bản | ETL
+Kinh nghiệm
+4 năm kinh nghiệm trong nhóm nghề IT Support.
+Học vấn
+Đại học Bách khoa"
+cand-gen-0188,QA & Testing,Tư duy phân tích|Kiểm thử phần mềm|Viết test case|Excel|Responsive Design|SEO cơ bản,5,2,Hà Nội,Remote,14,22,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực QA & Testing.
+Kỹ năng
+Tư duy phân tích | Kiểm thử phần mềm | Viết test case | Excel | Responsive Design | SEO cơ bản
+Kinh nghiệm
+5 năm kinh nghiệm trong nhóm nghề QA & Testing.
+Học vấn
+Cao đẳng Công nghệ"
+cand-gen-0189,Software Engineering,SQL|JavaScript|OOP|Git|Quản lý dự án|Kafka|Linux cơ bản|Power BI|Office 365|Matplotlib|Selenium,0.5,2,Đà Nẵng|Remote,Bán thời gian|Toàn thời gian,5.0,8.5,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực Software Engineering.
+Kỹ năng
+SQL | JavaScript | OOP | Git | Quản lý dự án | Kafka | Linux cơ bản | Power BI | Office 365 | Matplotlib | Selenium
+Kinh nghiệm
+0.5 năm kinh nghiệm trong nhóm nghề Software Engineering.
+Học vấn
+Đại học Quốc gia"
+cand-gen-0190,UI/UX Design,Nguyên lý UX|Thiết kế UI|Tư duy sáng tạo|Figma|Viết nội dung|Tableau|Windows Server|Viết tài liệu|REST API|Tư duy phân tích,1.5,3,Hà Nội,Toàn thời gian,7.0,11.5,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực UI/UX Design.
+Kỹ năng
+Nguyên lý UX | Thiết kế UI | Tư duy sáng tạo | Figma | Viết nội dung | Tableau | Windows Server | Viết tài liệu | REST API | Tư duy phân tích
+Kinh nghiệm
+1.5 năm kinh nghiệm trong nhóm nghề UI/UX Design.
+Học vấn
+Cao đẳng Công nghệ"
+cand-gen-0191,Backend Development,SQL|JavaScript|REST API|Git|Adobe XD|Matplotlib|HTML,5,0,Hà Nội,Remote,14,22,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực Backend Development.
+Kỹ năng
+SQL | JavaScript | REST API | Git | Adobe XD | Matplotlib | HTML
+Kinh nghiệm
+5 năm kinh nghiệm trong nhóm nghề Backend Development.
+Học vấn
+Đại học Quốc gia"
+cand-gen-0192,Business Analysis,Giao tiếp|Viết tài liệu|Tư duy logic|Excel|Phân tích nghiệp vụ,1.5,2,Hồ Chí Minh,Bán thời gian|Thực tập,7.0,11.5,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực Business Analysis.
+Kỹ năng
+Giao tiếp | Viết tài liệu | Tư duy logic | Excel | Phân tích nghiệp vụ
+Kinh nghiệm
+1.5 năm kinh nghiệm trong nhóm nghề Business Analysis.
+Học vấn
+Đại học Quốc gia"
+cand-gen-0193,Business Operations,SQL|Excel|Phân tích nghiệp vụ|Jira|REST API|Linux|User Research|Kiểm thử phần mềm|Canva|Docker|Kafka,0,3,Hồ Chí Minh|Hà Nội,Thực tập,4,7,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực Business Operations.
+Kỹ năng
+SQL | Excel | Phân tích nghiệp vụ | Jira | REST API | Linux | User Research | Kiểm thử phần mềm | Canva | Docker | Kafka
+Kinh nghiệm
+0 năm kinh nghiệm trong nhóm nghề Business Operations.
+Học vấn
+Đại học Bách khoa"
+cand-gen-0194,Data Science & Analytics,SQL|ETL|Excel|Python|Linux cơ bản|Tư duy logic,0.5,3,Remote|Hà Nội,Bán thời gian|Toàn thời gian,5.0,8.5,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực Data Science & Analytics.
+Kỹ năng
+SQL | ETL | Excel | Python | Linux cơ bản | Tư duy logic
+Kinh nghiệm
+0.5 năm kinh nghiệm trong nhóm nghề Data Science & Analytics.
+Học vấn
+Đại học Kinh tế"
+cand-gen-0195,Digital Marketing,Giao tiếp|Excel|Tư duy sáng tạo|Viết nội dung|Phân tích dữ liệu|SQL,1,4,Hồ Chí Minh|Hà Nội,Remote|Toàn thời gian,6,10,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực Digital Marketing.
+Kỹ năng
+Giao tiếp | Excel | Tư duy sáng tạo | Viết nội dung | Phân tích dữ liệu | SQL
+Kinh nghiệm
+1 năm kinh nghiệm trong nhóm nghề Digital Marketing.
+Học vấn
+Cao đẳng Công nghệ"
+cand-gen-0196,Frontend Development,Git|JavaScript|REST API|Tableau|React Query|Linux cơ bản|ETL|Mạng cơ bản|Thống kê cơ bản|AWS cơ bản|Adobe XD|Confluence,5,3,Hà Nội|Remote,Remote,14,22,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực Frontend Development.
+Kỹ năng
+Git | JavaScript | REST API | Tableau | React Query | Linux cơ bản | ETL | Mạng cơ bản | Thống kê cơ bản | AWS cơ bản | Adobe XD | Confluence
+Kinh nghiệm
+5 năm kinh nghiệm trong nhóm nghề Frontend Development.
+Học vấn
+Đại học Bách khoa"
+cand-gen-0197,IT Support,Windows Server|Kỹ thuật máy tính|Giao tiếp|Office 365|Apache Spark|Agile/Scrum|Virtualization|Email Marketing|Jira|Tư duy sáng tạo,0.3,3,Đà Nẵng,Remote|Bán thời gian,4.6,7.9,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực IT Support.
+Kỹ năng
+Windows Server | Kỹ thuật máy tính | Giao tiếp | Office 365 | Apache Spark | Agile/Scrum | Virtualization | Email Marketing | Jira | Tư duy sáng tạo
+Kinh nghiệm
+0.3 năm kinh nghiệm trong nhóm nghề IT Support.
+Học vấn
+Cao đẳng Công nghệ"
+cand-gen-0198,QA & Testing,Kiểm thử phần mềm|Git|Tư duy phân tích|Excel|Viết test case|Pandas,5,2,Đà Nẵng|Remote,Thực tập,14,22,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực QA & Testing.
+Kỹ năng
+Kiểm thử phần mềm | Git | Tư duy phân tích | Excel | Viết test case | Pandas
+Kinh nghiệm
+5 năm kinh nghiệm trong nhóm nghề QA & Testing.
+Học vấn
+Cao đẳng Công nghệ"
+cand-gen-0199,Software Engineering,SQL|OOP|JavaScript|REST API|Git|Mạng cơ bản|PostgreSQL,0,3,Hồ Chí Minh|Hà Nội,Toàn thời gian,4,7,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực Software Engineering.
+Kỹ năng
+SQL | OOP | JavaScript | REST API | Git | Mạng cơ bản | PostgreSQL
+Kinh nghiệm
+0 năm kinh nghiệm trong nhóm nghề Software Engineering.
+Học vấn
+Cao đẳng Công nghệ"
+cand-gen-0200,UI/UX Design,Nguyên lý UX|Tư duy sáng tạo|Thiết kế UI|Figma|Giao tiếp|Jira|Linux,1,2,Hà Nội|Đà Nẵng,Toàn thời gian|Bán thời gian,6,10,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực UI/UX Design.
+Kỹ năng
+Nguyên lý UX | Tư duy sáng tạo | Thiết kế UI | Figma | Giao tiếp | Jira | Linux
+Kinh nghiệm
+1 năm kinh nghiệm trong nhóm nghề UI/UX Design.
+Học vấn
+Đại học Bách khoa"
+cand-gen-0201,Backend Development,SQL|Git|Node.js|REST API|JavaScript|Airflow|Google Analytics|Nguyên lý UX|Thống kê cơ bản,4,3,Đà Nẵng|Remote,Thực tập,12,19,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực Backend Development.
+Kỹ năng
+SQL | Git | Node.js | REST API | JavaScript | Airflow | Google Analytics | Nguyên lý UX | Thống kê cơ bản
+Kinh nghiệm
+4 năm kinh nghiệm trong nhóm nghề Backend Development.
+Học vấn
+Đại học Kinh tế"
+cand-gen-0202,Business Analysis,Excel|Viết tài liệu|Tư duy logic|Giao tiếp|Phân tích nghiệp vụ|Docker|OOP|Tailwind CSS|Storybook|SEO cơ bản,2,3,Hà Nội,Toàn thời gian,8,13,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực Business Analysis.
+Kỹ năng
+Excel | Viết tài liệu | Tư duy logic | Giao tiếp | Phân tích nghiệp vụ | Docker | OOP | Tailwind CSS | Storybook | SEO cơ bản
+Kinh nghiệm
+2 năm kinh nghiệm trong nhóm nghề Business Analysis.
+Học vấn
+Đại học Kinh tế"
+cand-gen-0203,Business Operations,Excel|Phân tích nghiệp vụ|UML|Viết tài liệu|Giao tiếp|Zustand|ITIL cơ bản|Agile/Scrum|Virtualization|Linux|User Research,5,3,Đà Nẵng,Bán thời gian|Thực tập,14,22,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực Business Operations.
+Kỹ năng
+Excel | Phân tích nghiệp vụ | UML | Viết tài liệu | Giao tiếp | Zustand | ITIL cơ bản | Agile/Scrum | Virtualization | Linux | User Research
+Kinh nghiệm
+5 năm kinh nghiệm trong nhóm nghề Business Operations.
+Học vấn
+Đại học Kinh tế"
+cand-gen-0204,Data Science & Analytics,Thống kê cơ bản|Excel|Git|HTML|CSS,5,2,Hồ Chí Minh,Remote,14,22,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực Data Science & Analytics.
+Kỹ năng
+Thống kê cơ bản | Excel | Git | HTML | CSS
+Kinh nghiệm
+5 năm kinh nghiệm trong nhóm nghề Data Science & Analytics.
+Học vấn
+Đại học Kinh tế"
+cand-gen-0205,Digital Marketing,Viết nội dung|Tư duy sáng tạo|Mạng xã hội|Giao tiếp|JavaScript,5,4,Remote,Remote|Toàn thời gian,14,22,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực Digital Marketing.
+Kỹ năng
+Viết nội dung | Tư duy sáng tạo | Mạng xã hội | Giao tiếp | JavaScript
+Kinh nghiệm
+5 năm kinh nghiệm trong nhóm nghề Digital Marketing.
+Học vấn
+Đại học Bách khoa"
+cand-gen-0206,Frontend Development,REST API|TypeScript|JavaScript|CSS|React|Pandas|Active Directory|Tư duy phân tích|Kiểm thử phần mềm|Phân tích nghiệp vụ|HTML/CSS cơ bản,5,3,Remote,Toàn thời gian|Thực tập,14,22,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực Frontend Development.
+Kỹ năng
+REST API | TypeScript | JavaScript | CSS | React | Pandas | Active Directory | Tư duy phân tích | Kiểm thử phần mềm | Phân tích nghiệp vụ | HTML/CSS cơ bản
+Kinh nghiệm
+5 năm kinh nghiệm trong nhóm nghề Frontend Development.
+Học vấn
+Đại học Quốc gia"
+cand-gen-0207,IT Support,Giao tiếp|Mạng cơ bản|Kỹ thuật máy tính|Excel|Docker|Phân tích nghiệp vụ|Zustand,0.3,3,Đà Nẵng,Remote,4.6,7.9,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực IT Support.
+Kỹ năng
+Giao tiếp | Mạng cơ bản | Kỹ thuật máy tính | Excel | Docker | Phân tích nghiệp vụ | Zustand
+Kinh nghiệm
+0.3 năm kinh nghiệm trong nhóm nghề IT Support.
+Học vấn
+Cao đẳng Công nghệ"
+cand-gen-0208,QA & Testing,Excel|Kiểm thử phần mềm|Git|Tư duy phân tích|Viết tài liệu|Xử lý sự cố|Docker,0.5,3,Hồ Chí Minh,Bán thời gian,5.0,8.5,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực QA & Testing.
+Kỹ năng
+Excel | Kiểm thử phần mềm | Git | Tư duy phân tích | Viết tài liệu | Xử lý sự cố | Docker
+Kinh nghiệm
+0.5 năm kinh nghiệm trong nhóm nghề QA & Testing.
+Học vấn
+Đại học Kinh tế"
+cand-gen-0209,Software Engineering,Git|JavaScript|REST API|Zustand|Tableau|Tailwind CSS|Email Marketing|HTML/CSS cơ bản|Prototyping|Confluence|Facebook Ads|TypeScript nâng cao,1.5,2,Đà Nẵng|Hồ Chí Minh,Bán thời gian,7.0,11.5,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực Software Engineering.
+Kỹ năng
+Git | JavaScript | REST API | Zustand | Tableau | Tailwind CSS | Email Marketing | HTML/CSS cơ bản | Prototyping | Confluence | Facebook Ads | TypeScript nâng cao
+Kinh nghiệm
+1.5 năm kinh nghiệm trong nhóm nghề Software Engineering.
+Học vấn
+Cao đẳng Công nghệ"
+cand-gen-0210,UI/UX Design,Nguyên lý UX|Tư duy sáng tạo|Figma|Excel|Selenium|Xử lý sự cố,0,3,Hà Nội|Remote,Bán thời gian|Thực tập,4,7,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực UI/UX Design.
+Kỹ năng
+Nguyên lý UX | Tư duy sáng tạo | Figma | Excel | Selenium | Xử lý sự cố
+Kinh nghiệm
+0 năm kinh nghiệm trong nhóm nghề UI/UX Design.
+Học vấn
+Đại học Bách khoa"
+cand-gen-0211,Backend Development,Node.js|REST API|Git|JavaScript|SQL|Zustand|Windows Server|CI/CD|Responsive Design|Design System,1.5,3,Hà Nội,Remote|Bán thời gian,7.0,11.5,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực Backend Development.
+Kỹ năng
+Node.js | REST API | Git | JavaScript | SQL | Zustand | Windows Server | CI/CD | Responsive Design | Design System
+Kinh nghiệm
+1.5 năm kinh nghiệm trong nhóm nghề Backend Development.
+Học vấn
+Đại học Quốc gia"
+cand-gen-0212,Business Analysis,Viết tài liệu|Phân tích nghiệp vụ|Excel|Mạng xã hội|Prototyping|Pandas|Bảo mật ứng dụng|Docker,3,3,Đà Nẵng,Thực tập|Remote,10,16,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực Business Analysis.
+Kỹ năng
+Viết tài liệu | Phân tích nghiệp vụ | Excel | Mạng xã hội | Prototyping | Pandas | Bảo mật ứng dụng | Docker
+Kinh nghiệm
+3 năm kinh nghiệm trong nhóm nghề Business Analysis.
+Học vấn
+Đại học Kinh tế"
+cand-gen-0213,Business Operations,SQL|Giao tiếp|Viết tài liệu|Excel|UML|Phân tích nghiệp vụ|Docker|Confluence|Kafka|Storybook|Facebook Ads,0.3,2,Đà Nẵng,Bán thời gian,4.6,7.9,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực Business Operations.
+Kỹ năng
+SQL | Giao tiếp | Viết tài liệu | Excel | UML | Phân tích nghiệp vụ | Docker | Confluence | Kafka | Storybook | Facebook Ads
+Kinh nghiệm
+0.3 năm kinh nghiệm trong nhóm nghề Business Operations.
+Học vấn
+Cao đẳng Công nghệ"
+cand-gen-0214,Data Science & Analytics,Git|Thống kê cơ bản|SQL|Linux cơ bản|Python|ETL|Cloud (AWS/GCP)|Matplotlib|Prototyping|REST API,5,3,Hà Nội|Remote,Remote|Toàn thời gian,14,22,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực Data Science & Analytics.
+Kỹ năng
+Git | Thống kê cơ bản | SQL | Linux cơ bản | Python | ETL | Cloud (AWS/GCP) | Matplotlib | Prototyping | REST API
+Kinh nghiệm
+5 năm kinh nghiệm trong nhóm nghề Data Science & Analytics.
+Học vấn
+Đại học Quốc gia"
+cand-gen-0215,Digital Marketing,Giao tiếp|Mạng xã hội|Tư duy sáng tạo|Viết nội dung|Kiểm thử phần mềm|Excel|ETL|Apache Spark|Matplotlib|Python,2,3,Hồ Chí Minh,Toàn thời gian,8,13,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực Digital Marketing.
+Kỹ năng
+Giao tiếp | Mạng xã hội | Tư duy sáng tạo | Viết nội dung | Kiểm thử phần mềm | Excel | ETL | Apache Spark | Matplotlib | Python
+Kinh nghiệm
+2 năm kinh nghiệm trong nhóm nghề Digital Marketing.
+Học vấn
+Đại học Bách khoa"
+cand-gen-0216,Frontend Development,JavaScript|REST API|CSS|Git|React|Viết tài liệu|HTML|Kỹ thuật máy tính|ETL|Power BI|TypeScript nâng cao,0.3,3,Đà Nẵng|Hồ Chí Minh,Thực tập,4.6,7.9,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực Frontend Development.
+Kỹ năng
+JavaScript | REST API | CSS | Git | React | Viết tài liệu | HTML | Kỹ thuật máy tính | ETL | Power BI | TypeScript nâng cao
+Kinh nghiệm
+0.3 năm kinh nghiệm trong nhóm nghề Frontend Development.
+Học vấn
+Đại học Kinh tế"
+cand-gen-0217,IT Support,Windows Server|Mạng cơ bản|Giao tiếp|Xử lý sự cố|Kỹ thuật máy tính|Canva|Linux cơ bản|Airflow|Power BI|JavaScript|Jest|Node.js,3,4,Hà Nội|Đà Nẵng,Bán thời gian|Remote,10,16,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực IT Support.
+Kỹ năng
+Windows Server | Mạng cơ bản | Giao tiếp | Xử lý sự cố | Kỹ thuật máy tính | Canva | Linux cơ bản | Airflow | Power BI | JavaScript | Jest | Node.js
+Kinh nghiệm
+3 năm kinh nghiệm trong nhóm nghề IT Support.
+Học vấn
+Đại học Bách khoa"
+cand-gen-0218,QA & Testing,Git|Viết test case|Excel|OOP|Google Analytics|Viết nội dung|Kỹ thuật máy tính|Email Marketing|Facebook Ads|Thiết kế API,1,2,Đà Nẵng,Bán thời gian,6,10,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực QA & Testing.
+Kỹ năng
+Git | Viết test case | Excel | OOP | Google Analytics | Viết nội dung | Kỹ thuật máy tính | Email Marketing | Facebook Ads | Thiết kế API
+Kinh nghiệm
+1 năm kinh nghiệm trong nhóm nghề QA & Testing.
+Học vấn
+Đại học Quốc gia"
+cand-gen-0219,Software Engineering,JavaScript|OOP|REST API|SQL|User Research,0,3,Đà Nẵng,Thực tập|Bán thời gian,4,7,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực Software Engineering.
+Kỹ năng
+JavaScript | OOP | REST API | SQL | User Research
+Kinh nghiệm
+0 năm kinh nghiệm trong nhóm nghề Software Engineering.
+Học vấn
+Đại học Quốc gia"
+cand-gen-0220,UI/UX Design,Figma|Tư duy sáng tạo|Nguyên lý UX|Giao tiếp|Power BI|Facebook Ads|SQL|Canva|TypeScript nâng cao|Windows Server,2,3,Hồ Chí Minh,Toàn thời gian|Bán thời gian,8,13,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực UI/UX Design.
+Kỹ năng
+Figma | Tư duy sáng tạo | Nguyên lý UX | Giao tiếp | Power BI | Facebook Ads | SQL | Canva | TypeScript nâng cao | Windows Server
+Kinh nghiệm
+2 năm kinh nghiệm trong nhóm nghề UI/UX Design.
+Học vấn
+Đại học Kinh tế"
+cand-gen-0221,Backend Development,JavaScript|SQL|Git|REST API|Node.js|TypeScript nâng cao|Responsive Design,1,3,Đà Nẵng,Thực tập|Bán thời gian,6,10,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực Backend Development.
+Kỹ năng
+JavaScript | SQL | Git | REST API | Node.js | TypeScript nâng cao | Responsive Design
+Kinh nghiệm
+1 năm kinh nghiệm trong nhóm nghề Backend Development.
+Học vấn
+Đại học Quốc gia"
+cand-gen-0222,Business Analysis,Tư duy logic|Excel|Viết tài liệu|Playwright|Google Analytics|Design System|Docker|Selenium|Giao tiếp|Facebook Ads|Python,4,2,Đà Nẵng|Hồ Chí Minh,Thực tập|Remote,12,19,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực Business Analysis.
+Kỹ năng
+Tư duy logic | Excel | Viết tài liệu | Playwright | Google Analytics | Design System | Docker | Selenium | Giao tiếp | Facebook Ads | Python
+Kinh nghiệm
+4 năm kinh nghiệm trong nhóm nghề Business Analysis.
+Học vấn
+Đại học Bách khoa"
+cand-gen-0223,Business Operations,SQL|Giao tiếp|Viết tài liệu|Responsive Design|Nguyên lý UX|Kiểm thử phần mềm,2,3,Đà Nẵng|Hồ Chí Minh,Remote,8,13,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực Business Operations.
+Kỹ năng
+SQL | Giao tiếp | Viết tài liệu | Responsive Design | Nguyên lý UX | Kiểm thử phần mềm
+Kinh nghiệm
+2 năm kinh nghiệm trong nhóm nghề Business Operations.
+Học vấn
+Đại học Bách khoa"
+cand-gen-0224,Data Science & Analytics,Git|Linux cơ bản|ETL|Python|Office 365|Nghiệp vụ ngân hàng|Tư duy logic|Thiết kế UI|SEO cơ bản,0.3,3,Remote,Bán thời gian,4.6,7.9,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực Data Science & Analytics.
+Kỹ năng
+Git | Linux cơ bản | ETL | Python | Office 365 | Nghiệp vụ ngân hàng | Tư duy logic | Thiết kế UI | SEO cơ bản
+Kinh nghiệm
+0.3 năm kinh nghiệm trong nhóm nghề Data Science & Analytics.
+Học vấn
+Đại học Kinh tế"
+cand-gen-0225,Digital Marketing,Viết nội dung|Giao tiếp|Excel|Mạng xã hội|Tư duy sáng tạo|OOP|Nghiệp vụ ngân hàng|Matplotlib|Python|SQL,2,3,Remote|Hồ Chí Minh,Bán thời gian,8,13,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực Digital Marketing.
+Kỹ năng
+Viết nội dung | Giao tiếp | Excel | Mạng xã hội | Tư duy sáng tạo | OOP | Nghiệp vụ ngân hàng | Matplotlib | Python | SQL
+Kinh nghiệm
+2 năm kinh nghiệm trong nhóm nghề Digital Marketing.
+Học vấn
+Đại học Bách khoa"
+cand-gen-0226,Frontend Development,TypeScript|REST API|HTML|CSS|Git|Apache Spark|Airflow|AWS cơ bản|Tableau|Virtualization|Storybook,0,3,Hà Nội|Remote,Bán thời gian|Toàn thời gian,4,7,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực Frontend Development.
+Kỹ năng
+TypeScript | REST API | HTML | CSS | Git | Apache Spark | Airflow | AWS cơ bản | Tableau | Virtualization | Storybook
+Kinh nghiệm
+0 năm kinh nghiệm trong nhóm nghề Frontend Development.
+Học vấn
+Cao đẳng Công nghệ"
+cand-gen-0227,IT Support,Xử lý sự cố|Windows Server|Kỹ thuật máy tính|Mạng cơ bản|Giao tiếp,2,3,Remote,Thực tập|Remote,8,13,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực IT Support.
+Kỹ năng
+Xử lý sự cố | Windows Server | Kỹ thuật máy tính | Mạng cơ bản | Giao tiếp
+Kinh nghiệm
+2 năm kinh nghiệm trong nhóm nghề IT Support.
+Học vấn
+Cao đẳng Công nghệ"
+cand-gen-0228,QA & Testing,Git|Excel|Tư duy phân tích|Viết test case|OOP|Tailwind CSS|UML|ITIL cơ bản|Apache Spark,4,3,Đà Nẵng,Thực tập,12,19,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực QA & Testing.
+Kỹ năng
+Git | Excel | Tư duy phân tích | Viết test case | OOP | Tailwind CSS | UML | ITIL cơ bản | Apache Spark
+Kinh nghiệm
+4 năm kinh nghiệm trong nhóm nghề QA & Testing.
+Học vấn
+Đại học Bách khoa"
+cand-gen-0229,Software Engineering,Git|REST API|OOP|JavaScript|SQL|Mạng cơ bản|Docker|SEO cơ bản|MongoDB|Jira|TypeScript|PostgreSQL,1,3,Remote|Hồ Chí Minh,Bán thời gian,6,10,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực Software Engineering.
+Kỹ năng
+Git | REST API | OOP | JavaScript | SQL | Mạng cơ bản | Docker | SEO cơ bản | MongoDB | Jira | TypeScript | PostgreSQL
+Kinh nghiệm
+1 năm kinh nghiệm trong nhóm nghề Software Engineering.
+Học vấn
+Cao đẳng Công nghệ"
+cand-gen-0230,UI/UX Design,Tư duy sáng tạo|Nguyên lý UX|Thiết kế UI|Machine Learning cơ bản|Tư duy logic|Linux|Python|Git|Active Directory,0.5,2,Remote,Thực tập|Remote,5.0,8.5,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực UI/UX Design.
+Kỹ năng
+Tư duy sáng tạo | Nguyên lý UX | Thiết kế UI | Machine Learning cơ bản | Tư duy logic | Linux | Python | Git | Active Directory
+Kinh nghiệm
+0.5 năm kinh nghiệm trong nhóm nghề UI/UX Design.
+Học vấn
+Cao đẳng Công nghệ"
+cand-gen-0231,Backend Development,Node.js|Git|REST API|SQL|Linux|Cloud (AWS/GCP)|SEO cơ bản|TypeScript|Jest,0.3,2,Hồ Chí Minh,Remote|Bán thời gian,4.6,7.9,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực Backend Development.
+Kỹ năng
+Node.js | Git | REST API | SQL | Linux | Cloud (AWS/GCP) | SEO cơ bản | TypeScript | Jest
+Kinh nghiệm
+0.3 năm kinh nghiệm trong nhóm nghề Backend Development.
+Học vấn
+Cao đẳng Công nghệ"
+cand-gen-0232,Business Analysis,Phân tích nghiệp vụ|Excel|Viết tài liệu|Giao tiếp|Tư duy logic|User Research,4,2,Remote,Toàn thời gian,12,19,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực Business Analysis.
+Kỹ năng
+Phân tích nghiệp vụ | Excel | Viết tài liệu | Giao tiếp | Tư duy logic | User Research
+Kinh nghiệm
+4 năm kinh nghiệm trong nhóm nghề Business Analysis.
+Học vấn
+Đại học Quốc gia"
+cand-gen-0233,Business Operations,SQL|Viết tài liệu|Phân tích nghiệp vụ|Storybook|PostgreSQL|MongoDB|Mạng xã hội|Docker,0,3,Hà Nội|Hồ Chí Minh,Thực tập|Toàn thời gian,4,7,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực Business Operations.
+Kỹ năng
+SQL | Viết tài liệu | Phân tích nghiệp vụ | Storybook | PostgreSQL | MongoDB | Mạng xã hội | Docker
+Kinh nghiệm
+0 năm kinh nghiệm trong nhóm nghề Business Operations.
+Học vấn
+Đại học Kinh tế"
+cand-gen-0234,Data Science & Analytics,Python|ETL|Thống kê cơ bản|Excel|CSS|Jira|Viết tài liệu|Active Directory|PostgreSQL|HTML/CSS cơ bản,0,4,Remote|Đà Nẵng,Thực tập,4,7,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực Data Science & Analytics.
+Kỹ năng
+Python | ETL | Thống kê cơ bản | Excel | CSS | Jira | Viết tài liệu | Active Directory | PostgreSQL | HTML/CSS cơ bản
+Kinh nghiệm
+0 năm kinh nghiệm trong nhóm nghề Data Science & Analytics.
+Học vấn
+Đại học Bách khoa"
+cand-gen-0235,Digital Marketing,Giao tiếp|Tư duy sáng tạo|Excel|AWS cơ bản|Phân tích dữ liệu,0.5,3,Hồ Chí Minh,Bán thời gian|Remote,5.0,8.5,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực Digital Marketing.
+Kỹ năng
+Giao tiếp | Tư duy sáng tạo | Excel | AWS cơ bản | Phân tích dữ liệu
+Kinh nghiệm
+0.5 năm kinh nghiệm trong nhóm nghề Digital Marketing.
+Học vấn
+Đại học Kinh tế"
+cand-gen-0236,Frontend Development,TypeScript|React|JavaScript|Jira|React Query|Tableau|Python,5,3,Remote|Hà Nội,Thực tập,14,22,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực Frontend Development.
+Kỹ năng
+TypeScript | React | JavaScript | Jira | React Query | Tableau | Python
+Kinh nghiệm
+5 năm kinh nghiệm trong nhóm nghề Frontend Development.
+Học vấn
+Đại học Kinh tế"
+cand-gen-0237,IT Support,Kỹ thuật máy tính|Windows Server|Xử lý sự cố|Mạng cơ bản|Tư duy phân tích|Playwright|SQL|Giao tiếp|Thiết kế UI,3,3,Đà Nẵng,Thực tập,10,16,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực IT Support.
+Kỹ năng
+Kỹ thuật máy tính | Windows Server | Xử lý sự cố | Mạng cơ bản | Tư duy phân tích | Playwright | SQL | Giao tiếp | Thiết kế UI
+Kinh nghiệm
+3 năm kinh nghiệm trong nhóm nghề IT Support.
+Học vấn
+Đại học Bách khoa"
+cand-gen-0238,QA & Testing,Git|Viết test case|Tư duy phân tích|Excel|Kiểm thử phần mềm|Nguyên lý UX|CSS|Bảo mật ứng dụng|Tư duy logic|Agile/Scrum|AWS cơ bản,0.5,2,Hồ Chí Minh,Remote,5.0,8.5,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực QA & Testing.
+Kỹ năng
+Git | Viết test case | Tư duy phân tích | Excel | Kiểm thử phần mềm | Nguyên lý UX | CSS | Bảo mật ứng dụng | Tư duy logic | Agile/Scrum | AWS cơ bản
+Kinh nghiệm
+0.5 năm kinh nghiệm trong nhóm nghề QA & Testing.
+Học vấn
+Đại học Quốc gia"
+cand-gen-0239,Software Engineering,REST API|Git|JavaScript|SQL|OOP|Docker,1,3,Remote,Thực tập,6,10,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực Software Engineering.
+Kỹ năng
+REST API | Git | JavaScript | SQL | OOP | Docker
+Kinh nghiệm
+1 năm kinh nghiệm trong nhóm nghề Software Engineering.
+Học vấn
+Cao đẳng Công nghệ"
+cand-gen-0240,UI/UX Design,Giao tiếp|Figma|Thiết kế UI|Tư duy sáng tạo|Nguyên lý UX|Jest,5,1,Hồ Chí Minh|Đà Nẵng,Bán thời gian|Toàn thời gian,14,22,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực UI/UX Design.
+Kỹ năng
+Giao tiếp | Figma | Thiết kế UI | Tư duy sáng tạo | Nguyên lý UX | Jest
+Kinh nghiệm
+5 năm kinh nghiệm trong nhóm nghề UI/UX Design.
+Học vấn
+Đại học Quốc gia"
+cand-gen-0241,Backend Development,Node.js|SQL|REST API|JavaScript|Git|Facebook Ads,0.5,3,Đà Nẵng|Remote,Remote,5.0,8.5,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực Backend Development.
+Kỹ năng
+Node.js | SQL | REST API | JavaScript | Git | Facebook Ads
+Kinh nghiệm
+0.5 năm kinh nghiệm trong nhóm nghề Backend Development.
+Học vấn
+Đại học Kinh tế"
+cand-gen-0242,Business Analysis,Giao tiếp|Viết tài liệu|Tư duy logic|Excel|Phân tích nghiệp vụ|Postman|Virtualization|Linux,2,4,Remote,Toàn thời gian,8,13,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực Business Analysis.
+Kỹ năng
+Giao tiếp | Viết tài liệu | Tư duy logic | Excel | Phân tích nghiệp vụ | Postman | Virtualization | Linux
+Kinh nghiệm
+2 năm kinh nghiệm trong nhóm nghề Business Analysis.
+Học vấn
+Đại học Kinh tế"
+cand-gen-0243,Business Operations,Phân tích nghiệp vụ|Giao tiếp|SQL|Excel|Viết tài liệu,1.5,4,Hồ Chí Minh|Hà Nội,Remote,7.0,11.5,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực Business Operations.
+Kỹ năng
+Phân tích nghiệp vụ | Giao tiếp | SQL | Excel | Viết tài liệu
+Kinh nghiệm
+1.5 năm kinh nghiệm trong nhóm nghề Business Operations.
+Học vấn
+Đại học Kinh tế"
+cand-gen-0244,Data Science & Analytics,Git|Python|ETL|Excel|Linux cơ bản|Windows Server,3,3,Hà Nội,Remote|Toàn thời gian,10,16,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực Data Science & Analytics.
+Kỹ năng
+Git | Python | ETL | Excel | Linux cơ bản | Windows Server
+Kinh nghiệm
+3 năm kinh nghiệm trong nhóm nghề Data Science & Analytics.
+Học vấn
+Cao đẳng Công nghệ"
+cand-gen-0245,Digital Marketing,Giao tiếp|Excel|Viết nội dung|OOP|Pandas,3,3,Hồ Chí Minh,Remote,10,16,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực Digital Marketing.
+Kỹ năng
+Giao tiếp | Excel | Viết nội dung | OOP | Pandas
+Kinh nghiệm
+3 năm kinh nghiệm trong nhóm nghề Digital Marketing.
+Học vấn
+Đại học Bách khoa"
+cand-gen-0246,Frontend Development,Git|REST API|CSS|JavaScript|React|Confluence|Storybook|PostgreSQL,4,3,Hà Nội|Remote,Thực tập|Bán thời gian,12,19,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực Frontend Development.
+Kỹ năng
+Git | REST API | CSS | JavaScript | React | Confluence | Storybook | PostgreSQL
+Kinh nghiệm
+4 năm kinh nghiệm trong nhóm nghề Frontend Development.
+Học vấn
+Đại học Quốc gia"
+cand-gen-0247,IT Support,Giao tiếp|Kỹ thuật máy tính|Mạng cơ bản|Windows Server|Xử lý sự cố|Quản lý dự án,5,3,Hồ Chí Minh|Hà Nội,Bán thời gian|Remote,14,22,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực IT Support.
+Kỹ năng
+Giao tiếp | Kỹ thuật máy tính | Mạng cơ bản | Windows Server | Xử lý sự cố | Quản lý dự án
+Kinh nghiệm
+5 năm kinh nghiệm trong nhóm nghề IT Support.
+Học vấn
+Cao đẳng Công nghệ"
+cand-gen-0248,QA & Testing,Viết test case|Kiểm thử phần mềm|Git|Tư duy phân tích|Viết tài liệu|Apache Spark|CI/CD|Python|REST API|Pandas,2,2,Hà Nội,Bán thời gian|Remote,8,13,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực QA & Testing.
+Kỹ năng
+Viết test case | Kiểm thử phần mềm | Git | Tư duy phân tích | Viết tài liệu | Apache Spark | CI/CD | Python | REST API | Pandas
+Kinh nghiệm
+2 năm kinh nghiệm trong nhóm nghề QA & Testing.
+Học vấn
+Cao đẳng Công nghệ"
+cand-gen-0249,Software Engineering,SQL|Git|JavaScript|REST API|React|Kafka,0.5,3,Hà Nội,Toàn thời gian|Bán thời gian,5.0,8.5,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực Software Engineering.
+Kỹ năng
+SQL | Git | JavaScript | REST API | React | Kafka
+Kinh nghiệm
+0.5 năm kinh nghiệm trong nhóm nghề Software Engineering.
+Học vấn
+Cao đẳng Công nghệ"
+cand-gen-0250,UI/UX Design,Giao tiếp|Nguyên lý UX|Figma|Tư duy sáng tạo|Docker|Prototyping|PostgreSQL|Tư duy logic|HTML/CSS cơ bản|Kỹ thuật máy tính|Excel|Active Directory,1.5,2,Đà Nẵng|Hà Nội,Toàn thời gian|Remote,7.0,11.5,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực UI/UX Design.
+Kỹ năng
+Giao tiếp | Nguyên lý UX | Figma | Tư duy sáng tạo | Docker | Prototyping | PostgreSQL | Tư duy logic | HTML/CSS cơ bản | Kỹ thuật máy tính | Excel | Active Directory
+Kinh nghiệm
+1.5 năm kinh nghiệm trong nhóm nghề UI/UX Design.
+Học vấn
+Cao đẳng Công nghệ"
+cand-gen-0251,Backend Development,Node.js|SQL|REST API|ITIL cơ bản|Playwright|TypeScript nâng cao|BPMN|Mạng xã hội|Thiết kế API|Tư duy sáng tạo|Apache Spark,0.5,2,Hà Nội,Bán thời gian,5.0,8.5,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực Backend Development.
+Kỹ năng
+Node.js | SQL | REST API | ITIL cơ bản | Playwright | TypeScript nâng cao | BPMN | Mạng xã hội | Thiết kế API | Tư duy sáng tạo | Apache Spark
+Kinh nghiệm
+0.5 năm kinh nghiệm trong nhóm nghề Backend Development.
+Học vấn
+Đại học Kinh tế"
+cand-gen-0252,Business Analysis,Phân tích nghiệp vụ|Tư duy logic|Giao tiếp|Excel|Mạng cơ bản|Kafka|Thiết kế UI|Machine Learning cơ bản|Active Directory|Kỹ thuật máy tính,3,3,Đà Nẵng,Bán thời gian,10,16,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực Business Analysis.
+Kỹ năng
+Phân tích nghiệp vụ | Tư duy logic | Giao tiếp | Excel | Mạng cơ bản | Kafka | Thiết kế UI | Machine Learning cơ bản | Active Directory | Kỹ thuật máy tính
+Kinh nghiệm
+3 năm kinh nghiệm trong nhóm nghề Business Analysis.
+Học vấn
+Đại học Kinh tế"
+cand-gen-0253,Business Operations,Excel|Viết tài liệu|SQL|JavaScript|Viết nội dung|Design System|REST API|MongoDB|Nguyên lý UX|Responsive Design|Tư duy phân tích,0.5,2,Hồ Chí Minh,Thực tập,5.0,8.5,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực Business Operations.
+Kỹ năng
+Excel | Viết tài liệu | SQL | JavaScript | Viết nội dung | Design System | REST API | MongoDB | Nguyên lý UX | Responsive Design | Tư duy phân tích
+Kinh nghiệm
+0.5 năm kinh nghiệm trong nhóm nghề Business Operations.
+Học vấn
+Đại học Quốc gia"
+cand-gen-0254,Data Science & Analytics,Excel|SQL|Git|ETL|Mạng xã hội|Bảo mật ứng dụng|Power BI,2,3,Remote,Remote|Thực tập,8,13,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực Data Science & Analytics.
+Kỹ năng
+Excel | SQL | Git | ETL | Mạng xã hội | Bảo mật ứng dụng | Power BI
+Kinh nghiệm
+2 năm kinh nghiệm trong nhóm nghề Data Science & Analytics.
+Học vấn
+Đại học Kinh tế"
+cand-gen-0255,Digital Marketing,Mạng xã hội|Viết nội dung|Tư duy sáng tạo|Giao tiếp|Zustand|Kafka|Canva|Phân tích nghiệp vụ,0.3,3,Hồ Chí Minh,Thực tập|Toàn thời gian,4.6,7.9,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực Digital Marketing.
+Kỹ năng
+Mạng xã hội | Viết nội dung | Tư duy sáng tạo | Giao tiếp | Zustand | Kafka | Canva | Phân tích nghiệp vụ
+Kinh nghiệm
+0.3 năm kinh nghiệm trong nhóm nghề Digital Marketing.
+Học vấn
+Cao đẳng Công nghệ"
+cand-gen-0256,Frontend Development,CSS|REST API|HTML|React|Kỹ thuật máy tính,3,2,Hồ Chí Minh|Hà Nội,Bán thời gian,10,16,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực Frontend Development.
+Kỹ năng
+CSS | REST API | HTML | React | Kỹ thuật máy tính
+Kinh nghiệm
+3 năm kinh nghiệm trong nhóm nghề Frontend Development.
+Học vấn
+Cao đẳng Công nghệ"
+cand-gen-0257,IT Support,Windows Server|Xử lý sự cố|Giao tiếp|Kỹ thuật máy tính|Mạng cơ bản|Python|Viết test case|Tư duy phân tích|Tư duy logic|Virtualization,5,2,Hà Nội,Remote,14,22,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực IT Support.
+Kỹ năng
+Windows Server | Xử lý sự cố | Giao tiếp | Kỹ thuật máy tính | Mạng cơ bản | Python | Viết test case | Tư duy phân tích | Tư duy logic | Virtualization
+Kinh nghiệm
+5 năm kinh nghiệm trong nhóm nghề IT Support.
+Học vấn
+Đại học Bách khoa"
+cand-gen-0258,QA & Testing,Viết test case|Tư duy phân tích|Git|Matplotlib|Linux cơ bản|SEO cơ bản|Docker|Quản lý dự án|Machine Learning cơ bản|SQL|TypeScript,0.5,3,Remote|Hà Nội,Bán thời gian,5.0,8.5,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực QA & Testing.
+Kỹ năng
+Viết test case | Tư duy phân tích | Git | Matplotlib | Linux cơ bản | SEO cơ bản | Docker | Quản lý dự án | Machine Learning cơ bản | SQL | TypeScript
+Kinh nghiệm
+0.5 năm kinh nghiệm trong nhóm nghề QA & Testing.
+Học vấn
+Đại học Quốc gia"
+cand-gen-0259,Software Engineering,JavaScript|SQL|REST API|OOP|Git|Kỹ thuật máy tính,2,3,Hồ Chí Minh|Đà Nẵng,Toàn thời gian,8,13,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực Software Engineering.
+Kỹ năng
+JavaScript | SQL | REST API | OOP | Git | Kỹ thuật máy tính
+Kinh nghiệm
+2 năm kinh nghiệm trong nhóm nghề Software Engineering.
+Học vấn
+Đại học Bách khoa"
+cand-gen-0260,UI/UX Design,Giao tiếp|Tư duy sáng tạo|Thiết kế UI|Playwright|UML|Design System|Email Marketing,2,3,Hồ Chí Minh|Hà Nội,Bán thời gian,8,13,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực UI/UX Design.
+Kỹ năng
+Giao tiếp | Tư duy sáng tạo | Thiết kế UI | Playwright | UML | Design System | Email Marketing
+Kinh nghiệm
+2 năm kinh nghiệm trong nhóm nghề UI/UX Design.
+Học vấn
+Đại học Bách khoa"
+cand-gen-0261,Backend Development,SQL|JavaScript|Node.js|Git|REST API,1.5,0,Remote,Remote,7.0,11.5,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực Backend Development.
+Kỹ năng
+SQL | JavaScript | Node.js | Git | REST API
+Kinh nghiệm
+1.5 năm kinh nghiệm trong nhóm nghề Backend Development.
+Học vấn
+Đại học Quốc gia"
+cand-gen-0262,Business Analysis,Giao tiếp|Viết tài liệu|Phân tích nghiệp vụ|Tư duy logic|Excel|Viết nội dung|ITIL cơ bản|Active Directory|Google Analytics,0.5,1,Hà Nội,Toàn thời gian,5.0,8.5,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực Business Analysis.
+Kỹ năng
+Giao tiếp | Viết tài liệu | Phân tích nghiệp vụ | Tư duy logic | Excel | Viết nội dung | ITIL cơ bản | Active Directory | Google Analytics
+Kinh nghiệm
+0.5 năm kinh nghiệm trong nhóm nghề Business Analysis.
+Học vấn
+Đại học Kinh tế"
+cand-gen-0263,Business Operations,Viết tài liệu|SQL|UML|Xử lý sự cố|Viết nội dung|User Research|Email Marketing|SEO cơ bản|Pandas,0,1,Đà Nẵng,Remote|Toàn thời gian,4,7,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực Business Operations.
+Kỹ năng
+Viết tài liệu | SQL | UML | Xử lý sự cố | Viết nội dung | User Research | Email Marketing | SEO cơ bản | Pandas
+Kinh nghiệm
+0 năm kinh nghiệm trong nhóm nghề Business Operations.
+Học vấn
+Cao đẳng Công nghệ"
+cand-gen-0264,Data Science & Analytics,SQL|ETL|Excel|Git|Tư duy sáng tạo|Figma|Xử lý sự cố|Machine Learning cơ bản|AWS cơ bản|Zustand|Docker,4,3,Đà Nẵng|Hồ Chí Minh,Thực tập|Remote,12,19,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực Data Science & Analytics.
+Kỹ năng
+SQL | ETL | Excel | Git | Tư duy sáng tạo | Figma | Xử lý sự cố | Machine Learning cơ bản | AWS cơ bản | Zustand | Docker
+Kinh nghiệm
+4 năm kinh nghiệm trong nhóm nghề Data Science & Analytics.
+Học vấn
+Đại học Kinh tế"
+cand-gen-0265,Digital Marketing,Giao tiếp|Excel|Mạng xã hội|Viết nội dung|Tư duy sáng tạo|ITIL cơ bản|Google Analytics|Cloud (AWS/GCP)|SEO cơ bản,4,3,Hồ Chí Minh,Remote|Toàn thời gian,12,19,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực Digital Marketing.
+Kỹ năng
+Giao tiếp | Excel | Mạng xã hội | Viết nội dung | Tư duy sáng tạo | ITIL cơ bản | Google Analytics | Cloud (AWS/GCP) | SEO cơ bản
+Kinh nghiệm
+4 năm kinh nghiệm trong nhóm nghề Digital Marketing.
+Học vấn
+Đại học Kinh tế"
+cand-gen-0266,Frontend Development,HTML|TypeScript|CSS|JavaScript|Figma|MongoDB|Matplotlib|Thống kê cơ bản|User Research,2,3,Đà Nẵng,Remote|Thực tập,8,13,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực Frontend Development.
+Kỹ năng
+HTML | TypeScript | CSS | JavaScript | Figma | MongoDB | Matplotlib | Thống kê cơ bản | User Research
+Kinh nghiệm
+2 năm kinh nghiệm trong nhóm nghề Frontend Development.
+Học vấn
+Đại học Bách khoa"
+cand-gen-0267,IT Support,Xử lý sự cố|Giao tiếp|Kỹ thuật máy tính|Mạng cơ bản|Windows Server|Selenium|Tư duy phân tích,2,3,Hà Nội,Thực tập|Remote,8,13,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực IT Support.
+Kỹ năng
+Xử lý sự cố | Giao tiếp | Kỹ thuật máy tính | Mạng cơ bản | Windows Server | Selenium | Tư duy phân tích
+Kinh nghiệm
+2 năm kinh nghiệm trong nhóm nghề IT Support.
+Học vấn
+Đại học Bách khoa"
+cand-gen-0268,QA & Testing,Kiểm thử phần mềm|Viết test case|Excel|Git|Tư duy phân tích|UML|Email Marketing|Windows Server|Power BI|Figma|CSS,1.5,3,Hà Nội,Remote|Toàn thời gian,7.0,11.5,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực QA & Testing.
+Kỹ năng
+Kiểm thử phần mềm | Viết test case | Excel | Git | Tư duy phân tích | UML | Email Marketing | Windows Server | Power BI | Figma | CSS
+Kinh nghiệm
+1.5 năm kinh nghiệm trong nhóm nghề QA & Testing.
+Học vấn
+Cao đẳng Công nghệ"
+cand-gen-0269,Software Engineering,SQL|Git|JavaScript|REST API|OOP,1,4,Hà Nội,Bán thời gian|Toàn thời gian,6,10,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực Software Engineering.
+Kỹ năng
+SQL | Git | JavaScript | REST API | OOP
+Kinh nghiệm
+1 năm kinh nghiệm trong nhóm nghề Software Engineering.
+Học vấn
+Đại học Kinh tế"
+cand-gen-0270,UI/UX Design,Thiết kế UI|Nguyên lý UX|Figma|Giao tiếp|Tư duy sáng tạo,4,3,Hà Nội|Remote,Toàn thời gian|Thực tập,12,19,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực UI/UX Design.
+Kỹ năng
+Thiết kế UI | Nguyên lý UX | Figma | Giao tiếp | Tư duy sáng tạo
+Kinh nghiệm
+4 năm kinh nghiệm trong nhóm nghề UI/UX Design.
+Học vấn
+Đại học Bách khoa"
+cand-gen-0271,Backend Development,Git|SQL|Node.js|Google Analytics|Nghiệp vụ ngân hàng|Giao tiếp|Figma|Linux cơ bản|Linux,5,3,Hà Nội,Bán thời gian|Toàn thời gian,14,22,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực Backend Development.
+Kỹ năng
+Git | SQL | Node.js | Google Analytics | Nghiệp vụ ngân hàng | Giao tiếp | Figma | Linux cơ bản | Linux
+Kinh nghiệm
+5 năm kinh nghiệm trong nhóm nghề Backend Development.
+Học vấn
+Đại học Kinh tế"
+cand-gen-0272,Business Analysis,Excel|Tư duy logic|Giao tiếp|Linux|Design System|Machine Learning cơ bản|Viết nội dung|Kafka|Email Marketing|Adobe XD,1.5,3,Remote,Bán thời gian,7.0,11.5,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực Business Analysis.
+Kỹ năng
+Excel | Tư duy logic | Giao tiếp | Linux | Design System | Machine Learning cơ bản | Viết nội dung | Kafka | Email Marketing | Adobe XD
+Kinh nghiệm
+1.5 năm kinh nghiệm trong nhóm nghề Business Analysis.
+Học vấn
+Đại học Bách khoa"
+cand-gen-0273,Business Operations,Viết tài liệu|Phân tích nghiệp vụ|UML|Postman|Email Marketing|Windows Server|Responsive Design|Office 365|MongoDB|Nguyên lý UX|Git,5,1,Hồ Chí Minh,Remote,14,22,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực Business Operations.
+Kỹ năng
+Viết tài liệu | Phân tích nghiệp vụ | UML | Postman | Email Marketing | Windows Server | Responsive Design | Office 365 | MongoDB | Nguyên lý UX | Git
+Kinh nghiệm
+5 năm kinh nghiệm trong nhóm nghề Business Operations.
+Học vấn
+Đại học Bách khoa"
+cand-gen-0274,Data Science & Analytics,Python|Linux cơ bản|ETL|Excel|Git|Thống kê cơ bản|OOP,2,3,Hà Nội,Toàn thời gian|Bán thời gian,8,13,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực Data Science & Analytics.
+Kỹ năng
+Python | Linux cơ bản | ETL | Excel | Git | Thống kê cơ bản | OOP
+Kinh nghiệm
+2 năm kinh nghiệm trong nhóm nghề Data Science & Analytics.
+Học vấn
+Cao đẳng Công nghệ"
+cand-gen-0275,Digital Marketing,Giao tiếp|Mạng xã hội|Tư duy sáng tạo|Viết nội dung|Excel|Office 365,5,3,Remote,Remote|Toàn thời gian,14,22,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực Digital Marketing.
+Kỹ năng
+Giao tiếp | Mạng xã hội | Tư duy sáng tạo | Viết nội dung | Excel | Office 365
+Kinh nghiệm
+5 năm kinh nghiệm trong nhóm nghề Digital Marketing.
+Học vấn
+Đại học Quốc gia"
+cand-gen-0276,Frontend Development,JavaScript|CSS|Git|Prototyping|Virtualization|Nghiệp vụ ngân hàng|Tư duy sáng tạo|HTML/CSS cơ bản|Design System|Figma|Tableau,0.3,3,Đà Nẵng,Remote,4.6,7.9,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực Frontend Development.
+Kỹ năng
+JavaScript | CSS | Git | Prototyping | Virtualization | Nghiệp vụ ngân hàng | Tư duy sáng tạo | HTML/CSS cơ bản | Design System | Figma | Tableau
+Kinh nghiệm
+0.3 năm kinh nghiệm trong nhóm nghề Frontend Development.
+Học vấn
+Đại học Quốc gia"
+cand-gen-0277,IT Support,Giao tiếp|Xử lý sự cố|Windows Server|AWS cơ bản|Apache Spark|Google Analytics|Cloud (AWS/GCP)|Kỹ thuật máy tính|Confluence|Design System|Responsive Design|TypeScript nâng cao,1.5,3,Remote|Hà Nội,Thực tập,7.0,11.5,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực IT Support.
+Kỹ năng
+Giao tiếp | Xử lý sự cố | Windows Server | AWS cơ bản | Apache Spark | Google Analytics | Cloud (AWS/GCP) | Kỹ thuật máy tính | Confluence | Design System | Responsive Design | TypeScript nâng cao
+Kinh nghiệm
+1.5 năm kinh nghiệm trong nhóm nghề IT Support.
+Học vấn
+Đại học Kinh tế"
+cand-gen-0278,QA & Testing,Git|Kiểm thử phần mềm|Tư duy phân tích|CSS|Machine Learning cơ bản|AWS cơ bản|Pandas|UML|SQL|Viết test case|OOP,0.3,3,Hồ Chí Minh,Remote|Thực tập,4.6,7.9,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực QA & Testing.
+Kỹ năng
+Git | Kiểm thử phần mềm | Tư duy phân tích | CSS | Machine Learning cơ bản | AWS cơ bản | Pandas | UML | SQL | Viết test case | OOP
+Kinh nghiệm
+0.3 năm kinh nghiệm trong nhóm nghề QA & Testing.
+Học vấn
+Đại học Kinh tế"
+cand-gen-0279,Software Engineering,OOP|SQL|Git|JavaScript|REST API|Google Analytics|Viết test case,3,3,Remote,Thực tập,10,16,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực Software Engineering.
+Kỹ năng
+OOP | SQL | Git | JavaScript | REST API | Google Analytics | Viết test case
+Kinh nghiệm
+3 năm kinh nghiệm trong nhóm nghề Software Engineering.
+Học vấn
+Đại học Quốc gia"
+cand-gen-0280,UI/UX Design,Nguyên lý UX|Tư duy sáng tạo|Thiết kế UI|Cloud (AWS/GCP)|Airflow|Zustand|Quản lý dự án|SEO cơ bản|REST API|Facebook Ads|Viết test case,5,3,Remote,Bán thời gian|Toàn thời gian,14,22,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực UI/UX Design.
+Kỹ năng
+Nguyên lý UX | Tư duy sáng tạo | Thiết kế UI | Cloud (AWS/GCP) | Airflow | Zustand | Quản lý dự án | SEO cơ bản | REST API | Facebook Ads | Viết test case
+Kinh nghiệm
+5 năm kinh nghiệm trong nhóm nghề UI/UX Design.
+Học vấn
+Cao đẳng Công nghệ"
+cand-gen-0281,Backend Development,Git|SQL|JavaScript|REST API|MongoDB,4,3,Remote,Bán thời gian,12,19,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực Backend Development.
+Kỹ năng
+Git | SQL | JavaScript | REST API | MongoDB
+Kinh nghiệm
+4 năm kinh nghiệm trong nhóm nghề Backend Development.
+Học vấn
+Đại học Kinh tế"
+cand-gen-0282,Business Analysis,Excel|Giao tiếp|Tư duy logic|Tư duy phân tích|Viết test case|Mạng cơ bản,0,4,Hà Nội|Hồ Chí Minh,Remote|Thực tập,4,7,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực Business Analysis.
+Kỹ năng
+Excel | Giao tiếp | Tư duy logic | Tư duy phân tích | Viết test case | Mạng cơ bản
+Kinh nghiệm
+0 năm kinh nghiệm trong nhóm nghề Business Analysis.
+Học vấn
+Đại học Kinh tế"
+cand-gen-0283,Business Operations,SQL|Phân tích nghiệp vụ|Giao tiếp|Viết tài liệu|Excel,4,3,Hà Nội|Đà Nẵng,Toàn thời gian|Bán thời gian,12,19,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực Business Operations.
+Kỹ năng
+SQL | Phân tích nghiệp vụ | Giao tiếp | Viết tài liệu | Excel
+Kinh nghiệm
+4 năm kinh nghiệm trong nhóm nghề Business Operations.
+Học vấn
+Cao đẳng Công nghệ"
+cand-gen-0284,Data Science & Analytics,Linux cơ bản|Excel|ETL|Jira|ITIL cơ bản|Python|AWS cơ bản,0.5,4,Hồ Chí Minh|Đà Nẵng,Thực tập|Toàn thời gian,5.0,8.5,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực Data Science & Analytics.
+Kỹ năng
+Linux cơ bản | Excel | ETL | Jira | ITIL cơ bản | Python | AWS cơ bản
+Kinh nghiệm
+0.5 năm kinh nghiệm trong nhóm nghề Data Science & Analytics.
+Học vấn
+Đại học Kinh tế"
+cand-gen-0285,Digital Marketing,Tư duy sáng tạo|Viết nội dung|Excel|Thiết kế API|Python|Postman|Kafka,4,3,Hồ Chí Minh,Toàn thời gian|Thực tập,12,19,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực Digital Marketing.
+Kỹ năng
+Tư duy sáng tạo | Viết nội dung | Excel | Thiết kế API | Python | Postman | Kafka
+Kinh nghiệm
+4 năm kinh nghiệm trong nhóm nghề Digital Marketing.
+Học vấn
+Đại học Kinh tế"
+cand-gen-0286,Frontend Development,React|REST API|JavaScript|TypeScript|Git|HTML|PostgreSQL|Thiết kế API|Linux|Confluence|UML,3,0,Remote,Toàn thời gian|Remote,10,16,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực Frontend Development.
+Kỹ năng
+React | REST API | JavaScript | TypeScript | Git | HTML | PostgreSQL | Thiết kế API | Linux | Confluence | UML
+Kinh nghiệm
+3 năm kinh nghiệm trong nhóm nghề Frontend Development.
+Học vấn
+Đại học Kinh tế"
+cand-gen-0287,IT Support,Mạng cơ bản|Giao tiếp|Kỹ thuật máy tính|Windows Server|Xử lý sự cố|Jira|Git|TypeScript nâng cao|Phân tích dữ liệu|Figma|Node.js|Active Directory,0,3,Remote,Toàn thời gian,4,7,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực IT Support.
+Kỹ năng
+Mạng cơ bản | Giao tiếp | Kỹ thuật máy tính | Windows Server | Xử lý sự cố | Jira | Git | TypeScript nâng cao | Phân tích dữ liệu | Figma | Node.js | Active Directory
+Kinh nghiệm
+0 năm kinh nghiệm trong nhóm nghề IT Support.
+Học vấn
+Cao đẳng Công nghệ"
+cand-gen-0288,QA & Testing,Viết test case|Kiểm thử phần mềm|Excel|Tư duy phân tích|Git|Canva|BPMN|Cloud (AWS/GCP),3,3,Hồ Chí Minh|Hà Nội,Thực tập,10,16,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực QA & Testing.
+Kỹ năng
+Viết test case | Kiểm thử phần mềm | Excel | Tư duy phân tích | Git | Canva | BPMN | Cloud (AWS/GCP)
+Kinh nghiệm
+3 năm kinh nghiệm trong nhóm nghề QA & Testing.
+Học vấn
+Đại học Kinh tế"
+cand-gen-0289,Software Engineering,Git|REST API|OOP|SQL|JavaScript|Airflow|Machine Learning cơ bản,0,3,Hà Nội,Thực tập|Toàn thời gian,4,7,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực Software Engineering.
+Kỹ năng
+Git | REST API | OOP | SQL | JavaScript | Airflow | Machine Learning cơ bản
+Kinh nghiệm
+0 năm kinh nghiệm trong nhóm nghề Software Engineering.
+Học vấn
+Cao đẳng Công nghệ"
+cand-gen-0290,UI/UX Design,Nguyên lý UX|Tư duy sáng tạo|Figma|Thiết kế UI|Giao tiếp|CSS|SEO cơ bản|Linux cơ bản,0.3,0,Đà Nẵng,Toàn thời gian|Bán thời gian,4.6,7.9,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực UI/UX Design.
+Kỹ năng
+Nguyên lý UX | Tư duy sáng tạo | Figma | Thiết kế UI | Giao tiếp | CSS | SEO cơ bản | Linux cơ bản
+Kinh nghiệm
+0.3 năm kinh nghiệm trong nhóm nghề UI/UX Design.
+Học vấn
+Đại học Quốc gia"
+cand-gen-0291,Backend Development,JavaScript|SQL|Git|Node.js|REST API|SEO cơ bản|Quản lý dự án|Airflow|Virtualization|Jest|TypeScript|Prototyping,4,2,Đà Nẵng|Hồ Chí Minh,Remote|Toàn thời gian,12,19,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực Backend Development.
+Kỹ năng
+JavaScript | SQL | Git | Node.js | REST API | SEO cơ bản | Quản lý dự án | Airflow | Virtualization | Jest | TypeScript | Prototyping
+Kinh nghiệm
+4 năm kinh nghiệm trong nhóm nghề Backend Development.
+Học vấn
+Đại học Bách khoa"
+cand-gen-0292,Business Analysis,Giao tiếp|Tư duy logic|Viết tài liệu|Facebook Ads|Tư duy sáng tạo|Confluence|PostgreSQL|Git,1.5,3,Đà Nẵng,Toàn thời gian|Thực tập,7.0,11.5,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực Business Analysis.
+Kỹ năng
+Giao tiếp | Tư duy logic | Viết tài liệu | Facebook Ads | Tư duy sáng tạo | Confluence | PostgreSQL | Git
+Kinh nghiệm
+1.5 năm kinh nghiệm trong nhóm nghề Business Analysis.
+Học vấn
+Cao đẳng Công nghệ"
+cand-gen-0293,Business Operations,Phân tích nghiệp vụ|UML|SQL|Viết tài liệu|Active Directory|Tư duy sáng tạo|Mạng cơ bản|Thiết kế UI|Tư duy phân tích|SEO cơ bản|Nghiệp vụ ngân hàng,0,3,Hà Nội,Toàn thời gian|Remote,4,7,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực Business Operations.
+Kỹ năng
+Phân tích nghiệp vụ | UML | SQL | Viết tài liệu | Active Directory | Tư duy sáng tạo | Mạng cơ bản | Thiết kế UI | Tư duy phân tích | SEO cơ bản | Nghiệp vụ ngân hàng
+Kinh nghiệm
+0 năm kinh nghiệm trong nhóm nghề Business Operations.
+Học vấn
+Cao đẳng Công nghệ"
+cand-gen-0294,Data Science & Analytics,SQL|Linux cơ bản|Python|Thống kê cơ bản|Tailwind CSS,0,2,Hồ Chí Minh|Hà Nội,Toàn thời gian,4,7,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực Data Science & Analytics.
+Kỹ năng
+SQL | Linux cơ bản | Python | Thống kê cơ bản | Tailwind CSS
+Kinh nghiệm
+0 năm kinh nghiệm trong nhóm nghề Data Science & Analytics.
+Học vấn
+Đại học Kinh tế"
+cand-gen-0295,Digital Marketing,Giao tiếp|Viết nội dung|Excel|Tư duy sáng tạo|Zustand|Jira|Adobe XD|ITIL cơ bản|React|Pandas|Python|OOP,0.3,4,Hồ Chí Minh|Remote,Toàn thời gian,4.6,7.9,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực Digital Marketing.
+Kỹ năng
+Giao tiếp | Viết nội dung | Excel | Tư duy sáng tạo | Zustand | Jira | Adobe XD | ITIL cơ bản | React | Pandas | Python | OOP
+Kinh nghiệm
+0.3 năm kinh nghiệm trong nhóm nghề Digital Marketing.
+Học vấn
+Đại học Quốc gia"
+cand-gen-0296,Frontend Development,CSS|React|REST API|JavaScript|TypeScript|Responsive Design|Kafka,0,2,Remote|Hà Nội,Remote,4,7,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực Frontend Development.
+Kỹ năng
+CSS | React | REST API | JavaScript | TypeScript | Responsive Design | Kafka
+Kinh nghiệm
+0 năm kinh nghiệm trong nhóm nghề Frontend Development.
+Học vấn
+Đại học Bách khoa"
+cand-gen-0297,IT Support,Giao tiếp|Mạng cơ bản|Windows Server|Canva|Git|Confluence|Kiểm thử phần mềm|Thống kê cơ bản|Responsive Design|Python|JavaScript|Email Marketing,0,3,Remote|Đà Nẵng,Thực tập,4,7,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực IT Support.
+Kỹ năng
+Giao tiếp | Mạng cơ bản | Windows Server | Canva | Git | Confluence | Kiểm thử phần mềm | Thống kê cơ bản | Responsive Design | Python | JavaScript | Email Marketing
+Kinh nghiệm
+0 năm kinh nghiệm trong nhóm nghề IT Support.
+Học vấn
+Đại học Kinh tế"
+cand-gen-0298,QA & Testing,Viết test case|Kiểm thử phần mềm|Tư duy phân tích|Excel|UML|Thống kê cơ bản|HTML/CSS cơ bản|Storybook|Google Analytics|Linux cơ bản,0,2,Remote,Bán thời gian|Toàn thời gian,4,7,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực QA & Testing.
+Kỹ năng
+Viết test case | Kiểm thử phần mềm | Tư duy phân tích | Excel | UML | Thống kê cơ bản | HTML/CSS cơ bản | Storybook | Google Analytics | Linux cơ bản
+Kinh nghiệm
+0 năm kinh nghiệm trong nhóm nghề QA & Testing.
+Học vấn
+Đại học Bách khoa"
+cand-gen-0299,Software Engineering,SQL|REST API|OOP|Git|JavaScript,0.3,3,Hồ Chí Minh|Hà Nội,Remote,4.6,7.9,"Mục tiêu
+Tìm cơ hội phát triển trong lĩnh vực Software Engineering.
+Kỹ năng
+SQL | REST API | OOP | Git | JavaScript
+Kinh nghiệm
+0.3 năm kinh nghiệm trong nhóm nghề Software Engineering.
+Học vấn
+Đại học Bách khoa"

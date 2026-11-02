@@ -1,61 +1,71 @@
-# SmartCareer – Hệ thống Tìm việc Thông minh cho Sinh viên
+# SmartCareer – Hệ thống Tìm việc Thông minh
 
-Prototype frontend phục vụ bài tập học phần *“Thiết kế Ý tưởng Hệ thống Tìm kiếm Việc làm Thông minh và Chiến lược Thu thập Dữ liệu”*.
+SmartCareer là prototype tìm việc tích hợp API FastAPI, PostgreSQL, AI matching, BI và frontend React. Dữ liệu công ty, tin việc, hồ sơ và lịch sử ứng tuyển trong bộ seed là dữ liệu mô phỏng; không thu thập dữ liệu từ TopCV/LinkedIn.
 
-Đây là **prototype chạy trên trình duyệt**, không có backend, không có cơ sở dữ liệu và không gọi API AI hay API tuyển dụng bên ngoài. Toàn bộ dữ liệu là dữ liệu mẫu trong thư mục `src/data/`. Trạng thái (hồ sơ đã sửa, việc đã lưu, ứng tuyển demo) được lưu trong `localStorage` của trình duyệt.
+## Chạy toàn hệ thống bằng Docker
 
-## Yêu cầu
+Yêu cầu Docker Desktop với Docker Compose v2. Tạo `.env` từ file mẫu, thay secret nếu dùng ngoài máy cá nhân, sau đó chạy:
 
-- Node.js 20 trở lên (đã kiểm tra với Node 22)
-- npm
-
-## Cài đặt và chạy
-
-```bash
-npm install
-npm run dev
+```powershell
+Copy-Item .env.example .env
+docker compose up -d --build
+docker compose exec api python -m seed.load_seed --reset
 ```
 
-Sau đó mở địa chỉ hiển thị trong terminal (thường là `http://localhost:5173`).
+Image API chạy Python 3.11, cài CPU PyTorch, tải trước model `paraphrase-multilingual-MiniLM-L12-v2`, đặt `HF_HUB_OFFLINE=1`, nâng migration rồi chạy API.
 
-## Các lệnh khác
+| Dịch vụ | URL | Ghi chú |
+|---|---|---|
+| Frontend Nginx | http://localhost:8080 | SPA fallback; `/api/` proxy tới FastAPI |
+| FastAPI Swagger | http://localhost:8000/docs | Endpoint `/api/*` |
+| Superset | http://localhost:8088 | Host port đổi bằng `SUPERSET_PORT` |
+| PostgreSQL | localhost:5432 | Postgres 16, volume `postgres_data` |
 
-| Lệnh | Mô tả |
-| --- | --- |
-| `npm run build` | Kiểm tra kiểu TypeScript (`tsc -b`) và build bản production vào `dist/` |
-| `npm run preview` | Chạy thử bản đã build tại `http://localhost:4173` |
-| `npm run lint` | Kiểm tra mã nguồn bằng oxlint |
+Demo credentials dùng riêng cho dữ liệu seed: mật khẩu `Demo@12345`; tài khoản admin `admin@smartcareer.vn`, recruiter `hr1@smartcareer.vn` … `hr30@smartcareer.vn`, ứng viên demo `thanhtung.demo@smartcareer.vn`.
 
-## Các màn hình
+Để tắt model thật khi phát triển, đặt `EMBEDDER=hash`; kết quả hashing chỉ dùng kiểm tra luồng, không dùng báo cáo chất lượng ngữ nghĩa. Superset guest token chỉ được cấp cho recruiter khi đã cấu hình `SUPERSET_DASHBOARD_ID`, `SUPERSET_FUNNEL_DATASET_ID`, `SUPERSET_FUNNEL_STAGES_DATASET_ID`; nếu thiếu ID, API trả `503 superset_not_configured`.
 
-| Đường dẫn | Màn hình |
-| --- | --- |
-| `/` | Tổng quan: số liệu, việc phù hợp nhất, kỹ năng, gợi ý |
-| `/jobs` | Tìm việc làm: tìm kiếm, lọc, sắp xếp, lưu việc, ứng tuyển demo |
-| `/match` | Phân tích CV–JD: điểm phù hợp, kỹ năng đạt và còn thiếu |
-| `/skill-gap` | Skill Gap Analysis: chọn công việc mục tiêu, đánh dấu kỹ năng đã học |
-| `/applications` | Việc đã lưu & ứng tuyển: theo dõi trạng thái |
-| `/profile` | Hồ sơ của tôi: chỉnh sửa thông tin, mong muốn công việc, kỹ năng, dự án, kinh nghiệm, chứng chỉ |
-| `/employer` | Cổng nhà tuyển dụng: xếp hạng ứng viên theo tin tuyển dụng, cập nhật trạng thái hồ sơ |
-| `/etl` | Trung tâm Dữ liệu & ETL: nguồn dữ liệu, Extract, Transform, Load, chỉ số chất lượng |
-| `/dfd` | Sơ đồ luồng dữ liệu (DFD mức 1) |
-| `/about` | Về SmartCareer: vấn đề, giải pháp, công nghệ đang dùng và dự kiến |
+## Backend
 
-Ở sidebar có nút **Đặt lại dữ liệu demo** để khôi phục hồ sơ và trạng thái ban đầu.
+Migrations chạy tự động khi container API khởi động. Seed loader dùng một giao dịch cùng PostgreSQL advisory lock; `--reset` xóa dữ liệu seed và tạo lại 4 view BI. Các lệnh chạy trong container:
 
-## Giới hạn của prototype
+```bash
+docker compose exec api alembic upgrade head
+docker compose exec api python -m seed.load_seed --reset
+docker compose exec api python -m pytest /app/backend/tests -q
+```
 
-- Điểm phù hợp là **mô phỏng ghép nối đa tiêu chí theo quy tắc**: 60% tỷ lệ kỹ năng bắt buộc đáp ứng + 25% tỷ lệ kỹ năng ưu tiên đáp ứng + 15% mức khớp mong muốn (địa điểm, hình thức). Đây không phải mô hình AI thật.
-- Ứng viên ở cổng nhà tuyển dụng là dữ liệu minh họa; chỉ hồ sơ sinh viên hiện tại là hồ sơ người dùng nhập.
-- Tin tuyển dụng, tên công ty và mức lương đều là dữ liệu minh họa.
-- Tải CV chỉ ghi nhận tên tệp, không đọc nội dung CV.
-- Số liệu ở trang ETL được tính từ dataset mẫu, không phải dữ liệu thu thập thật.
-- Công nghệ backend (FastAPI/Node.js), PostgreSQL và pipeline ETL chỉ là kiến trúc dự kiến, chưa được triển khai.
+Kiểm tra đối chiếu SQL view với `/api/bi/*` và lấy guest token sau khi cấu hình Superset:
 
-## Công nghệ
+```bash
+python scripts/check_bi_views.py
+```
 
-- React 19, TypeScript, Vite
-- Tailwind CSS 4
-- React Router 7
-- Recharts (biểu đồ radar)
-- Lucide React (icon)
+Test API dùng cơ sở dữ liệu PostgreSQL riêng. Đặt `TEST_DATABASE_URL` rồi chạy `python -m pytest backend/tests`; nhóm test API sẽ bỏ qua khi không có URL test để tránh ghi nhầm vào DB dev.
+
+## Frontend
+
+```bash
+npm ci
+npm run dev
+npm run build
+npm run lint
+```
+
+`VITE_OFFLINE_DEMO=true` giữ chế độ demo frontend không gọi API. Tích hợp online cần frontend dùng API adapter/token của nhánh giao diện tương ứng.
+
+## API chính
+
+- Auth: `/api/auth/register`, `/api/auth/login`, `/api/auth/me`
+- Hồ sơ/CV: `/api/candidates/me`, `/api/candidates/me/skills`, `/api/resumes/upload`
+- Tin việc: `/api/jobs`, `/api/jobs/{id}`, `/api/locations`, `/api/skills`
+- AI: `/api/ai/match`, `/api/candidates/me/recommendations`, `/api/jobs/{id}/ranked-candidates`, `/api/ai/extract-skills`
+- Ứng tuyển/lưu tin: `/api/applications`, `/api/saved-jobs`
+- BI: `/api/bi/summary`, `/api/bi/skills`, `/api/bi/salary`, `/api/bi/funnel`, `/api/bi/guest-token`
+- Admin: `/api/admin/skills`, `/api/admin/skill-aliases`
+
+## Tài liệu và giới hạn dữ liệu
+
+Schema gồm 15 bảng và các migration nằm trong `backend/alembic`; SQL schema được xuất ở `backend/schema.sql`. Bốn view BI ở `bi/views.sql` đếm funnel theo lịch sử từng đạt trạng thái. Hướng dẫn backend/API nằm ở `docs/report/chuong_csdl_kien_truc_api.md`.
+
+Các lần sinh trạng thái ứng tuyển độc lập với điểm match. Biểu đồ funnel chỉ minh họa cách tổng hợp, không chứng minh mô hình dự đoán tuyển dụng tốt. Mọi phép đo hiệu quả phải lấy từ nhãn độc lập được ghi rõ nguồn.
