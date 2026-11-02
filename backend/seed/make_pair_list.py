@@ -4,7 +4,7 @@ Mỗi ứng viên có 10 tin: 4 cùng nhóm nghề, 3 nhóm gần, 3 nhóm khác
 Ứng viên được chọn đều qua các nhóm nghề. Chạy lặp lại cùng seed cho cùng kết quả.
 
     python -m seed.make_pair_list --candidates seed/data/candidates_generated.csv \
-        --jobs seed/data/jobs.csv --out seed/labels/labels_pairs_template.csv
+        --jobs seed/data/jobs_seed.csv --out seed/labels/labels_pairs_template.csv
 """
 from __future__ import annotations
 
@@ -93,7 +93,7 @@ def build_pairs(candidates_csv: Path, jobs_csv: Path, n_candidates: int = 30, se
 def main() -> None:
     ap = argparse.ArgumentParser()
     ap.add_argument("--candidates", type=Path, default=Path("seed/data/candidates_generated.csv"))
-    ap.add_argument("--jobs", type=Path, default=Path("seed/data/jobs.csv"))
+    ap.add_argument("--jobs", type=Path, default=Path("seed/data/jobs_seed.csv"))
     ap.add_argument("--out", type=Path, default=Path("seed/labels/labels_pairs_template.csv"))
     ap.add_argument("--n", type=int, default=30)
     ap.add_argument("--seed", type=int, default=42)

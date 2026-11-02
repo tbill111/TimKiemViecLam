@@ -1,0 +1,90 @@
+services:
+  db:
+    image: postgres:16
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:-smartcareer}
+      POSTGRES_USER: ${POSTGRES_USER:-smartcareer}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-smartcareer_demo_password}
+      BI_READER_PASSWORD: ${BI_READER_PASSWORD:-smartcareer_bi_demo}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./backend/init/01_databases.sh:/docker-entrypoint-initdb.d/01_databases.sh:ro
+    ports:
+      - "${POSTGRES_PORT:-5432}:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-smartcareer} -d ${POSTGRES_DB:-smartcareer}"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+
+  api:
+    build:
+      context: .
+      dockerfile: backend/Dockerfile
+    environment:
+      DATABASE_URL: ${DATABASE_URL:-postgresql+psycopg://smartcareer:smartcareer_demo_password@db:5432/smartcareer}
+      TEST_DATABASE_URL: ${TEST_DATABASE_URL:-postgresql+psycopg://smartcareer:smartcareer_demo_password@db:5432/smartcareer_test}
+      JWT_SECRET: ${JWT_SECRET:-dev-only-change-this-secret}
+      DEFAULT_MODEL: ${DEFAULT_MODEL:-m3}
+      EMBEDDER: ${EMBEDDER:-st}
+      WITH_ST: ${WITH_ST:-1}
+      HF_HUB_OFFLINE: "1"
+      SUPERSET_URL: http://superset:8088
+      SUPERSET_PUBLIC_URL: ${SUPERSET_PUBLIC_URL:-http://localhost:8088}
+      SUPERSET_ADMIN_USER: ${SUPERSET_ADMIN_USER:-admin}
+      SUPERSET_ADMIN_PASSWORD: ${SUPERSET_ADMIN_PASSWORD:-admin_demo_password}
+      GUEST_TOKEN_JWT_SECRET: ${GUEST_TOKEN_JWT_SECRET:-dev-guest-token-secret-change-me}
+      SUPERSET_DASHBOARD_ID: ${SUPERSET_DASHBOARD_ID:-}
+      SUPERSET_FUNNEL_DATASET_ID: ${SUPERSET_FUNNEL_DATASET_ID:-}
+      SUPERSET_FUNNEL_STAGES_DATASET_ID: ${SUPERSET_FUNNEL_STAGES_DATASET_ID:-}
+      BI_READER_PASSWORD: ${BI_READER_PASSWORD:-smartcareer_bi_demo}
+    ports:
+      - "${API_PORT:-8000}:8000"
+    depends_on:
+      db:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8000/api/health')"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+
+  superset:
+    build:
+      context: .
+      dockerfile: bi/superset/Dockerfile
+    environment:
+      SUPERSET_CONFIG_PATH: /app/pythonpath/superset_config.py
+      SQLALCHEMY_DATABASE_URI: postgresql+psycopg2://${POSTGRES_USER:-smartcareer}:${POSTGRES_PASSWORD:-smartcareer_demo_password}@db:5432/superset_meta
+      SUPERSET_SECRET_KEY: ${SUPERSET_SECRET_KEY:-change-this-superset-secret}
+      SUPERSET_ADMIN_USER: ${SUPERSET_ADMIN_USER:-admin}
+      SUPERSET_ADMIN_PASSWORD: ${SUPERSET_ADMIN_PASSWORD:-admin_demo_password}
+      SUPERSET_ADMIN_EMAIL: ${SUPERSET_ADMIN_EMAIL:-admin@smartcareer.vn}
+      GUEST_TOKEN_JWT_SECRET: ${GUEST_TOKEN_JWT_SECRET:-dev-guest-token-secret-change-me}
+      BI_READER_PASSWORD: ${BI_READER_PASSWORD:-smartcareer_bi_demo}
+      BI_DATABASE_URI: postgresql+psycopg2://bi_reader:${BI_READER_PASSWORD:-smartcareer_bi_demo}@db:5432/${POSTGRES_DB:-smartcareer}
+    ports:
+      - "${SUPERSET_PORT:-8088}:8088"
+    depends_on:
+      db:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "curl", "-fsS", "http://localhost:8088/health"]
+      interval: 15s
+      timeout: 5s
+      retries: 20
+
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        VITE_API_URL: /api
+    ports:
+      - "${WEB_PORT:-8080}:80"
+    depends_on:
+      api:
+        condition: service_healthy
+
+volumes:
+  postgres_data:

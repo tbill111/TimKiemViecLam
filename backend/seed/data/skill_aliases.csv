@@ -1,4 +1,168 @@
 alias,skill_name
-reactjs,React
+AWS,AWS cơ bản
+AWS_cơ_bản,AWS cơ bản
+Active_Directory,Active Directory
+Adobe_XD,Adobe XD
+Apache_Spark,Apache Spark
+Bảo_mật_ứng_dụng,Bảo mật ứng dụng
+Cloud_(AWS/GCP),Cloud (AWS/GCP)
+Design_System,Design System
+Email_Marketing,Email Marketing
+Facebook_Ads,Facebook Ads
+Giao_tiếp,Giao tiếp
+Google_Analytics,Google Analytics
+HTML/CSS,HTML/CSS cơ bản
+HTML/CSS_cơ_bản,HTML/CSS cơ bản
+ITIL,ITIL cơ bản
+ITIL_cơ_bản,ITIL cơ bản
+Kiểm_thử_phần_mềm,Kiểm thử phần mềm
+Kỹ_thuật_máy_tính,Kỹ thuật máy tính
+Linux_cơ_bản,Linux cơ bản
+Machine Learning,Machine Learning cơ bản
+Machine_Learning_cơ_bản,Machine Learning cơ bản
+Mạng,Mạng cơ bản
+Mạng_cơ_bản,Mạng cơ bản
+Mạng_xã_hội,Mạng xã hội
+Nghiệp_vụ_ngân_hàng,Nghiệp vụ ngân hàng
+Nguyên_lý_UX,Nguyên lý UX
+Node js,Node.js
+Nodejs,Node.js
+Office_365,Office 365
+Phân_tích_dữ_liệu,Phân tích dữ liệu
+Phân_tích_nghiệp_vụ,Phân tích nghiệp vụ
+Power_BI,Power BI
+Quản_lý_dự_án,Quản lý dự án
+REST_API,REST API
+React_Query,React Query
+Responsive_Design,Responsive Design
+SEO,SEO cơ bản
+SEO_cơ_bản,SEO cơ bản
+Tailwind_CSS,Tailwind CSS
+Thiết_kế_API,Thiết kế API
+Thiết_kế_UI,Thiết kế UI
+Thống kê,Thống kê cơ bản
+Thống_kê_cơ_bản,Thống kê cơ bản
+TypeScript_nâng_cao,TypeScript nâng cao
+Tư_duy_logic,Tư duy logic
+Tư_duy_phân_tích,Tư duy phân tích
+Tư_duy_sáng_tạo,Tư duy sáng tạo
+User_Research,User Research
+Viết_nội_dung,Viết nội dung
+Viết_test_case,Viết test case
+Viết_tài_liệu,Viết tài liệu
+Windows_Server,Windows Server
+Xử_lý_sự_cố,Xử lý sự cố
+active-directory,Active Directory
+activedirectory,Active Directory
+adobe-xd,Adobe XD
+adobexd,Adobe XD
+agile,Agile/Scrum
+apache-spark,Apache Spark
+apachespark,Apache Spark
+aws-cơ-bản,AWS cơ bản
+awscơbản,AWS cơ bản
+bảo-mật-ứng-dụng,Bảo mật ứng dụng
+bảomậtứngdụng,Bảo mật ứng dụng
+cloud(aws/gcp),Cloud (AWS/GCP)
+cloud-(aws/gcp),Cloud (AWS/GCP)
+communication,Giao tiếp
+css3,CSS
+design-system,Design System
+designsystem,Design System
+ecmascript,JavaScript
+email-marketing,Email Marketing
+emailmarketing,Email Marketing
+facebook-ads,Facebook Ads
+facebookads,Facebook Ads
+giao-tiếp,Giao tiếp
+giaotiếp,Giao tiếp
+google-analytics,Google Analytics
+googleanalytics,Google Analytics
+html/css-cơ-bản,HTML/CSS cơ bản
+html/csscơbản,HTML/CSS cơ bản
+html5,HTML
+itil-cơ-bản,ITIL cơ bản
+itilcơbản,ITIL cơ bản
+javascript es6,JavaScript
+kiểm thử,Kiểm thử phần mềm
+kiểm-thử-phần-mềm,Kiểm thử phần mềm
+kiểmthửphầnmềm,Kiểm thử phần mềm
+kỹ năng giao tiếp,Giao tiếp
+kỹ-thuật-máy-tính,Kỹ thuật máy tính
+kỹthuậtmáytính,Kỹ thuật máy tính
+linux-cơ-bản,Linux cơ bản
+linuxcơbản,Linux cơ bản
+machine-learning-cơ-bản,Machine Learning cơ bản
+machinelearningcơbản,Machine Learning cơ bản
+microsoft excel,Excel
+ms excel,Excel
+mạng-cơ-bản,Mạng cơ bản
+mạng-xã-hội,Mạng xã hội
+mạngcơbản,Mạng cơ bản
+mạngxãhội,Mạng xã hội
+nghiệp-vụ-ngân-hàng,Nghiệp vụ ngân hàng
+nghiệpvụngânhàng,Nghiệp vụ ngân hàng
+nguyên-lý-ux,Nguyên lý UX
+nguyênlýux,Nguyên lý UX
+node js,Node.js
 nodejs,Node.js
+office-365,Office 365
+office365,Office 365
+phân-tích-dữ-liệu,Phân tích dữ liệu
+phân-tích-nghiệp-vụ,Phân tích nghiệp vụ
+phântíchdữliệu,Phân tích dữ liệu
+phântíchnghiệpvụ,Phân tích nghiệp vụ
+postgre sql,PostgreSQL
+postgres,PostgreSQL
+power-bi,Power BI
 powerbi,Power BI
+python3,Python
+quản-lý-dự-án,Quản lý dự án
+quảnlýdựán,Quản lý dự án
+react js,React
+react-query,React Query
+react.js,React
+reactjs,React
+reactquery,React Query
+responsive-design,Responsive Design
+responsivedesign,Responsive Design
+rest apis,REST API
+rest-api,REST API
+restapi,REST API
+restful,REST API
+restful api,REST API
+scrum,Agile/Scrum
+seo-cơ-bản,SEO cơ bản
+seocơbản,SEO cơ bản
+software testing,Kiểm thử phần mềm
+statistics,Thống kê cơ bản
+tailwind,Tailwind CSS
+tailwind-css,Tailwind CSS
+tailwindcss,Tailwind CSS
+thiết-kế-api,Thiết kế API
+thiết-kế-ui,Thiết kế UI
+thiếtkếapi,Thiết kế API
+thiếtkếui,Thiết kế UI
+thống kê,Thống kê cơ bản
+thống-kê-cơ-bản,Thống kê cơ bản
+thốngkêcơbản,Thống kê cơ bản
+typescript-nâng-cao,TypeScript nâng cao
+typescriptnângcao,TypeScript nâng cao
+tư-duy-logic,Tư duy logic
+tư-duy-phân-tích,Tư duy phân tích
+tư-duy-sáng-tạo,Tư duy sáng tạo
+tưduylogic,Tư duy logic
+tưduyphântích,Tư duy phân tích
+tưduysángtạo,Tư duy sáng tạo
+user-research,User Research
+userresearch,User Research
+viết-nội-dung,Viết nội dung
+viết-test-case,Viết test case
+viết-tài-liệu,Viết tài liệu
+viếtnộidung,Viết nội dung
+viếttestcase,Viết test case
+viếttàiliệu,Viết tài liệu
+windows-server,Windows Server
+windowsserver,Windows Server
+xử-lý-sự-cố,Xử lý sự cố
+xửlýsựcố,Xử lý sự cố

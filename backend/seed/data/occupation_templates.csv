@@ -1,4 +1,11 @@
 occupation,core_skills,optional_skills
-Frontend Development,HTML|CSS|JavaScript|React|Git,TypeScript|Tailwind CSS|REST API
-Data Science & Analytics,SQL|Python|Excel|Thống kê cơ bản,Power BI|Pandas|Machine Learning cơ bản
-QA & Testing,Kiểm thử phần mềm|SQL|Git,Selenium|Postman|Agile/Scrum
+Backend Development,Node.js|JavaScript|SQL|REST API|Git,TypeScript|Docker|PostgreSQL|MongoDB
+Business Analysis,Phân tích nghiệp vụ|Excel|Tư duy logic|Giao tiếp|Viết tài liệu,SQL|BPMN|Jira|Confluence|UML
+Business Operations,Phân tích nghiệp vụ|SQL|Giao tiếp|Viết tài liệu|UML|Excel,Nghiệp vụ ngân hàng|BPMN|Jira|Agile/Scrum|Power BI
+Data Science & Analytics,SQL|Python|Excel|Thống kê cơ bản|Git|ETL|Linux cơ bản,Power BI|Tableau|Pandas|Matplotlib|Machine Learning cơ bản|Apache Spark|Airflow|Kafka|Docker|Cloud (AWS/GCP)
+Digital Marketing,Viết nội dung|Mạng xã hội|Tư duy sáng tạo|Excel|Giao tiếp,Google Analytics|Facebook Ads|Canva|SEO cơ bản|Email Marketing
+Frontend Development,HTML|CSS|JavaScript|React|Git|TypeScript|REST API,Tailwind CSS|React Query|Zustand|Jest|Storybook|Figma
+IT Support,Kỹ thuật máy tính|Windows Server|Mạng cơ bản|Xử lý sự cố|Giao tiếp,Linux|Active Directory|Office 365|ITIL cơ bản|Virtualization
+QA & Testing,Kiểm thử phần mềm|Viết test case|Tư duy phân tích|Excel|Git,Selenium|Playwright|Postman|Jira|SQL
+Software Engineering,JavaScript|SQL|Git|REST API|OOP,TypeScript|Docker|CI/CD|AWS cơ bản|Agile/Scrum|React|Node.js
+UI/UX Design,Figma|Nguyên lý UX|Thiết kế UI|Tư duy sáng tạo|Giao tiếp,Adobe XD|Prototyping|User Research|Design System|HTML/CSS cơ bản

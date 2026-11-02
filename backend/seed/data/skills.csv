@@ -1,4 +1,82 @@
 name,category
-React,Frontend
+AWS cơ bản,Khác
+Active Directory,Khác
+Adobe XD,Khác
+Agile/Scrum,Khác
+Airflow,Khác
+Apache Spark,Khác
+BPMN,Khác
+Bảo mật ứng dụng,Backend
+CI/CD,DevOps
+CSS,Frontend
+Canva,Khác
+Cloud (AWS/GCP),Khác
+Confluence,Khác
+Design System,Khác
+Docker,DevOps
+ETL,Khác
+Email Marketing,Khác
+Excel,Dữ liệu
+Facebook Ads,Khác
+Figma,Thiết kế
+Giao tiếp,Kỹ năng mềm
+Git,DevOps
+Google Analytics,Khác
+HTML,Frontend
+HTML/CSS cơ bản,Khác
+ITIL cơ bản,Khác
+JavaScript,Frontend
+Jest,Khác
+Jira,Khác
+Kafka,Khác
+Kiểm thử phần mềm,Khác
+Kỹ thuật máy tính,Khác
+Linux,Khác
+Linux cơ bản,DevOps
+Machine Learning cơ bản,Khác
+Matplotlib,Khác
+MongoDB,Khác
+Mạng cơ bản,Khác
+Mạng xã hội,Khác
+Nghiệp vụ ngân hàng,Khác
+Nguyên lý UX,Thiết kế
 Node.js,Backend
+OOP,Khác
+Office 365,Khác
+Pandas,Khác
+Phân tích dữ liệu,Dữ liệu
+Phân tích nghiệp vụ,Khác
+Playwright,Khác
+PostgreSQL,Backend
+Postman,Khác
 Power BI,Dữ liệu
+Prototyping,Khác
+Python,Backend
+Quản lý dự án,Kỹ năng mềm
+REST API,Backend
+React,Frontend
+React Query,Khác
+Responsive Design,Frontend
+SEO cơ bản,Khác
+SQL,Backend
+Selenium,Khác
+Storybook,Khác
+Tableau,Khác
+Tailwind CSS,Khác
+Thiết kế API,Backend
+Thiết kế UI,Thiết kế
+Thống kê cơ bản,Dữ liệu
+TypeScript,Frontend
+TypeScript nâng cao,Frontend
+Tư duy logic,Kỹ năng mềm
+Tư duy phân tích,Khác
+Tư duy sáng tạo,Khác
+UML,Khác
+User Research,Khác
+Virtualization,Khác
+Viết nội dung,Khác
+Viết test case,Khác
+Viết tài liệu,Kỹ năng mềm
+Windows Server,Khác
+Xử lý sự cố,Khác
+Zustand,Khác
