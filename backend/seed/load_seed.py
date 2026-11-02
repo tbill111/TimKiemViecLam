@@ -205,10 +205,12 @@ def _load(db: Session, reset: bool) -> tuple[int, int, int, list[dict]]:
         existing = {row.skill_id: row for row in db.scalars(select(CandidateSkill).where(CandidateSkill.candidate_id == candidate.id))}
         for row in existing.values():
             db.delete(row)
+        seen_skill_ids: set[int] = set()
         for name in profile["skills"]:
-            skill_name = name.removesuffix(" cơ bản")
-            skill = skill_by_name.get(skill_name.casefold())
-            if skill:
+            # Tên có đuôi " cơ bản" là tên chuẩn của một số kỹ năng: ưu tiên khớp nguyên tên rồi mới cắt đuôi.
+            skill = skill_by_name.get(name.casefold()) or skill_by_name.get(name.removesuffix(" cơ bản").casefold())
+            if skill and skill.id not in seen_skill_ids:
+                seen_skill_ids.add(skill.id)
                 db.add(CandidateSkill(candidate_id=candidate.id, skill_id=skill.id, source="profile", confirmed=True))
         candidates_by_external[profile["candidate_id"]] = candidate
         candidate_rows.append(candidate)

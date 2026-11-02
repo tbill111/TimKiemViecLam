@@ -54,3 +54,27 @@ def test_job_filter_and_pagination(api: TestClient):
     assert payload["page"] == 1 and payload["page_size"] == 1
     assert len(payload["items"]) == 1
     assert payload["items"][0]["title"].startswith("React")
+
+
+def test_apply_accepts_string_job_id(api: TestClient):
+    response = api.post("/api/applications", json={"job_id": str(api.state.job_a_id)}, headers=auth(api, "candidate@smartcareer.vn"))
+    assert response.status_code == 201
+
+
+def test_register_blocks_admin_and_requires_company_for_recruiter(api: TestClient):
+    body = {"email": "new@smartcareer.vn", "password": "Demo@12345", "full_name": "Người Mới"}
+    assert api.post("/api/auth/register", json={**body, "role": "admin"}).status_code == 422
+    response = api.post("/api/auth/register", json={**body, "role": "recruiter"})
+    assert response.status_code in {400, 422} and "company_name_required" in response.text
+
+
+def test_other_company_cannot_change_status(api: TestClient):
+    applied = api.post("/api/applications", json={"job_id": api.state.job_a_id}, headers=auth(api, "candidate@smartcareer.vn"))
+    response = api.patch(f"/api/applications/{applied.json()['id']}/status", json={"status": "screening"}, headers=auth(api, "hr.b@smartcareer.vn"))
+    assert response.status_code == 403
+
+
+def test_resume_over_5mb_returns_413(api: TestClient):
+    big = b"%PDF-1.4 " + b"x" * (5 * 1024 * 1024 + 10)
+    response = api.post("/api/resumes/upload", data={"consent": "true"}, files={"file": ("cv.pdf", big, "application/pdf")}, headers=auth(api, "candidate@smartcareer.vn"))
+    assert response.status_code == 413

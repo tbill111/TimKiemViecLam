@@ -41,7 +41,9 @@ def _application_dto(db: Session, app: Application):
 @router.post("/applications", status_code=201)
 def apply(body: dict[str, Any], db: Session = Depends(get_db), user: CurrentUser = Depends(require_role("candidate"))):
     job_id = body.get("job_id")
-    if not isinstance(job_id, int):
+    if isinstance(job_id, str) and job_id.isdigit():
+        job_id = int(job_id)  # GET /jobs trả id dạng chuỗi
+    if not isinstance(job_id, int) or isinstance(job_id, bool):
         raise HTTPException(422, detail="job_id_required")
     job = db.get(Job, job_id)
     if job is None:
@@ -53,7 +55,11 @@ def apply(body: dict[str, Any], db: Session = Depends(get_db), user: CurrentUser
         raise HTTPException(409, detail="already_applied")
     resume_id = body.get("resume_id")
     if resume_id is not None:
-        resume = db.get(Resume, int(resume_id))
+        try:
+            resume_id = int(resume_id)
+        except (TypeError, ValueError):
+            raise HTTPException(422, detail="invalid_resume")
+        resume = db.get(Resume, resume_id)
         if resume is None or resume.candidate_id != candidate.id:
             raise HTTPException(422, detail="invalid_resume")
     score = None

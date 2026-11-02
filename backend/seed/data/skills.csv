@@ -1,82 +1,82 @@
 name,category
-AWS cơ bản,Khác
-Active Directory,Khác
-Adobe XD,Khác
-Agile/Scrum,Khác
-Airflow,Khác
-Apache Spark,Khác
-BPMN,Khác
+AWS cơ bản,DevOps
+Active Directory,DevOps
+Adobe XD,Thiết kế
+Agile/Scrum,Kỹ năng mềm
+Airflow,Dữ liệu
+Apache Spark,Dữ liệu
+BPMN,Thiết kế
 Bảo mật ứng dụng,Backend
 CI/CD,DevOps
 CSS,Frontend
-Canva,Khác
-Cloud (AWS/GCP),Khác
-Confluence,Khác
-Design System,Khác
+Canva,Thiết kế
+Cloud (AWS/GCP),DevOps
+Confluence,Kỹ năng mềm
+Design System,Thiết kế
 Docker,DevOps
-ETL,Khác
-Email Marketing,Khác
+ETL,Dữ liệu
+Email Marketing,Kỹ năng mềm
 Excel,Dữ liệu
-Facebook Ads,Khác
+Facebook Ads,Kỹ năng mềm
 Figma,Thiết kế
 Giao tiếp,Kỹ năng mềm
 Git,DevOps
-Google Analytics,Khác
+Google Analytics,Dữ liệu
 HTML,Frontend
-HTML/CSS cơ bản,Khác
-ITIL cơ bản,Khác
+HTML/CSS cơ bản,Frontend
+ITIL cơ bản,DevOps
 JavaScript,Frontend
 Jest,Khác
-Jira,Khác
-Kafka,Khác
+Jira,Kỹ năng mềm
+Kafka,Backend
 Kiểm thử phần mềm,Khác
 Kỹ thuật máy tính,Khác
-Linux,Khác
+Linux,DevOps
 Linux cơ bản,DevOps
-Machine Learning cơ bản,Khác
-Matplotlib,Khác
-MongoDB,Khác
-Mạng cơ bản,Khác
-Mạng xã hội,Khác
+Machine Learning cơ bản,Dữ liệu
+Matplotlib,Dữ liệu
+MongoDB,Dữ liệu
+Mạng cơ bản,DevOps
+Mạng xã hội,Kỹ năng mềm
 Nghiệp vụ ngân hàng,Khác
 Nguyên lý UX,Thiết kế
 Node.js,Backend
-OOP,Khác
-Office 365,Khác
-Pandas,Khác
+OOP,Backend
+Office 365,DevOps
+Pandas,Dữ liệu
 Phân tích dữ liệu,Dữ liệu
-Phân tích nghiệp vụ,Khác
+Phân tích nghiệp vụ,Dữ liệu
 Playwright,Khác
 PostgreSQL,Backend
 Postman,Khác
 Power BI,Dữ liệu
-Prototyping,Khác
+Prototyping,Thiết kế
 Python,Backend
 Quản lý dự án,Kỹ năng mềm
 REST API,Backend
 React,Frontend
-React Query,Khác
+React Query,Frontend
 Responsive Design,Frontend
-SEO cơ bản,Khác
+SEO cơ bản,Kỹ năng mềm
 SQL,Backend
 Selenium,Khác
-Storybook,Khác
-Tableau,Khác
-Tailwind CSS,Khác
+Storybook,Frontend
+Tableau,Dữ liệu
+Tailwind CSS,Frontend
 Thiết kế API,Backend
 Thiết kế UI,Thiết kế
 Thống kê cơ bản,Dữ liệu
 TypeScript,Frontend
 TypeScript nâng cao,Frontend
 Tư duy logic,Kỹ năng mềm
-Tư duy phân tích,Khác
-Tư duy sáng tạo,Khác
-UML,Khác
-User Research,Khác
-Virtualization,Khác
-Viết nội dung,Khác
+Tư duy phân tích,Dữ liệu
+Tư duy sáng tạo,Thiết kế
+UML,Thiết kế
+User Research,Thiết kế
+Virtualization,DevOps
+Viết nội dung,Kỹ năng mềm
 Viết test case,Khác
 Viết tài liệu,Kỹ năng mềm
-Windows Server,Khác
-Xử lý sự cố,Khác
-Zustand,Khác
+Windows Server,DevOps
+Xử lý sự cố,DevOps
+Zustand,Frontend

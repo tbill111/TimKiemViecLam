@@ -27,6 +27,9 @@ def write_csv(path: Path, fields: list[str], rows: list[dict[str, object]]) -> N
         writer.writerows(rows)
 
 
+CATEGORY_OVERRIDES = {'HTML/CSS cơ bản': 'Frontend', 'Storybook': 'Frontend', 'Tailwind CSS': 'Frontend', 'React Query': 'Frontend', 'Zustand': 'Frontend', 'Kafka': 'Backend', 'OOP': 'Backend', 'Airflow': 'Dữ liệu', 'Apache Spark': 'Dữ liệu', 'ETL': 'Dữ liệu', 'Machine Learning cơ bản': 'Dữ liệu', 'Matplotlib': 'Dữ liệu', 'MongoDB': 'Dữ liệu', 'Pandas': 'Dữ liệu', 'Tableau': 'Dữ liệu', 'Google Analytics': 'Dữ liệu', 'Phân tích nghiệp vụ': 'Dữ liệu', 'Tư duy phân tích': 'Dữ liệu', 'AWS cơ bản': 'DevOps', 'Cloud (AWS/GCP)': 'DevOps', 'Linux': 'DevOps', 'Mạng cơ bản': 'DevOps', 'Virtualization': 'DevOps', 'Windows Server': 'DevOps', 'Active Directory': 'DevOps', 'ITIL cơ bản': 'DevOps', 'Office 365': 'DevOps', 'Xử lý sự cố': 'DevOps', 'Adobe XD': 'Thiết kế', 'Canva': 'Thiết kế', 'Design System': 'Thiết kế', 'Prototyping': 'Thiết kế', 'User Research': 'Thiết kế', 'Tư duy sáng tạo': 'Thiết kế', 'BPMN': 'Thiết kế', 'UML': 'Thiết kế', 'Agile/Scrum': 'Kỹ năng mềm', 'Confluence': 'Kỹ năng mềm', 'Jira': 'Kỹ năng mềm', 'Viết nội dung': 'Kỹ năng mềm', 'Email Marketing': 'Kỹ năng mềm', 'Facebook Ads': 'Kỹ năng mềm', 'Mạng xã hội': 'Kỹ năng mềm', 'SEO cơ bản': 'Kỹ năng mềm'}
+
+
 def skill_data() -> list[dict[str, str]]:
     json_path = Path(__file__).resolve().parents[1] / "app" / "ai" / "default_skills.json"
     defaults = json.loads(json_path.read_text(encoding="utf-8"))["skills"]
@@ -39,6 +42,7 @@ def skill_data() -> list[dict[str, str]]:
         "Responsive Design": "Frontend",
     }
     rows.update({name: category for name, category in extras.items() if name not in rows})
+    rows.update({name: category for name, category in CATEGORY_OVERRIDES.items() if rows.get(name, "Khác") == "Khác"})
     return [{"name": name, "category": category} for name, category in sorted(rows.items())]
 
 

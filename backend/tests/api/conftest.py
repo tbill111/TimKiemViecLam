@@ -1,6 +1,8 @@
 from __future__ import annotations
 
 import os
+from types import SimpleNamespace
+
 import pytest
 
 TEST_DATABASE_URL = os.getenv("TEST_DATABASE_URL")
@@ -62,11 +64,12 @@ def api():
 
     app.dependency_overrides[get_db] = override_get_db
     with TestClient(app) as client:
+        client.state = SimpleNamespace()
         client.state.candidate_id = candidate_id
         client.state.job_a_id = job_a_id
         client.state.job_b_id = job_b_id
         yield client
-    app.dependency_overrides.clear()
+    app.dependency_overrides.pop(get_db, None)  # giữ override get_ai_repo đăng ký ở app.main
     Base.metadata.drop_all(engine)
 
 

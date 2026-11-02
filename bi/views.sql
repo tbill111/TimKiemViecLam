@@ -65,6 +65,7 @@ WITH stages(stage, stage_order) AS (
 SELECT j.company_id, stages.stage, stages.stage_order,
        COALESCE(counts.applications, 0)::BIGINT AS applications,
        CASE WHEN stages.stage_order = 1 THEN 100.0
+            WHEN stages.stage = 'rejected' THEN ROUND(100.0 * COALESCE(counts.applications, 0) / NULLIF(FIRST_VALUE(counts.applications) OVER (PARTITION BY j.company_id ORDER BY stages.stage_order), 0), 2)
             WHEN LAG(COALESCE(counts.applications, 0)) OVER (PARTITION BY j.company_id ORDER BY stages.stage_order) = 0 THEN 0.0
             ELSE ROUND(100.0 * counts.applications / LAG(counts.applications) OVER (PARTITION BY j.company_id ORDER BY stages.stage_order), 2)
        END AS conversion_rate
