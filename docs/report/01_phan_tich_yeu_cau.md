@@ -43,7 +43,7 @@ Cột "Mục checklist" theo 5 mục của đề: 01 phân tích/CSDL, 02 AI/ML,
 | Công bằng | Không dùng tên, giới tính, tuổi làm đặc trưng; phần đầu CV bị loại khỏi văn bản dùng chấm điểm | `model_text` trong `parse_cv` | TC18 |
 | Khả dụng | Chạy được không cần backend ở chế độ demo | `VITE_OFFLINE_DEMO=true` | TC31 |
 | Triển khai | Một lệnh `docker compose up` chạy db, api, superset, web | `docker-compose.yml` | TC32 |
-| Trung thực dữ liệu | Dữ liệu seed và đơn ứng tuyển là mô phỏng; hiệu quả mô hình chỉ kết luận từ nhãn gán tay | `backend/seed/README.md` | — |
+| Trung thực dữ liệu | Dữ liệu seed và đơn ứng tuyển là mô phỏng; nhãn đánh giá do agent AI gán, nên nêu rõ nguồn nhãn và hạn chế (chưa đối chiếu với nhãn của con người) | `backend/seed/README.md` | — |
 
 ## 5. Phạm vi và giới hạn
 

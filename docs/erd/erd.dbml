@@ -1,4 +1,4 @@
-// SmartCareer v2 – ERD. Sinh tự động bởi backend/scripts/gen_erd.py từ app/models.py.
+// SmartCareer v2 – ERD. Sinh tự động bởi backend/scripts/gen_erd.py từ app/models/entities.py.
 
 Table locations {
   id bigint [pk, increment]

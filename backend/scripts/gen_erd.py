@@ -1,4 +1,4 @@
-"""Sinh ERD (DBML) từ app/models.py để không bao giờ lệch schema thật.
+"""Sinh ERD (DBML) từ app/models/entities.py để không bao giờ lệch schema thật.
 
     cd backend && python -m scripts.gen_erd          # ghi docs/erd/erd.dbml
 Dán nội dung vào dbdiagram.io để xuất ảnh PNG.
@@ -26,7 +26,7 @@ GROUPS = {
 
 def build() -> str:
     dialect = postgresql.dialect()
-    lines = ["// SmartCareer v2 – ERD. Sinh tự động bởi backend/scripts/gen_erd.py từ app/models.py.", ""]
+    lines = ["// SmartCareer v2 – ERD. Sinh tự động bởi backend/scripts/gen_erd.py từ app/models/entities.py.", ""]
     refs: list[str] = []
     for table in Base.metadata.sorted_tables:
         lines.append(f"Table {table.name} {{")

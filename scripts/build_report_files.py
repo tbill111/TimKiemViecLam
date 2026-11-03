@@ -73,10 +73,10 @@ SLIDES = [
     ("01 · ERD 15 bảng", ["Ba nhóm: ứng viên / nhà tuyển dụng / tin tuyển dụng, cộng tuyển dụng và danh mục"], "docs/erd/erd.png"),
     ("Trạng thái ứng tuyển và phân quyền", ["applied → screening → interview → offer → hired; từ bước chưa cuối → rejected", "Nhảy cóc hoặc đổi trạng thái cuối → 409 invalid_transition", "Mỗi lần đổi ghi application_status_history; phễu BI đếm hồ sơ từng đạt mỗi bước", "Recruiter công ty khác → 403"], None),
     ("02 · Mô hình AI", ["TODO (Tùng): CV parser 3 tầng, 6 đặc trưng, M0–M4", "TODO: bảng P/R/F1 và bảng so sánh M0–M4 — chỉ điền khi có docs/report/tables/", "M0 Python khớp bản TypeScript 100% trên 84 ca (test tự động)"], None),
-    ("03 · Dashboard BI", ["TODO (Hưng): ảnh dashboard, 3–4 nhận định", "Ba view SQL: v_skill_supply_demand, v_salary, v_funnel; RLS theo công ty", "Lưu ý: đơn ứng tuyển là mô phỏng — chỉ minh hoạ cách tính"], None),
+    ("03 · Dashboard BI", ["TODO (Hưng): ảnh dashboard, 3–4 nhận định", "Bốn view SQL: v_skill_supply_demand, v_salary, v_funnel, v_funnel_stages; RLS theo công ty", "Lưu ý: đơn ứng tuyển là mô phỏng — chỉ minh hoạ cách tính"], None),
     ("04 · Kiến trúc và giao diện", ["docker compose: db (PostgreSQL 16), api (FastAPI), superset, web (React + nginx)", "Giao diện theo vai trò: ứng viên, nhà tuyển dụng (Kanban 6 cột), quản trị", "Chế độ demo VITE_OFFLINE_DEMO=true chạy không cần backend", "TODO (Ngọc Anh): ảnh màn hình"], None),
     ("05 · Kiểm thử", ["pytest: 178 passed (PostgreSQL 16 tạm); không có DB: 167 passed, 1 skipped", "33 test case theo F01–F10: 20 đạt bằng kiểm thử tự động, 13 chưa chạy (giao diện/Docker)", "Phủ 401/403/409/413/415/422/503; công bằng khi đổi tên/giới tính ở đầu CV", "TODO: ghi kết quả thủ công cho 13 ca còn lại"], None),
-    ("Hạn chế và hướng phát triển", ["Dữ liệu mô phỏng; hiệu quả mô hình chỉ kết luận từ nhãn gán tay (30 ứng viên × 10 tin)", "Chưa có NER huấn luyện riêng (PhoBERT); CV ảnh scan không đọc được", "Hướng: học từ phản hồi thật, đặc trưng nhóm nghề, mở rộng danh mục kỹ năng"], None),
+    ("Hạn chế và hướng phát triển", ["Dữ liệu mô phỏng; nhãn đánh giá do agent AI gán, chưa đối chiếu với con người nên số liệu mô hình có xu hướng lạc quan (30 ứng viên × 10 tin)", "Chưa có NER huấn luyện riêng (PhoBERT); CV ảnh scan không đọc được", "Hướng: học từ phản hồi thật, đặc trưng nhóm nghề, mở rộng danh mục kỹ năng"], None),
 ]
 
 

@@ -27,4 +27,14 @@ Cộng hai nhóm phụ: **Tuyển dụng** (`applications`, `application_status_
 
 ## Liên hệ với kho dữ liệu hình sao (bài trước)
 
-Ở bài này CSDL là mô hình quan hệ chuẩn hoá phục vụ ứng dụng; phần phân tích được dựng bằng bốn view SQL trong `bi/views.sql` (`v_skill_supply_demand`, `v_salary`, `v_funnel`, `v_funnel_stages`) trên các bảng trên. TODO (Hoàng Anh): đối chiếu từng bảng sự kiện/chiều của kho hình sao ở PDF kế hoạch mục 2.7 với các view này; repo không chứa mô tả kho cũ nên chưa viết chi tiết ở đây.
+Theo kế hoạch (PDF mục 2.7), mô hình hình sao `FACT_GHEP_NOI_UNG_TUYEN` của bài cá nhân được giữ nhưng triển khai bằng **SQL view** trên chính CSDL tác nghiệp, không dựng kho riêng, vì quy mô chỉ vài trăm bản ghi. Hai thay đổi so với bài cũ: chiều công việc (`DIM_CONG_VIEC`) thêm cột lương, và bảng sự kiện thêm ngày theo từng trạng thái.
+
+Trong repo hiện thực này bằng bốn view ở `bi/views.sql`:
+
+| View | Vai trò trong mô hình hình sao |
+|---|---|
+| `v_skill_supply_demand` | Cung (ứng viên) và cầu (tin) theo chiều kỹ năng |
+| `v_salary` | Lương theo chiều công việc (cấp bậc, nhóm nghề, thời gian) – cột lương bổ sung ở `DIM_CONG_VIEC` |
+| `v_funnel`, `v_funnel_stages` | Bảng sự kiện ghép nối ứng tuyển; số hồ sơ từng đạt mỗi bước lấy từ `application_status_history` (thời điểm từng trạng thái) |
+
+Chiều thời gian, địa điểm, công ty, kỹ năng lấy trực tiếp từ `jobs.posted_at`, `locations`, `companies`, `skills`, nên không có bảng chiều vật lý riêng.

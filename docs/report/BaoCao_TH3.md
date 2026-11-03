@@ -49,11 +49,11 @@ Lần chạy gần nhất (nhánh `feat/hoanganh-phan-tich-bao-cao`, từ `origi
 TODO – đối chiếu ba chỉ số BI với truy vấn SQL tay (`scripts/check_bi_views.py`) sau khi Hưng/Thái Anh giao dashboard.
 
 ### 6.4. Đánh giá mô hình
-TODO – đưa bảng từ `docs/report/tables/` của Tùng. Nhãn (300 cặp CV–JD, 50 CV) chưa có trong repo: `backend/seed/labels/` đang trống và `backend/seed/cv_files/` chưa có CV; không kết luận hiệu quả mô hình khi chưa có nhãn.
+TODO – đưa bảng từ `docs/report/tables/` của Tùng. Nhãn (300 cặp CV–JD, 50 CV) chưa có trong repo: `backend/seed/labels/` đang trống và `backend/seed/cv_files/` chưa có CV; không kết luận hiệu quả mô hình khi chưa có nhãn (nhãn sẽ do agent AI gán, ghi rõ nguồn và hạn chế như ở chương 7).
 
 ## 7. Hạn chế và hướng phát triển
 - Dữ liệu ứng viên, CV, tin và đơn ứng tuyển là mô phỏng; xu hướng lương và tỷ lệ tuyển chỉ minh hoạ cách tính.
-- Hiệu quả mô hình chỉ kết luận được từ nhãn gán tay; cỡ mẫu nhỏ (30 ứng viên × 10 tin) nên chênh lệch nhỏ giữa các mô hình không có ý nghĩa thống kê.
+- Nhãn đánh giá (300 cặp CV–JD, kỹ năng 50 CV) do **agent AI** gán, không phải người; hai lượt gán cùng họ mô hình nên độ đồng thuận cao chỉ phản ánh độ nhất quán của agent, và nhãn dựa trên đúng loại thông tin mô hình dùng nên số liệu có xu hướng lạc quan. Cần đối chiếu với nhãn của con người trước khi kết luận chắc chắn; cỡ mẫu nhỏ (30 ứng viên × 10 tin) nên chênh lệch nhỏ giữa các mô hình không có ý nghĩa thống kê.
 - Trích kỹ năng chủ yếu là từ điển + so khớp mờ + embedding; chưa có mô hình nhận dạng thực thể huấn luyện riêng (hướng: PhoBERT/NER).
 - CV dạng ảnh scan không đọc được (hệ thống báo lỗi `no_text`, không đoán).
 - Hướng phát triển: học từ phản hồi thật của nhà tuyển dụng; thêm đặc trưng nhóm nghề; mở rộng danh mục kỹ năng; thêm Native Filters và biểu đồ còn lại của Superset.
