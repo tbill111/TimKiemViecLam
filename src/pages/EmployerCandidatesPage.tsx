@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { fetchEmployerJobs, fetchRankedCandidates, type RankedCandidate } from '../api/employer';
 import { isOfflineDemo, apiErrorMessage } from '../api/client';
+import { demoRankedCandidates } from '../api/demoEmployer';
 import { sampleJobs } from '../data/jobs';
 import type { Job } from '../types';
 import LoadingBlock from '../components/ui/LoadingBlock';
@@ -15,7 +16,12 @@ export default function EmployerCandidatesPage() {
   const [error, setError] = useState('');
   const [selectedCandidate, setSelectedCandidate] = useState<RankedCandidate | null>(null);
   const loadCandidates = async (id: string) => {
-    if (isOfflineDemo || !id) return;
+    if (!id) return;
+    if (isOfflineDemo) {
+      const demoJob = jobs.find((job) => job.id === id);
+      setItems(demoJob ? demoRankedCandidates(demoJob) : []);
+      return;
+    }
     setLoading(true);
     try { setItems((await fetchRankedCandidates(id)).sort((a, b) => b.match.total_score - a.match.total_score)); }
     catch (e) { setError(apiErrorMessage(e, 'Không tải được ứng viên.')); }

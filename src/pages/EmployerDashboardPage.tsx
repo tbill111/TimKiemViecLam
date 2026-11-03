@@ -2,6 +2,7 @@ import { useEffect, useMemo, useRef, useState } from 'react';
 import { Bar, BarChart, CartesianGrid, Legend, Line, LineChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts';
 import { fetchBiData, fetchBiGuestToken, fetchBiSummary, type BiGuestToken, type BiRow, type BiSummary } from '../api/bi';
 import { apiErrorMessage, isOfflineDemo } from '../api/client';
+import { demoBi } from '../api/demoEmployer';
 import LoadingBlock from '../components/ui/LoadingBlock';
 import ErrorBlock from '../components/ui/ErrorBlock';
 import EmptyBlock from '../components/ui/EmptyBlock';
@@ -30,10 +31,19 @@ export default function EmployerDashboardPage() {
   const [stages, setStages] = useState<Source<BiRow[]>>({ data: [], error: '' });
   const [guest, setGuest] = useState<BiGuestToken | null>(null);
   const [embedFailed, setEmbedFailed] = useState(false);
-  const [loading, setLoading] = useState(!isOfflineDemo);
+  const [loading, setLoading] = useState(true);
   const mountPoint = useRef<HTMLDivElement>(null);
 
   const load = async () => {
+    if (isOfflineDemo) {
+      const demo = demoBi();
+      setSummary({ data: demo.summary, error: '' });
+      setSkills({ data: demo.skills, error: '' });
+      setSalary({ data: demo.salary, error: '' });
+      setStages({ data: demo.stages, error: '' });
+      setLoading(false);
+      return;
+    }
     setLoading(true);
     const settle = async <T,>(request: Promise<T>, message: string): Promise<Source<T | null>> => {
       try {
@@ -60,7 +70,7 @@ export default function EmployerDashboardPage() {
   };
 
   useEffect(() => {
-    if (!isOfflineDemo) void load();
+    void load();
   }, []);
 
   useEffect(() => {
@@ -126,7 +136,9 @@ export default function EmployerDashboardPage() {
         <p className="section-subtitle">Phễu tuyển dụng chỉ gồm các tin của công ty bạn; kỹ năng và lương là thị trường chung. Dữ liệu là mô phỏng.</p>
       </div>
 
-      {showEmbed ? <div ref={mountPoint} className="card min-h-64" /> : (
+      {showEmbed ? <div ref={mountPoint} className="card min-h-64" /> : isOfflineDemo ? (
+        <p className="rounded-lg bg-amber-50 p-3 text-xs text-amber-800">Chế độ demo: số liệu dưới đây là dữ liệu mẫu, không lấy từ máy chủ.</p>
+      ) : (
         <p className="rounded-lg bg-amber-50 p-3 text-xs text-amber-800">
           Dashboard Superset chưa sẵn sàng hoặc chưa được cấu hình, đang hiển thị biểu đồ dự phòng lấy từ API.
         </p>
