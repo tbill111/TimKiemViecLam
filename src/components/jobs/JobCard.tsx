@@ -5,7 +5,7 @@ import { formatRelativeDate, getMatchColorClass } from '../../utils';
 
 interface JobCardProps {
   job: Job;
-  matchResult: SkillMatchResult;
+  matchResult?: SkillMatchResult;
   isSaved: boolean;
   onSave: () => void;
   onViewDetail: () => void;
@@ -35,10 +35,10 @@ export default function JobCard({ job, matchResult, isSaved, onSave, onViewDetai
 
         {/* Match score */}
         <div
-          className={`shrink-0 flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-bold ${getMatchColorClass(matchResult.matchScore)}`}
+          className={`shrink-0 flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-bold ${matchResult ? getMatchColorClass(matchResult.matchScore) : 'badge-gray'}`}
         >
           <Star size={11} />
-          {matchResult.matchScore}%
+          {matchResult ? `${matchResult.matchScore}%` : 'Chưa có điểm'}
         </div>
       </div>
 
@@ -64,7 +64,7 @@ export default function JobCard({ job, matchResult, isSaved, onSave, onViewDetai
       {/* Skills */}
       <div className="flex flex-wrap gap-1.5">
         {job.requiredSkills.slice(0, 4).map((skill) => {
-          const matched = matchResult.matchedSkills.some(
+          const matched = matchResult?.matchedSkills.some(
             (s) => s.toLowerCase() === skill.toLowerCase()
           );
           return (

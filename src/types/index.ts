@@ -20,9 +20,9 @@ export type ApplicationStatus =
   | 'Đã ứng tuyển'
   | 'Đang xem xét'
   | 'Phỏng vấn'
+  | 'Đề nghị nhận việc'
   | 'Đã nhận việc'
-  | 'Đã từ chối'
-  | 'Đã rút';
+  | 'Đã từ chối';
 
 export type SkillPriority = 'Cao' | 'Trung bình' | 'Thấp';
 
@@ -38,12 +38,15 @@ export interface Job {
   workType: WorkType;
   experienceLevel: ExperienceLevel;
   salary: string;
+  salaryMin?: number;
+  salaryMax?: number;
   description: string;
   responsibilities: string[];
   requiredSkills: string[];
   preferredSkills: string[];
   postedAt: string; // ISO date string
   category: JobCategory;
+  status?: 'open' | 'closed';
   companySize?: string;
   companyIndustry?: string;
 }
@@ -141,6 +144,7 @@ export interface SkillMatchResult {
   eduScore?: number;
   explanation?: string;
   model?: string;
+  modelVersion?: string;
 }
 
 /** Phần hồ sơ đủ để tính điểm ghép nối (dùng chung cho sinh viên và ứng viên mẫu). */

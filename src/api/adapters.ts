@@ -5,9 +5,10 @@ const statusLabels: Record<string, ApplicationStatus> = {
   applied: 'Đã ứng tuyển',
   reviewing: 'Đang xem xét',
   interviewing: 'Phỏng vấn',
+  offer: 'Đề nghị nhận việc',
   hired: 'Đã nhận việc',
   rejected: 'Đã từ chối',
-  withdrawn: 'Đã rút',
+  withdrawn: 'Đã từ chối',
 };
 
 export function adaptStatus(status: string): ApplicationStatus {
@@ -33,6 +34,7 @@ export function adaptMatch(jobId: string, dto: MatchDto): SkillMatchResult {
     eduScore: dto.components.edu ?? undefined,
     explanation: dto.explanation,
     model: dto.model,
+    modelVersion: dto.model_version,
   };
 }
 
@@ -61,6 +63,8 @@ interface BackendJobDto {
   required_skills?: string[];
   preferred_skills?: string[];
   category?: string;
+  level?: string;
+  status?: string;
   posted_at?: string;
 }
 
@@ -96,12 +100,15 @@ export function adaptJob(dto: BackendJobDto): Job {
     workType: adaptWorkType(dto),
     experienceLevel: adaptExperience(dto.min_years_exp),
     salary: adaptSalary(dto.salary_min, dto.salary_max),
+    salaryMin: dto.salary_min ?? undefined,
+    salaryMax: dto.salary_max ?? undefined,
     description: dto.description ?? '',
     responsibilities: dto.responsibilities ?? [],
     requiredSkills: dto.required_skills ?? [],
     preferredSkills: dto.preferred_skills ?? [],
     postedAt: dto.posted_at ?? new Date(0).toISOString(),
     category: (dto.category ?? 'Software Engineering') as JobCategory,
+    status: dto.status === 'closed' ? 'closed' : 'open',
     companySize: company.size,
     companyIndustry: company.industry,
   };

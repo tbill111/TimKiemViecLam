@@ -1,4 +1,4 @@
-import { useMemo } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import {
   Briefcase,
@@ -20,12 +20,15 @@ import {
   calculateSkillMatch,
   countJobsWithSkill,
   countSuitableJobs,
-  getAllMatchScores,
   getSkillCoverage,
   SUITABLE_THRESHOLD,
 } from '../utils';
 import LoadingBlock from '../components/ui/LoadingBlock';
 import { RadarChart, Radar, PolarGrid, PolarAngleAxis, ResponsiveContainer, Tooltip } from 'recharts';
+import { fetchBiSummary, type BiSummary } from '../api/bi';
+import { apiErrorMessage, isOfflineDemo } from '../api/client';
+import ErrorBlock from '../components/ui/ErrorBlock';
+import { useAuth } from '../context/AuthContext';
 
 interface DashboardPageProps {
   appState: UseAppState;
@@ -40,11 +43,19 @@ const getScoreColor = (score: number) => {
 
 export default function DashboardPage({ appState }: DashboardPageProps) {
   const navigate = useNavigate();
+  const { user } = useAuth();
   const { studentProfile, savedJobs, applications } = appState;
-  const { jobs } = useJobs();
+  const { jobs, matchScores, loading: jobsLoading } = useJobs();
+  const [biSummary, setBiSummary] = useState<BiSummary | null>(null);
+  const [biError, setBiError] = useState('');
   const loading = useSimulatedLoading(null, 400);
 
-  const matchScores = useMemo(() => getAllMatchScores(studentProfile, jobs), [studentProfile, jobs]);
+  useEffect(() => {
+    if (isOfflineDemo || user?.role !== 'admin') return;
+    void fetchBiSummary()
+      .then(setBiSummary)
+      .catch((error: unknown) => setBiError(apiErrorMessage(error, 'Không tải được KPI tổng quan.')));
+  }, [user]);
 
   const topJobs = useMemo(() => {
     return jobs
@@ -53,7 +64,10 @@ export default function DashboardPage({ appState }: DashboardPageProps) {
       .slice(0, 4);
   }, [jobs, matchScores]);
 
-  const suitableCount = useMemo(() => countSuitableJobs(studentProfile, jobs), [studentProfile, jobs]);
+  const suitableCount = useMemo(
+    () => isOfflineDemo ? countSuitableJobs(studentProfile, jobs) : [...matchScores.values()].filter((match) => match.matchScore >= SUITABLE_THRESHOLD).length,
+    [matchScores, studentProfile, jobs]
+  );
 
   const radarData = useMemo(
     () => skillCategories.map((c) => ({ name: c.name, score: getSkillCoverage(studentProfile, c.skills) })),
@@ -66,7 +80,7 @@ export default function DashboardPage({ appState }: DashboardPageProps) {
     (job) => job.workType === 'Remote' && calculateSkillMatch(studentProfile, job).matchScore >= SUITABLE_THRESHOLD
   ).length;
 
-  if (loading) {
+  if (loading || jobsLoading) {
     return (
       <div className="space-y-6">
         <div>
@@ -82,11 +96,11 @@ export default function DashboardPage({ appState }: DashboardPageProps) {
       {/* Greeting */}
       <div>
         <h1 className="text-2xl font-bold text-slate-900">
-          Xin chào, {studentProfile.fullName.split(' ').slice(-2).join(' ')}!
+          Xin chào, {(user?.fullName ?? studentProfile.fullName).split(' ').slice(-2).join(' ')}!
         </h1>
         <p className="text-slate-500 mt-1 text-sm">
           SmartCareer giúp bạn tìm việc phù hợp theo kỹ năng và phân tích khoảng trống năng lực.
-          Tất cả dữ liệu bên dưới là kết quả mô phỏng từ hồ sơ của bạn.
+          {isOfflineDemo ? 'Tất cả dữ liệu bên dưới là kết quả mô phỏng từ hồ sơ của bạn.' : 'Dữ liệu được cập nhật từ hồ sơ và hệ thống AI.'}
         </p>
       </div>
 
@@ -98,6 +112,7 @@ export default function DashboardPage({ appState }: DashboardPageProps) {
             <div className="w-8 h-8 bg-blue-50 rounded-lg flex items-center justify-center">
               <Briefcase size={15} className="text-blue-600" />
             </div>
+
           </div>
           <div className="text-3xl font-bold text-slate-900 mt-1">{suitableCount}</div>
           <div className="text-xs text-emerald-600 font-medium">
@@ -124,7 +139,7 @@ export default function DashboardPage({ appState }: DashboardPageProps) {
             </div>
           </div>
           <div className="text-3xl font-bold text-slate-900 mt-1">{applications.length}</div>
-          <div className="text-xs text-slate-400">Đơn demo đã nộp</div>
+          <div className="text-xs text-slate-400">{isOfflineDemo ? 'Đơn demo đã nộp' : 'Đơn đã nộp'}</div>
         </div>
 
         <div className="stat-card">
@@ -138,6 +153,16 @@ export default function DashboardPage({ appState }: DashboardPageProps) {
           <div className="text-xs text-slate-400">Mức hoàn thiện</div>
         </div>
       </div>
+
+      {user?.role === 'admin' && !isOfflineDemo && biError && <ErrorBlock message={biError} onRetry={() => window.location.reload()} />}
+      {user?.role === 'admin' && !isOfflineDemo && biSummary && (
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+          <div className="stat-card"><div className="text-xs text-slate-400 uppercase">Ứng viên</div><div className="text-2xl font-bold mt-1">{biSummary.candidates}</div></div>
+          <div className="stat-card"><div className="text-xs text-slate-400 uppercase">Tin đang mở</div><div className="text-2xl font-bold mt-1">{biSummary.open_jobs}</div></div>
+          <div className="stat-card"><div className="text-xs text-slate-400 uppercase">Lượt ứng tuyển</div><div className="text-2xl font-bold mt-1">{biSummary.applications}</div></div>
+          <div className="stat-card"><div className="text-xs text-slate-400 uppercase">Tỷ lệ nhận việc</div><div className="text-2xl font-bold mt-1">{biSummary.hire_rate}%</div></div>
+        </div>
+      )}
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         {/* Top matched jobs */}

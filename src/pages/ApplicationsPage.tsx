@@ -6,6 +6,7 @@ import { formatDate, formatRelativeDate } from '../utils';
 import JobDetailModal from '../components/jobs/JobDetailModal';
 import { calculateSkillMatch } from '../utils';
 import type { Job } from '../types';
+import { isOfflineDemo } from '../api/client';
 
 interface ApplicationsPageProps {
   appState: UseAppState;
@@ -65,14 +66,14 @@ export default function ApplicationsPage({ appState }: ApplicationsPageProps) {
       <div>
         <h1 className="text-2xl font-bold text-slate-900">Việc đã lưu & Ứng tuyển</h1>
         <p className="text-slate-500 text-sm mt-0.5">
-          Quản lý danh sách việc đã lưu và theo dõi tiến trình ứng tuyển demo.
+          Quản lý danh sách việc đã lưu và theo dõi tiến trình ứng tuyển.
         </p>
       </div>
 
-      <div className="flex items-start gap-3 p-3 bg-blue-50 border border-blue-100 rounded-xl text-sm text-blue-700">
+      {isOfflineDemo && <div className="flex items-start gap-3 p-3 bg-blue-50 border border-blue-100 rounded-xl text-sm text-blue-700">
         <Info size={16} className="shrink-0 mt-0.5" />
         Đây là dữ liệu demo. Trạng thái ứng tuyển chỉ mang tính minh họa, không có thông tin nào được gửi đến nhà tuyển dụng.
-      </div>
+      </div>}
 
       {/* Tabs */}
       <div className="flex gap-2">
@@ -152,7 +153,7 @@ export default function ApplicationsPage({ appState }: ApplicationsPageProps) {
               <FileCheck size={40} className="mx-auto text-slate-200 mb-3" />
               <h3 className="font-semibold text-slate-500 mb-1">Chưa có đơn ứng tuyển nào</h3>
               <p className="text-sm text-slate-400">
-                Vào trang Tìm việc, mở chi tiết và nhấn "Ứng tuyển Demo" để bắt đầu.
+                Vào trang Tìm việc, mở chi tiết và nhấn "Ứng tuyển" để bắt đầu.
               </p>
             </div>
           ) : (

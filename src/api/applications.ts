@@ -4,8 +4,8 @@ import { adaptApplication } from './adapters';
 import type { ApplicationDto } from './dto';
 
 export async function fetchApplications(): Promise<Application[]> {
-  const response = await apiClient.get<ApplicationDto[]>('/applications');
-  return response.data.map(adaptApplication);
+  const response = await apiClient.get<{ items: ApplicationDto[] }>('/applications/me');
+  return response.data.items.map(adaptApplication);
 }
 
 export async function createApplication(jobId: string): Promise<Application> {

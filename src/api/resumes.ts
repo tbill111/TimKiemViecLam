@@ -18,8 +18,6 @@ export async function uploadResume(file: File, consent: boolean): Promise<Resume
   const form = new FormData();
   form.append('file', file);
   form.append('consent', String(consent));
-  const response = await apiClient.post<ResumeUploadResult>('/resumes/upload', form, {
-    headers: { 'Content-Type': 'multipart/form-data' },
-  });
+  const response = await apiClient.post<ResumeUploadResult>('/resumes/upload', form);
   return response.data;
 }

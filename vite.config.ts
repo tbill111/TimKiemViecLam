@@ -8,6 +8,14 @@ export default defineConfig({
     react(),
     tailwindcss(),
   ],
+  server: {
+    proxy: {
+      '/api': {
+        target: 'http://localhost:8000',
+        changeOrigin: true,
+      },
+    },
+  },
   build: {
     // Tách thư viện lớn thành chunk riêng để tránh cảnh báo chunk > 500 kB
     rolldownOptions: {
@@ -17,6 +25,7 @@ export default defineConfig({
           // pdf.js chỉ nạp khi đọc CV, nên tách riêng để không làm nặng lần tải đầu
           if (id.includes('pdfjs-dist')) return 'pdf';
           if (id.includes('recharts') || id.includes('d3-') || id.includes('victory-vendor')) return 'charts';
+          if (id.includes('@superset-ui/embedded-sdk')) return 'superset';
           if (id.includes('react-dom') || id.includes('react-router') || id.includes('/react/')) return 'react-vendor';
           return 'vendor';
         },
