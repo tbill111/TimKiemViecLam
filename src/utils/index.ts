@@ -1,5 +1,4 @@
 import type { Job, StudentProfile, SkillMatchResult, FilterState, DataQualityMetrics, MatchProfile } from '../types';
-import { sampleJobs } from '../data/jobs';
 
 /** Mốc ngày của dữ liệu demo; cố định để nhãn "X ngày trước" không đổi theo ngày chạy thật. */
 export const DEMO_NOW = new Date('2026-10-22T12:00:00Z');
@@ -99,20 +98,20 @@ export function calculateSkillMatch(profile: MatchProfile, job: Job): SkillMatch
 /**
  * Số công việc mẫu có điểm phù hợp đạt ngưỡng SUITABLE_THRESHOLD.
  */
-export function countSuitableJobs(profile: StudentProfile): number {
-  return sampleJobs.filter((job) => calculateSkillMatch(profile, job).matchScore >= SUITABLE_THRESHOLD).length;
+export function countSuitableJobs(profile: StudentProfile, jobs: Job[]): number {
+  return jobs.filter((job) => calculateSkillMatch(profile, job).matchScore >= SUITABLE_THRESHOLD).length;
 }
 
 /**
  * Số tin mẫu có kỹ năng cho trước (ở mục yêu cầu hoặc ưu tiên).
  * Trả về cả số tin yêu cầu bắt buộc để hiển thị chi tiết.
  */
-export function countJobsWithSkill(skill: string): { anywhere: number; required: number } {
+export function countJobsWithSkill(skill: string, jobs: Job[]): { anywhere: number; required: number } {
   const target = normalizeSkill(skill);
   const has = (list: string[]) => list.some((s) => normalizeSkill(s) === target);
   return {
-    anywhere: sampleJobs.filter((j) => has(j.requiredSkills) || has(j.preferredSkills)).length,
-    required: sampleJobs.filter((j) => has(j.requiredSkills)).length,
+    anywhere: jobs.filter((j) => has(j.requiredSkills) || has(j.preferredSkills)).length,
+    required: jobs.filter((j) => has(j.requiredSkills)).length,
   };
 }
 
@@ -128,9 +127,9 @@ export function getSkillCoverage(profile: StudentProfile, skills: string[]): num
 /**
  * Tính điểm phù hợp cho tất cả công việc và trả về đã sắp xếp.
  */
-export function getAllMatchScores(profile: StudentProfile): Map<string, SkillMatchResult> {
+export function getAllMatchScores(profile: StudentProfile, jobs: Job[]): Map<string, SkillMatchResult> {
   const map = new Map<string, SkillMatchResult>();
-  for (const job of sampleJobs) {
+  for (const job of jobs) {
     map.set(job.id, calculateSkillMatch(profile, job));
   }
   return map;

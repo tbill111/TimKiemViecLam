@@ -18,6 +18,7 @@ import {
 import type { UseAppState } from '../hooks/useAppState';
 import CvImport from '../components/profile/CvImport';
 import type { Certificate, Experience, Project, StudentProfile, WorkType } from '../types';
+import { useJobs } from '../context/JobsContext';
 
 const LOCATION_OPTIONS = ['Hà Nội', 'Hồ Chí Minh', 'Đà Nẵng', 'Remote'];
 const WORK_TYPE_OPTIONS: WorkType[] = ['Toàn thời gian', 'Bán thời gian', 'Thực tập', 'Remote'];
@@ -50,6 +51,7 @@ const newId = (prefix: string) => `${prefix}-${Date.now()}`;
 
 export default function ProfilePage({ appState }: ProfilePageProps) {
   const { studentProfile, updateProfile } = appState;
+  const { refreshMatches } = useJobs();
   const [isEditing, setIsEditing] = useState(false);
   const [editData, setEditData] = useState<StudentProfile>(studentProfile);
   const [newSkill, setNewSkill] = useState('');
@@ -79,6 +81,11 @@ export default function ProfilePage({ appState }: ProfilePageProps) {
     setIsEditing(false);
     setSaveSuccess(true);
     setTimeout(() => setSaveSuccess(false), 3000);
+  };
+
+  const handleCvApply = async (patch: Partial<StudentProfile>) => {
+    await updateProfile(patch);
+    await refreshMatches();
   };
 
   const addSkill = () => {
@@ -158,7 +165,7 @@ export default function ProfilePage({ appState }: ProfilePageProps) {
         <div>
           <h1 className="text-2xl font-bold text-slate-900">Hồ sơ của tôi</h1>
           <p className="text-slate-500 text-sm mt-0.5">
-            Thông tin được lưu trong trình duyệt (localStorage). Không gửi dữ liệu lên server.
+            Hồ sơ được đồng bộ với hệ thống khi online; chế độ offline demo chỉ lưu trong trình duyệt.
           </p>
         </div>
         <div className="flex gap-2">
@@ -539,7 +546,7 @@ export default function ProfilePage({ appState }: ProfilePageProps) {
           </div>
 
           {/* Nhập kỹ năng từ CV: đọc tệp trên trình duyệt, người dùng chọn kỹ năng cần thêm */}
-          <CvImport profile={studentProfile} disabled={isEditing} onApply={updateProfile} />
+          <CvImport profile={studentProfile} disabled={isEditing} onApply={handleCvApply} />
 
           {/* Languages */}
           <div className="card p-5">

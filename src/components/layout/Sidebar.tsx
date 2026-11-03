@@ -12,10 +12,15 @@ import {
   Bookmark,
   RotateCcw,
   Building2,
+  Users,
 } from 'lucide-react';
-import { useMemo } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import type { UseAppState } from '../../hooks/useAppState';
 import { countSuitableJobs } from '../../utils';
+import { useJobs } from '../../context/JobsContext';
+import { useAuth } from '../../context/AuthContext';
+import { isOfflineDemo } from '../../api/client';
+import { fetchEmployerJobs } from '../../api/employer';
 
 interface SidebarProps {
   appState: UseAppState;
@@ -24,14 +29,21 @@ interface SidebarProps {
   onClose: () => void;
 }
 
-const navItems = [
+const candidateNavItems = [
   { to: '/', label: 'Tổng quan', icon: LayoutDashboard, end: true },
   { to: '/jobs', label: 'Tìm việc làm', icon: Search },
   { to: '/match', label: 'Phân tích CV–JD', icon: BarChart2 },
   { to: '/skill-gap', label: 'Skill Gap Analysis', icon: TrendingUp },
   { to: '/applications', label: 'Việc đã lưu & Ứng tuyển', icon: Bookmark },
   { to: '/profile', label: 'Hồ sơ của tôi', icon: UserCircle },
-  { to: '/employer', label: 'Cổng nhà tuyển dụng', icon: Building2 },
+];
+
+const recruiterNavItems = [
+  { to: '/employer/dashboard', label: 'Dashboard nhà tuyển dụng', icon: LayoutDashboard },
+  { to: '/employer/jobs', label: 'Quản lý tin', icon: Building2 },
+  { to: '/employer/jobs/new', label: 'Đăng tin mới', icon: Briefcase },
+  { to: '/employer/candidates', label: 'Ứng viên xếp hạng', icon: Users },
+  { to: '/employer/kanban', label: 'Kanban tuyển dụng', icon: GitFork },
 ];
 
 const systemItems = [
@@ -43,8 +55,24 @@ const systemItems = [
 export default function Sidebar({ appState, open, onClose }: SidebarProps) {
   const navigate = useNavigate();
   const { studentProfile, savedJobs, applications, resetToDemo } = appState;
+  const { jobs } = useJobs();
+  const { user, logout } = useAuth();
+  const [companyName, setCompanyName] = useState(user?.companyName ?? '');
 
-  const suitableCount = useMemo(() => countSuitableJobs(studentProfile), [studentProfile]);
+  const suitableCount = useMemo(() => countSuitableJobs(studentProfile, jobs), [studentProfile, jobs]);
+  const accountName = user?.role === 'admin' ? 'Quản trị SmartCareer' : user?.fullName ?? studentProfile.fullName;
+  const accountSubtitle = user?.role === 'candidate' ? studentProfile.major : user?.role === 'admin' ? 'Quản trị viên' : companyName || 'Nhà tuyển dụng';
+
+  useEffect(() => {
+    if (!user || user.role === 'candidate' || isOfflineDemo) return;
+    if (user.companyName) {
+      setCompanyName(user.companyName);
+      return;
+    }
+    void fetchEmployerJobs()
+      .then((employerJobs) => setCompanyName(employerJobs[0]?.company ?? 'Nhà tuyển dụng'))
+      .catch(() => setCompanyName('Nhà tuyển dụng'));
+  }, [user]);
 
   const handleReset = () => {
     if (window.confirm('Đặt lại toàn bộ dữ liệu về trạng thái demo ban đầu?')) {
@@ -73,18 +101,18 @@ export default function Sidebar({ appState, open, onClose }: SidebarProps) {
         </div>
       </div>
 
-      {/* Student mini-profile */}
+      {/* Current account */}
       <div className="px-4 py-3 border-b border-slate-100">
         <div className="flex items-center gap-3">
           <div className="w-9 h-9 rounded-full bg-blue-100 flex items-center justify-center text-blue-700 font-bold text-sm shrink-0">
-            {studentProfile.fullName.split(' ').slice(-2).map((n) => n[0]).join('')}
+            {accountName.split(' ').slice(-2).map((n) => n[0]).join('').toUpperCase()}
           </div>
           <div className="min-w-0">
-            <div className="text-sm font-semibold text-slate-800 truncate">{studentProfile.fullName}</div>
-            <div className="text-xs text-slate-400 truncate">{studentProfile.major}</div>
+            <div className="text-sm font-semibold text-slate-800 truncate">{accountName}</div>
+            <div className="text-xs text-slate-400 truncate">{accountSubtitle}</div>
           </div>
         </div>
-        <div className="mt-2.5">
+        {user?.role === 'candidate' && <div className="mt-2.5">
           <div className="flex items-center justify-between mb-1">
             <span className="text-xs text-slate-400">Hoàn thiện hồ sơ</span>
             <span className="text-xs font-semibold text-blue-600">{studentProfile.profileCompletion}%</span>
@@ -95,13 +123,13 @@ export default function Sidebar({ appState, open, onClose }: SidebarProps) {
               style={{ width: `${studentProfile.profileCompletion}%` }}
             />
           </div>
-        </div>
+        </div>}
       </div>
 
       {/* Navigation */}
       <nav className="flex-1 px-3 py-3 overflow-y-auto scrollbar-thin">
         <div className="space-y-0.5">
-          {navItems.map((item) => (
+          {(user?.role === 'candidate' || isOfflineDemo) && candidateNavItems.map((item) => (
             <NavLink
               key={item.to}
               to={item.to}
@@ -113,6 +141,13 @@ export default function Sidebar({ appState, open, onClose }: SidebarProps) {
               <span className="flex-1">{item.label}</span>
             </NavLink>
           ))}
+          {user?.role === 'recruiter' && recruiterNavItems.map((item) => (
+            <NavLink key={item.to} to={item.to} onClick={onClose} className={({ isActive }) => (isActive ? 'nav-active block' : 'nav-inactive block')}>
+              <item.icon size={16} className="shrink-0" />
+              <span className="flex-1">{item.label}</span>
+            </NavLink>
+          ))}
+          {user?.role === 'admin' && <NavLink to="/admin/skills" onClick={onClose} className={({ isActive }) => (isActive ? 'nav-active block' : 'nav-inactive block')}><Database size={16} /><span>Quản lý kỹ năng</span></NavLink>}
         </div>
 
         <div className="mt-4 pt-4 border-t border-slate-100">
@@ -136,8 +171,8 @@ export default function Sidebar({ appState, open, onClose }: SidebarProps) {
       </nav>
 
       {/* Quick stats */}
-      <div className="px-4 py-3 border-t border-slate-100 bg-slate-50">
-        <div className="grid grid-cols-3 gap-2 mb-3">
+      {user?.role === 'candidate' && <div className="px-4 py-3 border-t border-slate-100 bg-slate-50">
+        <div className="grid grid-cols-3 gap-2">
           <div className="text-center">
             <div className="text-base font-bold text-blue-600">{applications.length}</div>
             <div className="text-xs text-slate-400 leading-tight">Ứng tuyển</div>
@@ -151,13 +186,17 @@ export default function Sidebar({ appState, open, onClose }: SidebarProps) {
             <div className="text-xs text-slate-400 leading-tight">Việc phù hợp</div>
           </div>
         </div>
-        <button
+      </div>}
+
+      <div className="px-4 py-3 border-t border-slate-100 bg-slate-50">
+        {isOfflineDemo && (<button
           onClick={handleReset}
           className="w-full flex items-center justify-center gap-1.5 text-xs text-slate-400 hover:text-slate-600 transition-colors py-1"
         >
           <RotateCcw size={12} />
           Đặt lại dữ liệu demo
-        </button>
+        </button>)}
+        {!isOfflineDemo && user && <button className="w-full text-xs text-slate-400 hover:text-red-600 mt-2" onClick={logout}>Đăng xuất</button>}
       </div>
     </aside>
   );

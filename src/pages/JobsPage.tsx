@@ -1,9 +1,10 @@
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect } from 'react';
 import { Search, X, SlidersHorizontal } from 'lucide-react';
 import type { UseAppState } from '../hooks/useAppState';
 import type { FilterState } from '../types';
-import { sampleJobs } from '../data/jobs';
 import { filterJobs, getAllMatchScores } from '../utils';
+import { useJobs } from '../context/JobsContext';
+import { apiErrorMessage } from '../api/client';
 import JobCard from '../components/jobs/JobCard';
 import JobDetailModal from '../components/jobs/JobDetailModal';
 import LoadingBlock from '../components/ui/LoadingBlock';
@@ -41,19 +42,31 @@ const defaultFilters: FilterState = {
 
 export default function JobsPage({ appState }: JobsPageProps) {
   const { studentProfile, isJobSaved, saveJob, unsaveJob, applyToJob, hasApplied } = appState;
+  const { jobs, matchScores, loading: jobsLoading, error: jobsError, reload } = useJobs();
   const [filters, setFilters] = useState<FilterState>(defaultFilters);
   const [selectedJob, setSelectedJob] = useState<Job | null>(null);
   const [showFilters, setShowFilters] = useState(false);
-
-  const matchScores = useMemo(() => getAllMatchScores(studentProfile), [studentProfile]);
+  const [page, setPage] = useState(1);
 
   const filteredJobs = useMemo(
-    () => filterJobs(sampleJobs, filters, matchScores),
-    [filters, matchScores]
+    () => import.meta.env.VITE_OFFLINE_DEMO === 'true' ? filterJobs(jobs, filters, getAllMatchScores(studentProfile, jobs)) : jobs,
+    [filters, jobs, studentProfile]
   );
 
   // Giả lập thời gian lọc ngắn sau mỗi lần thay đổi bộ lọc
-  const loading = useSimulatedLoading(filters, 250);
+  const simulatedLoading = useSimulatedLoading(filters, 250);
+  const loading = import.meta.env.VITE_OFFLINE_DEMO === 'true' ? simulatedLoading : jobsLoading;
+
+  useEffect(() => {
+    if (import.meta.env.VITE_OFFLINE_DEMO === 'true') return;
+    const params: Record<string, string> = { sort: filters.sortBy, page: String(page) };
+    if (filters.query) params.q = filters.query;
+    if (filters.location && filters.location !== 'Tất cả') params.location = filters.location;
+    if (filters.workType) params.work_type = filters.workType;
+    if (filters.experienceLevel) params.experience = filters.experienceLevel;
+    if (filters.category) params.category = filters.category;
+    void reload(params);
+  }, [filters, page, reload]);
 
   const hasActiveFilters =
     filters.query !== '' ||
@@ -68,13 +81,16 @@ export default function JobsPage({ appState }: JobsPageProps) {
     setFilters((prev) => ({ ...prev, [key]: value }));
   };
 
+  const [actionError, setActionError] = useState('');
   const toggleSave = (jobId: string) => {
-    if (isJobSaved(jobId)) unsaveJob(jobId);
-    else saveJob(jobId);
+    setActionError('');
+    const action = isJobSaved(jobId) ? unsaveJob(jobId) : saveJob(jobId);
+    void Promise.resolve(action).catch((error: unknown) => setActionError(apiErrorMessage(error, 'Không cập nhật được danh sách đã lưu.')));
   };
 
   return (
     <div className="space-y-5">
+      {actionError && <p role="alert" className="rounded-lg bg-red-50 p-3 text-sm text-red-700">{actionError}</p>}
       {/* Header */}
       <div>
         <h1 className="text-2xl font-bold text-slate-900">Tìm kiếm Việc làm</h1>
@@ -188,6 +204,7 @@ export default function JobsPage({ appState }: JobsPageProps) {
           Tìm thấy <span className="font-semibold text-slate-800">{filteredJobs.length}</span> kết quả
         </div>
       </div>
+      {jobsError && <p role="alert" className="text-sm text-red-600">{jobsError}</p>}
 
       {/* Job list */}
       {loading ? (
@@ -209,12 +226,19 @@ export default function JobsPage({ appState }: JobsPageProps) {
             <JobCard
               key={job.id}
               job={job}
-              matchResult={matchScores.get(job.id)!}
+              matchResult={matchScores.get(job.id)}
               isSaved={isJobSaved(job.id)}
               onSave={() => toggleSave(job.id)}
               onViewDetail={() => setSelectedJob(job)}
             />
           ))}
+        </div>
+      )}
+      {!import.meta.env.VITE_OFFLINE_DEMO && (page > 1 || filteredJobs.length === 100) && (
+        <div className="flex items-center justify-center gap-3">
+          <button className="btn-secondary" disabled={page === 1 || loading} onClick={() => setPage((current) => Math.max(1, current - 1))}>Trang trước</button>
+          <span className="text-sm text-slate-500">Trang {page}</span>
+          <button className="btn-secondary" disabled={filteredJobs.length < 100 || loading} onClick={() => setPage((current) => current + 1)}>Trang sau</button>
         </div>
       )}
 

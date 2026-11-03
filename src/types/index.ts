@@ -20,7 +20,9 @@ export type ApplicationStatus =
   | 'Đã ứng tuyển'
   | 'Đang xem xét'
   | 'Phỏng vấn'
-  | 'Đã kết thúc';
+  | 'Đề nghị nhận việc'
+  | 'Đã nhận việc'
+  | 'Đã từ chối';
 
 export type SkillPriority = 'Cao' | 'Trung bình' | 'Thấp';
 
@@ -36,12 +38,18 @@ export interface Job {
   workType: WorkType;
   experienceLevel: ExperienceLevel;
   salary: string;
+  salaryMin?: number;
+  salaryMax?: number;
   description: string;
   responsibilities: string[];
   requiredSkills: string[];
   preferredSkills: string[];
   postedAt: string; // ISO date string
   category: JobCategory;
+  status?: 'open' | 'closed';
+  /** Cấp bậc của backend: intern | fresher | junior | middle | senior. */
+  level?: string;
+  minYearsExp?: number;
   companySize?: string;
   companyIndustry?: string;
 }
@@ -134,6 +142,12 @@ export interface SkillMatchResult {
   preferenceScore: number;
   locationMatch: boolean;
   workTypeMatch: boolean;
+  semanticScore?: number;
+  expScore?: number;
+  eduScore?: number;
+  explanation?: string;
+  model?: string;
+  modelVersion?: string;
 }
 
 /** Phần hồ sơ đủ để tính điểm ghép nối (dùng chung cho sinh viên và ứng viên mẫu). */

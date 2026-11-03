@@ -1,9 +1,12 @@
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect } from 'react';
 import { CheckCircle2, XCircle, Info } from 'lucide-react';
 import type { UseAppState } from '../hooks/useAppState';
-import { sampleJobs } from '../data/jobs';
 import { calculateSkillMatch } from '../utils';
 import ScoreBreakdown from '../components/jobs/ScoreBreakdown';
+import { useJobs } from '../context/JobsContext';
+import { matchJob } from '../api/ai';
+import { isOfflineDemo, apiErrorMessage } from '../api/client';
+import type { SkillMatchResult } from '../types';
 
 interface MatchPageProps {
   appState: UseAppState;
@@ -11,17 +14,38 @@ interface MatchPageProps {
 
 export default function MatchPage({ appState }: MatchPageProps) {
   const { studentProfile } = appState;
-  const [selectedJobId, setSelectedJobId] = useState<string>(sampleJobs[0].id);
+  const { jobs } = useJobs();
+  const [selectedJobId, setSelectedJobId] = useState<string>('');
+  const [model, setModel] = useState('m3');
+  const [remoteResult, setRemoteResult] = useState<SkillMatchResult | null>(null);
+  const [modelError, setModelError] = useState('');
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    if (!selectedJobId && jobs[0]) setSelectedJobId(jobs[0].id);
+  }, [jobs, selectedJobId]);
 
   const selectedJob = useMemo(
-    () => sampleJobs.find((j) => j.id === selectedJobId) ?? sampleJobs[0],
-    [selectedJobId]
+    () => jobs.find((j) => j.id === selectedJobId) ?? jobs[0],
+    [jobs, selectedJobId]
   );
 
-  const matchResult = useMemo(
-    () => calculateSkillMatch(studentProfile, selectedJob),
+  const localResult = useMemo(
+    () => selectedJob ? calculateSkillMatch(studentProfile, selectedJob) : null,
     [studentProfile, selectedJob]
   );
+  const matchResult = remoteResult ?? localResult;
+
+  useEffect(() => {
+    if (isOfflineDemo || !selectedJob) return;
+    setLoading(true);
+    setModelError('');
+    setRemoteResult(null);
+    void matchJob(selectedJob.id, model)
+      .then(setRemoteResult)
+      .catch((error: unknown) => setModelError(apiErrorMessage(error, model === 'm4' ? 'M4 chưa được huấn luyện.' : 'Không tải được kết quả ghép nối.')))
+      .finally(() => setLoading(false));
+  }, [model, selectedJob]);
 
   const getBarColor = (score: number) => {
     if (score >= 80) return 'bg-emerald-500';
@@ -29,6 +53,10 @@ export default function MatchPage({ appState }: MatchPageProps) {
     if (score >= 40) return 'bg-amber-500';
     return 'bg-slate-400';
   };
+
+  if (!selectedJob || !matchResult) {
+    return <div className="card p-8 text-center text-sm text-slate-500">Chưa có tin tuyển dụng để phân tích.</div>;
+  }
 
   return (
     <div className="space-y-6">
@@ -52,8 +80,15 @@ export default function MatchPage({ appState }: MatchPageProps) {
         {/* Left – Select job */}
         <div className="card p-5 space-y-3">
           <h2 className="section-title text-sm">Chọn vị trí để phân tích</h2>
+          <label className="block text-xs font-medium text-slate-500">
+            Mô hình
+            <select className="select-field mt-1" value={model} onChange={(event) => setModel(event.target.value)}>
+              {['m0', 'm1', 'm2', 'm3', 'm4'].map((value) => <option key={value} value={value}>{value.toUpperCase()}</option>)}
+            </select>
+          </label>
+          {modelError && <p role="alert" className="text-xs text-red-600 bg-red-50 rounded-lg p-2">{modelError}</p>}
           <div className="space-y-2 max-h-[480px] overflow-y-auto scrollbar-thin pr-1">
-            {sampleJobs.map((job) => {
+            {jobs.map((job) => {
               const result = calculateSkillMatch(studentProfile, job);
               const isSelected = job.id === selectedJobId;
               return (
@@ -87,6 +122,7 @@ export default function MatchPage({ appState }: MatchPageProps) {
         <div className="lg:col-span-2 space-y-4">
           {/* Score card */}
           <div className="card p-6">
+            {loading && <p role="status" className="text-sm text-slate-500 mb-3">Đang phân tích bằng {model.toUpperCase()}...</p>}
             <div className="flex items-start justify-between gap-4">
               <div>
                 <h2 className="text-xl font-bold text-slate-900">{selectedJob.title}</h2>
