@@ -28,8 +28,8 @@ function initialValues(job?: Job): JobFormValues {
     location: job?.location ?? 'Hà Nội',
     job_type: job?.workType === 'Bán thời gian' ? 'part_time' : job?.workType === 'Thực tập' ? 'internship' : 'full_time',
     work_mode: job?.workType === 'Remote' ? 'remote' : 'onsite',
-    level: job?.experienceLevel === 'Chưa có kinh nghiệm' ? 'fresher' : job?.experienceLevel === 'Dưới 1 năm' ? 'junior' : job?.experienceLevel === '1-2 năm' ? 'junior' : job?.experienceLevel === '2-3 năm' ? 'senior' : job?.experienceLevel === '3+ năm' ? 'senior' : 'fresher',
-    min_years_exp: job?.experienceLevel === 'Dưới 1 năm' ? '1' : job?.experienceLevel === '1-2 năm' ? '1' : job?.experienceLevel === '2-3 năm' ? '2' : job?.experienceLevel === '3+ năm' ? '3' : '0',
+    level: job?.level ?? 'fresher',
+    min_years_exp: String(job?.minYearsExp ?? 0),
     salary_min: job?.salaryMin?.toString() ?? '',
     salary_max: job?.salaryMax?.toString() ?? '',
     responsibilities: job?.responsibilities.join('\n') ?? '',
@@ -98,7 +98,7 @@ export default function JobForm({ job, onSaved, onCancel }: JobFormProps) {
         <textarea className="input-field min-h-32" placeholder="Mô tả công việc" value={form.description} onChange={(e) => set('description', e.target.value)} required />
         <div className="grid md:grid-cols-2 gap-3">
           <select className="select-field" value={form.category} onChange={(e) => set('category', e.target.value)}><option>Frontend Development</option><option>Backend Development</option><option>Data Science & Analytics</option><option>Business Analysis</option><option>QA & Testing</option><option>UI/UX Design</option><option>IT Support</option><option>Software Engineering</option></select>
-          <select className="select-field" value={form.level} onChange={(e) => set('level', e.target.value)}><option value="intern">Thực tập</option><option value="fresher">Fresher</option><option value="junior">Junior</option><option value="senior">Senior</option></select>
+          <select className="select-field" value={form.level} onChange={(e) => set('level', e.target.value)}><option value="intern">Thực tập</option><option value="fresher">Fresher</option><option value="junior">Junior</option><option value="middle">Middle</option><option value="senior">Senior</option></select>
           <select className="select-field" value={form.job_type} onChange={(e) => set('job_type', e.target.value)}><option value="full_time">Toàn thời gian</option><option value="part_time">Bán thời gian</option><option value="internship">Thực tập</option></select>
           <select className="select-field" value={form.work_mode} onChange={(e) => set('work_mode', e.target.value)}><option value="onsite">Tại văn phòng</option><option value="hybrid">Hybrid</option><option value="remote">Remote</option></select>
           <input className="input-field" placeholder="Địa điểm" value={form.location} onChange={(e) => set('location', e.target.value)} />

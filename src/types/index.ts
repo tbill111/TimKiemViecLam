@@ -47,6 +47,9 @@ export interface Job {
   postedAt: string; // ISO date string
   category: JobCategory;
   status?: 'open' | 'closed';
+  /** Cấp bậc của backend: intern | fresher | junior | middle | senior. */
+  level?: string;
+  minYearsExp?: number;
   companySize?: string;
   companyIndustry?: string;
 }

@@ -13,8 +13,21 @@ interface AuthContextValue {
 
 const AuthContext = createContext<AuthContextValue | null>(null);
 
+const DEMO_USER_KEY = 'smartcareer_demo_user';
+
+/** Chế độ demo không có backend: giữ người dùng giả trong sessionStorage để tải lại trang không bị đăng xuất. */
+function readDemoUser(): AuthUser | null {
+  if (!isOfflineDemo) return null;
+  try {
+    const raw = sessionStorage.getItem(DEMO_USER_KEY);
+    return raw ? (JSON.parse(raw) as AuthUser) : null;
+  } catch {
+    return null;
+  }
+}
+
 export function AuthProvider({ children }: { children: ReactNode }) {
-  const [user, setUser] = useState<AuthUser | null>(null);
+  const [user, setUser] = useState<AuthUser | null>(readDemoUser);
   const [loading, setLoading] = useState(!isOfflineDemo && Boolean(localStorage.getItem('smartcareer_token')));
   const [error, setError] = useState<string | null>(null);
 
@@ -34,7 +47,8 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       setLoading(true);
       setError(null);
       try {
-        const nextUser = isOfflineDemo ? { id: 'demo', fullName: email, email, role: 'candidate' as const } : await loginRequest(email, password);
+        const nextUser = isOfflineDemo ? { id: 'demo', fullName: email, email, role: (email.startsWith('admin') ? 'admin' : email.startsWith('hr') ? 'recruiter' : 'candidate') as AuthUser['role'] } : await loginRequest(email, password);
+        if (isOfflineDemo) sessionStorage.setItem(DEMO_USER_KEY, JSON.stringify(nextUser));
         setUser(nextUser);
         return nextUser;
       } catch (requestError) {
@@ -49,6 +63,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       setError(null);
       try {
         const nextUser = isOfflineDemo ? { id: 'demo', fullName: payload.fullName, email: payload.email, role: payload.role, companyName: payload.companyName } : await registerRequest(payload);
+        if (isOfflineDemo) sessionStorage.setItem(DEMO_USER_KEY, JSON.stringify(nextUser));
         setUser(nextUser);
         return nextUser;
       } finally {
@@ -57,6 +72,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     },
     logout() {
       localStorage.removeItem('smartcareer_token');
+      sessionStorage.removeItem(DEMO_USER_KEY);
       setUser(null);
     },
   }), [error, loading, user]);

@@ -3,6 +3,8 @@ import type { ApplicationDto, MatchDto } from './dto';
 
 const statusLabels: Record<string, ApplicationStatus> = {
   applied: 'Đã ứng tuyển',
+  screening: 'Đang xem xét',
+  interview: 'Phỏng vấn',
   reviewing: 'Đang xem xét',
   interviewing: 'Phỏng vấn',
   offer: 'Đề nghị nhận việc',
@@ -109,6 +111,8 @@ export function adaptJob(dto: BackendJobDto): Job {
     postedAt: dto.posted_at ?? new Date(0).toISOString(),
     category: (dto.category ?? 'Software Engineering') as JobCategory,
     status: dto.status === 'closed' ? 'closed' : 'open',
+    level: dto.level,
+    minYearsExp: dto.min_years_exp ?? undefined,
     companySize: company.size,
     companyIndustry: company.industry,
   };

@@ -1,10 +1,14 @@
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { CheckCircle2, Circle, ChevronDown, ChevronUp, Target, Info } from 'lucide-react';
 import type { UseAppState } from '../hooks/useAppState';
 import type { Job, SkillPriority, StudentProfile } from '../types';
 import { sampleJobs } from '../data/jobs';
 import { buildLearningSteps } from '../data/skillGap';
 import { calculateSkillMatch, hasSkill } from '../utils';
+import { useJobs } from '../context/JobsContext';
+import { apiErrorMessage, isOfflineDemo } from '../api/client';
+import { fetchSkillGap, type SkillGapApi } from '../api/candidates';
+import EmptyBlock from '../components/ui/EmptyBlock';
 
 interface SkillGapPageProps {
   appState: UseAppState;
@@ -13,6 +17,7 @@ interface SkillGapPageProps {
 interface SkillGapRow {
   skill: string;
   priority: SkillPriority;
+  steps?: string[];
 }
 
 type PriorityFilter = SkillPriority | 'Tất cả';
@@ -32,8 +37,9 @@ const priorityBg: Record<SkillPriority, string> = {
 const normalize = (s: string) => s.trim().toLowerCase();
 
 /** Công việc mục tiêu mặc định: công việc có nhiều kỹ năng bắt buộc còn thiếu nhất. */
-function findDefaultTarget(profile: StudentProfile): Job {
-  return sampleJobs.reduce((best, job) => {
+function findDefaultTarget(profile: StudentProfile, jobs: Job[]): Job | undefined {
+  if (jobs.length === 0) return undefined;
+  return jobs.reduce((best, job) => {
     const missing = calculateSkillMatch(profile, job).missingSkills.length;
     const bestMissing = calculateSkillMatch(profile, best).missingSkills.length;
     return missing > bestMissing ? job : best;
@@ -58,16 +64,46 @@ export default function SkillGapPage({ appState }: SkillGapPageProps) {
   const [expandedSkill, setExpandedSkill] = useState<string | null>(null);
   const [filterPriority, setFilterPriority] = useState<PriorityFilter>('Tất cả');
 
-  const defaultTarget = useMemo(() => findDefaultTarget(studentProfile), [studentProfile]);
-  const target = sampleJobs.find((j) => j.id === targetId) ?? defaultTarget;
-  const targetMatch = calculateSkillMatch(studentProfile, target);
+  const { jobs: onlineJobs } = useJobs();
+  const jobList = isOfflineDemo ? sampleJobs : onlineJobs;
+  const [remote, setRemote] = useState<SkillGapApi | null>(null);
+  const [remoteError, setRemoteError] = useState('');
 
-  const gapRows = useMemo(() => buildGapRows(studentProfile, target), [studentProfile, target]);
+  const defaultTarget = useMemo(() => findDefaultTarget(studentProfile, jobList), [studentProfile, jobList]);
+  const target = jobList.find((j) => j.id === targetId) ?? defaultTarget;
+  const targetId_ = target?.id;
+
+  // Online: kỹ năng thiếu và lộ trình học lấy từ API /candidates/me/skill-gap
+  useEffect(() => {
+    if (isOfflineDemo || !targetId_) return;
+    let active = true;
+    setRemote(null);
+    setRemoteError('');
+    fetchSkillGap(targetId_)
+      .then((result) => { if (active) setRemote(result); })
+      .catch((error: unknown) => { if (active) setRemoteError(apiErrorMessage(error, 'Không tải được phân tích kỹ năng.')); });
+    return () => { active = false; };
+  }, [targetId_]);
+
+  const targetMatch = useMemo(() => {
+    if (!target) return { matchScore: 0, missingSkills: [] as string[] };
+    if (!isOfflineDemo && remote) return { matchScore: remote.matchScore, missingSkills: remote.missing.filter((m) => m.required).map((m) => m.skill) };
+    return calculateSkillMatch(studentProfile, target);
+  }, [remote, studentProfile, target]);
+
+  const gapRows = useMemo<SkillGapRow[]>(() => {
+    if (!target) return [];
+    if (!isOfflineDemo) {
+      return remote ? remote.missing.map((m) => ({ skill: m.skill, priority: m.required ? 'Cao' as const : 'Trung bình' as const, steps: m.learningSteps })) : [];
+    }
+    return buildGapRows(studentProfile, target);
+  }, [remote, studentProfile, target]);
 
   const findGapItem = (skill: string) => skillGapItems.find((i) => normalize(i.skill) === normalize(skill));
   const isLearned = (skill: string) => findGapItem(skill)?.learned ?? false;
 
   const toggleLearned = (row: SkillGapRow) => {
+    if (!target) return;
     const existing = findGapItem(row.skill);
     if (existing) {
       toggleSkillLearned(existing.id);
@@ -82,7 +118,7 @@ export default function SkillGapPage({ appState }: SkillGapPageProps) {
         priority: row.priority,
         category: target.category,
         learned: true,
-        learningSteps: buildLearningSteps(row.skill),
+        learningSteps: row.steps?.length ? row.steps : buildLearningSteps(row.skill),
       },
     ]);
   };
@@ -94,6 +130,8 @@ export default function SkillGapPage({ appState }: SkillGapPageProps) {
   const midPending = gapRows.filter((r) => r.priority === 'Trung bình' && !isLearned(r.skill)).length;
 
   const displayed = filterPriority === 'Tất cả' ? gapRows : gapRows.filter((r) => r.priority === filterPriority);
+
+  if (!target) return <EmptyBlock message="Chưa có tin tuyển dụng để phân tích." />;
 
   return (
     <div className="space-y-6">
@@ -127,7 +165,7 @@ export default function SkillGapPage({ appState }: SkillGapPageProps) {
               setExpandedSkill(null);
             }}
           >
-            {sampleJobs.map((job) => (
+            {jobList.map((job) => (
               <option key={job.id} value={job.id}>
                 {job.title} – {job.company}
               </option>
@@ -145,6 +183,8 @@ export default function SkillGapPage({ appState }: SkillGapPageProps) {
           </div>
         </div>
       </div>
+
+      {remoteError && <p role="alert" className="rounded-lg bg-red-50 p-3 text-sm text-red-700">{remoteError}</p>}
 
       {/* Overview stats */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
@@ -210,7 +250,7 @@ export default function SkillGapPage({ appState }: SkillGapPageProps) {
           {displayed.map((row) => {
             const learned = isLearned(row.skill);
             const expanded = expandedSkill === row.skill;
-            const steps = findGapItem(row.skill)?.learningSteps ?? buildLearningSteps(row.skill);
+            const steps = findGapItem(row.skill)?.learningSteps ?? (row.steps?.length ? row.steps : buildLearningSteps(row.skill));
             return (
               <div
                 key={row.skill}

@@ -24,6 +24,7 @@ import EmployerCandidatesPage from './pages/EmployerCandidatesPage';
 import EmployerKanbanPage from './pages/EmployerKanbanPage';
 import EmployerDashboardPage from './pages/EmployerDashboardPage';
 import AdminSkillsPage from './pages/AdminSkillsPage';
+import { isOfflineDemo } from './api/client';
 
 export default function App() {
   return (
@@ -86,7 +87,7 @@ function ProtectedRoute({ roles, children }: { roles: Array<'candidate' | 'recru
   const { user, loading } = useAuth();
   if (loading) return <div className="p-10 text-center text-slate-500">Đang kiểm tra phiên đăng nhập...</div>;
   if (!user) return <Navigate to="/login" replace />;
-  if (!roles.includes(user.role)) return <div className="card p-10 text-center">Bạn không có quyền truy cập trang này.</div>;
+  if (!isOfflineDemo && !roles.includes(user.role)) return <div className="card p-10 text-center">Bạn không có quyền truy cập trang này.</div>;
   return <>{children}</>;
 }
 

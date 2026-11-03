@@ -61,7 +61,7 @@ export default function Sidebar({ appState, open, onClose }: SidebarProps) {
 
   const suitableCount = useMemo(() => countSuitableJobs(studentProfile, jobs), [studentProfile, jobs]);
   const accountName = user?.role === 'admin' ? 'Quản trị SmartCareer' : user?.fullName ?? studentProfile.fullName;
-  const accountSubtitle = user?.role === 'candidate' ? studentProfile.major : user?.role === 'admin' ? 'Nhà tuyển dụng' : companyName || 'Nhà tuyển dụng';
+  const accountSubtitle = user?.role === 'candidate' ? studentProfile.major : user?.role === 'admin' ? 'Quản trị viên' : companyName || 'Nhà tuyển dụng';
 
   useEffect(() => {
     if (!user || user.role === 'candidate' || isOfflineDemo) return;
@@ -189,13 +189,13 @@ export default function Sidebar({ appState, open, onClose }: SidebarProps) {
       </div>}
 
       <div className="px-4 py-3 border-t border-slate-100 bg-slate-50">
-        <button
+        {isOfflineDemo && (<button
           onClick={handleReset}
           className="w-full flex items-center justify-center gap-1.5 text-xs text-slate-400 hover:text-slate-600 transition-colors py-1"
         >
           <RotateCcw size={12} />
           Đặt lại dữ liệu demo
-        </button>
+        </button>)}
         {!isOfflineDemo && user && <button className="w-full text-xs text-slate-400 hover:text-red-600 mt-2" onClick={logout}>Đăng xuất</button>}
       </div>
     </aside>

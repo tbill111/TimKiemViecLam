@@ -68,7 +68,7 @@ export function useAppState() {
   const [onlineError, setOnlineError] = useState<string | null>(null);
 
   useEffect(() => {
-    if (isOfflineDemo || !user) return;
+    if (isOfflineDemo || !user || user.role !== 'candidate') return;
     setState(defaultState);
     setOnlineError(null);
     void Promise.all([fetchApplications(), fetchSavedJobs(), fetchProfile()])

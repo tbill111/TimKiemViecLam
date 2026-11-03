@@ -4,6 +4,7 @@ import type { UseAppState } from '../hooks/useAppState';
 import type { FilterState } from '../types';
 import { filterJobs, getAllMatchScores } from '../utils';
 import { useJobs } from '../context/JobsContext';
+import { apiErrorMessage } from '../api/client';
 import JobCard from '../components/jobs/JobCard';
 import JobDetailModal from '../components/jobs/JobDetailModal';
 import LoadingBlock from '../components/ui/LoadingBlock';
@@ -80,13 +81,16 @@ export default function JobsPage({ appState }: JobsPageProps) {
     setFilters((prev) => ({ ...prev, [key]: value }));
   };
 
+  const [actionError, setActionError] = useState('');
   const toggleSave = (jobId: string) => {
-    if (isJobSaved(jobId)) unsaveJob(jobId);
-    else saveJob(jobId);
+    setActionError('');
+    const action = isJobSaved(jobId) ? unsaveJob(jobId) : saveJob(jobId);
+    void Promise.resolve(action).catch((error: unknown) => setActionError(apiErrorMessage(error, 'Không cập nhật được danh sách đã lưu.')));
   };
 
   return (
     <div className="space-y-5">
+      {actionError && <p role="alert" className="rounded-lg bg-red-50 p-3 text-sm text-red-700">{actionError}</p>}
       {/* Header */}
       <div>
         <h1 className="text-2xl font-bold text-slate-900">Tìm kiếm Việc làm</h1>

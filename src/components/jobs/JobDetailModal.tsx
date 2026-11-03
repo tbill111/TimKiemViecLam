@@ -16,7 +16,7 @@ import {
 import type { Job } from '../../types';
 import type { SkillMatchResult } from '../../types';
 import { formatRelativeDate, getMatchColorClass } from '../../utils';
-import { isOfflineDemo } from '../../api/client';
+import { apiErrorMessage, isOfflineDemo } from '../../api/client';
 import ScoreBreakdown from './ScoreBreakdown';
 
 interface JobDetailModalProps {
@@ -25,7 +25,7 @@ interface JobDetailModalProps {
   isSaved: boolean;
   hasApplied: boolean;
   onSave: () => void;
-  onApply: () => void;
+  onApply: () => void | Promise<void>;
   onClose: () => void;
 }
 
@@ -40,6 +40,7 @@ export default function JobDetailModal({
 }: JobDetailModalProps) {
   const [showApplyConfirm, setShowApplyConfirm] = useState(false);
   const [applySuccess, setApplySuccess] = useState(false);
+  const [applyError, setApplyError] = useState('');
 
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
@@ -54,10 +55,23 @@ export default function JobDetailModal({
     setShowApplyConfirm(true);
   };
 
-  const handleConfirmApply = () => {
-    onApply();
-    setShowApplyConfirm(false);
-    setApplySuccess(true);
+  const applyErrors: Record<string, string> = {
+    already_applied: 'Bạn đã ứng tuyển tin này rồi.',
+    job_closed: 'Tin tuyển dụng này đã đóng.',
+    candidate_profile_not_found: 'Hãy hoàn thiện hồ sơ trước khi ứng tuyển.',
+  };
+
+  const handleConfirmApply = async () => {
+    setApplyError('');
+    try {
+      await onApply();
+      setShowApplyConfirm(false);
+      setApplySuccess(true);
+    } catch (error) {
+      const code = apiErrorMessage(error, 'Không gửi được đơn ứng tuyển. Vui lòng thử lại.');
+      setShowApplyConfirm(false);
+      setApplyError(applyErrors[code] ?? code);
+    }
   };
 
   const matchColor = getMatchColorClass(matchResult.matchScore);
@@ -102,6 +116,7 @@ export default function JobDetailModal({
         {/* Content */}
         <div className="flex-1 overflow-y-auto scrollbar-thin px-6 py-5 space-y-5">
           {/* Apply success */}
+          {applyError && <div role="alert" className="mb-3 rounded-lg bg-red-50 p-3 text-sm text-red-700">{applyError}</div>}
           {applySuccess && (
             <div className="flex items-center gap-3 p-3 bg-emerald-50 border border-emerald-200 rounded-xl text-emerald-700 text-sm">
               <CheckCircle2 size={18} className="shrink-0" />
@@ -234,7 +249,7 @@ export default function JobDetailModal({
                 Đã ứng tuyển
               </>
             ) : (
-              'Ứng tuyển Demo'
+              isOfflineDemo ? 'Ứng tuyển Demo' : 'Ứng tuyển'
             )}
           </button>
           <button

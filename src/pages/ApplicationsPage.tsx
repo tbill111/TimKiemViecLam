@@ -16,6 +16,7 @@ const statusColors: Record<string, string> = {
   'Đã ứng tuyển': 'badge-blue',
   'Đang xem xét': 'badge-yellow',
   'Phỏng vấn': 'badge-green',
+  'Đề nghị nhận việc': 'badge-green',
   'Đã nhận việc': 'badge-green',
   'Đã từ chối': 'badge-red',
   'Đã rút': 'badge-gray',
@@ -50,7 +51,7 @@ export default function ApplicationsPage({ appState }: ApplicationsPageProps) {
     .filter((x) => x.job !== undefined) as { app: typeof applications[0]; job: Job }[];
 
   const trackingList = appliedList.filter(
-    (x) => x.app.status === 'Đang xem xét' || x.app.status === 'Phỏng vấn'
+    (x) => x.app.status === 'Đang xem xét' || x.app.status === 'Phỏng vấn' || x.app.status === 'Đề nghị nhận việc'
   );
 
   const tabs: { id: Tab; label: string; count: number }[] = [
@@ -177,7 +178,7 @@ export default function ApplicationsPage({ appState }: ApplicationsPageProps) {
                     className={`text-xs font-medium px-3 py-1.5 rounded-lg border ${
                         app.status === 'Đã ứng tuyển' ? 'bg-blue-50 text-blue-700 border-blue-100' :
                         app.status === 'Đang xem xét' ? 'bg-amber-50 text-amber-700 border-amber-100' :
-                        app.status === 'Phỏng vấn' || app.status === 'Đã nhận việc' ? 'bg-emerald-50 text-emerald-700 border-emerald-100' :
+                        app.status === 'Phỏng vấn' || app.status === 'Đề nghị nhận việc' || app.status === 'Đã nhận việc' ? 'bg-emerald-50 text-emerald-700 border-emerald-100' :
                         app.status === 'Đã từ chối' ? 'bg-red-50 text-red-700 border-red-100' :
                         'bg-slate-50 text-slate-500 border-slate-100'
                       }`}
@@ -212,7 +213,7 @@ export default function ApplicationsPage({ appState }: ApplicationsPageProps) {
           ) : (
             <div className="space-y-3">
               {trackingList.map(({ app, job }) => (
-                <div key={app.id} className={`card p-4 border-l-4 ${app.status === 'Phỏng vấn' ? 'border-l-emerald-500' : 'border-l-amber-400'}`}>
+                <div key={app.id} className={`card p-4 border-l-4 ${app.status === 'Phỏng vấn' || app.status === 'Đề nghị nhận việc' ? 'border-l-emerald-500' : 'border-l-amber-400'}`}>
                   <div className="flex items-start gap-3">
                     <div className="flex-1">
                       <div className="font-semibold text-sm text-slate-800">{job.title}</div>

@@ -16,6 +16,15 @@ export async function updateProfile(profile: Partial<StudentProfile>): Promise<S
   return { ...profile, ...response.data } as StudentProfile;
 }
 
+export interface SkillGapApi {
+  matchScore: number;
+  missing: Array<{ skill: string; required: boolean; learningSteps: string[] }>;
+}
+export async function fetchSkillGap(jobId: string): Promise<SkillGapApi> {
+  const response = await apiClient.get<{ match_score: number; missing: Array<{ skill: string; required: boolean; learning_steps: string[] }> }>('/candidates/me/skill-gap', { params: { job_id: jobId } });
+  return { matchScore: response.data.match_score, missing: response.data.missing.map((item) => ({ skill: item.skill, required: item.required, learningSteps: item.learning_steps })) };
+}
+
 export async function updateSkills(skills: string[]): Promise<string[]> {
   const response = await apiClient.put<{ skills: string[] }>('/candidates/me/skills', { skills });
   return response.data.skills;
