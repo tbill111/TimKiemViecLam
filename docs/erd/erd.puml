@@ -1,0 +1,205 @@
+@startuml
+' Sinh tự động bởi backend/scripts/gen_erd.py. Xuất PNG: plantuml -tpng docs/erd/erd.puml
+hide circle
+skinparam linetype ortho
+skinparam shadowing false
+skinparam defaultFontName Arial
+left to right direction
+
+package "Ứng viên" #E3F2FD {
+  entity users {
+    * id : bigint <<PK>>
+    --
+    * email : varchar(320)
+    * password_hash : varchar(100)
+    * role : varchar(20)
+    * full_name : varchar(200)
+      company_id : bigint <<FK>>
+    * is_active : boolean
+    * created_at : timestamp without time zone
+  }
+  entity candidates {
+    * id : bigint <<PK>>
+    --
+      external_id : varchar(80)
+      user_id : bigint <<FK>>
+    * full_name : varchar(200)
+    * university : varchar(240)
+    * major : varchar(160)
+    * years_exp : float
+    * education_level : integer
+      location_id : bigint <<FK>>
+      expected_salary_min : numeric(10, 2)
+      expected_salary_max : numeric(10, 2)
+    * profile_json : jsonb
+      embedding : bytea
+      consent_at : timestamp without time zone
+    * created_at : timestamp without time zone
+    * updated_at : timestamp without time zone
+  }
+  entity resumes {
+    * id : bigint <<PK>>
+    --
+    * candidate_id : bigint <<FK>>
+    * filename : varchar(255)
+    * parsed_json : jsonb
+    * model_text : text
+      embedding : bytea
+    * consent_at : timestamp without time zone
+    * is_active : boolean
+    * created_at : timestamp without time zone
+  }
+  entity candidate_skills {
+    * id : bigint <<PK>>
+    --
+    * candidate_id : bigint <<FK>>
+    * skill_id : bigint <<FK>>
+    * source : varchar(20)
+    * confirmed : boolean
+    * created_at : timestamp without time zone
+  }
+  entity saved_jobs {
+    * id : bigint <<PK>>
+    --
+    * candidate_id : bigint <<FK>>
+    * job_id : bigint <<FK>>
+    * saved_at : timestamp without time zone
+  }
+}
+
+package "Nhà tuyển dụng" #FFF3E0 {
+  entity companies {
+    * id : bigint <<PK>>
+    --
+    * name : varchar(240)
+    * industry : varchar(160)
+    * size_range : varchar(80)
+      location_id : bigint <<FK>>
+    * created_at : timestamp without time zone
+  }
+  entity recruiters {
+    * id : bigint <<PK>>
+    --
+    * user_id : bigint <<FK>>
+    * company_id : bigint <<FK>>
+    * title : varchar(120)
+  }
+}
+
+package "Tin tuyển dụng" #E8F5E9 {
+  entity jobs {
+    * id : bigint <<PK>>
+    --
+      external_id : varchar(80)
+    * company_id : bigint <<FK>>
+      recruiter_id : bigint <<FK>>
+    * title : varchar(240)
+    * category : varchar(80)
+    * level : varchar(20)
+    * job_type : varchar(20)
+    * work_mode : varchar(20)
+      location_id : bigint <<FK>>
+      salary_min : numeric(10, 2)
+      salary_max : numeric(10, 2)
+    * min_years_exp : float
+    * min_education : integer
+    * posted_at : timestamp without time zone
+      deadline : timestamp without time zone
+    * description : text
+    * responsibilities : jsonb
+    * status : varchar(20)
+      embedding : bytea
+    * created_at : timestamp without time zone
+    * updated_at : timestamp without time zone
+  }
+  entity job_skills {
+    * id : bigint <<PK>>
+    --
+    * job_id : bigint <<FK>>
+    * skill_id : bigint <<FK>>
+    * priority : varchar(20)
+  }
+}
+
+package "Tuyển dụng (đơn ứng tuyển)" #F3E5F5 {
+  entity applications {
+    * id : bigint <<PK>>
+    --
+    * candidate_id : bigint <<FK>>
+    * job_id : bigint <<FK>>
+      resume_id : bigint <<FK>>
+    * status : varchar(20)
+      match_score : integer
+    * applied_at : timestamp without time zone
+  }
+  entity application_status_history {
+    * id : bigint <<PK>>
+    --
+    * application_id : bigint <<FK>>
+      from_status : varchar(20)
+    * to_status : varchar(20)
+      changed_by : bigint <<FK>>
+      note : text
+    * changed_at : timestamp without time zone
+  }
+}
+
+package "AI và danh mục" #ECEFF1 {
+  entity match_results {
+    * id : bigint <<PK>>
+    --
+    * candidate_id : bigint <<FK>>
+    * job_id : bigint <<FK>>
+    * model : varchar(10)
+    * model_version : varchar(80)
+    * total_score : integer
+    * result_json : jsonb
+    * created_at : timestamp without time zone
+  }
+  entity skills {
+    * id : bigint <<PK>>
+    --
+    * name : varchar(120)
+    * category : varchar(80)
+    * learning_steps : jsonb
+    * is_active : boolean
+  }
+  entity skill_aliases {
+    * id : bigint <<PK>>
+    --
+    * alias : varchar(160)
+    * skill_id : bigint <<FK>>
+  }
+  entity locations {
+    * id : bigint <<PK>>
+    --
+    * name : varchar(120)
+      region : varchar(120)
+  }
+}
+
+application_status_history }o--|| applications : application_id
+application_status_history }o--|| users : changed_by
+applications }o--|| candidates : candidate_id
+applications }o--|| jobs : job_id
+applications }o--|| resumes : resume_id
+candidate_skills }o--|| candidates : candidate_id
+candidate_skills }o--|| skills : skill_id
+candidates }o--|| locations : location_id
+candidates }o--|| users : user_id
+companies }o--|| locations : location_id
+job_skills }o--|| jobs : job_id
+job_skills }o--|| skills : skill_id
+jobs }o--|| companies : company_id
+jobs }o--|| locations : location_id
+jobs }o--|| users : recruiter_id
+match_results }o--|| candidates : candidate_id
+match_results }o--|| jobs : job_id
+recruiters }o--|| companies : company_id
+recruiters }o--|| users : user_id
+resumes }o--|| candidates : candidate_id
+saved_jobs }o--|| candidates : candidate_id
+saved_jobs }o--|| jobs : job_id
+skill_aliases }o--|| skills : skill_id
+users }o--|| companies : company_id
+@enduml

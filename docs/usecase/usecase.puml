@@ -1,0 +1,54 @@
+@startuml
+' Sơ đồ Use Case SmartCareer v2. Xuất PNG: java -jar plantuml.jar docs/usecase/usecase.puml
+left to right direction
+skinparam packageStyle rectangle
+
+actor "Ứng viên" as Cand
+actor "Nhà tuyển dụng" as Rec
+actor "Quản trị viên" as Adm
+actor "Dịch vụ AI" as AI <<hệ thống>>
+
+rectangle "SmartCareer" {
+  usecase "F01 Đăng ký / đăng nhập" as F01
+  usecase "F02 Quản lý hồ sơ" as F02
+  usecase "F03 Tải CV" as F03
+  usecase "Trích kỹ năng" as Extract
+  usecase "F04 Đăng / sửa / đóng tin" as F04
+  usecase "Gợi ý kỹ năng từ mô tả" as Suggest
+  usecase "F05 Tính Matching Score" as Score
+  usecase "F06 Xem việc gợi ý" as Recs
+  usecase "Xếp hạng ứng viên" as Rank
+  usecase "F07 Ứng tuyển" as Apply
+  usecase "Đổi trạng thái hồ sơ" as Status
+  usecase "Ghi lịch sử trạng thái" as History
+  usecase "F08 Skill Gap" as Gap
+  usecase "F09 Xem dashboard BI" as BI
+  usecase "F10 Quản lý danh mục kỹ năng" as Catalog
+}
+
+Cand --> F01
+Rec --> F01
+Adm --> F01
+Cand --> F02
+Cand --> F03
+Cand --> Recs
+Cand --> Apply
+Cand --> Gap
+Rec --> F04
+Rec --> Rank
+Rec --> Status
+Rec --> BI
+Adm --> BI
+Adm --> Catalog
+
+F03 ..> Extract : <<include>>
+F04 ..> Suggest : <<extend>>
+Recs ..> Score : <<include>>
+Rank ..> Score : <<include>>
+Apply ..> Score : <<include>>
+Gap ..> Score : <<include>>
+Status ..> History : <<include>>
+Extract -- AI
+Suggest -- AI
+Score -- AI
+@enduml

@@ -1,0 +1,262 @@
+// SmartCareer v2 – ERD. Sinh tự động bởi backend/scripts/gen_erd.py từ app/models.py.
+
+Table locations {
+  id bigint [pk, increment]
+  name varchar(120) [not null, unique]
+  region varchar(120)
+}
+
+Table skills {
+  id bigint [pk, increment]
+  name varchar(120) [not null, unique]
+  category varchar(80) [not null]
+  learning_steps jsonb [not null]
+  is_active boolean [not null]
+}
+
+Table companies {
+  id bigint [pk, increment]
+  name varchar(240) [not null, unique]
+  industry varchar(160) [not null]
+  size_range varchar(80) [not null]
+  location_id bigint
+  created_at timestamp [not null]
+}
+
+Table skill_aliases {
+  id bigint [pk, increment]
+  alias varchar(160) [not null, unique]
+  skill_id bigint [not null]
+}
+
+Table users {
+  id bigint [pk, increment]
+  email varchar(320) [not null, unique]
+  password_hash varchar(100) [not null]
+  role varchar(20) [not null]
+  full_name varchar(200) [not null]
+  company_id bigint
+  is_active boolean [not null]
+  created_at timestamp [not null]
+
+  Note: '''
+  CHECK ck_users_role: role IN ('admin','recruiter','candidate')
+  '''
+}
+
+Table candidates {
+  id bigint [pk, increment]
+  external_id varchar(80) [unique]
+  user_id bigint [unique]
+  full_name varchar(200) [not null]
+  university varchar(240) [not null]
+  major varchar(160) [not null]
+  years_exp float [not null]
+  education_level integer [not null]
+  location_id bigint
+  expected_salary_min numeric(10,2)
+  expected_salary_max numeric(10,2)
+  profile_json jsonb [not null]
+  embedding bytea
+  consent_at timestamp
+  created_at timestamp [not null]
+  updated_at timestamp [not null]
+
+  Note: '''
+  CHECK ck_candidates_education_level: education_level BETWEEN 0 AND 4
+  CHECK ck_candidates_salary_range: expected_salary_min IS NULL OR expected_salary_max IS NULL OR expected_salary_min <= expected_salary_max
+  '''
+}
+
+Table jobs {
+  id bigint [pk, increment]
+  external_id varchar(80) [unique]
+  company_id bigint [not null]
+  recruiter_id bigint
+  title varchar(240) [not null]
+  category varchar(80) [not null]
+  level varchar(20) [not null]
+  job_type varchar(20) [not null]
+  work_mode varchar(20) [not null]
+  location_id bigint
+  salary_min numeric(10,2)
+  salary_max numeric(10,2)
+  min_years_exp float [not null]
+  min_education integer [not null]
+  posted_at timestamp [not null]
+  deadline timestamp
+  description text [not null]
+  responsibilities jsonb [not null]
+  status varchar(20) [not null]
+  embedding bytea
+  created_at timestamp [not null]
+  updated_at timestamp [not null]
+
+  Note: '''
+  CHECK ck_jobs_education: min_education BETWEEN 0 AND 4
+  CHECK ck_jobs_level: level IN ('intern','fresher','junior','middle','senior')
+  CHECK ck_jobs_salary_range: salary_min IS NULL OR salary_max IS NULL OR salary_min <= salary_max
+  CHECK ck_jobs_status: status IN ('open','closed')
+  CHECK ck_jobs_type: job_type IN ('full_time','part_time','internship')
+  CHECK ck_jobs_work_mode: work_mode IN ('onsite','hybrid','remote')
+  '''
+}
+
+Table recruiters {
+  id bigint [pk, increment]
+  user_id bigint [not null, unique]
+  company_id bigint [not null]
+  title varchar(120) [not null]
+}
+
+Table candidate_skills {
+  id bigint [pk, increment]
+  candidate_id bigint [not null]
+  skill_id bigint [not null]
+  source varchar(20) [not null]
+  confirmed boolean [not null]
+  created_at timestamp [not null]
+
+  Note: '''
+  CHECK ck_candidate_skills_source: source IN ('profile','cv','manual')
+  UNIQUE (candidate_id, skill_id)
+  '''
+}
+
+Table job_skills {
+  id bigint [pk, increment]
+  job_id bigint [not null]
+  skill_id bigint [not null]
+  priority varchar(20) [not null]
+
+  Note: '''
+  CHECK ck_job_skills_priority: priority IN ('required','preferred')
+  UNIQUE (job_id, skill_id)
+  '''
+}
+
+Table match_results {
+  id bigint [pk, increment]
+  candidate_id bigint [not null]
+  job_id bigint [not null]
+  model varchar(10) [not null]
+  model_version varchar(80) [not null]
+  total_score integer [not null]
+  result_json jsonb [not null]
+  created_at timestamp [not null]
+
+  Note: '''
+  CHECK ck_match_results_model: model IN ('m0','m1','m2','m3','m4')
+  CHECK ck_match_results_score: total_score BETWEEN 0 AND 100
+  UNIQUE (candidate_id, job_id, model_version)
+  '''
+}
+
+Table resumes {
+  id bigint [pk, increment]
+  candidate_id bigint [not null]
+  filename varchar(255) [not null]
+  parsed_json jsonb [not null]
+  model_text text [not null]
+  embedding bytea
+  consent_at timestamp [not null]
+  is_active boolean [not null]
+  created_at timestamp [not null]
+}
+
+Table saved_jobs {
+  id bigint [pk, increment]
+  candidate_id bigint [not null]
+  job_id bigint [not null]
+  saved_at timestamp [not null]
+
+  Note: '''
+  UNIQUE (candidate_id, job_id)
+  '''
+}
+
+Table applications {
+  id bigint [pk, increment]
+  candidate_id bigint [not null]
+  job_id bigint [not null]
+  resume_id bigint
+  status varchar(20) [not null]
+  match_score integer
+  applied_at timestamp [not null]
+
+  Note: '''
+  CHECK ck_applications_match_score: match_score IS NULL OR match_score BETWEEN 0 AND 100
+  CHECK ck_applications_status: status IN ('applied','screening','interview','offer','hired','rejected')
+  UNIQUE (candidate_id, job_id)
+  '''
+}
+
+Table application_status_history {
+  id bigint [pk, increment]
+  application_id bigint [not null]
+  from_status varchar(20)
+  to_status varchar(20) [not null]
+  changed_by bigint
+  note text
+  changed_at timestamp [not null]
+
+  Note: '''
+  CHECK ck_application_history_from: from_status IS NULL OR from_status IN ('applied','screening','interview','offer','hired','rejected')
+  CHECK ck_application_history_to: to_status IN ('applied','screening','interview','offer','hired','rejected')
+  '''
+}
+
+Ref: application_status_history.application_id > applications.id
+Ref: application_status_history.changed_by > users.id
+Ref: applications.candidate_id > candidates.id
+Ref: applications.job_id > jobs.id
+Ref: applications.resume_id > resumes.id
+Ref: candidate_skills.candidate_id > candidates.id
+Ref: candidate_skills.skill_id > skills.id
+Ref: candidates.location_id > locations.id
+Ref: candidates.user_id > users.id
+Ref: companies.location_id > locations.id
+Ref: job_skills.job_id > jobs.id
+Ref: job_skills.skill_id > skills.id
+Ref: jobs.company_id > companies.id
+Ref: jobs.location_id > locations.id
+Ref: jobs.recruiter_id > users.id
+Ref: match_results.candidate_id > candidates.id
+Ref: match_results.job_id > jobs.id
+Ref: recruiters.company_id > companies.id
+Ref: recruiters.user_id > users.id
+Ref: resumes.candidate_id > candidates.id
+Ref: saved_jobs.candidate_id > candidates.id
+Ref: saved_jobs.job_id > jobs.id
+Ref: skill_aliases.skill_id > skills.id
+Ref: users.company_id > companies.id
+
+TableGroup Ung_vien {
+  users
+  candidates
+  resumes
+  candidate_skills
+  saved_jobs
+}
+
+TableGroup Nha_tuyen_dung {
+  companies
+  recruiters
+}
+
+TableGroup Tin_tuyen_dung {
+  jobs
+  job_skills
+}
+
+TableGroup Tuyen_dung {
+  applications
+  application_status_history
+}
+
+TableGroup AI_va_danh_muc {
+  match_results
+  skills
+  skill_aliases
+  locations
+}
