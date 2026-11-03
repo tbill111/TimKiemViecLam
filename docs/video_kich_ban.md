@@ -85,7 +85,7 @@ Một người đọc hết cũng được; chia người chỉ để đa dạng
 **Thao tác (theo thứ tự):**
 1. http://localhost:8080 → đăng nhập `tung.demo@smartcareer.vn` / `Demo@12345`. Dừng ở **Tổng quan** 3 giây.
 2. **Tìm việc**: cuộn, chỉ điểm khớp trên mỗi thẻ; mở một tin, chỉ kỹ năng có / thiếu.
-3. **Hồ sơ → Nhập từ CV**: chọn `public/cv-mau.pdf`, **tích ô đồng ý**, bấm tải; chỉ danh sách kỹ năng đề xuất; bỏ chọn một kỹ năng, bấm xác nhận.
+3. **Hồ sơ của tôi → khung "Nhập kỹ năng từ CV"**: chọn `public/cv-mau.pdf`, **tích ô đồng ý**, bấm tải; chỉ danh sách kỹ năng đề xuất; bỏ chọn một kỹ năng, bấm xác nhận.
 4. **Phân tích CV–JD**: chọn một tin; đổi mô hình **M0 → M3**; chỉ **6 thành phần** và câu giải thích; chọn **M4** (nếu đã huấn luyện sẽ chạy; nhớ chỉ dòng ghi chú về nguồn nhãn).
 5. **Skill Gap**: chỉ kỹ năng bắt buộc đứng trước và mở một lộ trình học 3 bước.
 
@@ -104,13 +104,13 @@ Một người đọc hết cũng được; chia người chỉ để đa dạng
 **Thao tác:**
 1. Ứng viên: mở một tin chưa ứng tuyển → **Ứng tuyển** → xác nhận → thấy "Ứng tuyển thành công". Vào **Việc đã lưu & Ứng tuyển**, tab theo dõi: chỉ trạng thái (chỉ xem).
 2. **Đăng xuất** → đăng nhập `hr01@smartcareer.vn`.
-3. **Ứng viên xếp hạng**: chọn tin vừa ứng tuyển; chỉ danh sách xếp theo điểm.
-4. **Kanban**: chọn cùng tin; bấm "→ Đang xem xét" cho ứng viên demo; mở lại trang ứng viên (hoặc dùng Swagger) để thử **nhảy cóc** → thấy lỗi `invalid_transition` (HTTP 409). Nếu giao diện chỉ hiện nút hợp lệ, dùng Swagger: `PATCH /api/applications/{id}/status` với `{"status":"offer"}` khi đơn đang `applied`.
+3. **Ứng viên xếp hạng** (`/employer/candidates`): chọn tin vừa ứng tuyển; chỉ danh sách xếp theo điểm khớp, kèm lý do và kỹ năng thiếu. Trang này đồng thời là **bảng Kanban 6 cột** (không có trang Kanban riêng).
+4. Trên Kanban: bấm nút chuyển sang bước kế tiếp cho ứng viên demo ("Tung" / Giang Thanh Tùng). Để cho thấy lỗi **nhảy cóc**, giao diện chỉ hiện nút hợp lệ nên dùng Swagger (http://localhost:8000/docs → chạy `POST /api/auth/login` với `hr01@smartcareer.vn` / `Demo@12345`, copy `access_token` rồi bấm Authorize; **làm trước khi quay** để thao tác nhanh): `PATCH /api/applications/{id}/status` với `{"status":"offer"}` khi đơn đang `applied` → thấy `invalid_transition` (HTTP 409).
 5. **Đăng tin mới → Gợi ý kỹ năng từ mô tả**: dán một mô tả có "React", "Docker"; chọn từng kỹ năng là bắt buộc hay ưu tiên (không cần bấm đăng).
 
 **Lời thoại:**
 > "Ứng viên bấm ứng tuyển, đơn được lưu kèm điểm khớp tại thời điểm nộp. Ứng viên chỉ xem được trạng thái, không tự đổi.
-> Sang vai trò nhà tuyển dụng của công ty Sao Mai. Trang Ứng viên xếp hạng sắp xếp theo điểm khớp, kèm lý do khớp và kỹ năng thiếu. Kanban có sáu cột; nhà tuyển dụng chỉ chuyển sang bước kế tiếp hoặc từ chối. Nếu cố nhảy cóc bước, backend trả lỗi bốn trăm lẻ chín và giao diện báo rõ. Mỗi lần chuyển được ghi vào lịch sử trạng thái, và nhà tuyển dụng của công ty khác không đổi được đơn này.
+> Sang vai trò nhà tuyển dụng của công ty Sao Mai. Trang Ứng viên xếp hạng sắp xếp theo điểm khớp, kèm lý do khớp và kỹ năng thiếu, và là bảng Kanban sáu cột; nhà tuyển dụng chỉ chuyển sang bước kế tiếp hoặc từ chối. Nếu cố nhảy cóc bước, backend trả lỗi bốn trăm lẻ chín và giao diện báo rõ. Mỗi lần chuyển được ghi vào lịch sử trạng thái, và nhà tuyển dụng của công ty khác không đổi được đơn này.
 > Khi đăng tin, nút Gợi ý kỹ năng đọc mô tả công việc và đề xuất kỹ năng; nhà tuyển dụng chọn kỹ năng nào là bắt buộc, kỹ năng nào là ưu tiên."
 
 ---
