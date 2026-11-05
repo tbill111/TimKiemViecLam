@@ -261,15 +261,21 @@ def _load(db: Session, reset: bool) -> tuple[int, int, int, list[dict]]:
                         db.add(CandidateSkill(candidate_id=candidate.id, skill_id=skill.id, source="cv", confirmed=False))
         db.flush()
         existing = {row.skill_id: row for row in db.scalars(select(CandidateSkill).where(CandidateSkill.candidate_id == candidate.id))}
-        for row in existing.values():
-            db.delete(row)
         seen_skill_ids: set[int] = set()
         for name in profile["skills"]:
             # Tên có đuôi " cơ bản" là tên chuẩn của một số kỹ năng: ưu tiên khớp nguyên tên rồi mới cắt đuôi.
             skill = skill_by_name.get(name.casefold()) or skill_by_name.get(name.removesuffix(" cơ bản").casefold())
             if skill and skill.id not in seen_skill_ids:
                 seen_skill_ids.add(skill.id)
-                db.add(CandidateSkill(candidate_id=candidate.id, skill_id=skill.id, source="profile", confirmed=True))
+                row = existing.get(skill.id)
+                if row is None:
+                    db.add(CandidateSkill(candidate_id=candidate.id, skill_id=skill.id, source="profile", confirmed=True))
+                else:  # kỹ năng đã có (ví dụ do CV đề xuất): hồ sơ xác nhận nó, không chèn bản sao (UNIQUE candidate_id, skill_id)
+                    row.source, row.confirmed = "profile", True
+        # Kỹ năng hồ sơ cũ không còn trong hồ sơ thì xoá; kỹ năng chỉ do CV đề xuất được giữ ở trạng thái chưa xác nhận.
+        for skill_id, row in existing.items():
+            if skill_id not in seen_skill_ids and row.source == "profile":
+                db.delete(row)
         candidates_by_external[profile["candidate_id"]] = candidate
         candidate_rows.append(candidate)
         latest = db.scalar(select(Resume).where(Resume.candidate_id == candidate.id, Resume.is_active.is_(True)).order_by(Resume.created_at.desc()).limit(1))
