@@ -133,7 +133,7 @@ def _create_views(db: Session) -> None:
 
 def _reset(db: Session) -> None:
     _drop_views(db)
-    db.execute(text("TRUNCATE TABLE application_status_history, match_results, saved_jobs, applications, job_skills, jobs, candidate_skills, resumes, candidates, recruiters, skill_aliases, skills, users, companies, locations RESTART IDENTITY CASCADE"))
+    db.execute(text("TRUNCATE TABLE labeling_tasks, application_status_history, match_results, saved_jobs, applications, job_skills, jobs, candidate_skills, resumes, candidates, recruiters, skill_aliases, skills, users, companies, locations RESTART IDENTITY CASCADE"))
 
 
 def _load(db: Session, reset: bool) -> tuple[int, int, int, list[dict]]:

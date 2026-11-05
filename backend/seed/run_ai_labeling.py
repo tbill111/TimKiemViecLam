@@ -72,19 +72,20 @@ def create_provider(provider: str | None = None) -> ProviderConfig | MockConfig:
         elif gemini_key:
             requested = "gemini"
         else:
-            log.warning("No AI API key configured; using mock scores for demo/testing.")
-            return MockConfig()
+            raise ValueError(
+                "Chưa cấu hình OPENAI_API_KEY/GEMINI_API_KEY. Đặt khoá API, hoặc chạy "
+                "--provider mock nếu chỉ muốn thử (điểm mock là ngẫu nhiên, không dùng cho báo cáo)."
+            )
     if requested == "openai":
         if not openai_key:
-            log.warning("OPENAI_API_KEY is empty; using mock scores for demo/testing.")
-            return MockConfig()
+            raise ValueError("OPENAI_API_KEY is empty.")
         return ProviderConfig("openai", os.getenv("OPENAI_MODEL", "gpt-4o-mini"), openai_key)
     if requested == "gemini":
         if not gemini_key:
-            log.warning("GEMINI_API_KEY is empty; using mock scores for demo/testing.")
-            return MockConfig()
+            raise ValueError("GEMINI_API_KEY is empty.")
         return ProviderConfig("gemini", os.getenv("GEMINI_MODEL", "gemini-2.5-flash"), gemini_key)
     if requested == "mock":
+        log.warning("Dùng điểm MOCK ngẫu nhiên: chỉ để thử, các view BI sẽ bỏ qua nhãn này.")
         return MockConfig()
     raise ValueError(f"Unsupported AI_PROVIDER: {requested!r}; expected auto, openai, gemini, or mock.")
 
@@ -315,6 +316,11 @@ def run_labeling(
     retry_base_seconds: float = 2.0,
     delay_seconds: float = 1.0,
 ) -> tuple[int, int]:
+    if not isinstance(config, MockConfig):
+        log.warning(
+            "Văn bản CV (Resume.model_text) sẽ được gửi tới %s. Chỉ dùng với dữ liệu hư cấu "
+            "hoặc đã ẩn danh và có đồng ý của chủ hồ sơ.", config.name,
+        )
     task_ids = reserve_unscored_tasks(db, limit)
     contexts = load_task_context(db, task_ids)
     completed = 0
@@ -356,7 +362,7 @@ def run_labeling(
             db.commit()
             failed += 1
             log.error("Pair task %s failed: %s", context["task_id"], task.error)
-        if delay_seconds > 0:
+        if delay_seconds > 0 and not isinstance(config, MockConfig):
             time.sleep(delay_seconds)
     return completed, failed
 

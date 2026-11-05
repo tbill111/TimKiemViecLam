@@ -42,9 +42,9 @@ with app.app_context():
 
     database = db.session.query(Database).filter_by(database_name=database_name).one_or_none()
     if database is None:
-        database = Database(database_name=database_name, sqlalchemy_uri=database_uri)
-    else:
-        database.sqlalchemy_uri = database_uri
+        database = Database(database_name=database_name)
+    # set_sqlalchemy_uri tách mật khẩu khỏi URI để Superset mã hoá, không lưu plaintext
+    database.set_sqlalchemy_uri(database_uri)
     db.session.add(database)
     db.session.commit()
 print(f"Superset admin '{admin_user}' and database connection '{database_name}' are configured.")

@@ -3,6 +3,8 @@ from __future__ import annotations
 from datetime import datetime
 import random
 
+import pytest
+
 from sqlalchemy import create_engine, func, select
 from sqlalchemy.orm import Session
 
@@ -139,13 +141,15 @@ def test_score_parser_validates_json_contract():
         raise AssertionError(f"Expected invalid response to be rejected: {invalid}")
 
 
-def test_auto_provider_falls_back_to_mock_when_no_api_key(monkeypatch):
+def test_auto_provider_refuses_mock_when_no_api_key(monkeypatch):
     monkeypatch.delenv("OPENAI_API_KEY", raising=False)
     monkeypatch.delenv("GEMINI_API_KEY", raising=False)
     monkeypatch.delenv("GOOGLE_API_KEY", raising=False)
     monkeypatch.setenv("AI_PROVIDER", "auto")
 
-    assert run_ai_labeling.create_provider() == run_ai_labeling.MockConfig()
+    with pytest.raises(ValueError):
+        run_ai_labeling.create_provider()
+    assert run_ai_labeling.create_provider("mock") == run_ai_labeling.MockConfig()
 
 
 def test_mock_scores_follow_demo_contract():
