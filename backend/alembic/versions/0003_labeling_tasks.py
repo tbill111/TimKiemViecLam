@@ -12,6 +12,8 @@ depends_on = None
 
 
 def upgrade() -> None:
+    if sa.inspect(op.get_bind()).has_table("labeling_tasks"):
+        return  # CSDL tạo bằng create_all trước khi có Alembic: không tạo lại
     op.create_table(
         "labeling_tasks",
         sa.Column("id", sa.BigInteger().with_variant(sa.Integer(), "sqlite"), autoincrement=True, nullable=False),
