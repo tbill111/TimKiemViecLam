@@ -10,7 +10,8 @@ from typing import Any, Optional
 
 import numpy as np
 
-MODELS = ("m0", "m1", "m2", "m3", "m4")
+MODELS = ("m0", "m1", "m2", "m3", "m4", "m5", "m6")
+ML_MODELS = ("m4", "m5", "m6")  # mô hình học máy: cần file models_store/<id>.joblib
 
 
 @dataclass

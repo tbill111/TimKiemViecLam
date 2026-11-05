@@ -9,7 +9,7 @@ import JobCard from '../components/jobs/JobCard';
 import JobDetailModal from '../components/jobs/JobDetailModal';
 import LoadingBlock from '../components/ui/LoadingBlock';
 import { useSimulatedLoading } from '../hooks/useSimulatedLoading';
-import type { Job } from '../types';
+import type { Job, SkillMatchResult } from '../types';
 
 interface JobsPageProps {
   appState: UseAppState;
@@ -242,11 +242,19 @@ export default function JobsPage({ appState }: JobsPageProps) {
         </div>
       )}
 
-      {/* Job detail modal */}
-      {selectedJob && (
+      {/* Job detail modal: chỉ mở khi điểm khớp của tin này đã về (tránh trang trắng khi bấm sớm) */}
+      {selectedJob && !matchScores.get(selectedJob.id) && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 p-4" role="dialog" aria-modal="true" aria-label="Đang tính điểm khớp">
+          <div className="card p-6 text-center space-y-3">
+            <p className="text-sm text-slate-600" role="status">Đang tính điểm khớp cho tin này…</p>
+            <button type="button" className="btn-secondary" onClick={() => setSelectedJob(null)} aria-label="Đóng">Đóng</button>
+          </div>
+        </div>
+      )}
+      {selectedJob && matchScores.get(selectedJob.id) && (
         <JobDetailModal
           job={selectedJob}
-          matchResult={matchScores.get(selectedJob.id)!}
+          matchResult={matchScores.get(selectedJob.id) as SkillMatchResult}
           isSaved={isJobSaved(selectedJob.id)}
           hasApplied={hasApplied(selectedJob.id)}
           onSave={() => toggleSave(selectedJob.id)}

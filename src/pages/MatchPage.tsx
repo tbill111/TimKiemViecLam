@@ -43,7 +43,7 @@ export default function MatchPage({ appState }: MatchPageProps) {
     setRemoteResult(null);
     void matchJob(selectedJob.id, model)
       .then(setRemoteResult)
-      .catch((error: unknown) => setModelError(apiErrorMessage(error, model === 'm4' ? 'M4 chưa được huấn luyện.' : 'Không tải được kết quả ghép nối.')))
+      .catch((error: unknown) => setModelError(apiErrorMessage(error, ['m4', 'm5', 'm6'].includes(model) ? `${model.toUpperCase()} chưa được huấn luyện.` : 'Không tải được kết quả ghép nối.')))
       .finally(() => setLoading(false));
   }, [model, selectedJob]);
 
@@ -83,7 +83,7 @@ export default function MatchPage({ appState }: MatchPageProps) {
           <label className="block text-xs font-medium text-slate-500">
             Mô hình
             <select className="select-field mt-1" value={model} onChange={(event) => setModel(event.target.value)}>
-              {['m0', 'm1', 'm2', 'm3', 'm4'].map((value) => <option key={value} value={value}>{value.toUpperCase()}</option>)}
+              {['m0', 'm1', 'm2', 'm3', 'm4', 'm5', 'm6'].map((value) => <option key={value} value={value}>{value.toUpperCase()}</option>)}
             </select>
           </label>
           {modelError && <p role="alert" className="text-xs text-red-600 bg-red-50 rounded-lg p-2">{modelError}</p>}

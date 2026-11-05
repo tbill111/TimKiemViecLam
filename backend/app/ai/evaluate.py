@@ -1,4 +1,4 @@
-"""Quy trình đánh giá cho Mục 05: parser (P/R/F1), M0–M4, ablation M3, phân tích lỗi, công bằng.
+"""Quy trình đánh giá cho Mục 05: parser (P/R/F1), M0–M6, ablation M3, phân tích lỗi, công bằng.
 
 Các hàm trả về DataFrame để notebook xuất bảng vào báo cáo.
 """
@@ -18,7 +18,7 @@ from .metrics import mae, prf1_micro, rank_metrics
 from .parser import extract_education_level, extract_text, extract_years_exp, normalize_text, split_sections
 from .scorers import M3_DEFAULT_WEIGHTS, fit_tfidf, js_round, m3_total, score_pair
 from .skills import SkillIndex
-from .types import MODELS, CandidateInput, JobInput
+from .types import MODELS, ML_MODELS, CandidateInput, JobInput, ModelNotAvailable
 
 TIERS = {"T1": (1,), "T1+2": (1, 2), "T1+2+3": (1, 2, 3)}
 
@@ -60,7 +60,7 @@ def evaluate_parser(
 
 
 # ---------------------------------------------------------------------------
-# Xếp hạng M0–M4
+# Xếp hạng M0–M6
 # ---------------------------------------------------------------------------
 
 
@@ -82,20 +82,31 @@ def evaluate_models(
     models: tuple[str, ...] = MODELS,
     m4_scores: Optional[np.ndarray] = None,
     embedder: Optional[Embedder] = None,
+    ml_scores: Optional[dict[str, np.ndarray]] = None,
 ) -> pd.DataFrame:
     """Bảng so sánh các phương pháp. `pairs` có cột candidate_id, job_id, label (0–3, nhãn chốt).
 
-    M4 nên truyền `m4_scores` (xác suất×100 trên fold kiểm tra của GroupKFold) để không đo trên dữ liệu đã huấn luyện.
+    Các mô hình học máy (M4–M6) nên truyền điểm trên fold kiểm tra của GroupKFold (xác suất×100) để không đo trên dữ liệu
+    đã huấn luyện: `m4_scores` cho M4, hoặc `ml_scores={"m4": ..., "m5": ..., "m6": ...}`. Mô hình học máy không có điểm
+    kiểm tra và chưa có artifact thì bị bỏ khỏi bảng.
     """
+    ml_scores = dict(ml_scores or {})
+    if m4_scores is not None:
+        ml_scores.setdefault("m4", m4_scores)
     fit_tfidf([j.text for j in jobs.values()])
     plist = _pairs(pairs, cands, jobs)
     rows = []
     for model in models:
-        if model == "m4" and m4_scores is not None:
-            scores, ms = np.asarray(m4_scores, dtype=float), float("nan")
+        if model in ml_scores:
+            scores, ms = np.asarray(ml_scores[model], dtype=float), float("nan")
         else:
             t0 = time.perf_counter()
-            scores = np.array([score_pair(model, c, j, embedder)["total_score"] for c, j in plist], dtype=float)
+            try:
+                scores = np.array([score_pair(model, c, j, embedder)["total_score"] for c, j in plist], dtype=float)
+            except ModelNotAvailable:
+                if model in ML_MODELS and models == MODELS:
+                    continue  # mặc định: bỏ qua mô hình học máy chưa huấn luyện
+                raise
             ms = (time.perf_counter() - t0) / max(1, len(plist)) * 1000
         frame = pd.DataFrame({"candidate_id": pairs["candidate_id"].to_numpy(), "label": pairs["label"].to_numpy(), "score": scores})
         rows.append({"model": model, **rank_metrics(frame), "ms_per_pair": ms})

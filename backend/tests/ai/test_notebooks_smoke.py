@@ -34,6 +34,7 @@ def env(tmp_path):
         (tmp_path / "labels" / dst).write_bytes(src.read_bytes())
     return {
         "EMBEDDER": "hash",
+        "TH3_BOOTSTRAP": "20",
         "TH3_DATA_DIR": tmp_path / "data",
         "TH3_LABELS_DIR": tmp_path / "labels",
         "TH3_OUT_DIR": tmp_path / "out",
@@ -58,8 +59,9 @@ def test_train_then_ranking_notebooks_run(env, monkeypatch):
     embedder.set_embedder(None)  # nạp lại theo EMBEDDER=hash
     env_vars, tmp = env
     run_notebook("02_train_m4", env_vars, monkeypatch)
-    assert (tmp / "models" / "m4.joblib").exists() and (tmp / "out" / "m4_coefficients.csv").exists()
+    assert all((tmp / "models" / f"{m}.joblib").exists() for m in ("m4", "m5", "m6")) and (tmp / "out" / "m4_coefficients.csv").exists()
+    assert (tmp / "out" / "ml_oof.csv").exists() and (tmp / "out" / "ml_auc.csv").exists()
     run_notebook("03_ranking_eval", env_vars, monkeypatch)
-    for f in ("model_comparison.csv", "ablation_m3.csv", "error_analysis_m3.csv", "kappa.csv"):
+    for f in ("model_comparison.csv", "ablation_m3.csv", "error_analysis_m3.csv", "kappa.csv", "ndcg_bootstrap.csv"):
         assert (tmp / "out" / f).exists(), f
     embedder.set_embedder(None)
