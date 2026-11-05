@@ -16,7 +16,7 @@ cp .env.example .env                        # nhớ WITH_ST=1 (model embedding t
 docker compose up -d --build
 docker compose exec api python -m seed.load_seed --reset     # dữ liệu sạch: ứng viên demo chỉ ứng tuyển được 1 lần mỗi tin
 python scripts/check_bi_views.py            # phải in "TẤT CẢ ĐẠT"
-cd backend && python -m pytest -q           # chạy sẵn một lần để biết kết quả (235 passed)
+cd backend && python -m pytest -q           # chạy sẵn một lần để biết kết quả (247 passed)
 ```
 
 **Mở sẵn các tab / cửa sổ (theo thứ tự quay):**
@@ -88,13 +88,13 @@ Một người đọc hết cũng được; chia người chỉ để đa dạng
 1. http://localhost:8080 → đăng nhập `tung.demo@smartcareer.vn` / `Demo@12345`. Dừng ở **Tổng quan** 3 giây.
 2. **Tìm việc**: cuộn, chỉ điểm khớp trên mỗi thẻ (chờ vài giây cho điểm tải xong); mở một tin, chỉ kỹ năng có / thiếu.
 3. **Hồ sơ của tôi → khung "Nhập kỹ năng từ CV"**: chọn `public/cv-mau.pdf`, **tích ô đồng ý**, bấm tải; chỉ danh sách kỹ năng đề xuất; bỏ chọn một kỹ năng, bấm xác nhận.
-4. **Phân tích CV–JD**: chọn một tin; đổi mô hình **M0 → M3**; chỉ **6 thành phần** và câu giải thích; chọn **M4** (nếu đã huấn luyện sẽ chạy; nhớ chỉ dòng ghi chú về nguồn nhãn).
+4. **Phân tích CV–JD**: chọn một tin; đổi mô hình **M0 → M3 → M4/M5/M6**; chỉ **6 thành phần** và câu giải thích; chọn **M4** (nếu đã huấn luyện sẽ chạy; nhớ chỉ dòng ghi chú về nguồn nhãn).
 5. **Skill Gap**: chỉ kỹ năng bắt buộc đứng trước và mở một lộ trình học 3 bước.
 
 **Lời thoại:**
 > "Mục 2 và 4: mô hình AI và giao diện. Em đăng nhập bằng tài khoản ứng viên. Mỗi tin ở trang Tìm việc có điểm khớp từ 0 đến 100, tính bằng mô hình AI chứ không phải số cố định.
 > Khi ứng viên tải CV, phải tích đồng ý xử lý dữ liệu. Hệ thống đọc CV, trích kỹ năng theo ba tầng: tra từ điển và từ đồng nghĩa, so khớp mờ để bắt lỗi gõ, và embedding để gợi ý kỹ năng gần nghĩa. Kỹ năng từ embedding chỉ là gợi ý, ứng viên tự xác nhận, nên điểm chỉ dựa trên kỹ năng đã xác nhận. Phần đầu CV, gồm tên và thông tin liên hệ, bị loại khỏi văn bản dùng để chấm, nên điểm không phụ thuộc nhân thân.
-> Trang Phân tích CV–JD cho đổi giữa năm mô hình: M0 là quy tắc sáu mươi, hai lăm, mười lăm của bài trước; M1 dùng TF-IDF; M2 dùng embedding; M3 là mô hình lai sáu đặc trưng với luật chặn khi thiếu hơn một nửa kỹ năng bắt buộc; M4 là hồi quy logistic học trọng số. Mỗi điểm đều có sáu thành phần và một câu giải thích: đã có gì, còn thiếu gì.
+> Trang Phân tích CV–JD cho đổi giữa bảy mô hình, thuộc bốn hướng: M0 là quy tắc sáu mươi, hai lăm, mười lăm của bài trước; M1 dùng TF-IDF; M2 dùng embedding huấn luyện sẵn; M3 là mô hình lai sáu đặc trưng với trọng số đặt tay và luật chặn khi thiếu hơn một nửa kỹ năng bắt buộc; và ba mô hình học máy do nhóm tự huấn luyện trên cùng sáu đặc trưng: M4 hồi quy logistic, M5 rừng ngẫu nhiên, M6 gradient boosting. Mỗi điểm đều có sáu thành phần và một câu giải thích: đã có gì, còn thiếu gì.
 > Trang Skill Gap liệt kê kỹ năng còn thiếu, kỹ năng bắt buộc xếp trước, kèm lộ trình học ba bước. Về tốc độ, chấm một cặp mất khoảng sáu mươi mili giây, lấy điểm cho cả một trăm năm mươi tin mất chưa đến một giây, đo qua HTTP với model embedding thật."
 
 **Nếu M4 báo chưa huấn luyện:** chỉ vào thông báo lỗi tại chỗ và nói: "M4 cần huấn luyện bằng nhãn; khi chưa có thì giao diện báo rõ và các mô hình khác vẫn dùng được."
@@ -149,16 +149,16 @@ Một người đọc hết cũng được; chia người chỉ để đa dạng
 ## 8. Mục 05 – Kiểm thử và đánh giá (6:10 – 7:30)
 
 **Thao tác:**
-1. Terminal: `cd backend && python -m pytest -q` → chờ ra **235 passed** (cắt đoạn chờ khi dựng video).
-2. Mở `docs/testcases.md`: cuộn qua bảng 46 ca; chỉ cột "Kết quả thực tế".
+1. Terminal: `cd backend && python -m pytest -q` → chờ ra **247 passed** (cắt đoạn chờ khi dựng video).
+2. Mở `docs/testcases.md`: cuộn qua bảng 48 ca; chỉ cột "Kết quả thực tế".
 3. Mở `docs/report/tables/model_comparison.csv` (hoặc bảng 6.4 trong `BaoCao_TH3.md`): chỉ hàng M0–M4, cột `ndcg@10`, `roc_auc`.
 4. Mở `docs/report/tables/kappa.csv` hoặc mục 6.1 của báo cáo: chỉ kappa và dòng "nhãn do agent AI gán".
 5. Mở `docs/report/BaoCao_TH3.md` mục 7 (hạn chế).
 
 **Lời thoại:**
-> "Mục 5: kiểm thử và đánh giá. Hệ thống có hai trăm ba mươi lăm kiểm thử tự động: parser CV, đặc trưng, năm mô hình, phân quyền, luật trạng thái, phễu BI, seed và migration; trong đó có kiểm tra M0 bản Python khớp một trăm phần trăm bản TypeScript của bài trước. Ngoài ra có bốn mươi sáu test case theo mười chức năng và kiểm thử trình duyệt tự động trên stack Docker thật, mười bốn bước đều đạt.
+> "Mục 5: kiểm thử và đánh giá. Hệ thống có hai trăm bốn mươi bảy kiểm thử tự động: parser CV, đặc trưng, bảy mô hình, phân quyền, luật trạng thái, phễu BI, seed và migration; trong đó có kiểm tra M0 bản Python khớp một trăm phần trăm bản TypeScript của bài trước. Ngoài ra có bốn mươi tám test case theo mười chức năng và kiểm thử trình duyệt tự động trên stack Docker thật, mười bốn bước đều đạt.
 > Để đánh giá mô hình gợi ý, nhóm chọn ba mươi ứng viên với mười tin mỗi người, tổng ba trăm cặp, gán nhãn mức phù hợp từ không đến ba. Xin nói rõ: nhãn do **agent AI** gán, hai lượt độc lập, không phải do người gán. Hệ số kappa giữa hai lượt là 0,959, nhưng vì cùng một họ mô hình nên con số này chỉ cho thấy agent gán nhất quán, chưa phải độ tin cậy như hai người.
-> Kết quả: mô hình lai M3 có nDCG@10 cao nhất, khoảng 0,988 và ROC-AUC khoảng 0,984; M4 gần tương đương nhưng không vượt M3; mô hình quy tắc M0 đứng sát phía sau. Do chỉ có ba mươi ứng viên và nhãn dựa trên đúng loại thông tin mà các mô hình dùng, chênh lệch nhỏ giữa các mô hình không có ý nghĩa thống kê, và các con số này có xu hướng lạc quan.
+> Kết quả: M3 và M5 rừng ngẫu nhiên đứng đầu, nDCG@10 khoảng 0,988 và 0,989; M0, M1, M2 kém hơn M3 một cách có ý nghĩa thống kê theo khoảng tin cậy bootstrap; còn ba mô hình học máy M4, M5, M6 không phân biệt được với M3, tức là không thể nói học máy tốt hơn hay kém hơn mô hình lai đặt tay. Do chỉ có ba mươi ứng viên và nhãn dựa trên đúng loại thông tin mà các mô hình dùng, các con số có xu hướng lạc quan.
 > Hạn chế còn lại: dữ liệu và đơn ứng tuyển là mô phỏng; trích kỹ năng chủ yếu dựa trên từ điển, so khớp mờ và embedding chứ chưa có mô hình nhận dạng thực thể riêng; CV dạng ảnh scan chưa đọc được."
 
 *(Các số nDCG@10 0,988, ROC-AUC 0,984, kappa 0,959 lấy từ `docs/report/tables/`. Nếu chạy lại notebook thì đọc theo số mới. **Không đọc số nào không có trong file kết quả.**)*
@@ -207,5 +207,5 @@ Một người đọc hết cũng được; chia người chỉ để đa dạng
 
 - Không nói nhãn do người gán; phải nói rõ do agent AI gán.
 - Không nói dữ liệu là thật hay lấy từ TopCV/LinkedIn; dữ liệu là mô phỏng.
-- Không nói "mô hình tốt hơn rõ rệt" khi chênh lệch giữa M0–M4 nhỏ và chỉ có 30 ứng viên.
+- Không nói "mô hình tốt hơn rõ rệt" khi chênh lệch giữa các mô hình M0–M6 nhỏ và chỉ có 30 ứng viên.
 - Không đọc con số nào không có trong `docs/report/tables/` hoặc trong lệnh vừa chạy trên màn hình.

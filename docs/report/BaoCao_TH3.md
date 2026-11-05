@@ -22,15 +22,19 @@
 
 **Module A – CV Parser** (`backend/app/ai/parser.py`, `extract.py`): đọc PDF/DOCX/TXT; chuẩn hoá Unicode; tách mục song ngữ; trích kỹ năng 3 tầng (n-gram với từ điển và alias → so khớp mờ rapidfuzz ngưỡng 90 → embedding cosine ≥ 0,8 chỉ để đề xuất); số năm kinh nghiệm (gộp khoảng thời gian chồng nhau, bỏ mục học vấn); học vấn thang 1–4. Phần đầu CV (tên, tuổi, liên hệ) bị loại khỏi văn bản dùng chấm điểm để mô hình không dùng thông tin nhân thân.
 
-**Module B – Matching Score** (`features.py`, `scorers.py`): 6 đặc trưng trong [0,1]: `skill_req`, `skill_pref`, `semantic` (cosine embedding `paraphrase-multilingual-MiniLM-L12-v2`), `exp`, `edu`, `pref`. Năm phương pháp cùng giao diện:
+**Module B – Matching Score** (`features.py`, `scorers.py`): 6 đặc trưng trong [0,1]: `skill_req`, `skill_pref`, `semantic` (cosine embedding `paraphrase-multilingual-MiniLM-L12-v2`), `exp`, `edu`, `pref`. Bảy phương pháp cùng giao diện (bốn hướng tiếp cận: luật, từ vựng cổ điển, ngữ nghĩa, học máy có giám sát):
 
-| Mã | Phương pháp | Vai trò |
-|---|---|---|
-| M0 | Quy tắc 60/25/15 (port đúng `calculateSkillMatch`; khớp bản TypeScript 100% trên 84 ca) | Baseline kế thừa |
-| M1 | TF-IDF + cosine CV–JD | Baseline NLP cổ điển |
-| M2 | Chỉ embedding | Đo riêng ngữ nghĩa |
-| M3 | Hybrid `0,40/0,15/0,25/0,10/0,05/0,05` + luật chặn ≤ 50 khi thiếu hơn nửa kỹ năng bắt buộc | Mặc định triển khai |
-| M4 | Logistic Regression học trọng số trên 6 đặc trưng, GroupKFold 5 theo ứng viên | Phần "Machine Learning" |
+| Mã | Phương pháp | Vai trò | Học máy? |
+|---|---|---|---|
+| M0 | Quy tắc 60/25/15 (port đúng `calculateSkillMatch`; khớp bản TypeScript 100% trên 84 ca) | Baseline kế thừa | Không |
+| M1 | TF-IDF + cosine CV–JD | Baseline NLP cổ điển | Không (thống kê) |
+| M2 | Chỉ embedding | Đo riêng ngữ nghĩa | Dùng mạng nơ-ron huấn luyện sẵn, không tự huấn luyện |
+| M3 | Hybrid `0,40/0,15/0,25/0,10/0,05/0,05` + luật chặn ≤ 50 khi thiếu hơn nửa kỹ năng bắt buộc | Mặc định triển khai | Không (trọng số đặt tay) |
+| M4 | **Logistic Regression** trên 6 đặc trưng; C chọn bằng GroupKFold lồng | Mô hình tuyến tính | **Có** |
+| M5 | **Random Forest** (300 cây, độ sâu ≤ 4, `min_samples_leaf` 5, cân bằng lớp) trên 6 đặc trưng | Mô hình cây, bắt được tương tác giữa đặc trưng | **Có** |
+| M6 | **Gradient Boosting** (150 cây nông, độ sâu 2, tốc độ học 0,05, subsample 0,8) trên 6 đặc trưng | Mô hình cây tăng cường | **Có** |
+
+Ba mô hình học máy M4–M6 dùng cùng 6 đặc trưng, cùng nhãn nhị phân "phù hợp" (nhãn chốt ≥ 2) và cùng cách chia GroupKFold 5 theo ứng viên (một ứng viên không bao giờ vừa ở tập huấn luyện vừa ở tập kiểm tra). Siêu tham số của M5, M6 cố định từ trước (nông, có regularization vì chỉ có khoảng 300 cặp) và **không** dò trên dữ liệu kiểm tra; riêng C của M4 được chọn trong từng fold huấn luyện bằng GroupKFold lồng nên điểm kiểm tra không bị rò rỉ. Khi chấm cả lô tin, M4–M6 dự đoán một lần cho cả lô (chấm từng cặp một với Random Forest chậm hơn nhiều).
 
 Mỗi lần chấm trả về điểm 0–100, 6 điểm thành phần, kỹ năng có/thiếu và một câu giải thích (ví dụ: "Khớp 72/100. Đã có React, Git. Thiếu TypeScript (bắt buộc) và REST API (ưu tiên).").
 
@@ -67,7 +71,7 @@ Phễu đếm hồ sơ *từng đạt* mỗi bước từ `application_status_hi
 Kết quả: kappa có trọng số bình phương = **0,959** (mục tiêu ≥ 0,6), trùng khít 89% cặp, **0** cặp lệch ≥ 2 bậc, 29,7% cặp "phù hợp". Kappa cao phản ánh việc hai phiên dùng cùng họ mô hình và cùng tiêu chí, nên là độ nhất quán của agent chứ không phải độ tin cậy giữa hai người; chưa có đối chiếu với nhãn của con người.
 
 ### 6.2. Kiểm thử hệ thống
-- 236 test tự động (pytest): parser, đặc trưng, M0–M4, phân quyền, luật trạng thái, phễu BI, seed, migration, hiệu năng; M0 khớp TypeScript 100%; bộ test chạy lại trong container với model thật (223 đạt, 2 bỏ qua do thiếu file ngoài image).
+- 247 test tự động (pytest): parser, đặc trưng, M0–M6, phân quyền, luật trạng thái, phễu BI, seed, migration, hiệu năng; M0 khớp TypeScript 100%; bộ test chạy lại trong container với model thật (223 đạt, 2 bỏ qua do thiếu file ngoài image).
 - 44 test case theo F01–F10 và phi chức năng: `docs/testcases.md` (ca nào đã chạy thật ghi rõ).
 - E2E trình duyệt: 14/14 bước trên stack Docker thật (ứng viên, nhà tuyển dụng, quản trị); chế độ demo 12/12 bước, 0 lời gọi API.
 - Công bằng: hai CV chỉ khác phần đầu (tên, giới tính, tuổi, email) cho cùng kỹ năng, năm kinh nghiệm, học vấn và cùng điểm M3 (67).
@@ -81,16 +85,30 @@ Kết quả: kappa có trọng số bình phương = **0,959** (mục tiêu ≥ 
 
 MAE số năm kinh nghiệm = 0,022. Nhận xét: tầng 2 và 3 không cải thiện F1 (tăng recall nhẹ, giảm precision) vì CV mẫu ít lỗi gõ và gần như không có cụm ngoài từ điển; CV là dữ liệu tổng hợp nên con số này cao hơn so với CV thật.
 
-### 6.4. So sánh M0–M4 trên 30 ứng viên × 10 tin (M4 tính trên fold kiểm tra GroupKFold; nhãn do agent AI gán)
+### 6.4. So sánh M0–M6 trên 30 ứng viên × 10 tin (M4–M6 tính trên fold kiểm tra GroupKFold; nhãn do agent AI gán)
 | Mô hình | Precision@5 | nDCG@10 | MRR | Spearman ρ | ROC-AUC | ms/cặp |
 |---|---|---|---|---|---|---|
-| M0 quy tắc 60/25/15 | 0,573 | 0,970 | 0,742 | 0,851 | 0,967 | 0,06 |
-| M1 TF-IDF | 0,560 | 0,962 | 0,717 | 0,820 | 0,902 | 4,97 |
-| M2 embedding | 0,547 | 0,954 | 0,714 | 0,785 | 0,842 | 0,07 |
-| M3 hybrid | 0,580 | 0,988 | 0,800 | 0,836 | 0,984 | 0,09 |
-| M4 Logistic Regression | 0,580 | 0,970 | 0,800 | 0,820 | 0,981 | — |
+| M0 quy tắc 60/25/15 | 0,573 | 0,970 | 0,742 | 0,851 | 0,967 | 0,08 |
+| M1 TF-IDF | 0,560 | 0,962 | 0,717 | 0,820 | 0,902 | 7,36 |
+| M2 embedding | 0,547 | 0,954 | 0,714 | 0,785 | 0,842 | 0,10 |
+| M3 hybrid | 0,580 | 0,988 | 0,800 | 0,836 | 0,984 | 0,12 |
+| M4 Logistic Regression | 0,580 | 0,971 | 0,800 | 0,822 | 0,977 | — |
+| M5 Random Forest | 0,580 | **0,989** | 0,800 | **0,851** | 0,981 | — |
+| M6 Gradient Boosting | 0,573 | 0,983 | 0,778 | 0,827 | 0,967 | — |
 
-Nhận xét: M3 cao nhất về nDCG@10 (0,988) và ROC-AUC (0,984); M4 không vượt M3 (nDCG@10 0,970). M0 (quy tắc) đứng sau M3 nhưng khá sát. Chỉ dựa trên 30 ứng viên nên chênh lệch nhỏ không có ý nghĩa thống kê. Vì agent gán nhãn dựa trên đúng loại thông tin mà các mô hình dùng (kỹ năng, nghề, kinh nghiệm, học vấn), các số này có xu hướng lạc quan hơn so với nhãn của nhà tuyển dụng; cần nhãn của con người để kết luận chắc chắn.
+**Khoảng tin cậy 95% bằng bootstrap theo ứng viên** (500 lần resample cả ứng viên; `docs/report/tables/ndcg_bootstrap.csv`):
+
+| Mô hình | nDCG@10 | Khoảng tin cậy 95% | Chênh lệch so với M3 | Khoảng tin cậy của chênh lệch | Khác M3 có ý nghĩa? |
+|---|---|---|---|---|---|
+| M0 | 0,970 | 0,953 – 0,985 | −0,018 | −0,036 đến −0,002 | **Có** (kém hơn) |
+| M1 | 0,962 | 0,943 – 0,981 | −0,026 | −0,047 đến −0,005 | **Có** (kém hơn) |
+| M2 | 0,954 | 0,933 – 0,974 | −0,034 | −0,057 đến −0,012 | **Có** (kém hơn) |
+| M3 | 0,988 | 0,982 – 0,994 | — | — | — |
+| M4 | 0,971 | 0,943 – 0,991 | −0,017 | −0,042 đến +0,002 | Không (khoảng chứa 0) |
+| M5 | 0,989 | 0,981 – 0,994 | +0,000 | −0,008 đến +0,008 | Không |
+| M6 | 0,983 | 0,972 – 0,993 | −0,005 | −0,018 đến +0,006 | Không |
+
+Nhận xét: (1) Có hai nhóm. M3, M5 (và M6) đứng đầu, M0, M1, M2 kém hơn M3 một cách có ý nghĩa thống kê. (2) Giữa M3 và các mô hình học máy M4–M6 **không** phân biệt được: khoảng tin cậy của chênh lệch đều chứa 0, nên không thể nói mô hình học máy tốt hơn hay kém hơn mô hình lai đặt tay. M5 (Random Forest) có nDCG@10 và Spearman nhỉnh nhất nhưng chỉ hơn M3 0,0002, không đáng kể. (3) Việc chọn C cho M4 bằng GroupKFold lồng (C = 10 trên toàn bộ dữ liệu) **không cải thiện**: ROC-AUC kiểm tra 0,977 so với 0,981 khi giữ C = 1, nằm trong sai số. (4) Chỉ có 30 ứng viên, và agent gán nhãn dựa trên đúng loại thông tin các mô hình dùng nên các con số có xu hướng lạc quan; cần nhãn của con người để kết luận chắc chắn. (5) Điểm mạnh của mô hình cây, bắt được tương tác phi tuyến giữa các đặc trưng, có kiểm chứng ở mức kiểm thử đơn vị trên dữ liệu tổng hợp (`test_tree_models_capture_interaction_that_logreg_cannot`), nhưng với 6 đặc trưng và bộ nhãn hiện có, mô hình cây không cho lợi thế đo được so với mô hình tuyến tính (chưa kiểm chứng nguyên nhân).
 
 ### 6.5. Ablation M3 (bỏ lần lượt một đặc trưng, đo nDCG@10) và hệ số M4
 | Bỏ đặc trưng | nDCG@10 | Thay đổi |
@@ -103,7 +121,18 @@ Nhận xét: M3 cao nhất về nDCG@10 (0,988) và ROC-AUC (0,984); M4 không v
 | `edu` | 0,989 | +0,000 |
 | `pref` | 0,989 | +0,000 |
 
-Hệ số M4: `skill_req` 6,20; `exp` 1,53; `skill_pref` 1,40; `semantic` 1,30; `edu` 0,98; `pref` −0,24, so với trọng số tay của M3 (0,40 / 0,10 / 0,15 / 0,25 / 0,05 / 0,05). `skill_req` quan trọng nhất ở cả hai; `edu` và `pref` gần như không đóng góp.
+Độ quan trọng của đặc trưng sau khi huấn luyện trên toàn bộ dữ liệu (`docs/report/tables/m4_coefficients.csv`):
+
+| Đặc trưng | M4 hệ số (C = 10) | M5 độ quan trọng | M6 độ quan trọng | Trọng số tay M3 |
+|---|---|---|---|---|
+| `skill_req` | 10,82 | 0,638 | 0,802 | 0,40 |
+| `semantic` | 4,34 | 0,244 | 0,069 | 0,25 |
+| `exp` | 2,81 | 0,047 | 0,103 | 0,10 |
+| `edu` | 2,41 | 0,009 | 0,007 | 0,05 |
+| `skill_pref` | 2,32 | 0,050 | 0,012 | 0,15 |
+| `pref` | −0,55 | 0,012 | 0,007 | 0,05 |
+
+Cả ba mô hình học máy đều cho `skill_req` quan trọng nhất, rồi đến `semantic`, cùng thứ tự với trọng số tay của M3 ở hai đặc trưng đầu; `pref` gần như không đóng góp ở cả ba mô hình. (Hệ số của M4 không so trực tiếp với độ quan trọng của cây vì khác thang.)
 
 ### 6.6. Phân tích lỗi (5 cặp lệch nhiều nhất của M3)
 Hai cặp của cand-0082 (nhãn 3, điểm 49–50) bị M3 chặn ≤ 50 vì ứng viên chỉ có Node.js trong số kỹ năng bắt buộc (thiếu SQL, REST API, OOP); agent vẫn gán 3, nhiều khả năng vì ứng viên đúng hướng Node.js Developer, nghĩa là nhãn này cứng tay hoặc mô hình thiếu đặc trưng "đúng nhóm nghề". Ba cặp còn lại (cand-0068 và cand-0285, nhãn 0, điểm 48–50) được chấm gần 50 chỉ vì trùng kỹ năng mềm/SQL cơ bản với tin khác nhóm nghề. Hướng cải thiện: thêm đặc trưng nhóm nghề và kiểm tra lại nhãn các cặp này với con người (`docs/report/tables/error_analysis_m3.csv`).

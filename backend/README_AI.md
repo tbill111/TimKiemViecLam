@@ -22,7 +22,7 @@ Test dùng `HashingEmbedder` nên không cần tải model. Trong Docker (Python
 | `extract.py` | trích kỹ năng 3 tầng (n-gram → rapidfuzz ≥ 90 → embedding ≥ 0,8) |
 | `embedder.py` | embedding 384 chiều; tự lùi về `HashingEmbedder` nếu thiếu `sentence-transformers` |
 | `features.py` | 6 đặc trưng `skill_req, skill_pref, semantic, exp, edu, pref` |
-| `scorers.py` | M0–M4, `score_pair`, `score_many` |
+| `scorers.py` | M0–M6, `score_pair`, `score_many` (M4 Logistic Regression, M5 Random Forest, M6 Gradient Boosting cần `models_store/<id>.joblib`) |
 | `explain.py` | câu giải thích theo mẫu |
 | `metrics.py`, `train.py`, `evaluate.py`, `datasets.py` | đánh giá và huấn luyện (dùng trong `notebooks/`) |
 | `repository.py` | `AIRepository` – hợp đồng với DB |
@@ -55,8 +55,8 @@ Test dùng `HashingEmbedder` nên không cần tải model. Trong Docker (Python
 ## Quy trình đánh giá (notebooks)
 
 1. `notebooks/01_parser_eval.ipynb` – cần `backend/seed/cv_files/*` và `labels/labels_cv_skills.csv`.
-2. `notebooks/02_train_m4.ipynb` – cần `labels_pairs_hung.csv`, `labels_pairs_hoanganh.csv`; tạo `models_store/m4.joblib`.
-3. `notebooks/03_ranking_eval.ipynb` – bảng M0–M4, ablation, phân tích lỗi → `docs/report/tables/`.
+2. `notebooks/02_train_m4.ipynb` – cần `labels_pairs_hung.csv`, `labels_pairs_hoanganh.csv`; huấn luyện ba họ mô hình học máy (M4 Logistic Regression có chọn C bằng GroupKFold lồng, M5 Random Forest, M6 Gradient Boosting) và tạo `models_store/m4.joblib`, `m5.joblib`, `m6.joblib`.
+3. `notebooks/03_ranking_eval.ipynb` – bảng M0–M6 (kèm khoảng tin cậy bootstrap), ablation, phân tích lỗi → `docs/report/tables/`.
 
 ## Lưu ý trung thực khi báo cáo
 

@@ -20,7 +20,7 @@ const COLUMN_STYLE: Record<ApiStatus, string> = {
   hired: 'border-emerald-200 bg-emerald-50/50',
   rejected: 'border-slate-200 bg-slate-50',
 };
-const MODELS: ModelId[] = ['m0', 'm1', 'm2', 'm3', 'm4'];
+const MODELS: ModelId[] = ['m0', 'm1', 'm2', 'm3', 'm4', 'm5', 'm6'];
 
 /** Bảng Kanban 6 cột: ứng viên đã nộp vào tin của công ty, xếp theo điểm khớp; chuyển trạng thái theo đúng luồng phễu. */
 export default function EmployerCandidatesPage() {

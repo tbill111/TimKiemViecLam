@@ -1,7 +1,7 @@
 // Hình dạng JSON của backend (xem docs/00_KE_HOACH_KY_THUAT_TH3.md mục 3.4).
 
 export type ApiStatus = 'applied' | 'screening' | 'interview' | 'offer' | 'hired' | 'rejected';
-export type ModelId = 'm0' | 'm1' | 'm2' | 'm3' | 'm4';
+export type ModelId = 'm0' | 'm1' | 'm2' | 'm3' | 'm4' | 'm5' | 'm6';
 export type Role = 'candidate' | 'recruiter' | 'admin';
 
 export interface UserDTO {

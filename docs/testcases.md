@@ -1,7 +1,7 @@
 # Bảng test case (≥ 25) theo F01–F10
 
 **Cách đọc cột "Kết quả thực tế":** chỉ ghi *Đạt* khi test tự động hoặc kịch bản E2E tương ứng đã được chạy và xanh ở lần chạy gần nhất
-(`cd backend && python -m pytest` → 236 passed; trong container có model thật `EMBEDDER=st` → 223 passed + 2 skipped do thiếu file ngoài image;
+(`cd backend && python -m pytest` → 247 passed; trong container có model thật `EMBEDDER=st` → 223 passed + 2 skipped do thiếu file ngoài image;
 `scripts/e2e_smoke.py` → **14/14 bước trên stack Docker thật** (nginx → API + model thật → PostgreSQL 16 → Superset 4.1.1 nhúng);
 `scripts/e2e_offline.py` → 12/12 bước, 0 lời gọi API).
 Các ca ghi *Chưa kiểm* cần người kiểm thủ công hoặc dữ liệu chưa có.
@@ -52,6 +52,8 @@ Hoàng Anh bổ sung kết quả thủ công và ảnh minh chứng vào cột c
 | TC41 | NFR | Nâng cấp CSDL cũ | PostgreSQL đang có dữ liệu ở revision 0002 | `alembic upgrade head` thêm cột `candidates.embedding` mà không mất dữ liệu | chạy thật: `Running upgrade 0002 -> 0003` | Đạt |
 | TC42 | F05 | Điểm khớp không mã hoá lại khi chấm | lưu hồ sơ rồi gọi match | embedding hồ sơ/tin lấy từ DB, không gọi encode | `test_profile_embedding_is_stored_on_save_and_scoring_does_not_re_encode` | Đạt |
 | TC43 | F03 | Đánh giá parser trên 50 CV có nhãn (agent AI gán) | 50 CV + `labels_cv_skills.csv` | bảng P/R/F1 từng tầng | `notebooks/01_parser_eval.ipynb` | Quy trình **Đạt** (đã chạy với model thật, lưu kết quả trong notebook). Nhãn do agent AI gán: F1 T1 0,979; T1+2 0,978; T1+2+3 0,978; MAE năm KN 0,022 |
-| TC44 | F05 | Đánh giá M0–M4 trên 300 cặp có nhãn | 300 cặp, hai lượt agent AI gán | bảng P@5, nDCG@10, MRR, Spearman, AUC; huấn luyện M4 | `notebooks/02`, `03` (đã chạy, có đầu ra) | Quy trình **Đạt** với nhãn do agent AI gán: kappa 0,959, M4 AUC 0,981 trên fold kiểm tra, bảng M0–M4, ablation, phân tích lỗi trong `docs/report/tables/`. Nhãn chưa đối chiếu với con người nên chỉ tham khảo |
+| TC44 | F05 | Đánh giá M0–M6 trên 300 cặp có nhãn | 300 cặp, hai lượt agent AI gán | bảng P@5, nDCG@10, MRR, Spearman, AUC; huấn luyện M4, M5, M6; khoảng tin cậy bootstrap | `notebooks/02`, `03` (đã chạy với model thật, có đầu ra) | Quy trình **Đạt** với nhãn do agent AI gán: kappa 0,959; M3 và M5 nDCG@10 ≈ 0,988–0,989; M0–M2 kém M3 có ý nghĩa, M4–M6 không khác M3 có ý nghĩa; bảng trong `docs/report/tables/`. Nhãn chưa đối chiếu với con người nên chỉ tham khảo |
 | TC45 | F05 | Công bằng trên CV thật dạng văn bản | hai CV chỉ khác tên, giới tính, tuổi, email ở phần đầu | cùng kỹ năng, năm KN, học vấn và điểm M3 | `notebooks/03` (`fairness_check` với `backend/seed/fairness/`) | Đạt (cùng điểm M3 = 67) |
 | TC46 | UI | M4 huấn luyện trên nhãn do agent AI gán | chọn M4 ở Phân tích CV–JD | hiện ghi chú vàng nêu nguồn nhãn, không vỡ trang | E2E bước Phân tích CV–JD | Đạt |
+| TC47 | F05 | Mô hình học máy M5, M6 | chọn M5, M6 ở Phân tích CV–JD hoặc `POST /ai/match` với `model` = m5, m6 | 200; điểm 0–100, 6 thành phần; chưa huấn luyện → 503 `model_not_trained`; model lạ → 422 | `test_m5_m6_unavailable_until_trained_then_score_pair`, `test_match_all_available_models`; gọi API thật: M5 đạt 94, M6 đạt 99 điểm trên một tin mẫu | Đạt |
+| TC48 | NFR | Chấm theo lô cho mô hình học máy | `GET /candidates/me/matches?model=m5` trên 150 tin | cùng điểm với chấm từng cặp; dưới 2 giây | `test_score_many_batch_equals_score_pair_for_ml_models`; đo thật qua HTTP: M5 150 tin khoảng 60–145 ms (trước khi dự đoán theo lô: 4,3 giây) | Đạt |

@@ -23,6 +23,8 @@ const MODELS: { id: ModelId; label: string; hint: string }[] = [
   { id: 'm2', label: 'M2 – Embedding', hint: 'Độ gần về ngữ nghĩa (mô hình đa ngôn ngữ).' },
   { id: 'm3', label: 'M3 – Hybrid', hint: 'Kết hợp 6 đặc trưng với trọng số cố định và luật chặn ≤ 50 khi thiếu hơn nửa kỹ năng bắt buộc.' },
   { id: 'm4', label: 'M4 – Logistic Regression', hint: 'Trọng số học từ dữ liệu gán nhãn (cần huấn luyện trước).' },
+  { id: 'm5', label: 'M5 – Random Forest', hint: 'Rừng ngẫu nhiên học từ dữ liệu gán nhãn trên 6 đặc trưng; bắt được tương tác giữa các đặc trưng (cần huấn luyện trước).' },
+  { id: 'm6', label: 'M6 – Gradient Boosting', hint: 'Các cây nông nối tiếp nhau học từ dữ liệu gán nhãn trên 6 đặc trưng (cần huấn luyện trước).' },
 ];
 
 const getBarColor = (score: number) => {

@@ -18,9 +18,9 @@ Thư mục dự án: `D:\a.Kì 1 năm 4\Hệ thống kinh doanh\TkiemViecLam` (g
 | Sơ đồ Use Case | `<repo>\docs\usecase\usecase.png` (nguồn `usecase.puml`, đặc tả `dac_ta_use_case.md`) |
 | ERD | `<repo>\docs\erd\erd.png` (nguồn `erd.dbml`, `erd.puml`) |
 | CV mẫu để tải lên | `<repo>\public\cv-mau.pdf` |
-| Bảng so sánh M0–M4 | `<repo>\docs\report\tables\model_comparison.csv` |
+| Bảng so sánh M0–M6 | `<repo>\docs\report\tables\model_comparison.csv`, `ndcg_bootstrap.csv` |
 | Kappa, ablation, phân tích lỗi | `<repo>\docs\report\tables\kappa.csv`, `ablation_m3.csv`, `error_analysis_m3.csv` |
-| Test case | `<repo>\docs\testcases.md` (46 ca) |
+| Test case | `<repo>\docs\testcases.md` (48 ca) |
 | Báo cáo | `<repo>\docs\report\BaoCao_TH3.md` (mục 6 đánh giá, mục 7 hạn chế) |
 | Ảnh dự phòng dashboard | `<repo>\bi\screenshots\dashboard_superset_embedded.png`, `dashboard_recharts_fallback.png` |
 | Kiểm tra BI | `python scripts\check_bi_views.py` |
@@ -49,7 +49,7 @@ Thư mục dự án: `D:\a.Kì 1 năm 4\Hệ thống kinh doanh\TkiemViecLam` (g
    **Kiểm tra:** dòng cuối phải là `TẤT CẢ ĐẠT`; `load_seed` in `skills: 108, candidates: 301, jobs: 150, applications: 1255`.
 3. Mở http://localhost:8080 → nếu đang đăng nhập thì **Đăng xuất**.
 4. **Lấy token cho Swagger (để thử nhảy cóc ở cảnh 5):** vào http://localhost:8000/docs → `POST /api/auth/login` → *Try it out* → body `{"email":"hr01@smartcareer.vn","password":"Demo@12345"}` → *Execute* → copy `access_token` → bấm **Authorize** (góc trên) → dán token → *Authorize* → *Close*.
-5. Chạy thử `cd backend && python -m pytest -q` một lần (khoảng 50 giây, phải ra **235 passed**).
+5. Chạy thử `cd backend && python -m pytest -q` một lần (khoảng 1–2 phút, phải ra **247 passed**).
 6. Mở sẵn các tab theo đúng thứ tự quay: slide, `usecase.png`, `erd.png`, web, Swagger, terminal tại `backend`, `model_comparison.csv`, `testcases.md`, `BaoCao_TH3.md`.
 7. Cài đặt quay: 1920×1080, trình duyệt phóng 90–100%, tắt thông báo, dùng micro rời, ẩn thanh bookmark.
 
@@ -91,12 +91,12 @@ Thư mục dự án: `D:\a.Kì 1 năm 4\Hệ thống kinh doanh\TkiemViecLam` (g
 | 5 | **Chưa tích** ô đồng ý, chọn `public\cv-mau.pdf` (có thể làm bước này để minh hoạ lỗi) | Báo: "Bạn cần tích vào ô đồng ý để hệ thống xử lý dữ liệu CV." |
 | 6 | Tích ô **"Tôi đồng ý để hệ thống lưu và phân tích CV…"**, chọn lại `cv-mau.pdf` | Hiện danh sách kỹ năng đề xuất ("Phát hiện N kỹ năng"). Kỹ năng gợi ý từ embedding có nhãn "gợi ý", không tự chọn |
 | 7 | Bỏ chọn một kỹ năng, bấm **"Thêm N kỹ năng vào hồ sơ"** | Kỹ năng được thêm vào hồ sơ |
-| 8 | Menu → **Phân tích CV–JD**. Chọn một tin ở cột trái. Ô **"Mô hình"**: chọn lần lượt **M0 – Quy tắc 60/25/15**, **M3 – Hybrid**, **M4 – Logistic Regression** | Mỗi lần đổi, điểm và 6 thành phần cập nhật; có câu giải thích; M4 chạy được (phiên bản `m4-ai-labels`) |
+| 8 | Menu → **Phân tích CV–JD**. Chọn một tin ở cột trái. Ô **"Mô hình"**: chọn lần lượt **M0 – Quy tắc 60/25/15**, **M3 – Hybrid**, **M4 – Logistic Regression**, **M5 – Random Forest**, **M6 – Gradient Boosting** | Mỗi lần đổi, điểm và 6 thành phần cập nhật; có câu giải thích; M4 chạy được (phiên bản `m4-ai-labels`) |
 | 9 | Chỉ 6 thành phần (kỹ năng bắt buộc, ưu tiên, ngữ nghĩa, kinh nghiệm, học vấn, mong muốn) và câu "Khớp N/100. Đã có… Thiếu…" | — |
 | 10 | Menu → **Skill Gap Analysis**. Bấm mũi tên ⌄ cạnh một kỹ năng | Hiện lộ trình học 3 bước; kỹ năng "Ưu tiên Cao" (bắt buộc) đứng trước |
 
 **Lời thoại:**
-> "Mục 2 và 4: mô hình AI và giao diện. Mỗi tin ở trang Tìm việc có điểm khớp từ 0 đến 100, tính bằng mô hình AI chứ không phải số cố định. Khi tải CV, ứng viên phải tích đồng ý xử lý dữ liệu. Hệ thống trích kỹ năng theo ba tầng: tra từ điển và từ đồng nghĩa, so khớp mờ để bắt lỗi gõ, và embedding để gợi ý kỹ năng gần nghĩa. Kỹ năng từ embedding chỉ là gợi ý, ứng viên tự xác nhận. Phần đầu CV, gồm tên và thông tin liên hệ, bị loại khỏi văn bản dùng để chấm, nên điểm không phụ thuộc nhân thân. Trang Phân tích CV–JD cho đổi giữa năm mô hình: M0 là quy tắc sáu mươi, hai lăm, mười lăm của bài trước; M1 dùng TF-IDF; M2 dùng embedding; M3 là mô hình lai sáu đặc trưng với luật chặn khi thiếu hơn một nửa kỹ năng bắt buộc; M4 là hồi quy logistic học trọng số. Mỗi điểm có sáu thành phần và một câu giải thích: đã có gì, còn thiếu gì. Trang Skill Gap liệt kê kỹ năng còn thiếu, bắt buộc xếp trước, kèm lộ trình học ba bước. Về tốc độ, chấm một cặp khoảng sáu mươi mili giây, lấy điểm cho cả một trăm năm mươi tin mất khoảng bốn mươi mili giây, đo qua HTTP với model embedding thật."
+> "Mục 2 và 4: mô hình AI và giao diện. Mỗi tin ở trang Tìm việc có điểm khớp từ 0 đến 100, tính bằng mô hình AI chứ không phải số cố định. Khi tải CV, ứng viên phải tích đồng ý xử lý dữ liệu. Hệ thống trích kỹ năng theo ba tầng: tra từ điển và từ đồng nghĩa, so khớp mờ để bắt lỗi gõ, và embedding để gợi ý kỹ năng gần nghĩa. Kỹ năng từ embedding chỉ là gợi ý, ứng viên tự xác nhận. Phần đầu CV, gồm tên và thông tin liên hệ, bị loại khỏi văn bản dùng để chấm, nên điểm không phụ thuộc nhân thân. Trang Phân tích CV–JD cho đổi giữa bảy mô hình, thuộc bốn hướng: M0 là quy tắc sáu mươi, hai lăm, mười lăm của bài trước; M1 dùng TF-IDF; M2 dùng embedding huấn luyện sẵn; M3 là mô hình lai sáu đặc trưng với trọng số đặt tay và luật chặn khi thiếu hơn một nửa kỹ năng bắt buộc; và ba mô hình học máy do nhóm tự huấn luyện trên cùng sáu đặc trưng: M4 hồi quy logistic, M5 rừng ngẫu nhiên, M6 gradient boosting. Mỗi điểm có sáu thành phần và một câu giải thích: đã có gì, còn thiếu gì. Trang Skill Gap liệt kê kỹ năng còn thiếu, bắt buộc xếp trước, kèm lộ trình học ba bước. Về tốc độ, chấm một cặp khoảng sáu mươi mili giây, lấy điểm cho cả một trăm năm mươi tin mất khoảng bốn mươi mili giây, đo qua HTTP với model embedding thật."
 
 **Lỗi thường gặp ở cảnh này:**
 - Bấm vào tin quá sớm khi điểm khớp chưa tải xong → đợi vài giây.
@@ -164,14 +164,14 @@ Thư mục dự án: `D:\a.Kì 1 năm 4\Hệ thống kinh doanh\TkiemViecLam` (g
 
 | Bước | Thao tác chi tiết | Kết quả mong đợi |
 |---|---|---|
-| 1 | Terminal tại `<repo>\backend`: `python -m pytest -q` (chờ ~50 giây; cắt đoạn chờ khi dựng video) | `235 passed` |
-| 2 | Mở `docs\testcases.md`, cuộn bảng 46 ca; chỉ cột "Kết quả thực tế" | 46 ca, gần hết "Đạt" |
-| 3 | Mở `docs\report\tables\model_comparison.csv` (hoặc bảng 6.4 trong `BaoCao_TH3.md`). Chỉ hàng M0–M4, cột `ndcg@10` và `roc_auc` | M3 cao nhất (nDCG@10 ≈ 0,988; ROC-AUC ≈ 0,984); M4 ≈ 0,970 / 0,981 |
+| 1 | Terminal tại `<repo>\backend`: `python -m pytest -q` (chờ 1–2 phút; cắt đoạn chờ khi dựng video) | `235 passed` |
+| 2 | Mở `docs\testcases.md`, cuộn bảng 48 ca; chỉ cột "Kết quả thực tế" | 48 ca, gần hết "Đạt" |
+| 3 | Mở `docs\report\tables\model_comparison.csv` (hoặc bảng 6.4 trong `BaoCao_TH3.md`). Chỉ hàng M0–M4, cột `ndcg@10` và `roc_auc` | M3 ≈ 0,988 và M5 ≈ 0,989 (nDCG@10); M4 ≈ 0,971, M6 ≈ 0,983; 7 hàng M0–M6 |
 | 4 | Mở `docs\report\tables\kappa.csv` (hoặc mục 6.1 báo cáo) | kappa ≈ 0,959; dòng ghi "nhãn do agent AI gán" |
 | 5 | Mở `BaoCao_TH3.md` mục 7 (Hạn chế) | Danh sách hạn chế |
 
 **Lời thoại:**
-> "Mục 5: kiểm thử và đánh giá. Hệ thống có hai trăm ba mươi lăm kiểm thử tự động: parser CV, đặc trưng, năm mô hình, phân quyền, luật trạng thái, phễu BI, seed và migration; trong đó M0 bản Python khớp một trăm phần trăm bản TypeScript của bài trước. Ngoài ra có bốn mươi sáu test case theo mười chức năng và kiểm thử trình duyệt tự động trên stack Docker thật, mười bốn bước đều đạt. Để đánh giá mô hình gợi ý, nhóm chọn ba mươi ứng viên với mười tin mỗi người, tổng ba trăm cặp, gán nhãn mức phù hợp từ không đến ba. Xin nói rõ: nhãn do **agent AI** gán, hai lượt độc lập, không phải do người gán. Hệ số kappa giữa hai lượt là 0,959, nhưng vì cùng một họ mô hình nên con số này chỉ cho thấy agent gán nhất quán, chưa phải độ tin cậy như hai người. Kết quả: mô hình lai M3 có nDCG@10 cao nhất, khoảng 0,988, và ROC-AUC khoảng 0,984; M4 gần tương đương nhưng không vượt M3; M0 đứng sát phía sau. Do chỉ có ba mươi ứng viên và nhãn dựa trên đúng loại thông tin mà các mô hình dùng, chênh lệch nhỏ giữa các mô hình không có ý nghĩa thống kê và các con số có xu hướng lạc quan. Hạn chế còn lại: dữ liệu và đơn ứng tuyển là mô phỏng; trích kỹ năng chủ yếu dựa trên từ điển, so khớp mờ và embedding chứ chưa có mô hình nhận dạng thực thể riêng; CV dạng ảnh scan chưa đọc được."
+> "Mục 5: kiểm thử và đánh giá. Hệ thống có hai trăm bốn mươi bảy kiểm thử tự động: parser CV, đặc trưng, bảy mô hình, phân quyền, luật trạng thái, phễu BI, seed và migration; trong đó M0 bản Python khớp một trăm phần trăm bản TypeScript của bài trước. Ngoài ra có bốn mươi tám test case theo mười chức năng và kiểm thử trình duyệt tự động trên stack Docker thật, mười bốn bước đều đạt. Để đánh giá mô hình gợi ý, nhóm chọn ba mươi ứng viên với mười tin mỗi người, tổng ba trăm cặp, gán nhãn mức phù hợp từ không đến ba. Xin nói rõ: nhãn do **agent AI** gán, hai lượt độc lập, không phải do người gán. Hệ số kappa giữa hai lượt là 0,959, nhưng vì cùng một họ mô hình nên con số này chỉ cho thấy agent gán nhất quán, chưa phải độ tin cậy như hai người. Kết quả: M3 và M5 rừng ngẫu nhiên đứng đầu, nDCG@10 khoảng 0,988 và 0,989; M0, M1, M2 kém hơn M3 một cách có ý nghĩa thống kê theo khoảng tin cậy bootstrap; còn ba mô hình học máy M4, M5, M6 không phân biệt được với M3, tức là không thể nói học máy tốt hơn hay kém hơn mô hình lai đặt tay. Do chỉ có ba mươi ứng viên và nhãn dựa trên đúng loại thông tin mà các mô hình dùng, các con số có xu hướng lạc quan. Hạn chế còn lại: dữ liệu và đơn ứng tuyển là mô phỏng; trích kỹ năng chủ yếu dựa trên từ điển, so khớp mờ và embedding chứ chưa có mô hình nhận dạng thực thể riêng; CV dạng ảnh scan chưa đọc được."
 
 ---
 

@@ -4,7 +4,7 @@ Căn cứ là những gì đã **chạy thật**, không chỉ viết mã:
 
 | Kiểm chứng | Kết quả |
 |---|---|
-| `cd backend && python -m pytest` | 235 passed |
+| `cd backend && python -m pytest` | 247 passed |
 | `npx tsc -b`, `npm run build` | sạch |
 | `npm run lint` | 0 lỗi (chỉ cảnh báo) |
 | E2E trình duyệt trên **stack Docker thật** (nginx → API + model thật → PostgreSQL 16 → Superset 4.1.1 nhúng), sau khi gán nhãn và huấn luyện lại M4 | **14/14** bước: ứng viên, nhà tuyển dụng, quản trị |
@@ -12,7 +12,7 @@ Căn cứ là những gì đã **chạy thật**, không chỉ viết mã:
 | 4 view BI trên PostgreSQL thật so với `/api/bi/*` (`scripts/check_bi_views.py`) | khớp mọi số liệu; `bi_reader` chỉ đọc được view |
 | Guest token Superset thật + RLS | công ty 1 thấy 19 hồ sơ, công ty 5 thấy 63, admin thấy 1.255, khớp API |
 | Hiệu năng qua HTTP (PostgreSQL + model thật) | 1 cặp 38 ms; 150 tin 38 ms; 500 tin 70–77 ms (mục tiêu 200 ms và 2 s) |
-| Đánh giá mô hình (3 notebook chạy với `Embedder: st:...`) | nhãn do **agent AI** gán: kappa 0,959; M3 nDCG@10 0,988; M4 AUC 0,981 trên fold kiểm tra |
+| Đánh giá mô hình (3 notebook chạy với `Embedder: st:...`) | nhãn do **agent AI** gán: kappa 0,959; 7 mô hình M0–M6 (M4 Logistic Regression, M5 Random Forest, M6 Gradient Boosting cùng GroupKFold); M3 và M5 nDCG@10 ≈ 0,988–0,989, M0–M2 kém M3 có ý nghĩa thống kê, M4–M6 không khác M3 có ý nghĩa |
 
 ## Nguồn nhãn đánh giá (phải nói rõ khi nộp)
 

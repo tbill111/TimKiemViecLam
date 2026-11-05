@@ -62,24 +62,24 @@ VITE_API_URL=http://localhost:8000/api npm run dev
 ## Kiểm thử
 
 ```bash
-cd backend && python -m pytest                 # 236 test: AI, API, phân quyền, luật trạng thái, phễu BI, seed, hiệu năng, migration
+cd backend && python -m pytest                 # 247 test: AI, API, phân quyền, luật trạng thái, phễu BI, seed, hiệu năng, migration
 npm run build && npm run lint                  # kiểu TypeScript + oxlint
 python scripts/e2e_smoke.py  --web http://localhost:8080     # E2E trình duyệt trên stack Docker: ứng viên, nhà tuyển dụng, quản trị (14 bước)
 python scripts/check_bi_views.py                              # đối chiếu 4 view PostgreSQL với /api/bi/*
 python scripts/e2e_offline.py --web http://localhost:4174    # E2E chế độ demo, kiểm tra không gọi API
 ```
 
-Bảng 46 test case: [docs/testcases.md](docs/testcases.md).
+Bảng 48 test case: [docs/testcases.md](docs/testcases.md).
 
 ## Cấu trúc
 
 ```
 src/                    frontend (api/, context/, hooks/, pages/, components/, data/ = dữ liệu mẫu chế độ demo)
-backend/app/            FastAPI: routers/, models.py, services/, ai/ (parser, scorers M0–M4, metrics, evaluate)
+backend/app/            FastAPI: routers/, models.py, services/, ai/ (parser, scorers M0–M6, metrics, evaluate)
 backend/seed/           sinh và nạp dữ liệu hư cấu (108 kỹ năng, 259 alias, 30 công ty, 150 tin, 300 ứng viên, 50 CV, ~1.200 đơn)
 backend/alembic/        migration; backend/schema.sql = DDL PostgreSQL sinh từ models
 bi/                     views.sql, cấu hình Superset, hướng dẫn dựng dashboard
-notebooks/              đánh giá parser, huấn luyện M4, so sánh M0–M4
+notebooks/              đánh giá parser, huấn luyện M4–M6, so sánh M0–M6
 docs/                   kế hoạch, yêu cầu, Use Case, ERD, test case, hướng dẫn gán nhãn, prompt từng thành viên
 scripts/                export dữ liệu chuẩn M0 từ TypeScript, E2E
 ```
