@@ -9,6 +9,8 @@
 
 ## 0. Chuẩn bị trước khi quay (làm xong 1 giờ trước)
 
+**Nếu máy vừa khởi động lại:** mở **Docker Desktop** và chờ biểu tượng cá voi chuyển xanh (khoảng 1–2 phút) rồi mới chạy lệnh dưới.
+
 ```bash
 cp .env.example .env                        # nhớ WITH_ST=1 (model embedding thật)
 docker compose up -d --build
@@ -84,7 +86,7 @@ Một người đọc hết cũng được; chia người chỉ để đa dạng
 
 **Thao tác (theo thứ tự):**
 1. http://localhost:8080 → đăng nhập `tung.demo@smartcareer.vn` / `Demo@12345`. Dừng ở **Tổng quan** 3 giây.
-2. **Tìm việc**: cuộn, chỉ điểm khớp trên mỗi thẻ; mở một tin, chỉ kỹ năng có / thiếu.
+2. **Tìm việc**: cuộn, chỉ điểm khớp trên mỗi thẻ (chờ vài giây cho điểm tải xong); mở một tin, chỉ kỹ năng có / thiếu.
 3. **Hồ sơ của tôi → khung "Nhập kỹ năng từ CV"**: chọn `public/cv-mau.pdf`, **tích ô đồng ý**, bấm tải; chỉ danh sách kỹ năng đề xuất; bỏ chọn một kỹ năng, bấm xác nhận.
 4. **Phân tích CV–JD**: chọn một tin; đổi mô hình **M0 → M3**; chỉ **6 thành phần** và câu giải thích; chọn **M4** (nếu đã huấn luyện sẽ chạy; nhớ chỉ dòng ghi chú về nguồn nhãn).
 5. **Skill Gap**: chỉ kỹ năng bắt buộc đứng trước và mở một lộ trình học 3 bước.
@@ -102,8 +104,8 @@ Một người đọc hết cũng được; chia người chỉ để đa dạng
 ## 5. Mục 04 – Ứng tuyển và nhà tuyển dụng (3:30 – 4:30)
 
 **Thao tác:**
-1. Ứng viên: mở một tin chưa ứng tuyển → **Ứng tuyển** → xác nhận → thấy "Ứng tuyển thành công". Vào **Việc đã lưu & Ứng tuyển**, tab theo dõi: chỉ trạng thái (chỉ xem).
-2. **Đăng xuất** → đăng nhập `hr01@smartcareer.vn`.
+1. Ứng viên: ở **Tìm việc** gõ "Sao Mai" vào ô tìm kiếm và **chọn một tin của công ty Sao Mai Software** (bắt buộc: `hr01` chỉ thấy đơn nộp vào tin của công ty mình) → **Ứng tuyển** → xác nhận → thấy "Ứng tuyển thành công". Vào **Việc đã lưu & Ứng tuyển**, tab theo dõi: chỉ trạng thái (chỉ xem).
+2. **Đăng xuất** → đăng nhập `hr01@smartcareer.vn` (vào thẳng **Dashboard BI**) → bấm menu **Ứng viên xếp hạng**.
 3. **Ứng viên xếp hạng** (`/employer/candidates`): chọn tin vừa ứng tuyển; chỉ danh sách xếp theo điểm khớp, kèm lý do và kỹ năng thiếu. Trang này đồng thời là **bảng Kanban 6 cột** (không có trang Kanban riêng).
 4. Trên Kanban: bấm nút chuyển sang bước kế tiếp cho ứng viên demo ("Tung" / Giang Thanh Tùng). Để cho thấy lỗi **nhảy cóc**, giao diện chỉ hiện nút hợp lệ nên dùng Swagger (http://localhost:8000/docs → chạy `POST /api/auth/login` với `hr01@smartcareer.vn` / `Demo@12345`, copy `access_token` rồi bấm Authorize; **làm trước khi quay** để thao tác nhanh): `PATCH /api/applications/{id}/status` với `{"status":"offer"}` khi đơn đang `applied` → thấy `invalid_transition` (HTTP 409).
 5. **Đăng tin mới → Gợi ý kỹ năng từ mô tả**: dán một mô tả có "React", "Docker"; chọn từng kỹ năng là bắt buộc hay ưu tiên (không cần bấm đăng).
@@ -118,8 +120,8 @@ Một người đọc hết cũng được; chia người chỉ để đa dạng
 ## 6. Mục 03 – Dashboard BI (4:30 – 5:30)
 
 **Thao tác:**
-1. Đăng nhập `hr01@smartcareer.vn` → **Dashboard nhà tuyển dụng** (http://localhost:8080/employer/dashboard).
-2. Chỉ lần lượt **3 chỉ số của đề**: (a) số ứng viên theo kỹ năng; (b) xu hướng lương; (c) phễu chuyển đổi tuyển dụng.
+1. Đăng nhập `hr01@smartcareer.vn` (vào thẳng **Dashboard BI**, http://localhost:8080/employer/dashboard); **chờ 5–8 giây** cho Superset nhúng tải xong. Bốn thẻ trên cùng (301 ứng viên, 150 tin, hồ sơ đã nộp, tỷ lệ tuyển) là số **toàn thị trường**; các biểu đồ Superset bên dưới (ví dụ "Hồ sơ đã nộp" khoảng 20) đã **lọc theo công ty** — nói rõ điều này để không bị hiểu là số lệch nhau.
+2. Chỉ lần lượt **3 chỉ số của đề**: (a) biểu đồ 2 và 3 (ứng viên theo kỹ năng, cung so với cầu); (b) biểu đồ 4 (lương theo tháng và cấp bậc); (c) biểu đồ 6 (phễu). **Bỏ qua biểu đồ 8** (tỷ lệ tuyển theo nhóm điểm): với một công ty nhỏ nó thường hiện 0%, dễ gây hiểu nhầm.
 3. Đăng xuất → đăng nhập `hr05@smartcareer.vn` → mở lại dashboard: **phễu khác** công ty trước (RLS).
 4. Terminal: `python scripts/check_bi_views.py` → dừng ở dòng **"TẤT CẢ ĐẠT"**.
 5. (Dự phòng nếu Superset không lên) chiếu `bi/screenshots/dashboard_superset_embedded.png` và `bi/screenshots/dashboard_recharts_fallback.png`.
@@ -135,7 +137,7 @@ Một người đọc hết cũng được; chia người chỉ để đa dạng
 ## 7. Mục 04 – Quản trị kỹ năng (5:30 – 6:10)
 
 **Thao tác:**
-1. Đăng xuất → đăng nhập `admin@smartcareer.vn` → **Quản lý kỹ năng**.
+1. Đăng xuất → đăng nhập `admin@smartcareer.vn` (vào Dashboard BI) → bấm menu **Quản lý kỹ năng**.
 2. Thêm một **từ đồng nghĩa** (alias): ví dụ `reakt` → `React`.
 3. Đăng nhập lại `hr01@…` → **Đăng tin mới** → mô tả "thành thạo reakt" → **Gợi ý kỹ năng** → ra **React**.
 
