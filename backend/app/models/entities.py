@@ -223,6 +223,27 @@ class MatchResult(Base):
     )
 
 
+class LabelingTask(Base):
+    __tablename__ = "labeling_tasks"
+    id: Mapped[int] = mapped_column(PK, primary_key=True, autoincrement=True)
+    resume_id: Mapped[int] = mapped_column(ForeignKey("resumes.id", ondelete="CASCADE"), nullable=False)
+    job_id: Mapped[int] = mapped_column(ForeignKey("jobs.id", ondelete="CASCADE"), nullable=False)
+    matching_score: Mapped[int | None] = mapped_column(Integer)
+    reason: Mapped[str | None] = mapped_column(Text)
+    status: Mapped[str] = mapped_column(String(20), default="pending", nullable=False, index=True)
+    attempts: Mapped[int] = mapped_column(Integer, default=0, nullable=False)
+    error: Mapped[str | None] = mapped_column(Text)
+    provider: Mapped[str | None] = mapped_column(String(20))
+    model: Mapped[str | None] = mapped_column(String(100))
+    created_at: Mapped[datetime] = mapped_column(DateTime, server_default=func.now(), nullable=False)
+    updated_at: Mapped[datetime] = mapped_column(DateTime, server_default=func.now(), onupdate=func.now(), nullable=False)
+    __table_args__ = (
+        UniqueConstraint("resume_id", "job_id", name="uq_labeling_tasks_resume_job"),
+        CheckConstraint("matching_score IS NULL OR matching_score BETWEEN 0 AND 100", name="ck_labeling_tasks_matching_score"),
+        CheckConstraint("status IN ('pending','completed','failed')", name="ck_labeling_tasks_status"),
+    )
+
+
 class SavedJob(Base):
     __tablename__ = "saved_jobs"
     id: Mapped[int] = mapped_column(PK, primary_key=True, autoincrement=True)

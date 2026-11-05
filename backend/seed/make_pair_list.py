@@ -1,18 +1,23 @@
-"""Chọn 30 ứng viên × 10 tin để hai người gán nhãn độc lập.
+"""Randomly select database resumes and jobs and export unique labeling pairs as JSON.
 
-Mỗi ứng viên có 10 tin: 4 cùng nhóm nghề, 3 nhóm gần, 3 nhóm khác – để có đủ cả cặp tốt lẫn cặp kém.
-Ứng viên được chọn đều qua các nhóm nghề. Chạy lặp lại cùng seed cho cùng kết quả.
-
-    python -m seed.make_pair_list --candidates seed/data/candidates_generated.csv \
-        --jobs seed/data/jobs_seed.csv --out seed/labels/labels_pairs_template.csv
+Run from ``backend/`` with ``python -m seed.make_pair_list``.
 """
 from __future__ import annotations
 
 import argparse
 import csv
+import json
 import random
 from collections import defaultdict
 from pathlib import Path
+
+from sqlalchemy import func, select
+from sqlalchemy.orm import Session
+
+from app.db import SessionLocal
+from app.models import Job, Resume
+
+DEFAULT_OUTPUT = Path(__file__).resolve().parent / "labels" / "pair_list.json"
 
 # Nhóm "gần" của từng JobCategory (đối xứng được xử lý trong `near_groups`)
 NEAR = {
@@ -90,21 +95,65 @@ def build_pairs(candidates_csv: Path, jobs_csv: Path, n_candidates: int = 30, se
     return pairs
 
 
+def build_database_pairs(
+    db: Session,
+    n_resumes: int = 50,
+    n_jobs: int = 150,
+    n_pairs: int = 300,
+    rng: random.Random | None = None,
+) -> list[dict[str, int]]:
+    if min(n_resumes, n_jobs, n_pairs) <= 0:
+        raise ValueError("Resume, job, and pair counts must all be positive.")
+
+    resumes = db.execute(
+        select(Resume.id, Resume.candidate_id)
+        .where(Resume.is_active.is_(True))
+        .order_by(func.random())
+        .limit(n_resumes)
+    ).all()
+    jobs = db.scalars(
+        select(Job.id)
+        .order_by(func.random())
+        .limit(n_jobs)
+    ).all()
+
+    if len(resumes) < n_resumes:
+        raise RuntimeError(f"Need {n_resumes} active resumes; found {len(resumes)}.")
+    if len(jobs) < n_jobs:
+        raise RuntimeError(f"Need {n_jobs} jobs; found {len(jobs)}.")
+    if n_pairs > len(resumes) * len(jobs):
+        raise ValueError(
+            f"Cannot create {n_pairs} unique pairs from {len(resumes)} resumes "
+            f"and {len(jobs)} jobs."
+        )
+
+    chooser = rng or random.SystemRandom()
+    pair_indexes = chooser.sample(range(len(resumes) * len(jobs)), n_pairs)
+    pairs: list[dict[str, int]] = []
+    for pair_index in pair_indexes:
+        resume_index, job_index = divmod(pair_index, len(jobs))
+        resume = resumes[resume_index]
+        pairs.append({
+            "resume_id": resume.id,
+            "candidate_id": resume.candidate_id,
+            "job_id": jobs[job_index],
+        })
+    return pairs
+
+
+def write_pairs_json(pairs: list[dict[str, int]], path: Path) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(json.dumps(pairs, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+
+
 def main() -> None:
-    ap = argparse.ArgumentParser()
-    ap.add_argument("--candidates", type=Path, default=Path("seed/data/candidates_generated.csv"))
-    ap.add_argument("--jobs", type=Path, default=Path("seed/data/jobs_seed.csv"))
-    ap.add_argument("--out", type=Path, default=Path("seed/labels/labels_pairs_template.csv"))
-    ap.add_argument("--n", type=int, default=30)
-    ap.add_argument("--seed", type=int, default=42)
+    ap = argparse.ArgumentParser(description=__doc__)
+    ap.add_argument("--out", type=Path, default=DEFAULT_OUTPUT, help="JSON output file")
     args = ap.parse_args()
-    pairs = build_pairs(args.candidates, args.jobs, args.n, args.seed)
-    args.out.parent.mkdir(parents=True, exist_ok=True)
-    with open(args.out, "w", encoding="utf-8", newline="") as f:
-        w = csv.writer(f)
-        w.writerow(["candidate_id", "job_id", "label"])
-        w.writerows((c, j, "") for c, j in pairs)
-    print(f"Đã ghi {len(pairs)} cặp vào {args.out}")
+    with SessionLocal() as db:
+        pairs = build_database_pairs(db)
+    write_pairs_json(pairs, args.out)
+    print(f"Wrote {len(pairs)} unique resume/job pairs to {args.out}")
 
 
 if __name__ == "__main__":

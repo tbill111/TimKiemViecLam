@@ -2,6 +2,15 @@
 from __future__ import annotations
 
 import os
+import sys
+from pathlib import Path
+
+from dotenv import load_dotenv
+
+BACKEND_ROOT = Path(__file__).resolve().parents[1]
+if "pytest" not in sys.modules:  # tránh test vô tình dùng DATABASE_URL thật từ .env
+    load_dotenv(BACKEND_ROOT / ".env")
+    load_dotenv(BACKEND_ROOT.parent / ".env")
 
 
 class Settings:

@@ -35,7 +35,13 @@ Salary values are in million VND per month. `min_education` and `education_level
 
 `gen_applications.py` creates approximately 1,200 application rows with status history. Funnel choices are random and independent of `match_score`; they demonstrate BI calculations and are not evidence of model quality. `match_score` is computed with `score_pair('m3', ...)`.
 
-Run `python -m seed.load_seed --reset` from `backend/`. Seed writes are idempotent, use one transaction protected by `pg_advisory_xact_lock`, and `--reset` drops/recreates the BI views inside that transaction.
+Run `python seed/load_seed.py --reset` or `python -m seed.load_seed --reset` from `backend/`. The backend loads `DATABASE_URL` from the repository-root `.env` (an existing shell environment variable takes precedence). For a command run on the host, use a host-reachable database hostname such as `localhost`; use `db` for commands running inside Docker Compose. Seed writes are idempotent, use one transaction protected by `pg_advisory_xact_lock`, and `--reset` drops/recreates the BI views inside that transaction.
+
+The loader imports aliases from `data/skill_aliases.csv` and links each alias to `skills.id` by matching `skill_name`. It creates or reuses the 300 deterministic demo candidate profiles and ensures the first 50 each have one active resume. If a real CV is present in the CV manifest, it is parsed; otherwise, the resume row is clearly marked `synthetic_seed_profile` and uses anonymized generated profile text. These 50 rows are synthetic resume records, not 50 physical CV files.
+
+Run `python -m seed.make_pair_list` from `backend/` to randomly select 50 active resumes and 150 jobs from the database, sample 300 unique resume/job pairs, and write their IDs to `seed/labels/pair_list.json`. The script needs at least 50 active resumes and 150 jobs.
+
+Run `alembic upgrade head` before `python -m seed.run_ai_labeling` to create the `labeling_tasks` table. The labeling script requires 300 unscored pairs of active resumes and open jobs and writes scores/reasons to that table. With `AI_PROVIDER=auto`, it uses the first configured OpenAI/Gemini key, and stops with an error when neither key is set (it no longer falls back to mock silently). Use `--provider mock` explicitly for demos; mock rows (`provider='mock'`) are excluded from `vw_ai_matching_stats` and must not be used to evaluate model quality. Scores here (0–100, table `labeling_tasks`) are separate from the 0–3 `labels_pairs_*.csv` used by `app/ai/evaluate.py`. Real-provider requests retry transient errors. Set `AI_PROVIDER=openai` with `OPENAI_API_KEY`, or `AI_PROVIDER=gemini` with `GEMINI_API_KEY`; `OPENAI_MODEL` and `GEMINI_MODEL` override the defaults (`gpt-4o-mini` and `gemini-2.5-flash`). Real-provider mode sends `Resume.model_text` (the parser's anonymized text) and job details to the selected provider.
 
 Demo accounts use `Demo@12345`:
 

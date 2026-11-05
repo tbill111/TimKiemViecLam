@@ -61,8 +61,12 @@ services:
       SUPERSET_ADMIN_PASSWORD: ${SUPERSET_ADMIN_PASSWORD:-admin_demo_password}
       SUPERSET_ADMIN_EMAIL: ${SUPERSET_ADMIN_EMAIL:-admin@smartcareer.vn}
       GUEST_TOKEN_JWT_SECRET: ${GUEST_TOKEN_JWT_SECRET:-dev-guest-token-secret-change-me}
+      BI_DATABASE_USER: ${BI_DATABASE_USER:-bi_reader}
       BI_READER_PASSWORD: ${BI_READER_PASSWORD:-smartcareer_bi_demo}
-      BI_DATABASE_URI: postgresql+psycopg2://bi_reader:${BI_READER_PASSWORD:-smartcareer_bi_demo}@db:5432/${POSTGRES_DB:-smartcareer}
+      BI_DATABASE_HOST: db
+      BI_DATABASE_PORT: "5432"
+      BI_DATABASE_NAME: ${POSTGRES_DB:-smartcareer}
+      BI_SUPERSET_DATABASE_NAME: SmartCareer
     ports:
       - "${SUPERSET_PORT:-8088}:8088"
     depends_on:
