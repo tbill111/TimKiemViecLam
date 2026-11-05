@@ -49,8 +49,8 @@ Test dùng `HashingEmbedder` nên không cần tải model. Trong Docker (Python
 
 ## Dữ liệu và nhãn
 
-Định dạng CSV ở `backend/seed/README.md`. Chọn 300 cặp gán nhãn:
-`python -m seed.make_pair_list` (chạy trong `backend/`). Hướng dẫn gán nhãn ở `docs/report/huong_dan_gan_nhan.md`.
+Định dạng dữ liệu ở `backend/seed/README.md`. Chọn ngẫu nhiên 50 CV active và 150 tin tuyển dụng từ database rồi xuất 300 cặp duy nhất:
+`python -m seed.make_pair_list` (chạy trong `backend/`, xuất `seed/labels/pair_list.json`). Hướng dẫn gán nhãn ở `docs/report/huong_dan_gan_nhan.md`.
 
 ## Quy trình đánh giá (notebooks)
 

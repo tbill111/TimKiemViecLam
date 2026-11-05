@@ -7,6 +7,7 @@ from .entities import (
     Company,
     Job,
     JobSkill,
+    LabelingTask,
     Location,
     MatchResult,
     Recruiter,
@@ -19,6 +20,6 @@ from .entities import (
 
 __all__ = [
     "Application", "ApplicationStatusHistory", "Candidate", "CandidateSkill", "Company",
-    "Job", "JobSkill", "Location", "MatchResult", "Recruiter", "Resume", "SavedJob",
+    "Job", "JobSkill", "LabelingTask", "Location", "MatchResult", "Recruiter", "Resume", "SavedJob",
     "Skill", "SkillAlias", "User",
 ]

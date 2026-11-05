@@ -1,12 +1,8 @@
 # Superset handoff
 
-The Compose service starts Superset 4.1.2 at `http://localhost:${SUPERSET_PORT:-8088}`. The local demo administrator is `admin` / the value of `SUPERSET_ADMIN_PASSWORD` (default `admin_demo_password`). `superset_meta` stores Superset metadata; the SmartCareer PostgreSQL schema remains separate.
+The Compose service starts Superset 4.1.2 at `http://localhost:${SUPERSET_PORT:-8088}`. The local demo administrator is `admin` / the value of `SUPERSET_ADMIN_PASSWORD` (default `admin_demo_password`). `superset_meta` stores Superset metadata; the SmartCareer PostgreSQL schema remains separate. On startup, `init.sh` creates or updates a Superset database connection named `SmartCareer` using the BI connection environment variables; no manual database connection setup is required.
 
-Before creating charts, add a database in Superset with this SQLAlchemy URI:
-
-```text
-postgresql+psycopg2://bi_reader:${BI_READER_PASSWORD}@db:5432/smartcareer
-```
+The connection uses `BI_DATABASE_USER` (default `bi_reader`) and `BI_READER_PASSWORD` from the Compose environment. It targets `POSTGRES_DB` on service `db`; SQLAlchemy constructs the URI so passwords containing reserved URL characters are handled correctly.
 
 `bi_reader` is provisioned by the database/migration with `SELECT` on only `v_skill_supply_demand`, `v_salary`, `v_funnel`, and `v_funnel_stages`. Create datasets for those four views. Build the dashboard charts from the views; funnel charts must use `v_funnel_stages` for stage-by-stage counts. Export the finished dashboard from Superset as `dashboard_export.zip` and commit it here.
 

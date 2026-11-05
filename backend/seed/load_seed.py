@@ -5,12 +5,17 @@ import argparse
 import csv
 import json
 import random
+import sys
 from datetime import date, datetime
 from pathlib import Path
 
 import bcrypt
 from sqlalchemy import select, text
 from sqlalchemy.orm import Session
+
+BACKEND_ROOT = Path(__file__).resolve().parents[1]
+if __package__ in (None, ""):
+    sys.path.insert(0, str(BACKEND_ROOT))
 
 from app.ai.embedder import get_embedder
 from app.models import (
@@ -30,7 +35,7 @@ DEMO_EMAIL = "thanhtung.demo@smartcareer.vn"
 
 def read_csv(path: Path) -> list[dict[str, str]]:
     if not path.exists():
-        return []
+        raise FileNotFoundError(f"Required seed CSV not found: {path}")
     with path.open(encoding="utf-8-sig", newline="") as file:
         return list(csv.DictReader(file))
 
@@ -52,6 +57,63 @@ def _ensure(db: Session, model, condition, **values):
         db.add(row)
         db.flush()
     return row
+
+
+def _load_skill_aliases(
+    db: Session,
+    alias_rows: list[dict[str, str]],
+    skill_by_name: dict[str, Skill],
+) -> int:
+    loaded = 0
+    for row in alias_rows:
+        alias = row.get("alias", "").strip()
+        skill_name = row.get("skill_name", "").strip()
+        if not alias or not skill_name:
+            raise RuntimeError(f"Invalid skill alias row: {row}")
+        skill = skill_by_name.get(skill_name.casefold())
+        if skill is None:
+            raise RuntimeError(f"Alias references unknown skill: {skill_name}")
+        existing = db.scalar(select(SkillAlias).where(SkillAlias.alias == alias))
+        if existing is None:
+            db.add(SkillAlias(alias=alias, skill_id=skill.id))
+            db.flush()
+        elif existing.skill_id != skill.id:
+            raise RuntimeError(
+                f"Alias {alias!r} is already linked to a different skill."
+            )
+        loaded += 1
+    return loaded
+
+
+def _ensure_profile_resume(db: Session, candidate: Candidate, profile: dict) -> Resume:
+    resume = db.scalar(
+        select(Resume)
+        .where(Resume.candidate_id == candidate.id, Resume.is_active.is_(True))
+        .order_by(Resume.created_at.desc(), Resume.id.desc())
+        .limit(1)
+    )
+    if resume is not None:
+        return resume
+
+    now = datetime.utcnow()
+    candidate.consent_at = candidate.consent_at or now
+    parsed_json = {
+        "source": "synthetic_seed_profile",
+        "skills": profile["skills"],
+        "years_exp": profile["years_exp"],
+        "education_level": profile["education_level"],
+    }
+    resume = Resume(
+        candidate_id=candidate.id,
+        filename=f"synthetic-{candidate.external_id}.txt",
+        parsed_json=parsed_json,
+        model_text=profile["text"],
+        consent_at=candidate.consent_at,
+        is_active=True,
+    )
+    db.add(resume)
+    db.flush()
+    return resume
 
 
 def _drop_views(db: Session) -> None:
@@ -110,11 +172,7 @@ def _load(db: Session, reset: bool) -> tuple[int, int, int, list[dict]]:
     alias_rows = read_csv(DATA / "skill_aliases.csv")
     if len(alias_rows) < 150:
         raise RuntimeError(f"skill_aliases.csv contains only {len(alias_rows)} rows; run python -m seed.generate_reference_data first")
-    for row in alias_rows:
-        skill = skill_by_name.get(row["skill_name"].strip().casefold())
-        if skill is None:
-            raise RuntimeError(f"Alias references unknown skill: {row['skill_name']}")
-        _ensure(db, SkillAlias, SkillAlias.alias == row["alias"].strip(), alias=row["alias"].strip(), skill_id=skill.id)
+    _load_skill_aliases(db, alias_rows, skill_by_name)
 
     digest = bcrypt.hashpw(DEMO_PASSWORD.encode(), bcrypt.gensalt()).decode()
     admin = _ensure(db, User, User.email == "admin@smartcareer.vn", email="admin@smartcareer.vn", password_hash=digest, role="admin", full_name="Quản trị SmartCareer")
@@ -168,7 +226,7 @@ def _load(db: Session, reset: bool) -> tuple[int, int, int, list[dict]]:
     candidates_by_external: dict[str, Candidate] = {}
     candidate_texts: list[str] = []
     candidate_rows: list[Candidate] = []
-    for profile in profiles:
+    for profile_index, profile in enumerate(profiles):
         profile_json = profile["profile_json"]
         is_demo = profile["candidate_id"] == "cand-demo-001"
         candidate = _ensure(db, Candidate, Candidate.external_id == profile["candidate_id"], external_id=profile["candidate_id"], user_id=demo_user.id if is_demo else None, full_name=profile_json["fullName"])
@@ -215,6 +273,8 @@ def _load(db: Session, reset: bool) -> tuple[int, int, int, list[dict]]:
         candidates_by_external[profile["candidate_id"]] = candidate
         candidate_rows.append(candidate)
         latest = db.scalar(select(Resume).where(Resume.candidate_id == candidate.id, Resume.is_active.is_(True)).order_by(Resume.created_at.desc()).limit(1))
+        if profile_index < 50 and latest is None:
+            latest = _ensure_profile_resume(db, candidate, profile)
         candidate_texts.append(latest.model_text if latest and latest.model_text else profile["text"] + "\n" + " ".join(profile["skills"]))
 
     db.flush()

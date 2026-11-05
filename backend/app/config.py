@@ -2,6 +2,13 @@
 from __future__ import annotations
 
 import os
+from pathlib import Path
+
+from dotenv import load_dotenv
+
+BACKEND_ROOT = Path(__file__).resolve().parents[1]
+load_dotenv(BACKEND_ROOT / ".env")
+load_dotenv(BACKEND_ROOT.parent / ".env")
 
 
 class Settings:
