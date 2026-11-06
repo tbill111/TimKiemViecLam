@@ -28,7 +28,7 @@ Gọi thư mục dự án (nhánh `fix/main-chuan-checklist`) là `<repo>`: clon
 | Kiểm tra BI | `python scripts\check_bi_views.py` |
 | Kiểm thử tự động | `cd backend` rồi `python -m pytest -q` |
 
-**Tài khoản** (mật khẩu chung `Demo@12345`; **gõ tay** email và mật khẩu ở trang `/login`):
+**Tài khoản** (mật khẩu chung `Demo@12345`; trang `/login` có 3 nút điền nhanh **Ứng viên / Nhà tuyển dụng / Quản trị** (điền `thanhtung.demo@`, `hr1@`, `admin@` và mật khẩu); `hr5` phải gõ tay):
 
 | Vai trò | Email |
 |---|---|
@@ -87,7 +87,7 @@ Gọi thư mục dự án (nhánh `fix/main-chuan-checklist`) là `<repo>`: clon
 
 | Bước | Thao tác chi tiết | Kết quả mong đợi |
 |---|---|---|
-| 1 | Mở http://localhost:8080/login → gõ `thanhtung.demo@smartcareer.vn` và `Demo@12345` → **Đăng nhập** | Vào trang **Tổng quan**. Dừng 3 giây |
+| 1 | Mở http://localhost:8080/login → bấm nút **Ứng viên** (điền sẵn email và mật khẩu) → **Đăng nhập** | Vào trang **Tổng quan**. Dừng 3 giây |
 | 2 | Menu trái → **Tìm việc làm**. **Chờ vài giây** cho điểm khớp tải xong | Hơn 100 tin, thẻ nào cũng có số %. Cuộn chậm 2–3 giây |
 | 3 | Bấm tiêu đề một tin → cửa sổ chi tiết | Thấy kỹ năng có / thiếu. Bấm **Esc** để đóng |
 | 4 | Menu → **Hồ sơ của tôi**, cuộn tới khung nhập kỹ năng từ CV | Có nút chọn tệp CV và ô đồng ý |

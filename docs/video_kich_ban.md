@@ -14,7 +14,7 @@ Video phải cho thấy 5 mục checklist theo thứ tự 01 → 05, dài khoả
 | Bảng so sánh mô hình | `docs\report\tables\model_comparison.csv`, `ndcg_bootstrap.csv`, `kappa.csv` |
 | Test case, báo cáo | `docs\testcases.md`, `docs\report\BaoCao_TH3.md` |
 
-**Tài khoản** (mật khẩu chung `Demo@12345`): ứng viên `thanhtung.demo@smartcareer.vn`; nhà tuyển dụng Sao Mai Software `hr1@smartcareer.vn`; nhà tuyển dụng công ty khác `hr5@smartcareer.vn`; quản trị `admin@smartcareer.vn`. Gõ tay email và mật khẩu ở trang `/login`.
+**Tài khoản** (mật khẩu chung `Demo@12345`): ứng viên `thanhtung.demo@smartcareer.vn`; nhà tuyển dụng Sao Mai Software `hr1@smartcareer.vn`; nhà tuyển dụng công ty khác `hr5@smartcareer.vn`; quản trị `admin@smartcareer.vn`. Trang `/login` có 3 nút điền nhanh Ứng viên / Nhà tuyển dụng / Quản trị (điền `thanhtung.demo@`, `hr1@`, `admin@`); `hr5` phải gõ tay.
 
 ## B. Chuẩn bị (trước khi quay 1 giờ)
 
