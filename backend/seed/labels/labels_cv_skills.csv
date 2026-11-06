@@ -1,0 +1,51 @@
+cv_file,skills,years_exp
+cv_001.pdf,HTML|CSS|JavaScript|React|Git|SQL|Python|Figma|Responsive Design,0.8
+cv_002.docx,Node.js|SQL|Git|Cloud (AWS/GCP)|Bảo mật ứng dụng|UML|Apache Spark|Windows Server,2.9
+cv_003.pdf,Phân tích nghiệp vụ|Excel|Tư duy logic|Giao tiếp|Viết tài liệu|Email Marketing|JavaScript|Office 365|CSS,0.25
+cv_004.pdf,Excel|UML|Giao tiếp|Viết tài liệu|Phân tích nghiệp vụ|Power BI,0.8
+cv_005.docx,Excel|Linux cơ bản|Python|ETL|Canva|UML,0.8
+cv_006.pdf,Tư duy sáng tạo|Viết nội dung|Excel|Mạng xã hội|Giao tiếp|Python|Storybook|Docker|Machine Learning cơ bản|Design System|Linux|UML,1.3
+cv_007.docx,TypeScript|CSS|React|HTML|Phân tích dữ liệu|SQL|Tư duy phân tích|Kafka|User Research|Git|Apache Spark,4.8
+cv_008.pdf,Giao tiếp|Kỹ thuật máy tính|Mạng cơ bản|Windows Server|Docker|PostgreSQL|ETL|Tư duy phân tích,4.8
+cv_009.pdf,Git|Kiểm thử phần mềm|Excel|Viết test case|Tư duy sáng tạo|Canva,0.4
+cv_010.docx,OOP|REST API|JavaScript|Git|SQL|Pandas,0
+cv_011.pdf,Figma|Nguyên lý UX|Tư duy sáng tạo|Thiết kế UI|Giao tiếp|Windows Server|Tableau,0.8
+cv_012.docx,Node.js|Git|REST API|JavaScript|SQL|Kiểm thử phần mềm,0.8
+cv_013.pdf,Phân tích nghiệp vụ|Viết tài liệu|Giao tiếp|Email Marketing|Prototyping|Tableau|Storybook|HTML/CSS cơ bản,2.9
+cv_014.pdf,SQL|Excel|Giao tiếp|Phân tích nghiệp vụ|Viết tài liệu|UML|Adobe XD|Active Directory|Zustand|Thiết kế UI,4.9
+cv_015.docx,SQL|Git|Python|Linux cơ bản|Excel|Thống kê cơ bản|Zustand|Windows Server|UML|Nguyên lý UX|Kiểm thử phần mềm,0.9
+cv_016.pdf,Excel|Viết nội dung|Giao tiếp|Thiết kế UI|Linux|CSS|Pandas|Active Directory,0.9
+cv_017.docx,HTML|TypeScript|Git|Kiểm thử phần mềm|Linux|Xử lý sự cố|Excel,1.8
+cv_018.pdf,Mạng cơ bản|Windows Server|Giao tiếp|Docker|React Query|Tư duy phân tích|REST API|Tư duy sáng tạo|Xử lý sự cố,0.25
+cv_019.pdf,Tư duy phân tích|Kiểm thử phần mềm|Viết test case|Excel|Git|Pandas,4.9
+cv_020.docx,REST API|SQL|OOP|JavaScript|Git|Agile/Scrum|Thiết kế API|Jest|HTML|Tableau|Phân tích dữ liệu,1.3
+cv_021.pdf,Thiết kế UI|Tư duy sáng tạo|Giao tiếp|Nguyên lý UX|Figma|Linux cơ bản,0.4
+cv_022.docx,REST API|JavaScript|Git|React Query|Node.js,4.8
+cv_023.pdf,Viết tài liệu|Tư duy logic|Giao tiếp|Excel|Phân tích nghiệp vụ|Mạng cơ bản|Virtualization|Design System|HTML|REST API|Postman,0.4
+cv_024.pdf,Viết tài liệu|Excel|UML|Giao tiếp|Phân tích nghiệp vụ|Facebook Ads|Apache Spark|Matplotlib|TypeScript nâng cao|OOP|Bảo mật ứng dụng|Kafka,1.3
+cv_025.docx,Thống kê cơ bản|ETL|Git|Python|Excel|Linux cơ bản|REST API|Jest|CSS|SQL|Adobe XD|Responsive Design,0.9
+cv_026.pdf,Excel|Giao tiếp|Tư duy sáng tạo|Mạng xã hội|Viết nội dung|Selenium|Machine Learning cơ bản|Linux|MongoDB|Tư duy logic|Thiết kế UI|Kỹ thuật máy tính,1.3
+cv_027.docx,TypeScript|CSS|REST API|HTML|Git|JavaScript|Virtualization|Tableau|Python|AWS cơ bản,0.9
+cv_028.pdf,Xử lý sự cố|Windows Server|Giao tiếp|Mạng cơ bản|Office 365|Power BI|Pandas|Python|Email Marketing|Selenium|Cloud (AWS/GCP)|Tư duy logic,0
+cv_029.pdf,Viết test case|Excel|Git|Tư duy phân tích|Kiểm thử phần mềm|REST API|Kỹ thuật máy tính|Apache Spark|Tailwind CSS,0
+cv_030.docx,OOP|SQL|JavaScript|Tableau|Bảo mật ứng dụng|Viết nội dung|HTML,3.8
+cv_031.pdf,Giao tiếp|Tư duy sáng tạo|Nguyên lý UX|Figma|Thiết kế UI|CSS|Mạng xã hội|Cloud (AWS/GCP),0
+cv_032.docx,SQL|REST API|Git|Node.js|JavaScript|Tư duy sáng tạo|Linux cơ bản,4.8
+cv_033.pdf,Viết tài liệu|Giao tiếp|Excel|Phân tích nghiệp vụ|Tư duy logic|Google Analytics|Thiết kế API|JavaScript|Phân tích dữ liệu|Linux cơ bản,1.9
+cv_034.pdf,UML|SQL|Viết tài liệu|Giao tiếp|Excel|Phân tích nghiệp vụ,0.25
+cv_035.docx,ETL|Thống kê cơ bản|Excel|Git|Python|Agile/Scrum|Facebook Ads|Nghiệp vụ ngân hàng,0.25
+cv_036.pdf,Mạng xã hội|Tư duy sáng tạo|Viết nội dung|Giao tiếp|Excel|MongoDB|AWS cơ bản,0
+cv_037.docx,CSS|HTML|JavaScript|React|TypeScript|Postman,3.9
+cv_038.pdf,Giao tiếp|Windows Server|Mạng cơ bản|Xử lý sự cố|Kỹ thuật máy tính|Nghiệp vụ ngân hàng|React Query|Nguyên lý UX|Viết nội dung|Agile/Scrum|CI/CD|HTML,0.8
+cv_039.pdf,Git|Excel|Viết test case|Kiểm thử phần mềm|Tư duy phân tích|Matplotlib|Storybook|Airflow|JavaScript,1.3
+cv_040.docx,SQL|Git|REST API|Responsive Design|CSS|Storybook|Matplotlib|Power BI|Kỹ thuật máy tính,4.8
+cv_041.pdf,Giao tiếp|Figma|Thiết kế UI|Nguyên lý UX|Facebook Ads,3.9
+cv_042.docx,SQL|Git|REST API|Node.js|JavaScript|React|TypeScript nâng cao|Matplotlib|Quản lý dự án|Viết nội dung,0
+cv_043.pdf,Viết tài liệu|Tư duy logic|Giao tiếp|Excel|AWS cơ bản|HTML/CSS cơ bản|Linux cơ bản|User Research|Cloud (AWS/GCP)|Matplotlib|React Query|Tailwind CSS,0.25
+cv_044.pdf,Viết tài liệu|Phân tích nghiệp vụ|SQL|Machine Learning cơ bản|Thống kê cơ bản|Kỹ thuật máy tính|Quản lý dự án|Tableau|Storybook|Jest|SEO cơ bản|Confluence,2.9
+cv_045.docx,Linux cơ bản|Python|Thống kê cơ bản|Git|ETL|Excel|Tailwind CSS|Node.js|Figma|JavaScript|Xử lý sự cố,2.9
+cv_046.pdf,Viết nội dung|Mạng xã hội|Tư duy sáng tạo|Excel|Giao tiếp|Bảo mật ứng dụng|Tư duy phân tích|Storybook|Facebook Ads|Docker|REST API|ETL,0.25
+cv_047.docx,Git|HTML|CSS|Google Analytics|Active Directory|Prototyping|Adobe XD|Viết test case|Python,0.4
+cv_048.pdf,Giao tiếp|Xử lý sự cố|Mạng cơ bản|Kỹ thuật máy tính|Excel|Apache Spark|Postman,0.9
+cv_049.pdf,Kiểm thử phần mềm|Excel|Viết test case|Tư duy phân tích|Kafka|SEO cơ bản|MongoDB|Giao tiếp|PostgreSQL|Tailwind CSS|Bảo mật ứng dụng,0.9
+cv_050.docx,OOP|REST API|SQL|Zustand|Pandas|HTML|CSS|Figma|Kafka,0.4

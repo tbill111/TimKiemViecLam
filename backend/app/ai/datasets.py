@@ -30,6 +30,16 @@ def read_csv(path: Path) -> list[dict[str, str]]:
         return list(csv.DictReader(f))
 
 
+def default_jobs_path(data_dir: Path, min_rows: int = 100) -> Path:
+    """Tệp tin tuyển dụng đầy đủ: `jobs_seed.csv` (150 tin do seed sinh) nếu có đủ dòng, ngược lại `jobs.csv`.
+
+    `jobs.csv` trong repo chỉ là tệp mẫu vài dòng; đánh giá mô hình phải dùng đúng bộ tin của cơ sở dữ liệu."""
+    seed_file = Path(data_dir) / "jobs_seed.csv"
+    if seed_file.exists() and len(read_csv(seed_file)) >= min_rows:
+        return seed_file
+    return Path(data_dir) / "jobs.csv"
+
+
 def work_type_label(job_type: str, work_mode: str) -> str:
     """Cùng quy tắc với adapter frontend: làm việc từ xa → 'Remote', còn lại theo loại hình."""
     return "Remote" if work_mode == "remote" else WORK_TYPE_LABEL.get(job_type, "")
