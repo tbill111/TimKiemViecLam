@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="vi"><head><meta charset="utf-8"><title>TH3 – Checklist</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#eef3fb;font-family:Inter,"Segoe UI",Arial,sans-serif;color:#1e2b45;height:100vh;display:flex;align-items:center;justify-content:center}
+.card{width:100%;height:100vh;background:#f4f7fc;border-top:6px solid #6a86b4;padding:34px 36px;overflow:hidden;display:flex;flex-direction:column}
+.tag{font-size:13px;font-weight:600;background:#e6ecf5;border-radius:999px;padding:4px 12px;align-self:flex-start}
+h1{font-size:30px;margin:16px 0 10px;line-height:1.25}
+.desc{font-size:15px;line-height:1.55;color:#3b4a66;margin-bottom:18px}
+.sub{font-size:13px;color:#6b7a96;margin:0 0 10px}
+.item{display:flex;gap:14px;align-items:flex-start;padding:14px 14px;margin-bottom:8px;border-radius:12px;border:2px solid transparent;font-size:16px;line-height:1.45;color:#44516b;transition:.2s}
+.item b{font-size:15px;color:#7a88a3;min-width:24px}
+.item.active{background:#fff;border-color:#2563eb;box-shadow:0 6px 18px rgba(37,99,235,.18);color:#0f1d3a}
+.item.active b{color:#2563eb}
+.item.done{opacity:.55}
+.meta{margin-top:auto;font-size:13px;color:#6b7a96;display:flex;gap:24px;flex-wrap:wrap;border-top:1px solid #dbe3f0;padding-top:12px}
+</style></head><body>
+<div class="card">
+  <span class="tag">Nhiệm vụ theo nhóm</span>
+  <h1>TH3 – Xây dựng Hệ thống Tìm việc Thông minh tích hợp AI và BI</h1>
+  <div class="desc">Nền tảng kết nối tuyển dụng dùng AI để khớp kỹ năng ứng viên với yêu cầu công việc (Matching Score), kèm BI phân tích thị trường lao động cho nhà tuyển dụng.</div>
+  <p class="sub">Checklist · 5 mục — phím <b>1–5</b> chọn mục đang demo, <b>0</b> bỏ chọn</p>
+  <div class="item" data-n="1"><b>01</b><span>Phân tích yêu cầu hệ thống và thiết kế cơ sở dữ liệu cho ứng viên, nhà tuyển dụng và tin tuyển dụng.</span></div>
+  <div class="item" data-n="2"><b>02</b><span>Xây dựng mô hình AI/Machine Learning để phân tích CV và tính toán điểm tương thích với mô tả công việc (Job Description).</span></div>
+  <div class="item" data-n="3"><b>03</b><span>Thiết kế Dashboard BI để trực quan hóa các chỉ số như: số lượng ứng viên theo kỹ năng, xu hướng lương và tỷ lệ chuyển đổi tuyển dụng.</span></div>
+  <div class="item" data-n="4"><b>04</b><span>Phát triển giao diện người dùng (Frontend) và tích hợp các API xử lý AI/BI vào hệ thống.</span></div>
+  <div class="item" data-n="5"><b>05</b><span>Kiểm thử hệ thống với tập dữ liệu mẫu và viết báo cáo đánh giá hiệu quả của mô hình gợi ý.</span></div>
+  <div class="meta"><span>Nhóm 3</span><span>Dữ liệu là mô phỏng</span><span>Nhãn đánh giá do agent AI gán</span></div>
+</div>
+<script>
+function set(n){document.querySelectorAll('.item').forEach(e=>{const k=+e.dataset.n;e.classList.toggle('active',k===n);e.classList.toggle('done',n>0&&k<n)});history.replaceState(null,'','#'+n)}
+addEventListener('keydown',e=>{if(e.key>='0'&&e.key<='5')set(+e.key)});
+set(+(location.hash.slice(1)||0));
+</script></body></html>
