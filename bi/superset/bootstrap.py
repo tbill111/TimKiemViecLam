@@ -14,6 +14,7 @@ import argparse
 import json
 import re
 import sys
+import time
 from pathlib import Path
 
 import httpx
@@ -30,6 +31,22 @@ def simple(col: str, agg: str, label: str) -> dict:
 
 def sql(expr: str, label: str) -> dict:
     return {"expressionType": "SQL", "sqlExpression": expr, "label": label}
+
+
+FILTERS = [("Cấp bậc", "v_salary", "level"), ("Địa điểm", "v_salary", "location"), ("Nhóm nghề", "v_salary", "category"),
+           ("Nhóm kỹ năng", "v_skill_supply_demand", "category")]
+
+
+def native_filters(ds: dict[str, int]) -> list[dict]:
+    """Bộ lọc chung (Native Filter, loại chọn nhiều giá trị) áp cho các biểu đồ dùng cùng dataset."""
+    out = []
+    for n, (name, view, column) in enumerate(FILTERS, start=1):
+        out.append({"id": f"NATIVE_FILTER-sc{n}", "name": name, "filterType": "filter_select", "type": "NATIVE_FILTER", "description": "",
+                    "targets": [{"datasetId": ds[view], "column": {"name": column}}], "cascadeParentIds": [],
+                    "scope": {"rootPath": ["ROOT_ID"], "excluded": []},
+                    "controlValues": {"enableEmptyFilter": False, "defaultToFirstItem": False, "multiSelect": True, "searchAllOptions": False, "inverseSelection": False},
+                    "defaultDataMask": {"extraFormData": {}, "filterState": {}, "ownState": {}}})
+    return out
 
 
 def charts() -> list[dict]:
@@ -50,6 +67,12 @@ def charts() -> list[dict]:
          "params": {"x_axis": "posted_month", "time_grain_sqla": "P1M",
                     "metrics": [sql("SUM((average_salary_min + average_salary_max) / 2 * job_count) / NULLIF(SUM(job_count), 0)", "Lương TB (triệu VNĐ/tháng)")],
                     "groupby": ["level"], **common}},
+        {"name": "5. Lương trung bình theo địa điểm", "viz": "echarts_timeseries_bar", "view": "v_salary", "w": 6,
+         "params": {"x_axis": "location", "metrics": [sql("SUM((average_salary_min + average_salary_max) / 2 * job_count) / NULLIF(SUM(job_count), 0)", "Lương TB (triệu VNĐ/tháng)")],
+                    "groupby": [], "orientation": "vertical", "x_axis_sort": "Lương TB (triệu VNĐ/tháng)", "x_axis_sort_asc": False, **{**common, "row_limit": 20}}},
+        {"name": "7. Số tin đang mở theo nhóm nghề", "viz": "echarts_timeseries_bar", "view": "v_salary", "w": 12,
+         "params": {"x_axis": "category", "metrics": [simple("job_count", "SUM", "Số tin đang mở")], "groupby": [], "orientation": "vertical",
+                    "x_axis_sort": "Số tin đang mở", "x_axis_sort_asc": False, **{**common, "row_limit": 20}}},
         {"name": "6. Phễu tuyển dụng", "viz": "funnel", "view": "v_funnel_stages", "w": 6,
          "params": {"groupby": ["stage"], "metric": simple("applications", "SUM", "Số hồ sơ từng đạt bước"), "sort_by_metric": True, "show_labels": True,
                     "adhoc_filters": [{"expressionType": "SIMPLE", "clause": "WHERE", "subject": "stage", "operator": "!=", "comparator": "rejected"}],
@@ -61,7 +84,10 @@ class Superset:
     def __init__(self, base: str, user: str, password: str):
         self.c = httpx.Client(base_url=base, timeout=60, follow_redirects=True)
         # Superset 4.1: một số API ghi (dashboard, chart) cần người dùng từ phiên đăng nhập (cookie), ngoài Bearer
-        self.c.post("/login/", data={"username": user, "password": password}).raise_for_status()
+        page = self.c.get("/login/")
+        page.raise_for_status()
+        token = re.search(r'name="csrf_token"[^>]*value="([^"]+)"', page.text)  # form đăng nhập cũng cần CSRF
+        self.c.post("/login/", data={"username": user, "password": password, **({"csrf_token": token.group(1)} if token else {})}).raise_for_status()
         r = self.c.post("/api/v1/security/login", json={"username": user, "password": password, "provider": "db", "refresh": True})
         r.raise_for_status()
         self.c.headers["Authorization"] = f"Bearer {r.json()['access_token']}"
@@ -119,12 +145,28 @@ def main() -> int:
     ap.add_argument("--url", default="http://localhost:8088")
     ap.add_argument("--user", default="admin")
     ap.add_argument("--password", default="admin_demo_password", help="SUPERSET_ADMIN_PASSWORD trong .env")
-    ap.add_argument("--domains", default="http://localhost:8080,http://localhost:5173", help="các nguồn được phép nhúng dashboard (CSP frame-ancestors)")
+    ap.add_argument("--domains", default="http://localhost:8080,http://localhost:5173,http://localhost:8180", help="các nguồn được phép nhúng dashboard (CSP frame-ancestors)")
     ap.add_argument("--write-env", type=Path, default=None)
+    ap.add_argument("--write-json", type=Path, default=None, help="ghi ba giá trị trên ra tệp JSON để api đọc (dịch vụ bi-init dùng)")
+    ap.add_argument("--wait", type=int, default=0, help="chờ tối đa N giây cho Superset và các view sẵn sàng")
     ap.add_argument("--export-zip", type=Path, default=None, help="xuất dashboard ra tệp .zip (nhập lại được bằng Superset: Dashboards → Import)")
     args = ap.parse_args()
 
-    s = Superset(args.url, args.user, args.password)
+    deadline = time.time() + args.wait
+    while True:
+        try:
+            s = Superset(args.url, args.user, args.password)
+            if s.find("/api/v1/database/", "database_name", DB_NAME) is not None:
+                break
+        except Exception as error:  # noqa: BLE001 - Superset còn đang khởi động
+            if time.time() > deadline:
+                raise
+            print(f"chờ Superset: {type(error).__name__}")
+        else:
+            print(f"chưa thấy kết nối '{DB_NAME}', thử lại")
+        if time.time() > deadline:
+            break
+        time.sleep(5)
 
     db_id = s.find("/api/v1/database/", "database_name", DB_NAME)
     if db_id is None:
@@ -144,7 +186,11 @@ def main() -> int:
     print(f"dashboard id={dash_id}")
 
     placed: list[tuple[int, str, int]] = []
-    for spec in charts():
+    specs = charts()
+
+    order = {"1.": 0, "1b": 1, "2.": 2, "3.": 3, "4.": 4, "5.": 5, "6.": 6, "7.": 7}
+    specs.sort(key=lambda c: order[c["name"][:2]])
+    for spec in specs:
         ds_id = ds[spec["view"]]
         existing = s.find("/api/v1/chart/", "slice_name", spec["name"])
         params = {"viz_type": spec["viz"], "datasource": f"{ds_id}__table", **spec["params"]}
@@ -158,7 +204,7 @@ def main() -> int:
         print(f"chart {spec['name']} id={existing}")
 
     s.call("PUT", f"/api/v1/dashboard/{dash_id}", json={"position_json": json.dumps(position(placed)), "published": True,
-                                                         "json_metadata": json.dumps({"refresh_frequency": 0})})
+                                                         "json_metadata": json.dumps({"refresh_frequency": 0, "native_filter_configuration": native_filters(ds)})})
     emb = s.call("POST", f"/api/v1/dashboard/{dash_id}/embedded", json={"allowed_domains": [d for d in args.domains.split(",") if d]})
     uuid = emb["result"]["uuid"]
     values = {"SUPERSET_DASHBOARD_ID": uuid, "SUPERSET_FUNNEL_DATASET_ID": str(ds["v_funnel"]),
@@ -170,6 +216,10 @@ def main() -> int:
         args.export_zip.parent.mkdir(parents=True, exist_ok=True)
         args.export_zip.write_bytes(r.content)
         print(f"Đã xuất {args.export_zip} ({len(r.content)} byte)")
+    if args.write_json:
+        args.write_json.parent.mkdir(parents=True, exist_ok=True)
+        args.write_json.write_text(json.dumps(values, indent=2), encoding="utf-8")
+        print(f"Đã ghi {args.write_json}")
     if args.write_env:
         set_env(args.write_env, values)
         print(f"Đã cập nhật {args.write_env}; chạy `docker compose up -d api` để api nhận biến mới.")

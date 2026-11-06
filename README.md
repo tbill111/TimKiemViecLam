@@ -10,11 +10,9 @@ Yêu cầu Docker Desktop với Docker Compose v2. Tạo `.env` từ file mẫu,
 Copy-Item .env.example .env
 docker compose up -d --build
 docker compose exec api python -m seed.load_seed --reset
-python bi/superset/bootstrap.py --url http://localhost:8088 --password admin_demo_password --write-env .env
-docker compose up -d api
 ```
 
-Dòng `bootstrap.py` dựng dashboard Superset "Thị trường tuyển dụng", bật nhúng và ghi ba biến `SUPERSET_*` vào `.env` (chi tiết: `docs/02_HUONG_DAN_SUPERSET.md`). Bỏ qua bước này thì trang nhà tuyển dụng vẫn chạy bằng biểu đồ dự phòng.
+Dịch vụ một lần `bi-init` tự dựng dashboard Superset "Thị trường tuyển dụng" (8 biểu đồ, 4 bộ lọc), bật nhúng và ghi ID vào volume `bi_state` để api đọc; không cần sửa `.env` (chi tiết: `docs/02_HUONG_DAN_SUPERSET.md`). Lỗi `bi-init` thì trang nhà tuyển dụng vẫn chạy bằng biểu đồ dự phòng. Nếu đổi cổng web, đặt `BI_EMBED_DOMAINS` (nguồn được phép nhúng) trong `.env`.
 
 Image API chạy Python 3.11, cài CPU PyTorch, tải trước model `paraphrase-multilingual-MiniLM-L12-v2`, đặt `HF_HUB_OFFLINE=1`, nâng migration rồi chạy API.
 

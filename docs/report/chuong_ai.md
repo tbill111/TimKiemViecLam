@@ -82,7 +82,7 @@ M4–M6 dùng cùng 6 đặc trưng, cùng nhãn nhị phân "phù hợp" (nhãn
 - **Embedding tính sẵn khi lưu** (CV, tin và hồ sơ chưa có CV; cột `embedding BYTEA`). Nếu để đến lúc chấm mới mã hoá thì mỗi cặp tốn khoảng 400 ms, vượt yêu cầu.
 - **Chấm theo lô:** `score_many` dự đoán cả lô tin bằng một lần `predict_proba` cho M4–M6; gọi từng cặp một với Random Forest chậm hơn nhiều (lấy điểm 150 tin mất 4,3 giây trước khi sửa).
 - **Hiệu năng đo qua HTTP** trên PostgreSQL 16 và model embedding thật trong Docker (kết nối giữ sẵn, `main` build từ nhánh sửa): trung vị / p95 (ms) – chấm 1 cặp CV–JD bằng M0…M6: 59/62, 62/64, 55/57, 56/58, 55/59, 68/72, 55/56 (gồm lưu `match_results`); `GET /candidates/me/matches` chấm cả 150 tin: 219/227; gợi ý việc làm: 275/317; skill gap: 14/15; xếp hạng ứng viên cho một tin: 32/32; trích kỹ năng từ văn bản: 51/55; phễu BI: 6/8; cấp guest token Superset: 367/404. Tất cả dưới 1 giây; đo 8–15 lần mỗi API trên máy phát triển (Docker Desktop, Windows), không phải số liệu production.
-- **Kiểm thử tự động:** `cd backend && python -m pytest` → **208 test đạt** trên PostgreSQL 16 (60 giây), gồm test parser, 6 đặc trưng, M0–M6, notebook smoke, migration trên CSDL trống (kể cả nâng cấp từ 0006 lên 0007 cho phép m5/m6), seed có 50 file CV. Kiểm thử qua HTTP/trình duyệt: `scripts/run_testcases.py` 10/10 ca đạt; `scripts/check_bi_views.py` 4/4 view khớp API; `scripts/e2e_ui.py` online 16/16 và offline 19/19 bước đạt.
+- **Kiểm thử tự động:** `cd backend && python -m pytest` → **210 test đạt** trên PostgreSQL 16 (60 giây), gồm test parser, 6 đặc trưng, M0–M6, notebook smoke, migration trên CSDL trống (kể cả nâng cấp từ 0006 lên 0007 cho phép m5/m6), seed có 50 file CV. Kiểm thử qua HTTP/trình duyệt: `scripts/run_testcases.py` 10/10 ca đạt; `scripts/check_bi_views.py` 4/4 view khớp API; `scripts/e2e_ui.py` online 16/16 và offline 19/19 bước đạt.
 
 ## 8. Đánh giá hiệu quả mô hình
 
@@ -108,7 +108,7 @@ MAE số năm kinh nghiệm = 0,118. Tầng 2 nâng recall (bắt lỗi gõ), t�
 | M2 embedding | 0,720 | 0,945 | 0,857 | 0,792 | 0,929 | 0,14 |
 | M3 hybrid | 0,740 | **0,995** | 1,000 | 0,893 | 0,980 | 0,15 |
 | M4 Logistic Regression | 0,740 | 0,994 | 1,000 | **0,895** | 0,981 | — |
-| M5 Random Forest | 0,740 | 0,993 | 1,000 | 0,865 | 0,990 | — |
+| M5 Random Forest | 0,740 | 0,992 | 1,000 | 0,865 | 0,990 | — |
 | M6 Gradient Boosting | 0,740 | 0,989 | 1,000 | 0,809 | **0,990** | — |
 
 **Khoảng tin cậy 95% bằng bootstrap theo ứng viên** (500 lần resample cả ứng viên; `ndcg_bootstrap.csv`):
@@ -120,7 +120,7 @@ MAE số năm kinh nghiệm = 0,118. Tầng 2 nâng recall (bắt lỗi gõ), t�
 | M2 | 0,945 | 0,919 – 0,966 | −0,050 | −0,073 đến −0,030 | **Có** (kém hơn) |
 | M3 | 0,995 | 0,991 – 0,997 | — | — | — |
 | M4 | 0,994 | 0,988 – 0,999 | −0,001 | −0,004 đến +0,002 | Không (khoảng chứa 0) |
-| M5 | 0,993 | 0,987 – 0,996 | −0,002 | −0,006 đến +0,001 | Không |
+| M5 | 0,992 | 0,987 – 0,996 | −0,002 | −0,006 đến +0,001 | Không |
 | M6 | 0,989 | 0,983 – 0,993 | −0,006 | −0,012 đến −0,001 | **Có** (kém hơn nhẹ) |
 
 Nhận xét:

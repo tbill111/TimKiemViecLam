@@ -73,7 +73,7 @@ React 19, Vite, TypeScript (`erasableSyntaxOnly`, `verbatimModuleSyntax`), Tailw
 
 ![Kanban](figures/ui_10_kanban.png)
 
-**Dashboard** hiển thị bốn số tổng quan và ba biểu đồ (cung – cầu kỹ năng, xu hướng lương, phễu tuyển dụng); xem chi tiết và số liệu ở chương BI. Khi đã dựng dashboard (`bi/superset/bootstrap.py`), phần trên là dashboard Superset nhúng (6 biểu đồ, giới hạn theo công ty bằng RLS) và phần dưới là biểu đồ dự phòng Recharts. Khi Superset chưa cấu hình, trang chỉ dùng biểu đồ dự phòng và ghi chú rõ; lỗi của từng nguồn dữ liệu chỉ ảnh hưởng đúng khối của nó.
+**Dashboard** hiển thị bốn số tổng quan và ba biểu đồ (cung – cầu kỹ năng, xu hướng lương, phễu tuyển dụng); xem chi tiết và số liệu ở chương BI. Khi đã dựng dashboard (`bi/superset/bootstrap.py`), phần trên là dashboard Superset nhúng (8 biểu đồ và 4 bộ lọc, giới hạn theo công ty bằng RLS) và phần dưới là biểu đồ dự phòng Recharts. Khi Superset chưa cấu hình, trang chỉ dùng biểu đồ dự phòng và ghi chú rõ; lỗi của từng nguồn dữ liệu chỉ ảnh hưởng đúng khối của nó.
 
 ![Dashboard nhà tuyển dụng](figures/ui_11_dashboard_bi.png)
 

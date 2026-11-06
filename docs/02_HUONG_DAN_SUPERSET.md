@@ -3,15 +3,15 @@
 ## 0. Cách nhanh (khuyến nghị): dựng dashboard "Thị trường tuyển dụng" bằng script
 
 Dashboard dùng cho trang nhà tuyển dụng (nhúng bằng guest token, RLS theo công ty) được dựng tự động trên bốn view `v_*`
-(`v_skill_supply_demand`, `v_salary`, `v_funnel`, `v_funnel_stages`). Sau khi `docker compose up -d --build` và seed:
+(`v_skill_supply_demand`, `v_salary`, `v_funnel`, `v_funnel_stages`). `docker compose up -d --build` đã tự làm việc này qua dịch vụ một lần `bi-init` (kết quả ghi vào volume `bi_state`, api đọc từ đó, không cần sửa `.env`). Chạy tay khi muốn dựng lại hoặc xuất zip:
 
 ```bash
 python bi/superset/bootstrap.py --url http://localhost:8088 --password <SUPERSET_ADMIN_PASSWORD> --write-env .env --export-zip bi/superset/dashboard_export.zip
 docker compose up -d api    # api nhận SUPERSET_DASHBOARD_ID và hai SUPERSET_*_DATASET_ID mới
 ```
 
-Script chạy lặp lại không tạo trùng; tạo 6 biểu đồ (hồ sơ đã nộp, tỷ lệ được tuyển, top 15 kỹ năng theo số ứng viên, cung so với cầu, lương trung bình theo tháng và cấp bậc, phễu tuyển dụng), bật nhúng và ghi ba biến vào `.env`. Cấu hình Superset (`bi/superset/superset_config.py`) cho role `Public` quyền đọc như Gamma (`PUBLIC_ROLE_LIKE`); thiếu cấu hình này dashboard nhúng báo 403. Muốn nhập dashboard có sẵn thay vì dựng bằng script: Superset → Dashboards → Import → `bi/superset/dashboard_export.zip` (khi đó phải tự lấy UUID nhúng và ID dataset).
-Kiểm số liệu: `python scripts/check_bi_views.py --api-base http://localhost:8000/api`. Chưa có Native Filter; thêm bằng giao diện nếu cần.
+Script chạy lặp lại không tạo trùng; tạo 8 biểu đồ (hồ sơ đã nộp, tỷ lệ được tuyển, top 15 kỹ năng theo số ứng viên, cung so với cầu, lương theo tháng và cấp bậc, lương theo địa điểm, phễu tuyển dụng, số tin theo nhóm nghề) và 4 Native Filter, bật nhúng và ghi ba biến vào `.env`. Cấu hình Superset (`bi/superset/superset_config.py`) cho role `Public` quyền đọc như Gamma (`PUBLIC_ROLE_LIKE`); thiếu cấu hình này dashboard nhúng báo 403. Muốn nhập dashboard có sẵn thay vì dựng bằng script: Superset → Dashboards → Import → `bi/superset/dashboard_export.zip` (khi đó phải tự lấy UUID nhúng và ID dataset).
+Kiểm số liệu: `python scripts/check_bi_views.py --api-base http://localhost:8000/api`.
 
 Các mục 1–5 dưới đây là hướng dẫn **dựng tay** ba biểu đồ phụ trên view `vw_*` (không bắt buộc).
 

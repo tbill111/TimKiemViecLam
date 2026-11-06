@@ -1,7 +1,7 @@
 # Bảng test case (≥ 25) theo F01–F10
 
 **Cách đọc cột "Kết quả thực tế".**
-- **Đạt (tự động)**: ca được pytest kiểm và xanh. Lần chạy ghi nhận: `cd backend && TEST_DATABASE_URL=postgresql+psycopg://… python -m pytest` → **208 passed** (PostgreSQL 16, 60 giây).
+- **Đạt (tự động)**: ca được pytest kiểm và xanh. Lần chạy ghi nhận: `cd backend && TEST_DATABASE_URL=postgresql+psycopg://… python -m pytest` → **210 passed** (PostgreSQL 16, 60 giây).
 - **Đạt (`run_testcases.py` / `e2e_ui.py` / `check_bi_views.py`)**: ca chạy qua HTTP hoặc trình duyệt trên stack Docker dựng từ nhánh này sau `load_seed --reset`; không ghi *Đạt* khi chưa chạy.
 
 | Mã | F | Mô tả / bước | Dữ liệu vào | Kết quả mong đợi | Cách kiểm | Kết quả thực tế |
@@ -37,7 +37,7 @@
 | TC29 | F10 | Quản trị danh mục | admin thêm kỹ năng, thêm/xóa alias | `reactjs` → React có hiệu lực ở `/ai/extract-skills`; xóa thì hết hiệu lực; ứng viên → 403 | Thủ công trên `/admin/skills` | Đạt (`run_testcases.py`: ứng viên 403; thêm alias 201 và nhận ra React; xoá 204 và hết hiệu lực) |
 | TC30 | NFR | Hiệu năng | 1 cặp; 500 tin | < 200 ms; < 2 s | `test_performance_500_jobs_under_two_seconds`; đo qua HTTP trên stack thật (model embedding thật) | Đạt (1 cặp M0–M6: 55–72 ms trung vị; chấm 150 tin 219 ms; 500 tin tự động < 2 s) |
 | TC31 | NFR | Chế độ demo không backend | `VITE_OFFLINE_DEMO=true npm run dev` | các màn ứng viên chạy bằng dữ liệu mẫu, không gọi API | Thủ công | Đạt (`scripts/e2e_ui.py --offline`: 19/19 bước, 0 lời gọi API) |
-| TC32 | NFR | `docker compose up` trên máy sạch | `.env` từ `.env.example` | 4 dịch vụ chạy; vào được http://localhost:8080 và đăng nhập | Thủ công | Đạt (`docker compose -p fxmain up --build` trên volume mới: db, api, superset, web đều chạy; `alembic upgrade head` tự chạy khi api khởi động; đăng nhập qua giao diện) |
+| TC32 | NFR | `docker compose up` trên máy sạch | `.env` từ `.env.example` | 4 dịch vụ chạy; vào được http://localhost:8080 và đăng nhập | Thủ công | Đạt (`docker compose -p fxmain up --build` trên volume mới (06/11/2026, kèm dịch vụ `bi-init` tự dựng dashboard): db, api, superset, web đều chạy; `alembic upgrade head` tự chạy khi api khởi động; đăng nhập qua giao diện) |
 | TC33 | NFR | Parser CV: alias, lỗi gõ, năm kinh nghiệm, học vấn | các CV mẫu trong test | đúng kỳ vọng từng tầng | `tests/ai/test_extract.py`, `test_parser_text.py` | Đạt (tự động) |
 
 Tổng: 33 ca; **33 ca đạt** (20 bằng pytest, 13 qua `run_testcases.py`, `e2e_ui.py`, `check_bi_views.py` và `docker compose` trên stack thật). Chưa có ca nào ở trạng thái "Chưa chạy". Hạn chế: TC08, TC15, TC19, TC20, TC25 được pytest kiểm bằng kho giả; kiểu dữ liệu thật đã được các ca qua HTTP phủ gián tiếp (TC10, TC27).

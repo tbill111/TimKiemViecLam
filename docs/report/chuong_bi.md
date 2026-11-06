@@ -35,7 +35,7 @@ Phễu đếm theo **lịch sử trạng thái** (`application_status_history`),
 
 ## 4. Biểu đồ và số liệu
 
-Dashboard **"Thị trường tuyển dụng"** trên Apache Superset gồm 6 biểu đồ dựng từ bốn view `v_*`: thẻ số "Hồ sơ đã nộp" và "Tỷ lệ được tuyển" (từ `v_funnel`); **biểu đồ 2** Top 15 kỹ năng theo số ứng viên và **biểu đồ 3** cung so với cầu theo kỹ năng (từ `v_skill_supply_demand`); **biểu đồ 4** lương trung bình theo tháng và cấp bậc (từ `v_salary`); **biểu đồ 6** phễu tuyển dụng (từ `v_funnel_stages`, không tính bước từ chối). Dashboard được nhúng vào trang `/employer/dashboard` bằng `@superset-ui/embedded-sdk` và guest token do `GET /api/bi/guest-token` cấp. Khi Superset chưa sẵn sàng, giao diện tự hiển thị các biểu đồ dự phòng (Recharts) lấy từ `/api/bi/*` và ghi chú rõ như vậy.
+Dashboard **"Thị trường tuyển dụng"** trên Apache Superset gồm 8 biểu đồ (6 loại, trong đó 2 thẻ số) và 4 bộ lọc chung dựng từ bốn view `v_*`: thẻ số "Hồ sơ đã nộp" và "Tỷ lệ được tuyển" (từ `v_funnel`); **biểu đồ 2** Top 15 kỹ năng theo số ứng viên và **biểu đồ 3** cung so với cầu theo kỹ năng (từ `v_skill_supply_demand`); **biểu đồ 4** lương trung bình theo tháng và cấp bậc (từ `v_salary`); **biểu đồ 5** lương trung bình theo địa điểm và **biểu đồ 7** số tin đang mở theo nhóm nghề (từ `v_salary`); **biểu đồ 6** phễu tuyển dụng (từ `v_funnel_stages`, không tính bước từ chối). Bốn Native Filter chọn nhiều giá trị: Cấp bậc, Địa điểm, Nhóm nghề (áp cho các biểu đồ lương), Nhóm kỹ năng (áp cho biểu đồ kỹ năng); ảnh `figures/ui_13_dashboard_bo_loc.png`. Dashboard được nhúng vào trang `/employer/dashboard` bằng `@superset-ui/embedded-sdk` và guest token do `GET /api/bi/guest-token` cấp. Khi Superset chưa sẵn sàng, giao diện tự hiển thị các biểu đồ dự phòng (Recharts) lấy từ `/api/bi/*` và ghi chú rõ như vậy.
 
 ![Dashboard nhà tuyển dụng (Superset nhúng)](figures/ui_11_dashboard_bi.png)
 
@@ -58,15 +58,16 @@ Số liệu trên dữ liệu mô phỏng (150 tin đang mở, 300 ứng viên, 
 
 **Dựng:** sau `docker compose up -d`, chạy
 
+`docker compose up -d --build` tự chạy dịch vụ một lần `bi-init` (chạy `bootstrap.py --wait 300 --write-json /bi_state/superset.json`); `api` đọc ba giá trị từ volume `bi_state` nên **không cần sửa `.env`**. Chạy tay nếu muốn xuất lại zip:
+
 ```bash
-python bi/superset/bootstrap.py --url http://localhost:8088 --password <SUPERSET_ADMIN_PASSWORD> --write-env .env --export-zip bi/superset/dashboard_export.zip
-docker compose up -d api      # api nhận SUPERSET_DASHBOARD_ID và hai id dataset RLS vừa ghi vào .env
+python bi/superset/bootstrap.py --url http://localhost:8088 --password <SUPERSET_ADMIN_PASSWORD> --export-zip bi/superset/dashboard_export.zip
 ```
 
-Script dùng kết nối `SmartCareer` do `init.sh` tạo (role chỉ đọc `bi_reader`; Superset lưu mật khẩu đã mã hoá, URI hiển thị `XXXXXXXXXX`), tạo 4 dataset, 6 biểu đồ, dashboard, bật nhúng và chạy lặp lại không tạo trùng. Một số API ghi của Superset 4.1 cần cả phiên đăng nhập (cookie), token Bearer và token CSRF; script xử lý cả ba.
+Script dùng kết nối `SmartCareer` do `init.sh` tạo (role chỉ đọc `bi_reader`; Superset lưu mật khẩu đã mã hoá, URI hiển thị `XXXXXXXXXX`), tạo 4 dataset, 8 biểu đồ, 4 Native Filter, dashboard, bật nhúng và chạy lặp lại không tạo trùng. Một số API ghi của Superset 4.1 cần cả phiên đăng nhập (cookie), token Bearer và token CSRF; script xử lý cả ba.
 
-**Nhập lại:** `bi/superset/dashboard_export.zip` (dashboard, 6 biểu đồ, 4 dataset, kết nối CSDL) nhập được bằng Superset → Dashboards → Import (nhập mật khẩu `bi_reader` khi được hỏi).
+**Nhập lại:** `bi/superset/dashboard_export.zip` (dashboard, 8 biểu đồ, bộ lọc, 4 dataset, kết nối CSDL) nhập được bằng Superset → Dashboards → Import (nhập mật khẩu `bi_reader` khi được hỏi).
 
 **Row Level Security:** guest token của nhà tuyển dụng gắn điều kiện `company_id = <công ty>` cho **cả hai** dataset có cột `company_id` (`v_funnel`, `v_funnel_stages`); admin không bị lọc; ứng viên nhận 403; chưa cấu hình id dataset thì backend từ chối cấp token (503) thay vì cấp token không lọc. Đã kiểm: `hr1` → `company_id = 1`, `hr5` → `company_id = 5`, admin không có luật nào (test case TC28).
 
-**Hạn chế:** Native Filter và hai biểu đồ mở rộng 5, 7 chưa tạo; "trung vị lương" của biểu đồ 4 trong đề được thay bằng lương trung điểm trung bình có trọng số theo số tin, ghi rõ khi so sánh với biểu đồ dự phòng; nhãn và ảnh chụp dashboard ở `docs/report/figures/ui_11_dashboard_bi.png`.
+**Hạn chế:** bộ lọc "thời gian" chưa có (chỉ lọc theo giá trị cột); "trung vị lương" của biểu đồ 4 trong đề được thay bằng lương trung điểm trung bình có trọng số theo số tin, ghi rõ khi so sánh với biểu đồ dự phòng; nhãn và ảnh chụp dashboard ở `docs/report/figures/ui_11_dashboard_bi.png`.
