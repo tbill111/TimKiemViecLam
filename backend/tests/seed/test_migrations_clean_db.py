@@ -63,3 +63,18 @@ def test_downgrade_to_base_then_upgrade_again():
     assert not (set(inspect(engine).get_table_names()) - {"alembic_version"})
     _alembic("upgrade", "head")
     _wipe(engine)
+
+
+def test_match_results_accepts_m5_m6_after_upgrade_from_0006():
+    """CSDL đã ở 0006 (ràng buộc cũ chỉ cho m0–m4) phải nhận m5/m6 sau khi nâng cấp lên head."""
+    engine = create_engine(URL)
+    _wipe(engine)
+    _alembic("upgrade", "0006_fix_bi_views")
+    with engine.begin() as conn:
+        conn.execute(text("ALTER TABLE match_results DROP CONSTRAINT IF EXISTS ck_match_results_model"))
+        conn.execute(text("ALTER TABLE match_results ADD CONSTRAINT ck_match_results_model CHECK (model IN ('m0','m1','m2','m3','m4'))"))
+    _alembic("upgrade", "head")
+    with engine.connect() as conn:
+        definition = conn.execute(text("SELECT pg_get_constraintdef(oid) FROM pg_constraint WHERE conname='ck_match_results_model'")).scalar()
+    assert "m5" in definition and "m6" in definition, definition
+    _wipe(engine)

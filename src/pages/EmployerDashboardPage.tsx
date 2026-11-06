@@ -83,7 +83,7 @@ export default function EmployerDashboardPage() {
         supersetDomain: guest.superset_domain!,
         mountPoint: node,
         fetchGuestToken: () => Promise.resolve(guest.token),
-        dashboardUiConfig: { hideTitle: true, hideTab: true, hideChartControls: true },
+        dashboardUiConfig: { hideTitle: true, hideTab: true, hideChartControls: true, filters: { visible: false, expanded: false } },
       }))
       .catch(() => { if (active) setEmbedFailed(true); });
     return () => { active = false; node.replaceChildren(); };
@@ -136,7 +136,7 @@ export default function EmployerDashboardPage() {
         <p className="section-subtitle">Phễu tuyển dụng chỉ gồm các tin của công ty bạn; kỹ năng và lương là thị trường chung. Dữ liệu là mô phỏng.</p>
       </div>
 
-      {showEmbed ? <div ref={mountPoint} className="card min-h-64" /> : isOfflineDemo ? (
+      {showEmbed ? <div ref={mountPoint} className="card h-[1120px] overflow-hidden [&>iframe]:h-full [&>iframe]:w-full [&>iframe]:border-0" /> : isOfflineDemo ? (
         <p className="rounded-lg bg-amber-50 p-3 text-xs text-amber-800">Chế độ demo: số liệu dưới đây là dữ liệu mẫu, không lấy từ máy chủ.</p>
       ) : (
         <p className="rounded-lg bg-amber-50 p-3 text-xs text-amber-800">

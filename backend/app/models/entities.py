@@ -219,7 +219,7 @@ class MatchResult(Base):
     __table_args__ = (
         UniqueConstraint("candidate_id", "job_id", "model_version", name="uq_match_results_version"),
         CheckConstraint("total_score BETWEEN 0 AND 100", name="ck_match_results_score"),
-        CheckConstraint("model IN ('m0','m1','m2','m3','m4')", name="ck_match_results_model"),
+        CheckConstraint("model IN ('m0','m1','m2','m3','m4','m5','m6')", name="ck_match_results_model"),
     )
 
 
