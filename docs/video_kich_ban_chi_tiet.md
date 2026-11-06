@@ -91,9 +91,9 @@ Gọi thư mục dự án (nhánh `fix/main-chuan-checklist`) là `<repo>`: clon
 | 2 | Menu trái → **Tìm việc làm**. **Chờ vài giây** cho điểm khớp tải xong | Hơn 100 tin, thẻ nào cũng có số %. Cuộn chậm 2–3 giây |
 | 3 | Bấm tiêu đề một tin → cửa sổ chi tiết | Thấy kỹ năng có / thiếu. Bấm **Esc** để đóng |
 | 4 | Menu → **Hồ sơ của tôi**, cuộn tới khung nhập kỹ năng từ CV | Có nút chọn tệp CV và ô đồng ý |
-| 5 | **Chưa tích** ô đồng ý, chọn `public\cv-mau.pdf` (cố ý để minh hoạ lỗi) | Báo cần tích đồng ý để xử lý dữ liệu CV |
-| 6 | Tích ô đồng ý, chọn lại `cv-mau.pdf` | Hiện danh sách kỹ năng đề xuất; kỹ năng gợi ý từ embedding có nhãn "gợi ý", không tự chọn |
-| 7 | Bỏ chọn một kỹ năng, bấm nút thêm kỹ năng vào hồ sơ | Kỹ năng vào hồ sơ |
+| 5 | **Chưa tích** ô đồng ý, chọn `public\cv-mau.pdf` (cố ý để minh hoạ lỗi) | Báo "Bạn cần đồng ý cho phép xử lý CV trước khi tải lên." |
+| 6 | Tích ô "Tôi đồng ý cho hệ thống xử lý CV để trích xuất kỹ năng.", chọn lại `cv-mau.pdf` | "Đã xử lý cv-mau.pdf. Phát hiện 9 kỹ năng." và danh sách kỹ năng đề xuất; kỹ năng gợi ý từ embedding có nhãn "gợi ý", không tự chọn |
+| 7 | Bỏ chọn một kỹ năng, bấm nút **"Thêm N kỹ năng vào hồ sơ"** | Kỹ năng vào hồ sơ |
 | 8 | Menu → **Phân tích CV–JD**, chọn một tin ở cột trái. Ô **Mô hình**: chọn lần lượt **M0**, **M3**, **M4**, **M5**, **M6** | Điểm và các thành phần cập nhật theo từng mô hình; không báo lỗi |
 | 9 | Chỉ các thành phần điểm (kỹ năng bắt buộc, ưu tiên, ngữ nghĩa, kinh nghiệm, học vấn, mong muốn) và danh sách kỹ năng có/thiếu | — |
 | 10 | Menu → **Skill Gap Analysis**. Bấm mũi tên cạnh một kỹ năng | Hiện lộ trình học; kỹ năng bắt buộc đứng trước |
@@ -117,7 +117,7 @@ Gọi thư mục dự án (nhánh `fix/main-chuan-checklist`) là `<repo>`: clon
 | 3 | Menu → **Việc đã lưu & Ứng tuyển** | Đơn trạng thái "Đã ứng tuyển"; **không có ô đổi trạng thái** (ứng viên chỉ xem) |
 | 4 | **Đăng xuất** (cuối menu trái). Đăng nhập `hr1@smartcareer.vn` / `Demo@12345` | Vào trang nhà tuyển dụng "Sao Mai Software" |
 | 5 | Menu → **Ứng viên xếp hạng**. Chọn **đúng tin vừa ứng tuyển** (ô chọn chỉ liệt kê tin của công ty `hr1`) | Danh sách ứng viên đã nộp, sắp theo điểm, kèm lý do khớp và kỹ năng thiếu |
-| 6 | Menu → **Kanban tuyển dụng**. Chọn tin đó, chuyển thẻ của ứng viên sang bước **Đang xem xét** bằng nút trên thẻ | Thẻ sang cột kế tiếp |
+| 6 | Menu → **Kanban tuyển dụng**. Chọn tin đó, bấm nút **"→ Đang xem xét"** trên thẻ của ứng viên (thẻ cũng có nút **Từ chối**) | Thẻ sang cột kế tiếp |
 | 7 | **Nhảy cóc** (cho thấy luật trạng thái): Swagger → **Authorize** bằng token ứng viên → `GET /api/applications/me` lấy `id` một đơn còn ở `applied` (ví dụ đơn vừa nộp nếu chưa chuyển; nếu đã chuyển ở bước 6 thì dùng đơn khác) → Authorize lại bằng token `hr1` → `PATCH /api/applications/{id}/status`, body `{"status":"interview"}` | **409** `{"detail":{"detail":"invalid_transition","from":"applied","to":"interview"}}` |
 | 8 | Menu → **Đăng tin mới** → ô mô tả dán: `Cần thành thạo React và Docker, có hiểu biết về SQL.` → **Gợi ý kỹ năng từ mô tả** (đừng bấm Đăng tin) | Hiện các kỹ năng gợi ý (React, Docker, SQL) để chọn bắt buộc hay ưu tiên |
 
@@ -219,6 +219,6 @@ Mở slide cuối "Hạn chế và hướng phát triển" (có link repo, tên 
 - Không nói "học máy tốt hơn" hay "mô hình tốt hơn rõ rệt" khi M3, M4, M5 không khác nhau có ý nghĩa và chỉ có 30 ứng viên.
 - Không đọc số nào không có trong `docs\report\tables\` hoặc lệnh vừa chạy trên màn hình.
 
-## N. Chưa kiểm lại từng thao tác (nói thẳng)
+## N. Đã chạy thử trước khi viết
 
-Các số và kết quả ở cảnh 5, 7 và các lệnh ở mục B đã chạy thật. Riêng thao tác trên giao diện sau đây được viết từ mã và kịch bản trước, **chưa quay thử từng bước** trên nhánh này: nội dung chính xác thông báo ở khung tải CV (cảnh 3, bước 4–7), tên nút chuyển bước trên thẻ Kanban (cảnh 4, bước 6) và việc ô tìm kiếm lọc đúng tin Sao Mai (cảnh 4, bước 1). Hãy chạy thử một lượt trước khi quay thật và sửa chữ nào lệch.
+Ngày 06/11/2026, nhánh này được build và chạy bằng `docker compose` ở cổng mặc định; các thao tác sau chạy thật bằng trình duyệt tự động: tải CV khi chưa và đã tích đồng ý (đúng hai thông báo ở cảnh 3), gõ `Sao Mai` ở Tìm việc (chỉ còn tin Sao Mai Software), ứng tuyển ("Ứng tuyển thành công!"), đơn hiện "Đã ứng tuyển" và không có ô chọn trạng thái, `hr1` thấy ứng viên ở Ứng viên xếp hạng và Kanban có nút "→ Đang xem xét" / "Từ chối". Cùng lần chạy: `run_testcases.py` 10/10, `e2e_ui.py` 16/16, `check_bi_views.py` bốn view `true`. Chữ trên giao diện có thể khác chút nếu bạn sửa code; hãy chạy thử một lượt trước khi quay.
