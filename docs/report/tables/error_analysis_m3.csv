@@ -1,0 +1,6 @@
+candidate_id,job_id,label,score,error,missing_required,matched_required
+cand-gen-0280,sim-job-044,0,50,0.5,Viết nội dung|Mạng xã hội|Excel|Giao tiếp,Tư duy sáng tạo
+cand-gen-0053,sim-job-068,0,45,0.45,Viết nội dung|Mạng xã hội|Tư duy sáng tạo|Excel,Giao tiếp
+cand-gen-0177,sim-job-020,0,45,0.45,Viết nội dung|Mạng xã hội|Tư duy sáng tạo|Excel,Giao tiếp
+cand-gen-0053,sim-job-092,0,44,0.44,Viết nội dung|Mạng xã hội|Tư duy sáng tạo|Excel,Giao tiếp
+cand-gen-0053,sim-job-030,0,43,0.43,Figma|Nguyên lý UX|Thiết kế UI|Tư duy sáng tạo,Giao tiếp

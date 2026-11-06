@@ -146,10 +146,33 @@ def write_pairs_json(pairs: list[dict[str, int]], path: Path) -> None:
     path.write_text(json.dumps(pairs, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
 
+DATA_DIR = Path(__file__).resolve().parent / "data"
+DEFAULT_TEMPLATE = Path(__file__).resolve().parent / "labels" / "labels_pairs_template.csv"
+
+
+def write_label_template(path: Path = DEFAULT_TEMPLATE, candidates_csv: Path = DATA_DIR / "candidates_generated.csv",
+                         jobs_csv: Path = DATA_DIR / "jobs_seed.csv", n_candidates: int = 30, seed: int = 42) -> int:
+    """File mẫu gán nhãn 0–3 cho đánh giá mô hình: 30 ứng viên × 10 tin (4 cùng nhóm nghề, 3 gần, 3 khác nhóm), seed cố định.
+
+    Cột `label` để trống; `candidate_id` là mã ngoài trong candidates_generated.csv, `job_id` là `external_id` của tin."""
+    pairs = build_pairs(candidates_csv, jobs_csv, n_candidates, seed)
+    path.parent.mkdir(parents=True, exist_ok=True)
+    with path.open("w", encoding="utf-8", newline="") as f:
+        w = csv.writer(f, lineterminator="\n")
+        w.writerow(["candidate_id", "job_id", "label"])
+        w.writerows([c, j, ""] for c, j in pairs)
+    return len(pairs)
+
+
 def main() -> None:
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument("--out", type=Path, default=DEFAULT_OUTPUT, help="JSON output file")
+    ap.add_argument("--template", nargs="?", const=DEFAULT_TEMPLATE, type=Path,
+                    help="thay vì JSON từ CSDL: ghi file mẫu gán nhãn 0–3 (CSV, seed 42, không cần CSDL)")
     args = ap.parse_args()
+    if args.template:
+        print(f"Đã ghi {write_label_template(args.template)} cặp vào {args.template}")
+        return
     with SessionLocal() as db:
         pairs = build_database_pairs(db)
     write_pairs_json(pairs, args.out)

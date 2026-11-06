@@ -18,6 +18,7 @@ services:
       retries: 20
 
   api:
+    image: smartcareer-api
     build:
       context: .
       dockerfile: backend/Dockerfile
@@ -38,6 +39,9 @@ services:
       SUPERSET_FUNNEL_DATASET_ID: ${SUPERSET_FUNNEL_DATASET_ID:-}
       SUPERSET_FUNNEL_STAGES_DATASET_ID: ${SUPERSET_FUNNEL_STAGES_DATASET_ID:-}
       BI_READER_PASSWORD: ${BI_READER_PASSWORD:-smartcareer_bi_demo}
+      BI_STATE_FILE: /bi_state/superset.json
+    volumes:
+      - bi_state:/bi_state:ro
     ports:
       - "${API_PORT:-8000}:8000"
     depends_on:
@@ -78,6 +82,20 @@ services:
       timeout: 5s
       retries: 20
 
+  bi-init:
+    # Chạy một lần sau khi api và superset sẵn sàng: dựng dashboard, bật nhúng, ghi ID vào volume bi_state để api đọc (không cần sửa .env).
+    image: smartcareer-api
+    working_dir: /app
+    command: ["python", "bi/superset/bootstrap.py", "--url", "http://superset:8088", "--user", "${SUPERSET_ADMIN_USER:-admin}", "--password", "${SUPERSET_ADMIN_PASSWORD:-admin_demo_password}", "--domains", "${BI_EMBED_DOMAINS:-http://localhost:8080,http://localhost:5173}", "--wait", "300", "--write-json", "/bi_state/superset.json"]
+    restart: "no"
+    volumes:
+      - bi_state:/bi_state
+    depends_on:
+      api:
+        condition: service_healthy
+      superset:
+        condition: service_healthy
+
   web:
     build:
       context: .
@@ -93,3 +111,4 @@ services:
 
 volumes:
   postgres_data:
+  bi_state:

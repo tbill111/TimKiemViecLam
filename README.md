@@ -12,6 +12,8 @@ docker compose up -d --build
 docker compose exec api python -m seed.load_seed --reset
 ```
 
+Dịch vụ một lần `bi-init` tự dựng dashboard Superset "Thị trường tuyển dụng" (8 biểu đồ, 4 bộ lọc), bật nhúng và ghi ID vào volume `bi_state` để api đọc; không cần sửa `.env` (chi tiết: `docs/02_HUONG_DAN_SUPERSET.md`). Lỗi `bi-init` thì trang nhà tuyển dụng vẫn chạy bằng biểu đồ dự phòng. Nếu đổi cổng web, đặt `BI_EMBED_DOMAINS` (nguồn được phép nhúng) trong `.env`.
+
 Image API chạy Python 3.11, cài CPU PyTorch, tải trước model `paraphrase-multilingual-MiniLM-L12-v2`, đặt `HF_HUB_OFFLINE=1`, nâng migration rồi chạy API.
 
 | Dịch vụ | URL | Ghi chú |
@@ -43,6 +45,10 @@ python scripts/check_bi_views.py
 
 Test API dùng cơ sở dữ liệu PostgreSQL riêng. Đặt `TEST_DATABASE_URL` rồi chạy `python -m pytest backend/tests`; nhóm test API sẽ bỏ qua khi không có URL test để tránh ghi nhầm vào DB dev.
 
+## AI và đánh giá mô hình
+
+Bảy mô hình M0–M6 (M0 quy tắc, M1 TF-IDF, M2 embedding, M3 hybrid mặc định, M4 Logistic Regression, M5 Random Forest, M6 Gradient Boosting); M4–M6 huấn luyện bằng notebook `notebooks/02_train_m4.ipynb` rồi lưu ở `backend/models_store/`. Chạy lại toàn bộ notebook và bảng kết quả: `python scripts/run_notebooks.py` (kết quả ở `docs/report/tables/`). Nhãn 300 cặp CV–JD và kỹ năng 50 CV (`backend/seed/labels/`) do agent AI gán, nguồn và hạn chế ở `backend/seed/labels/NGUON_NHAN.md`. Báo cáo: `docs/report/BaoCao_TH3.md`; kết quả kiểm thử từng ca: `docs/testcases.md`. Chạy ca qua HTTP: `python scripts/run_testcases.py --api http://localhost:8000/api --web http://localhost:8080`; trình duyệt: `python scripts/e2e_ui.py --web http://localhost:8080 --api http://localhost:8000/api`.
+
 ## Frontend
 
 ```bash
@@ -52,7 +58,7 @@ npm run build
 npm run lint
 ```
 
-`VITE_OFFLINE_DEMO=true` giữ chế độ demo frontend không gọi API. Tích hợp online cần frontend dùng API adapter/token của nhánh giao diện tương ứng.
+`VITE_OFFLINE_DEMO=true` giữ chế độ demo frontend không gọi API (kiểm: `python scripts/e2e_ui.py --offline --web http://localhost:4173`). Chế độ mặc định gọi API thật qua `src/api`.
 
 ## API chính
 

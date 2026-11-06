@@ -1,10 +1,12 @@
-"""Các phương pháp chấm điểm M0–M4 với cùng một giao diện: `score_pair(model, cand, job) -> MatchDTO`.
+"""Các phương pháp chấm điểm M0–M6 với cùng một giao diện: `score_pair(model, cand, job) -> MatchDTO`.
 
 M0  Quy tắc 60/25/15 (port nguyên `calculateSkillMatch` ở frontend) – baseline
 M1  TF-IDF + cosine CV–JD
 M2  Chỉ dùng embedding (semantic)
 M3  Hybrid trọng số cố định + luật chặn
 M4  Logistic Regression học trọng số trên 6 đặc trưng
+M5  Random Forest trên 6 đặc trưng
+M6  Gradient Boosting trên 6 đặc trưng
 """
 from __future__ import annotations
 
@@ -18,7 +20,7 @@ from .embedder import Embedder
 from .explain import explain
 from .features import FEATURE_NAMES, PairFeatures, compute_features
 from .skills import split_skills
-from .types import MODELS, CandidateInput, JobInput, ModelNotAvailable
+from .types import MODELS, ML_MODELS, CandidateInput, JobInput, ModelNotAvailable
 
 MODELS_DIR = Path(os.getenv("MODELS_DIR", Path(__file__).resolve().parents[2] / "models_store"))
 
@@ -182,29 +184,52 @@ def score_m2(cand: CandidateInput, job: JobInput, embedder: Optional[Embedder] =
     return build_dto("m2", MODEL_VERSIONS["m2"], js_round(f.values["semantic"] * 100), _components_from_features(f), f)
 
 
-# --------------------------------------------------------------------------- M4: Logistic Regression
+# --------------------------------------------------------------------------- M4–M6: học máy trên 6 đặc trưng
 
 _m4_cache: Optional[dict[str, Any]] = None
+_m5_cache: Optional[dict[str, Any]] = None
+_m6_cache: Optional[dict[str, Any]] = None
+_ML_CACHES = {"m4": "_m4_cache", "m5": "_m5_cache", "m6": "_m6_cache"}
+
+
+def load_ml(model_id: str, force: bool = False) -> dict[str, Any]:
+    """Nạp artifact `models_store/<model_id>.joblib` (mô hình sklearn, danh sách đặc trưng, phiên bản)."""
+    if model_id not in _ML_CACHES:
+        raise ValueError(f"Không phải mô hình học máy: {model_id}")
+    cache_name = _ML_CACHES[model_id]
+    cached = globals()[cache_name]
+    if cached is not None and not force:
+        return cached
+    path = MODELS_DIR / f"{model_id}.joblib"
+    if not path.exists():
+        raise ModelNotAvailable(f"Chưa huấn luyện {model_id.upper()} (thiếu models_store/{model_id}.joblib).")
+    import joblib
+
+    globals()[cache_name] = joblib.load(path)
+    return globals()[cache_name]
 
 
 def load_m4(force: bool = False) -> dict[str, Any]:
-    global _m4_cache
-    if _m4_cache is not None and not force:
-        return _m4_cache
-    path = MODELS_DIR / "m4.joblib"
-    if not path.exists():
-        raise ModelNotAvailable("Chưa huấn luyện M4 (thiếu models_store/m4.joblib).")
-    import joblib
+    return load_ml("m4", force)
 
-    _m4_cache = joblib.load(path)
-    return _m4_cache
+
+def _score_ml(model_id: str, cand: CandidateInput, job: JobInput, embedder: Optional[Embedder]) -> dict[str, Any]:
+    artifact = load_ml(model_id)
+    f = compute_features(cand, job, embedder)
+    proba = float(artifact["model"].predict_proba([f.vector()])[0][1])
+    return build_dto(model_id, artifact.get("version", model_id), js_round(proba * 100), _components_from_features(f), f)
 
 
 def score_m4(cand: CandidateInput, job: JobInput, embedder: Optional[Embedder] = None) -> dict[str, Any]:
-    artifact = load_m4()
-    f = compute_features(cand, job, embedder)
-    proba = float(artifact["model"].predict_proba([f.vector()])[0][1])
-    return build_dto("m4", artifact.get("version", "m4"), js_round(proba * 100), _components_from_features(f), f)
+    return _score_ml("m4", cand, job, embedder)
+
+
+def score_m5(cand: CandidateInput, job: JobInput, embedder: Optional[Embedder] = None) -> dict[str, Any]:
+    return _score_ml("m5", cand, job, embedder)
+
+
+def score_m6(cand: CandidateInput, job: JobInput, embedder: Optional[Embedder] = None) -> dict[str, Any]:
+    return _score_ml("m6", cand, job, embedder)
 
 
 # --------------------------------------------------------------------------- Điều phối
@@ -213,15 +238,25 @@ Scorer = Callable[..., dict[str, Any]]
 
 
 def score_pair(model: str, cand: CandidateInput, job: JobInput, embedder: Optional[Embedder] = None) -> dict[str, Any]:
-    """Chấm một cặp theo model `m0`..`m4`, trả về MatchDTO (xem docs/00_KE_HOACH_KY_THUAT_TH3.md mục 3.4)."""
+    """Chấm một cặp theo model `m0`..`m6`, trả về MatchDTO (xem docs/00_KE_HOACH_KY_THUAT_TH3.md mục 3.4)."""
     model = model.lower()
     if model not in MODELS:
         raise ValueError(f"Model không hợp lệ: {model}")
     if model == "m0":
         return score_m0(cand, job)
-    return {"m1": score_m1, "m2": score_m2, "m3": score_m3, "m4": score_m4}[model](cand, job, embedder)
+    return {"m1": score_m1, "m2": score_m2, "m3": score_m3, "m4": score_m4, "m5": score_m5, "m6": score_m6}[model](cand, job, embedder)
 
 
 def score_many(model: str, cand: CandidateInput, jobs: list[JobInput], embedder: Optional[Embedder] = None) -> list[dict[str, Any]]:
-    """Chấm một ứng viên với nhiều tin; nên truyền sẵn `embedding` cho tin để đạt < 2 giây với 500 tin."""
+    """Chấm một ứng viên với nhiều tin; nên truyền sẵn `embedding` cho tin để đạt < 2 giây với 500 tin.
+
+    Mô hình học máy (M4–M6) dự đoán **cả lô** bằng một lần `predict_proba`: gọi từng cặp một rất chậm với Random Forest
+    (mỗi lần duyệt hàng trăm cây), khoảng 25 ms/cặp so với dưới 1 ms/cặp khi dự đoán theo lô."""
+    model = model.lower()
+    if model in ML_MODELS and jobs:
+        artifact = load_ml(model)
+        feats = [compute_features(cand, j, embedder) for j in jobs]
+        probas = artifact["model"].predict_proba([f.vector() for f in feats])[:, 1]
+        version = artifact.get("version", model)
+        return [build_dto(model, version, js_round(float(pr) * 100), _components_from_features(f), f) for f, pr in zip(feats, probas)]
     return [score_pair(model, cand, j, embedder) for j in jobs]

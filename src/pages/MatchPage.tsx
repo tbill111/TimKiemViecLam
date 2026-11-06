@@ -14,7 +14,7 @@ interface MatchPageProps {
 
 export default function MatchPage({ appState }: MatchPageProps) {
   const { studentProfile } = appState;
-  const { jobs } = useJobs();
+  const { jobs, matchScores } = useJobs();
   const [selectedJobId, setSelectedJobId] = useState<string>('');
   const [model, setModel] = useState('m3');
   const [remoteResult, setRemoteResult] = useState<SkillMatchResult | null>(null);
@@ -43,7 +43,7 @@ export default function MatchPage({ appState }: MatchPageProps) {
     setRemoteResult(null);
     void matchJob(selectedJob.id, model)
       .then(setRemoteResult)
-      .catch((error: unknown) => setModelError(apiErrorMessage(error, model === 'm4' ? 'M4 chưa được huấn luyện.' : 'Không tải được kết quả ghép nối.')))
+      .catch((error: unknown) => setModelError(apiErrorMessage(error, ['m4', 'm5', 'm6'].includes(model) ? `${model.toUpperCase()} chưa được huấn luyện.` : 'Không tải được kết quả ghép nối.')))
       .finally(() => setLoading(false));
   }, [model, selectedJob]);
 
@@ -71,8 +71,8 @@ export default function MatchPage({ appState }: MatchPageProps) {
       <div className="flex items-start gap-3 p-3 bg-amber-50 border border-amber-100 rounded-xl text-sm text-amber-700">
         <Info size={16} className="shrink-0 mt-0.5" />
         <span>
-          <strong>Mô phỏng ghép nối đa tiêu chí.</strong> Điểm phù hợp = 60% kỹ năng bắt buộc + 25% kỹ năng ưu tiên
-          + 15% mong muốn (địa điểm, hình thức). Tính bằng quy tắc, không phải kết quả của mô hình AI thật.
+          <strong>{isOfflineDemo ? 'Chế độ demo: điểm tính bằng quy tắc ngay trên trình duyệt.' : 'Điểm do máy chủ tính.'}</strong> Mô hình mặc định M3 (kết hợp 6 đặc trưng: kỹ năng bắt buộc, kỹ năng ưu tiên, ngữ nghĩa, kinh nghiệm, học vấn,
+          địa điểm/hình thức/lương). Chọn M0–M6 để so sánh; danh sách bên trái luôn hiển thị điểm M3. Nhãn dùng để huấn luyện M4–M6 do agent AI gán, không phải nhà tuyển dụng thật.
         </span>
       </div>
 
@@ -83,13 +83,13 @@ export default function MatchPage({ appState }: MatchPageProps) {
           <label className="block text-xs font-medium text-slate-500">
             Mô hình
             <select className="select-field mt-1" value={model} onChange={(event) => setModel(event.target.value)}>
-              {['m0', 'm1', 'm2', 'm3', 'm4'].map((value) => <option key={value} value={value}>{value.toUpperCase()}</option>)}
+              {['m0', 'm1', 'm2', 'm3', 'm4', 'm5', 'm6'].map((value) => <option key={value} value={value}>{value.toUpperCase()}</option>)}
             </select>
           </label>
           {modelError && <p role="alert" className="text-xs text-red-600 bg-red-50 rounded-lg p-2">{modelError}</p>}
           <div className="space-y-2 max-h-[480px] overflow-y-auto scrollbar-thin pr-1">
             {jobs.map((job) => {
-              const result = calculateSkillMatch(studentProfile, job);
+              const result = matchScores.get(job.id) ?? calculateSkillMatch(studentProfile, job);
               const isSelected = job.id === selectedJobId;
               return (
                 <button

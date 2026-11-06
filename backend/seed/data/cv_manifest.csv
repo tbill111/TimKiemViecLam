@@ -1,0 +1,51 @@
+cv_file,candidate_id,occupation,true_skills,true_years_exp,true_education_level,layout
+cv_001.pdf,cand-demo-001,Frontend Development,HTML|CSS|JavaScript|React|Git|SQL|Python|Figma|Responsive Design,1.0,3,1
+cv_002.docx,cand-gen-0001,Backend Development,Node.js|SQL|Git|Cloud (AWS/GCP)|Bảo mật ứng dụng|UML|Apache Spark|Windows Server,3.0,1,2
+cv_003.pdf,cand-gen-0002,Business Analysis,Phân tích nghiệp vụ|Excel|Tư duy logic|Giao tiếp|Viết tài liệu|Email Marketing|JavaScript|Office 365|CSS,0.3,3,3
+cv_004.pdf,cand-gen-0003,Business Operations,Excel|UML|Giao tiếp|Viết tài liệu|Phân tích nghiệp vụ|Power BI,1.0,3,4
+cv_005.docx,cand-gen-0004,Data Science & Analytics,Excel|Linux cơ bản|Python|ETL|Canva|UML,1.0,2,0
+cv_006.pdf,cand-gen-0005,Digital Marketing,Tư duy sáng tạo|Viết nội dung|Excel|Mạng xã hội|Giao tiếp|Python|Storybook|Docker|Machine Learning cơ bản|Design System|Linux|UML,1.5,3,1
+cv_007.docx,cand-gen-0006,Frontend Development,TypeScript|CSS|React|HTML|Phân tích dữ liệu|SQL|Tư duy phân tích|Kafka|User Research|Git|Apache Spark,5.0,3,2
+cv_008.pdf,cand-gen-0007,IT Support,Giao tiếp|Kỹ thuật máy tính|Mạng cơ bản|Windows Server|Docker|PostgreSQL|ETL|Tư duy phân tích,5.0,4,3
+cv_009.pdf,cand-gen-0008,QA & Testing,Git|Kiểm thử phần mềm|Excel|Viết test case|Tư duy sáng tạo|Canva,0.5,3,4
+cv_010.docx,cand-gen-0009,Software Engineering,OOP|REST API|JavaScript|Git|SQL|Pandas,0.0,3,0
+cv_011.pdf,cand-gen-0010,UI/UX Design,Figma|Nguyên lý UX|Tư duy sáng tạo|Thiết kế UI|Giao tiếp|Windows Server|Tableau,1.0,3,1
+cv_012.docx,cand-gen-0011,Backend Development,Node.js|Git|REST API|JavaScript|SQL|Kiểm thử phần mềm,1.0,2,2
+cv_013.pdf,cand-gen-0012,Business Analysis,Phân tích nghiệp vụ|Viết tài liệu|Giao tiếp|Email Marketing|Prototyping|Tableau|Storybook|HTML/CSS cơ bản,3.0,4,3
+cv_014.pdf,cand-gen-0013,Business Operations,SQL|Excel|Giao tiếp|Phân tích nghiệp vụ|Viết tài liệu|UML|Adobe XD|Active Directory|Zustand|Thiết kế UI,5.0,4,4
+cv_015.docx,cand-gen-0014,Data Science & Analytics,SQL|Git|Python|Linux cơ bản|Excel|Thống kê cơ bản|Zustand|Windows Server|UML|Nguyên lý UX|Kiểm thử phần mềm,1.0,3,0
+cv_016.pdf,cand-gen-0015,Digital Marketing,Excel|Viết nội dung|Giao tiếp|Thiết kế UI|Linux|CSS|Pandas|Active Directory,1.0,3,1
+cv_017.docx,cand-gen-0016,Frontend Development,HTML|TypeScript|Git|Kiểm thử phần mềm|Linux|Xử lý sự cố|Excel,2.0,2,2
+cv_018.pdf,cand-gen-0017,IT Support,Mạng cơ bản|Windows Server|Giao tiếp|Docker|React Query|Tư duy phân tích|REST API|Tư duy sáng tạo|Xử lý sự cố,0.3,1,3
+cv_019.pdf,cand-gen-0018,QA & Testing,Tư duy phân tích|Kiểm thử phần mềm|Viết test case|Excel|Git|Pandas,5.0,3,4
+cv_020.docx,cand-gen-0019,Software Engineering,REST API|SQL|OOP|JavaScript|Git|Agile/Scrum|Thiết kế API|Jest|HTML|Tableau|Phân tích dữ liệu,1.5,3,0
+cv_021.pdf,cand-gen-0020,UI/UX Design,Thiết kế UI|Tư duy sáng tạo|Giao tiếp|Nguyên lý UX|Figma|Linux cơ bản,0.5,3,1
+cv_022.docx,cand-gen-0021,Backend Development,REST API|JavaScript|Git|React Query|Node.js,5.0,4,2
+cv_023.pdf,cand-gen-0022,Business Analysis,Viết tài liệu|Tư duy logic|Giao tiếp|Excel|Phân tích nghiệp vụ|Mạng cơ bản|Virtualization|Design System|HTML|REST API|Postman,0.5,3,3
+cv_024.pdf,cand-gen-0023,Business Operations,Viết tài liệu|Excel|UML|Giao tiếp|Phân tích nghiệp vụ|Facebook Ads|Apache Spark|Matplotlib|TypeScript nâng cao|OOP|Bảo mật ứng dụng|Kafka,1.5,2,4
+cv_025.docx,cand-gen-0024,Data Science & Analytics,Thống kê cơ bản|ETL|Git|Python|Excel|Linux cơ bản|REST API|Jest|CSS|SQL|Adobe XD|Responsive Design,1.0,2,0
+cv_026.pdf,cand-gen-0025,Digital Marketing,Excel|Giao tiếp|Tư duy sáng tạo|Mạng xã hội|Viết nội dung|Selenium|Machine Learning cơ bản|Linux|MongoDB|Tư duy logic|Thiết kế UI|Kỹ thuật máy tính,1.5,3,1
+cv_027.docx,cand-gen-0026,Frontend Development,TypeScript|CSS|REST API|HTML|Git|JavaScript|Virtualization|Tableau|Python|AWS cơ bản,1.0,3,2
+cv_028.pdf,cand-gen-0027,IT Support,Xử lý sự cố|Windows Server|Giao tiếp|Mạng cơ bản|Office 365|Power BI|Pandas|Python|Email Marketing|Selenium|Cloud (AWS/GCP)|Tư duy logic,0.0,4,3
+cv_029.pdf,cand-gen-0028,QA & Testing,Viết test case|Excel|Git|Tư duy phân tích|Kiểm thử phần mềm|REST API|Kỹ thuật máy tính|Apache Spark|Tailwind CSS,0.0,3,4
+cv_030.docx,cand-gen-0029,Software Engineering,OOP|SQL|JavaScript|Tableau|Bảo mật ứng dụng|Viết nội dung|HTML,4.0,3,0
+cv_031.pdf,cand-gen-0030,UI/UX Design,Giao tiếp|Tư duy sáng tạo|Nguyên lý UX|Figma|Thiết kế UI|CSS|Mạng xã hội|Cloud (AWS/GCP),0.0,3,1
+cv_032.docx,cand-gen-0031,Backend Development,SQL|REST API|Git|Node.js|JavaScript|Tư duy sáng tạo|Linux cơ bản,5.0,3,2
+cv_033.pdf,cand-gen-0032,Business Analysis,Viết tài liệu|Giao tiếp|Excel|Phân tích nghiệp vụ|Tư duy logic|Google Analytics|Thiết kế API|JavaScript|Phân tích dữ liệu|Linux cơ bản,2.0,3,3
+cv_034.pdf,cand-gen-0033,Business Operations,UML|SQL|Viết tài liệu|Giao tiếp|Excel|Phân tích nghiệp vụ,0.3,3,4
+cv_035.docx,cand-gen-0034,Data Science & Analytics,ETL|Thống kê cơ bản|Excel|Git|Python|Agile/Scrum|Facebook Ads|Nghiệp vụ ngân hàng,0.3,3,0
+cv_036.pdf,cand-gen-0035,Digital Marketing,Mạng xã hội|Tư duy sáng tạo|Viết nội dung|Giao tiếp|Excel|MongoDB|AWS cơ bản,0.0,3,1
+cv_037.docx,cand-gen-0036,Frontend Development,CSS|HTML|JavaScript|React|TypeScript|Postman,4.0,1,2
+cv_038.pdf,cand-gen-0037,IT Support,Giao tiếp|Windows Server|Mạng cơ bản|Xử lý sự cố|Kỹ thuật máy tính|Nghiệp vụ ngân hàng|React Query|Nguyên lý UX|Viết nội dung|Agile/Scrum|CI/CD|HTML,1.0,3,3
+cv_039.pdf,cand-gen-0038,QA & Testing,Git|Excel|Viết test case|Kiểm thử phần mềm|Tư duy phân tích|Matplotlib|Storybook|Airflow|JavaScript,1.5,3,4
+cv_040.docx,cand-gen-0039,Software Engineering,SQL|Git|REST API|Responsive Design|CSS|Storybook|Matplotlib|Power BI|Kỹ thuật máy tính,5.0,3,0
+cv_041.pdf,cand-gen-0040,UI/UX Design,Giao tiếp|Figma|Thiết kế UI|Nguyên lý UX|Facebook Ads,4.0,3,1
+cv_042.docx,cand-gen-0041,Backend Development,SQL|Git|REST API|Node.js|JavaScript|React|TypeScript nâng cao|Matplotlib|Quản lý dự án|Viết nội dung,0.0,3,2
+cv_043.pdf,cand-gen-0042,Business Analysis,Viết tài liệu|Tư duy logic|Giao tiếp|Excel|AWS cơ bản|HTML/CSS cơ bản|Linux cơ bản|User Research|Cloud (AWS/GCP)|Matplotlib|React Query|Tailwind CSS,0.3,1,3
+cv_044.pdf,cand-gen-0043,Business Operations,Viết tài liệu|Phân tích nghiệp vụ|SQL|Machine Learning cơ bản|Thống kê cơ bản|Kỹ thuật máy tính|Quản lý dự án|Tableau|Storybook|Jest|SEO cơ bản|Confluence,3.0,2,4
+cv_045.docx,cand-gen-0044,Data Science & Analytics,Linux cơ bản|Python|Thống kê cơ bản|Git|ETL|Excel|Tailwind CSS|Node.js|Figma|JavaScript|Xử lý sự cố,3.0,2,0
+cv_046.pdf,cand-gen-0045,Digital Marketing,Viết nội dung|Mạng xã hội|Tư duy sáng tạo|Excel|Giao tiếp|Bảo mật ứng dụng|Tư duy phân tích|Storybook|Facebook Ads|Docker|REST API|ETL,0.3,3,1
+cv_047.docx,cand-gen-0046,Frontend Development,Git|HTML|CSS|Google Analytics|Active Directory|Prototyping|Adobe XD|Viết test case|Python,0.5,3,2
+cv_048.pdf,cand-gen-0047,IT Support,Giao tiếp|Xử lý sự cố|Mạng cơ bản|Kỹ thuật máy tính|Excel|Apache Spark|Postman,1.0,3,3
+cv_049.pdf,cand-gen-0048,QA & Testing,Kiểm thử phần mềm|Excel|Viết test case|Tư duy phân tích|Kafka|SEO cơ bản|MongoDB|Giao tiếp|PostgreSQL|Tailwind CSS|Bảo mật ứng dụng,1.0,3,4
+cv_050.docx,cand-gen-0049,Software Engineering,OOP|REST API|SQL|Zustand|Pandas|HTML/CSS cơ bản|Figma|Kafka,0.5,3,0

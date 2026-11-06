@@ -1,6 +1,7 @@
 """Runtime configuration for the SmartCareer API."""
 from __future__ import annotations
 
+import json
 import os
 import sys
 from pathlib import Path
@@ -26,9 +27,29 @@ class Settings:
     superset_username: str = os.getenv("SUPERSET_ADMIN_USER", "admin")
     superset_password: str = os.getenv("SUPERSET_ADMIN_PASSWORD", "")
     guest_token_secret: str = os.getenv("GUEST_TOKEN_JWT_SECRET", "")
-    dashboard_id: str = os.getenv("SUPERSET_DASHBOARD_ID", "")
-    funnel_dataset_id: str = os.getenv("SUPERSET_FUNNEL_DATASET_ID", "")
-    funnel_stages_dataset_id: str = os.getenv("SUPERSET_FUNNEL_STAGES_DATASET_ID", "")
+
+    @staticmethod
+    def _bi_value(env_name: str) -> str:
+        """Biến môi trường nếu có; không thì đọc tệp do `bi/superset/bootstrap.py --write-json` (dịch vụ `bi-init`) ghi."""
+        value = os.getenv(env_name, "")
+        if value:
+            return value
+        try:
+            return str(json.loads(Path(os.getenv("BI_STATE_FILE", "/bi_state/superset.json")).read_text(encoding="utf-8")).get(env_name, ""))
+        except (OSError, ValueError):
+            return ""
+
+    @property
+    def dashboard_id(self) -> str:
+        return self._bi_value("SUPERSET_DASHBOARD_ID")
+
+    @property
+    def funnel_dataset_id(self) -> str:
+        return self._bi_value("SUPERSET_FUNNEL_DATASET_ID")
+
+    @property
+    def funnel_stages_dataset_id(self) -> str:
+        return self._bi_value("SUPERSET_FUNNEL_STAGES_DATASET_ID")
 
 
 settings = Settings()
